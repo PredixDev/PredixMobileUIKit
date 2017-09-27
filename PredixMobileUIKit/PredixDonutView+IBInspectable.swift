@@ -12,9 +12,9 @@ import Charts
 //IBInspectable properties can be internal, and still show up in IB
 
 extension PredixDonutView {
-    
+
     open override func prepareForInterfaceBuilder() {
-        
+
         super.prepareForInterfaceBuilder()
 
         let exampleValues: [String: Double] = [
@@ -30,7 +30,7 @@ extension PredixDonutView {
         loadLabelsAndValues(exampleValues, showWithDefaultAnimation: false)
         self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
     }
-    
+
     @IBInspectable
     internal var labelText: String? {
         get {
@@ -49,13 +49,13 @@ extension PredixDonutView {
             self.chartDescription?.enabled = newValue
         }
     }
-    
+
     @IBInspectable
     open var holeRadius: Double {
         get {
             return Double(self.holeRadiusPercent)
         }
-        set{
+        set {
             self.holeRadiusPercent = CGFloat(newValue)
         }
     }
@@ -71,7 +71,7 @@ extension PredixDonutView {
             }
         }
     }
-    
+
     @IBInspectable
     internal var legendVerticalAlignment: Int {
         get {
@@ -109,7 +109,7 @@ extension PredixDonutView {
             }
         }
     }
-    
+
     @IBInspectable
     internal var legendAllowOverlap: Bool {
         get {

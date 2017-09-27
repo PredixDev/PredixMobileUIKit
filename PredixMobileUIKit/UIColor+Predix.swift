@@ -74,7 +74,7 @@ extension UIColor {
             public static let pressed                = rgb(0, 61, 102)
             public static let light                  = rgb(238, 251, 255)
         }
-        
+
         /**
          * Selection Palette
          */
@@ -119,7 +119,7 @@ extension UIColor {
             public static let green3                  = rgb(127, 174, 27)
             public static let green4                  = rgb(66, 88, 14)
         }
-        
+
         /**
          * Data Visualization
          */
@@ -318,12 +318,12 @@ extension UIColor {
         public static let salmon8                    = rgb(157, 108, 78)
         public static let salmon9                    = rgb(129, 89, 64)
         public static let salmon10                   = rgb(101, 70, 50)
-        
+
         public enum DataVisualizationSets {
             public static let regular = [UIColor.Predix.blue5, UIColor.Predix.orange5, UIColor.Predix.green5, UIColor.Predix.pink4, UIColor.Predix.brown6, UIColor.Predix.purple4, UIColor.Predix.yellow5, UIColor.Predix.red6, UIColor.Predix.neutralGray8]
-            
+
             public static let light = [UIColor.Predix.blue3, UIColor.Predix.orange3, UIColor.Predix.green3, UIColor.Predix.pink2, UIColor.Predix.brown4, UIColor.Predix.purple3, UIColor.Predix.yellow3, UIColor.Predix.red3, UIColor.Predix.neutralGray5]
-            
+
             public static let dark = [UIColor.Predix.blue7, UIColor.Predix.orange7, UIColor.Predix.green7, UIColor.Predix.pink6, UIColor.Predix.brown7, UIColor.Predix.purple7, UIColor.Predix.yellow7, UIColor.Predix.red7, UIColor.Predix.neutralGray10]
         }
     }

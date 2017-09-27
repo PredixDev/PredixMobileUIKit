@@ -31,7 +31,7 @@ extension Double {
             return CGFloat(self)
         }
     }
-    
+
     internal var asFloat: Float {
         get {
             return Float(self)

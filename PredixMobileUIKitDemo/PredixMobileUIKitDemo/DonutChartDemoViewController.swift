@@ -22,11 +22,11 @@ class DonutChartDemoViewController: UIViewController {
 
     @IBOutlet var horzOrientation: UIButton!
     @IBOutlet var vertOrientation: UIButton!
-    
+
     @IBOutlet var holeSizeSlider: UISlider!
-    
+
     @IBOutlet var donut: PredixDonutView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,7 +46,7 @@ class DonutChartDemoViewController: UIViewController {
             "Lager": 1
         ]
         donut.loadLabelsAndValues(values)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,13 +54,12 @@ class DonutChartDemoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
     @IBAction func vertButtonTapped(_ sender: UIButton) {
         vertTopButton.isSelected = false
         vertCenterButton.isSelected = false
         vertBottomButton.isSelected = false
         sender.isSelected = true
-        
+
         switch sender {
         case vertTopButton:
             donut.legend.verticalAlignment = .top
@@ -71,17 +70,16 @@ class DonutChartDemoViewController: UIViewController {
         default:
             break
         }
-        
-        
+
         donut.setNeedsDisplay()
     }
-    
+
     @IBAction func horzButtonTapped(_ sender: UIButton) {
         horzLeftButton.isSelected = false
         horzCenterButton.isSelected = false
         horzRightButton.isSelected = false
         sender.isSelected = true
-        
+
         switch sender {
         case horzLeftButton:
             donut.legend.horizontalAlignment = .left
@@ -93,22 +91,22 @@ class DonutChartDemoViewController: UIViewController {
             break
 
         }
-        
+
         donut.setNeedsDisplay()
     }
-    
+
     @IBAction func orientationButtonTapped(_ sender: UIButton) {
         vertOrientation.isSelected = false
         horzOrientation.isSelected = false
         sender.isSelected = true
-        
+
         donut.legend.orientation = sender == vertOrientation ? .vertical : .horizontal
-        
+
         donut.setNeedsDisplay()
-        
+
     }
     @IBAction func sliderChanged(_ sender: UISlider) {
-        
+
         if holeSizeSlider.value < 0.0 {
             donut.drawHoleEnabled = false
         } else {
@@ -116,7 +114,6 @@ class DonutChartDemoViewController: UIViewController {
             donut.holeRadiusPercent = CGFloat(holeSizeSlider.value)
         }
         donut.setNeedsDisplay()
-        
+
     }
 }
-
