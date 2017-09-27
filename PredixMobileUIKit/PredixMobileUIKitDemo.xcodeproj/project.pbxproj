@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */; };
+		4F503B281F6C58BC00B8EE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B271F6C58BC00B8EE10 /* ViewController.swift */; };
+		4F503B2B1F6C58BC00B8EE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B291F6C58BC00B8EE10 /* Main.storyboard */; };
+		4F503B2D1F6C58BC00B8EE10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */; };
+		4F503B301F6C58BC00B8EE10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */; };
+		4F503B3B1F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B3A1F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.swift */; };
+		4F503B461F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B451F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F503B371F6C58BC00B8EE10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F503B1A1F6C58BC00B8EE10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F503B211F6C58BC00B8EE10;
+			remoteInfo = PredixMobileUIKitDemo;
+		};
+		4F503B421F6C58BC00B8EE10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F503B1A1F6C58BC00B8EE10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F503B211F6C58BC00B8EE10;
+			remoteInfo = PredixMobileUIKitDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredixMobileUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F503B271F6C58BC00B8EE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F503B2A1F6C58BC00B8EE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F503B2F1F6C58BC00B8EE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F503B311F6C58BC00B8EE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F503B361F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PredixMobileUIKitDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F503B3A1F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixMobileUIKitDemoTests.swift; sourceTree = "<group>"; };
+		4F503B3C1F6C58BC00B8EE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F503B411F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PredixMobileUIKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F503B451F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixMobileUIKitDemoUITests.swift; sourceTree = "<group>"; };
+		4F503B471F6C58BC00B8EE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F503B1F1F6C58BC00B8EE10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F503B331F6C58BC00B8EE10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F503B3E1F6C58BC00B8EE10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F503B191F6C58BC00B8EE10 = {
+			isa = PBXGroup;
+			children = (
+				4F503B241F6C58BC00B8EE10 /* PredixMobileUIKitDemo */,
+				4F503B391F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests */,
+				4F503B441F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests */,
+				4F503B231F6C58BC00B8EE10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F503B231F6C58BC00B8EE10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */,
+				4F503B361F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.xctest */,
+				4F503B411F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F503B241F6C58BC00B8EE10 /* PredixMobileUIKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */,
+				4F503B271F6C58BC00B8EE10 /* ViewController.swift */,
+				4F503B291F6C58BC00B8EE10 /* Main.storyboard */,
+				4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */,
+				4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */,
+				4F503B311F6C58BC00B8EE10 /* Info.plist */,
+			);
+			path = PredixMobileUIKitDemo;
+			sourceTree = "<group>";
+		};
+		4F503B391F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F503B3A1F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.swift */,
+				4F503B3C1F6C58BC00B8EE10 /* Info.plist */,
+			);
+			path = PredixMobileUIKitDemoTests;
+			sourceTree = "<group>";
+		};
+		4F503B441F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4F503B451F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.swift */,
+				4F503B471F6C58BC00B8EE10 /* Info.plist */,
+			);
+			path = PredixMobileUIKitDemoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F503B211F6C58BC00B8EE10 /* PredixMobileUIKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F503B4A1F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemo" */;
+			buildPhases = (
+				4F503B1E1F6C58BC00B8EE10 /* Sources */,
+				4F503B1F1F6C58BC00B8EE10 /* Frameworks */,
+				4F503B201F6C58BC00B8EE10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PredixMobileUIKitDemo;
+			productName = PredixMobileUIKitDemo;
+			productReference = 4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F503B351F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F503B4D1F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemoTests" */;
+			buildPhases = (
+				4F503B321F6C58BC00B8EE10 /* Sources */,
+				4F503B331F6C58BC00B8EE10 /* Frameworks */,
+				4F503B341F6C58BC00B8EE10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F503B381F6C58BC00B8EE10 /* PBXTargetDependency */,
+			);
+			name = PredixMobileUIKitDemoTests;
+			productName = PredixMobileUIKitDemoTests;
+			productReference = 4F503B361F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4F503B401F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F503B501F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemoUITests" */;
+			buildPhases = (
+				4F503B3D1F6C58BC00B8EE10 /* Sources */,
+				4F503B3E1F6C58BC00B8EE10 /* Frameworks */,
+				4F503B3F1F6C58BC00B8EE10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F503B431F6C58BC00B8EE10 /* PBXTargetDependency */,
+			);
+			name = PredixMobileUIKitDemoUITests;
+			productName = PredixMobileUIKitDemoUITests;
+			productReference = 4F503B411F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F503B1A1F6C58BC00B8EE10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = GE;
+				TargetAttributes = {
+					4F503B211F6C58BC00B8EE10 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					4F503B351F6C58BC00B8EE10 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F503B211F6C58BC00B8EE10;
+					};
+					4F503B401F6C58BC00B8EE10 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4F503B211F6C58BC00B8EE10;
+					};
+				};
+			};
+			buildConfigurationList = 4F503B1D1F6C58BC00B8EE10 /* Build configuration list for PBXProject "PredixMobileUIKitDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F503B191F6C58BC00B8EE10;
+			productRefGroup = 4F503B231F6C58BC00B8EE10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F503B211F6C58BC00B8EE10 /* PredixMobileUIKitDemo */,
+				4F503B351F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests */,
+				4F503B401F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F503B201F6C58BC00B8EE10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F503B301F6C58BC00B8EE10 /* LaunchScreen.storyboard in Resources */,
+				4F503B2D1F6C58BC00B8EE10 /* Assets.xcassets in Resources */,
+				4F503B2B1F6C58BC00B8EE10 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F503B341F6C58BC00B8EE10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F503B3F1F6C58BC00B8EE10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F503B1E1F6C58BC00B8EE10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F503B281F6C58BC00B8EE10 /* ViewController.swift in Sources */,
+				4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F503B321F6C58BC00B8EE10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F503B3B1F6C58BC00B8EE10 /* PredixMobileUIKitDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F503B3D1F6C58BC00B8EE10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F503B461F6C58BC00B8EE10 /* PredixMobileUIKitDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F503B381F6C58BC00B8EE10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F503B211F6C58BC00B8EE10 /* PredixMobileUIKitDemo */;
+			targetProxy = 4F503B371F6C58BC00B8EE10 /* PBXContainerItemProxy */;
+		};
+		4F503B431F6C58BC00B8EE10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F503B211F6C58BC00B8EE10 /* PredixMobileUIKitDemo */;
+			targetProxy = 4F503B421F6C58BC00B8EE10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F503B291F6C58BC00B8EE10 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F503B2A1F6C58BC00B8EE10 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F503B2F1F6C58BC00B8EE10 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F503B481F6C58BC00B8EE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4F503B491F6C58BC00B8EE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F503B4B1F6C58BC00B8EE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PredixMobileUIKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F503B4C1F6C58BC00B8EE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PredixMobileUIKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4F503B4E1F6C58BC00B8EE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PredixMobileUIKitDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PredixMobileUIKitDemo.app/PredixMobileUIKitDemo";
+			};
+			name = Debug;
+		};
+		4F503B4F1F6C58BC00B8EE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PredixMobileUIKitDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PredixMobileUIKitDemo.app/PredixMobileUIKitDemo";
+			};
+			name = Release;
+		};
+		4F503B511F6C58BC00B8EE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PredixMobileUIKitDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PredixMobileUIKitDemo;
+			};
+			name = Debug;
+		};
+		4F503B521F6C58BC00B8EE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PredixMobileUIKitDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PredixMobileUIKitDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F503B1D1F6C58BC00B8EE10 /* Build configuration list for PBXProject "PredixMobileUIKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F503B481F6C58BC00B8EE10 /* Debug */,
+				4F503B491F6C58BC00B8EE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F503B4A1F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F503B4B1F6C58BC00B8EE10 /* Debug */,
+				4F503B4C1F6C58BC00B8EE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F503B4D1F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F503B4E1F6C58BC00B8EE10 /* Debug */,
+				4F503B4F1F6C58BC00B8EE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F503B501F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F503B511F6C58BC00B8EE10 /* Debug */,
+				4F503B521F6C58BC00B8EE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F503B1A1F6C58BC00B8EE10 /* Project object */;
+}
