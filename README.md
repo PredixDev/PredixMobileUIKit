@@ -1,5 +1,5 @@
 ![alt tag](./Assets/PredixMobileUIKitTitle.png)
-![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Releases](https://img.shields.io/badge/Release-0-blue.svg)](https://github.com/PredixDev/PredixMobileUIKit/releases)
 
 PredixMobileUIKit
