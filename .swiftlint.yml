@@ -1,0 +1,9 @@
+#whitelist_rules:
+excluded: # paths to ignore during linting.
+  - Carthage
+  
+disabled_rules:
+    - implicit_getter
+    - line_length
+    - trailing_whitespace
+

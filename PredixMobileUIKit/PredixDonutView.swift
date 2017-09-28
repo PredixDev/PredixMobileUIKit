@@ -9,22 +9,25 @@
 import Foundation
 import Charts
 
+/// PredixDonutView -- Donut view chart, also can be a pie chart.
 @IBDesignable
 open class PredixDonutView: PieChartView {
 
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
 
+    ///:nodoc:
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
     }
 
+    ///:nodoc:
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
-
+    
     /// Predix Mobile Donut chart initial values
     fileprivate func initialize() {
         self.holeRadiusPercent = 0.9
@@ -57,6 +60,7 @@ open class PredixDonutView: PieChartView {
         }
     }
 
+    ///:nodoc:
     override open func setNeedsDisplay() {
         if self.data != nil {
             self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
