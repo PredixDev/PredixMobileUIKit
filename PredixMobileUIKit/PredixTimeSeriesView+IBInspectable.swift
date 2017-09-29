@@ -12,7 +12,6 @@ import Charts
 extension PredixTimeSeriesView {
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        liveDebugLog("TimeSeries: inside prepareForInterfaceBuilder")
         initializeWithDummyData()
         self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
     }
@@ -24,7 +23,6 @@ extension PredixTimeSeriesView {
         let range = 8
         let upperRange = 2018
         let lowerRange = upperRange - range
-        liveDebugLog("TimeSeries: inside initializeWithDummyData")
         for i in 1...3 {
             var dataPoints: [TimeSeriesDataPoint] = []
             for j in 0...range {
@@ -33,12 +31,10 @@ extension PredixTimeSeriesView {
                 let time = Double(lowerRange + j) //(arc4random_uniform(UInt32(upperRange - lowerRange)) + UInt32(lowerRange) )
                 let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) ) // Double(((arc4random_uniform(UInt32(7)) * UInt32(j)) + 1))//
                 let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure)
-                liveDebugLog("TimeSeries: initializeWithDummyData: dataPoint created")
                 dataPoints.append(dataPoint)
             }
             let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints)
             tags.append(tag)
-            liveDebugLog("TimeSeries: initializeWithDummyData: tag added")
         }
         loadLabelsAndValues(with: tags)
     }

@@ -13,7 +13,7 @@ import Charts
 open class PredixTimeSeriesView: LineChartView {
     
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
-    open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.dark
+    open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,8 +35,6 @@ open class PredixTimeSeriesView: LineChartView {
     // MARK:- public functions
     /// Helper function to populate the chart based on timeseries array
     public func loadLabelsAndValues(with tags: [TimeSeriesTag]) -> Void {
-        let colors = [ UIColor.black, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.cyan]
-        liveDebugLog("TimeSeries: loadLabelsAndValues called: \(tags.count)")
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
         for tag in tags {
@@ -52,13 +50,12 @@ open class PredixTimeSeriesView: LineChartView {
             dataSet.circleRadius = 4.0;
             dataSet.circleHoleRadius = 2.0;
             
-//            let color:UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
-            let color:UIColor = colors[colorCounter % colors.count]
+            let color:UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
+//            let color:UIColor = colors[colorCounter % colors.count]
             dataSet.setColor(color)
             dataSet.setCircleColor(color)
             dataSet.colors = [color]
             dataSet.circleColors = [.red]
-            liveDebugLog("TimeSeries: loadLabelsAndValues dataset added.")
             dataSets.append(dataSet)
         }
         
@@ -71,7 +68,6 @@ open class PredixTimeSeriesView: LineChartView {
     // MARK:- fileprivate functions
     /// Predix Mobile Donut chart initial values
     fileprivate func initialize() {
-        liveDebugLog("TimeSeries: initialize called")
         self.backgroundColor? = .white
         self.leftAxis.enabled = true
         self.rightAxis.enabled = false
