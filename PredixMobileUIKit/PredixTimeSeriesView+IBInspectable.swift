@@ -21,16 +21,17 @@ extension PredixTimeSeriesView {
         var tags: [TimeSeriesTag] = []
 //        let upperRange = 10000
 //        let lowerRange = 1000
-        let upperRange = 2017
-        let lowerRange = 2017 - 10
+        let range = 8
+        let upperRange = 2018
+        let lowerRange = upperRange - range
         liveDebugLog("TimeSeries: inside initializeWithDummyData")
-        for i in 1...5 {
+        for i in 1...3 {
             var dataPoints: [TimeSeriesDataPoint] = []
-            for j in 0...10 {
+            for j in 0...range {
                 
 //                let time = (Date().timeIntervalSince1970 + Double((arc4random_uniform(UInt32(upperRange - lowerRange)) + UInt32(lowerRange) )) ) / 100000000
-                let time = (arc4random_uniform(UInt32(upperRange - lowerRange)) + UInt32(lowerRange) )
-                let measure = Double((arc4random_uniform(UInt32(8)) + UInt32(j)) )
+                let time = Double(lowerRange + j) //(arc4random_uniform(UInt32(upperRange - lowerRange)) + UInt32(lowerRange) )
+                let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) ) // Double(((arc4random_uniform(UInt32(7)) * UInt32(j)) + 1))//
                 let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure)
                 liveDebugLog("TimeSeries: initializeWithDummyData: dataPoint created")
                 dataPoints.append(dataPoint)

@@ -13,7 +13,7 @@ import Charts
 open class PredixTimeSeriesView: LineChartView {
     
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
-    open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
+    open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.dark
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +35,7 @@ open class PredixTimeSeriesView: LineChartView {
     // MARK:- public functions
     /// Helper function to populate the chart based on timeseries array
     public func loadLabelsAndValues(with tags: [TimeSeriesTag]) -> Void {
+        let colors = [ UIColor.black, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.cyan]
         liveDebugLog("TimeSeries: loadLabelsAndValues called: \(tags.count)")
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
@@ -51,7 +52,8 @@ open class PredixTimeSeriesView: LineChartView {
             dataSet.circleRadius = 4.0;
             dataSet.circleHoleRadius = 2.0;
             
-            let color:UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
+//            let color:UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
+            let color:UIColor = colors[colorCounter % colors.count]
             dataSet.setColor(color)
             dataSet.setCircleColor(color)
             dataSet.colors = [color]
