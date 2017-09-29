@@ -28,11 +28,11 @@ The PredixMobileUIKit repo includes a demonstration project: PredixMobileUIKitDe
 
 Contributions
 ====
-[See Contributions documentation](contributions.md)
+[See Contributions documentation](Contributions.md)
 
 License
 ====
-[GE Software Development License Agreement](license.md)
+[GE Software Development License Agreement](LICENSE.md)
 
 <a name="dependencies"></a>
 Dependencies:
