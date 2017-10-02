@@ -106,13 +106,12 @@
 		4F503B241F6C58BC00B8EE10 /* PredixMobileUIKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4FB5C43C1F7DA6C400824A9D /* Supporting Files */,
 				4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */,
 				4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */,
 				4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */,
 				4F503B291F6C58BC00B8EE10 /* Main.storyboard */,
-				4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */,
 				4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */,
-				4F503B311F6C58BC00B8EE10 /* Info.plist */,
 			);
 			path = PredixMobileUIKitDemo;
 			sourceTree = "<group>";
@@ -125,6 +124,15 @@
 				4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FB5C43C1F7DA6C400824A9D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */,
+				4F503B311F6C58BC00B8EE10 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		4FF1314D1F7B1C2F004861A7 /* Products */ = {

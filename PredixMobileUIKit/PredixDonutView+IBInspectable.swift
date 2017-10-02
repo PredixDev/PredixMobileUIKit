@@ -13,6 +13,7 @@ import Charts
 
 extension PredixDonutView {
 
+    ///:nodoc:
     open override func prepareForInterfaceBuilder() {
 
         super.prepareForInterfaceBuilder()
@@ -51,7 +52,7 @@ extension PredixDonutView {
     }
 
     @IBInspectable
-    open var holeRadius: Double {
+    internal var holeRadius: Double {
         get {
             return Double(self.holeRadiusPercent)
         }
