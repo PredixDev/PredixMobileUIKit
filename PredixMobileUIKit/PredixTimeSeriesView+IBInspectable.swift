@@ -18,18 +18,14 @@ extension PredixTimeSeriesView {
     
     private func initializeWithDummyData() -> Void {
         var tags: [TimeSeriesTag] = []
-//        let upperRange = 10000
-//        let lowerRange = 1000
         let range = 8
         let upperRange = 2018
         let lowerRange = upperRange - range
         for i in 1...3 {
             var dataPoints: [TimeSeriesDataPoint] = []
             for j in 0...range {
-                
-//                let time = (Date().timeIntervalSince1970 + Double((arc4random_uniform(UInt32(upperRange - lowerRange)) + UInt32(lowerRange) )) ) / 100000000
-                let time = Double(lowerRange + j) //(arc4random_uniform(UInt32(upperRange - lowerRange)) + UInt32(lowerRange) )
-                let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) ) // Double(((arc4random_uniform(UInt32(7)) * UInt32(j)) + 1))//
+                let time = Double(lowerRange + j)
+                let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) )
                 let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure)
                 dataPoints.append(dataPoint)
             }
@@ -60,30 +56,6 @@ extension PredixTimeSeriesView {
         
     }
     
-//    @IBInspectable
-//    var legendHorizontalAlignment: Int {
-//        get {
-//            return self.legend.horizontalAlignment.rawValue
-//        }
-//        set(newValue) {
-//            if let alignment = Legend.HorizontalAlignment(rawValue: newValue) {
-//                self.legend.horizontalAlignment = alignment
-//            }
-//        }
-//    }
-//
-//    @IBInspectable
-//    var legendVerticalAlignment: Int {
-//        get {
-//            return self.legend.verticalAlignment.rawValue
-//        }
-//        set(newValue) {
-//            if let alignment = Legend.VerticalAlignment(rawValue: newValue) {
-//                self.legend.verticalAlignment = alignment
-//            }
-//        }
-//    }
-    
     @IBInspectable
     var legendVerticalOrientation: Bool {
         get {
@@ -97,20 +69,6 @@ extension PredixTimeSeriesView {
             }
         }
     }
-//    @IBInspectable
-//    var legendKeyOnLeft: Bool {
-//        get {
-//            return self.legend.direction == .leftToRight
-//        }
-//        set(newValue) {
-//            if newValue {
-//                self.legend.direction = .leftToRight
-//            } else {
-//                self.legend.direction = .rightToLeft
-//            }
-//        }
-//    }
-
     
     @IBInspectable open var leftAxisEnabled: Bool {
         get {

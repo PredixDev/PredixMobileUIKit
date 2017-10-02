@@ -151,17 +151,6 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertTrue(tsView.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
     }
     
-    /*func testloadLabelsAndValuesWithAnimation() {
-        let tsView = PredixTimeSeriesView()
-        let expectation = self.expectation(description: #function)
-        tsView._animator = TestAnimator(animateHandler: {
-            expectation.fulfill()
-        })
-        tsView.loadLabelsAndValues(with: generateDummyData())
-        XCTAssertTrue(tsView.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
-        self.waitForExpectations(timeout: 1, handler: nil)
-    }*/
-    
     private func generateDummyData() -> [TimeSeriesTag]{
         var tags: [TimeSeriesTag] = []
         let range = 8
