@@ -33,7 +33,9 @@ open class PredixTimeSeriesView: LineChartView {
     }
     
     // MARK:- public functions
-    /// Helper function to populate the chart based on timeseries array
+    
+    /// Helper function to populate the timeseries chart based on timeseries tags array.
+    /// - parameter tags: Array of `TimeSeriesTag`.
     public func loadLabelsAndValues(_ tags: [TimeSeriesTag]) -> Void {
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
@@ -51,7 +53,6 @@ open class PredixTimeSeriesView: LineChartView {
             dataSet.circleHoleRadius = 2.0;
             
             let color:UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
-//            let color:UIColor = colors[colorCounter % colors.count]
             dataSet.setColor(color)
             dataSet.setCircleColor(color)
             dataSet.colors = [color]
@@ -66,6 +67,7 @@ open class PredixTimeSeriesView: LineChartView {
     }
     
     // MARK:- fileprivate functions
+    
     /// Predix Mobile Donut chart initial values
     fileprivate func initialize() {
         self.backgroundColor? = .white
@@ -84,17 +86,5 @@ open class PredixTimeSeriesView: LineChartView {
         l.verticalAlignment = .top;
         l.orientation = .horizontal;
         l.drawInside = false;
-        
-//        setXAxisTags()
-        
     }
-    
-    fileprivate func setXAxisTags() {
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        self.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
-        self.xAxis.granularity = 1
-        self.xAxis.centerAxisLabelsEnabled = true
-        self.xAxis.labelRotationAngle = -90
-    }
-    
 }

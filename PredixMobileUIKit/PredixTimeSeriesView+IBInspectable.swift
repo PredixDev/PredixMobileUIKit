@@ -16,6 +16,7 @@ extension PredixTimeSeriesView {
         self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
     }
     
+    // MARK:- private functions
     private func initializeWithDummyData() -> Void {
         var tags: [TimeSeriesTag] = []
         let range = 8
@@ -34,6 +35,8 @@ extension PredixTimeSeriesView {
         }
         loadLabelsAndValues(tags)
     }
+    
+    // MARK:- IBInspectable properties
     
     @IBInspectable
     var labelText: String? {

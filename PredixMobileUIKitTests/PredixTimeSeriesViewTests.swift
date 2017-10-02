@@ -42,7 +42,7 @@ class PredixTimeSeriesViewTests: XCTestCase {
         let tsView = PredixTimeSeriesView()
         let testString = "SomeNewText"
         tsView.chartDescription?.text = testString
-        XCTAssertEqual(testString, tsView.chartDescription?.text, "Chart description text should match.")
+        XCTAssertEqual(testString, tsView.labelText, "Chart description text should match.")
     }
     
     func testSetLabelEnabled() {
@@ -61,6 +61,12 @@ class PredixTimeSeriesViewTests: XCTestCase {
         let tsView = PredixTimeSeriesView()
         tsView.legendVerticalOrientation = true
         XCTAssertEqual(tsView.legend.orientation, .vertical, "Should be orineted vertically")
+    }
+    
+    func testSetLegendVerticalOrientationAsHorizontal() {
+        let tsView = PredixTimeSeriesView()
+        tsView.legendVerticalOrientation = false
+        XCTAssertEqual(tsView.legend.orientation, .horizontal, "Should be orineted horizontally")
     }
     
     func testGetLegendVerticalOrientation() {
@@ -100,6 +106,12 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertEqual(tsView.legend.horizontalAlignment, .left, "Legend should be aligned to left")
     }
     
+    func testSetLegendAlignedLeftAssignedToRight() {
+        let tsView = PredixTimeSeriesView()
+        tsView.legendAlignedLeft = false
+        XCTAssertEqual(tsView.legend.horizontalAlignment, .right, "Legend should be aligned to Right")
+    }
+    
     func testGetLegendAlignedLeft() {
         let tsView = PredixTimeSeriesView()
         tsView.legend.horizontalAlignment = .left
@@ -111,6 +123,13 @@ class PredixTimeSeriesViewTests: XCTestCase {
         tsView.legendAlignedTop = true
         XCTAssertEqual(tsView.legend.verticalAlignment, .top, "Legend should be aligned to top")
     }
+    
+    func testSetLegendAlignedTopAssignedAsBottom() {
+        let tsView = PredixTimeSeriesView()
+        tsView.legendAlignedTop = false
+        XCTAssertEqual(tsView.legend.verticalAlignment, .bottom, "Legend should be aligned to bottom")
+    }
+    
     
     func testGetLegendAlignedTop() {
         let tsView = PredixTimeSeriesView()
