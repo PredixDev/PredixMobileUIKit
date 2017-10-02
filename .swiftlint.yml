@@ -6,4 +6,5 @@ disabled_rules:
     - implicit_getter
     - line_length
     - trailing_whitespace
+    - trailing_newline
 

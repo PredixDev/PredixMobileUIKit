@@ -5,7 +5,7 @@
 //  Created by Johns, Andy (GE Corporate) on 9/15/17.
 //  Copyright © 2017 GE. All rights reserved.
 //
-// swiftlint:disable type_body_length nesting
+// swiftlint:disable type_body_length nesting file_length
 
 import Foundation
 
