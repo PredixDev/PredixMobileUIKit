@@ -19,7 +19,6 @@
 		4F992BCC1F75801600C132B1 /* PredixMobileSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4F503B6D1F70726300B8EE10 /* PredixMobileSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F992BD21F75836700C132B1 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F992BD11F75836700C132B1 /* TestView.xib */; };
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
-		4FF131411F7AF829004861A7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FF131401F7AF829004861A7 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +75,6 @@
 		4F503B741F7073FA00B8EE10 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		4F992BD11F75836700C132B1 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionExtensions.swift; sourceTree = "<group>"; };
-		4FF131401F7AF829004861A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FF131421F7AF83C004861A7 /* cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
-				4F503AF71F6C560900B8EE10 /* Info.plist */,
 				4F503B621F6C5A5600B8EE10 /* PredixDonutView.swift */,
 				4F3C198A1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift */,
 				4F503B711F70738A00B8EE10 /* PredixLoginControl.swift */,
@@ -176,8 +173,8 @@
 		4FF1313F1F7AF7FE004861A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4F503AF71F6C560900B8EE10 /* Info.plist */,
 				4FF131421F7AF83C004861A7 /* cartfile */,
-				4FF131401F7AF829004861A7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -300,7 +297,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FF131411F7AF829004861A7 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
