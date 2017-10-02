@@ -18,8 +18,4 @@ public struct TimeSeriesTag {
         self.dataPoints = dataPoints
         self.attributes = attributes
     }
-    
-//    init(name: String, dataPoints: [TimeSeriesDataPoint]) {
-//        self.init(name: name, dataPoints: dataPoints, attributes: nil)
-//    }
 }

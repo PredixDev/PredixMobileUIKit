@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */; };
 		374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */; };
 		374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */; };
 		374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesViewTests.swift; sourceTree = "<group>"; };
 		374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesView.swift; sourceTree = "<group>"; };
 		374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesTag.swift; sourceTree = "<group>"; };
 		374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesDataPoint.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				374DC80E1F7DB8330091C5C5 /* TimeSeriesViewTest.xib */,
 				4F503B031F6C560900B8EE10 /* Info.plist */,
 				4F992BD11F75836700C132B1 /* TestView.xib */,
+				3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */,
 			);
 			path = PredixMobileUIKitTests;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			files = (
 				4F503B021F6C560900B8EE10 /* PredixDonutViewTests.swift in Sources */,
 				4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */,
+				3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

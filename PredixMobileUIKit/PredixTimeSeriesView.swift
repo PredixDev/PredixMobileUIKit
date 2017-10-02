@@ -34,7 +34,7 @@ open class PredixTimeSeriesView: LineChartView {
     
     // MARK:- public functions
     /// Helper function to populate the chart based on timeseries array
-    public func loadLabelsAndValues(with tags: [TimeSeriesTag]) -> Void {
+    public func loadLabelsAndValues(_ tags: [TimeSeriesTag]) -> Void {
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
         for tag in tags {
@@ -62,7 +62,7 @@ open class PredixTimeSeriesView: LineChartView {
         let data: LineChartData = LineChartData(dataSets: dataSets)
         data.setValueFont(UIFont.init(name: "HelveticaNeue-Light", size: 7))
         
-        self.data = data;
+        self.data = data;        
     }
     
     // MARK:- fileprivate functions

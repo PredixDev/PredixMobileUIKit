@@ -36,7 +36,7 @@ extension PredixTimeSeriesView {
             let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints)
             tags.append(tag)
         }
-        loadLabelsAndValues(with: tags)
+        loadLabelsAndValues(tags)
     }
     
     @IBInspectable
@@ -60,29 +60,29 @@ extension PredixTimeSeriesView {
         
     }
     
-    @IBInspectable
-    var legendHorizontalAlignment: Int {
-        get {
-            return self.legend.horizontalAlignment.rawValue
-        }
-        set(newValue) {
-            if let alignment = Legend.HorizontalAlignment(rawValue: newValue) {
-                self.legend.horizontalAlignment = alignment
-            }
-        }
-    }
-    
-    @IBInspectable
-    var legendVerticalAlignment: Int {
-        get {
-            return self.legend.verticalAlignment.rawValue
-        }
-        set(newValue) {
-            if let alignment = Legend.VerticalAlignment(rawValue: newValue) {
-                self.legend.verticalAlignment = alignment
-            }
-        }
-    }
+//    @IBInspectable
+//    var legendHorizontalAlignment: Int {
+//        get {
+//            return self.legend.horizontalAlignment.rawValue
+//        }
+//        set(newValue) {
+//            if let alignment = Legend.HorizontalAlignment(rawValue: newValue) {
+//                self.legend.horizontalAlignment = alignment
+//            }
+//        }
+//    }
+//
+//    @IBInspectable
+//    var legendVerticalAlignment: Int {
+//        get {
+//            return self.legend.verticalAlignment.rawValue
+//        }
+//        set(newValue) {
+//            if let alignment = Legend.VerticalAlignment(rawValue: newValue) {
+//                self.legend.verticalAlignment = alignment
+//            }
+//        }
+//    }
     
     @IBInspectable
     var legendVerticalOrientation: Bool {
@@ -97,29 +97,20 @@ extension PredixTimeSeriesView {
             }
         }
     }
-    @IBInspectable
-    var legendKeyOnLeft: Bool {
-        get {
-            return self.legend.direction == .leftToRight
-        }
-        set(newValue) {
-            if newValue {
-                self.legend.direction = .leftToRight
-            } else {
-                self.legend.direction = .rightToLeft
-            }
-        }
-    }
-    
-    @IBInspectable
-    var legendAllowOverlap: Bool {
-        get {
-            return self.legend.drawInside
-        }
-        set(newValue) {
-            self.legend.drawInside = newValue
-        }
-    }
+//    @IBInspectable
+//    var legendKeyOnLeft: Bool {
+//        get {
+//            return self.legend.direction == .leftToRight
+//        }
+//        set(newValue) {
+//            if newValue {
+//                self.legend.direction = .leftToRight
+//            } else {
+//                self.legend.direction = .rightToLeft
+//            }
+//        }
+//    }
+
     
     @IBInspectable open var leftAxisEnabled: Bool {
         get {
@@ -141,7 +132,7 @@ extension PredixTimeSeriesView {
     }
     
     @IBInspectable
-    var legendLeft: Bool {
+    var legendAlignedLeft: Bool {
         get {
             return legend.horizontalAlignment == .left
         }
@@ -156,7 +147,7 @@ extension PredixTimeSeriesView {
     }
     
     @IBInspectable
-    var legendTop: Bool {
+    var legendAlignedTop: Bool {
         get {
             return legend.verticalAlignment == .top
         }
@@ -168,15 +159,5 @@ extension PredixTimeSeriesView {
             }
         }
     }
- 
-    @IBInspectable
-    var dataSets: Int {
-        get {
-            initializeWithDummyData()
-            return 1
-        }
-    }
-
-    
  
 }
