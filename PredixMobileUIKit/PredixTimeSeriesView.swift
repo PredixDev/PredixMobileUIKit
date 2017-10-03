@@ -15,16 +15,19 @@ open class PredixTimeSeriesView: LineChartView {
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
     
+    /// :nodoc:
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
     }
     
+    /// :nodoc:
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
     
+    /// :nodoc:
     override open func setNeedsDisplay() {
         if self.data != nil {
             self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
@@ -32,27 +35,27 @@ open class PredixTimeSeriesView: LineChartView {
         super.setNeedsDisplay()
     }
     
-    // MARK:- public functions
+    // MARK: - public functions
     
     /// Helper function to populate the timeseries chart based on timeseries tags array.
     /// - parameter tags: Array of `TimeSeriesTag`.
-    public func loadLabelsAndValues(_ tags: [TimeSeriesTag]) -> Void {
+    public func loadLabelsAndValues(_ tags: [TimeSeriesTag]) {
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
         for tag in tags {
-            var dataEntries:[ChartDataEntry] = []
+            var dataEntries: [ChartDataEntry] = []
             for dataPoint in tag.dataPoints {
                 let dataEntry: ChartDataEntry = ChartDataEntry(x: dataPoint.epochInMs, y: dataPoint.measure) //quality can be shown as an image
                 dataEntries.append(dataEntry)
             }
             colorCounter += 1
             
-            let dataSet:LineChartDataSet = LineChartDataSet(values: dataEntries, label: tag.name)
-            dataSet.lineWidth = 1.5;
-            dataSet.circleRadius = 4.0;
-            dataSet.circleHoleRadius = 2.0;
+            let dataSet: LineChartDataSet = LineChartDataSet(values: dataEntries, label: tag.name)
+            dataSet.lineWidth = 1.5
+            dataSet.circleRadius = 4.0
+            dataSet.circleHoleRadius = 2.0
             
-            let color:UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
+            let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
             dataSet.setColor(color)
             dataSet.setCircleColor(color)
             dataSet.colors = [color]
@@ -63,14 +66,14 @@ open class PredixTimeSeriesView: LineChartView {
         let data: LineChartData = LineChartData(dataSets: dataSets)
         data.setValueFont(UIFont.init(name: "HelveticaNeue-Light", size: 9.0))
 //        DispatchQueue.main.sync {
-            self.data = data;
+            self.data = data
             self.notifyDataSetChanged()
 //            setNeedsDisplay()
 //        }
         
     }
     
-    // MARK:- fileprivate functions
+    // MARK: - fileprivate functions
     
     /// Predix Mobile Donut chart initial values
     fileprivate func initialize() {
@@ -85,10 +88,10 @@ open class PredixTimeSeriesView: LineChartView {
         self.setScaleEnabled(true)
         self.pinchZoomEnabled = true
         
-        let l:Legend = self.legend;
-        l.horizontalAlignment = .left;
-        l.verticalAlignment = .top;
-        l.orientation = .horizontal;
-        l.drawInside = false;
+        let l: Legend = self.legend
+        l.horizontalAlignment = .left
+        l.verticalAlignment = .top
+        l.orientation = .horizontal
+        l.drawInside = false
     }
 }

@@ -21,9 +21,7 @@ class TimeSeriesChartViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tsChartView.delegate = self
-//        DispatchQueue.global(qos: .userInitiated).async {
-            self.tsChartView.loadLabelsAndValues(self.generateDummyData(80, noOfDatasets: 2))
-//        }
+        self.tsChartView.loadLabelsAndValues(self.generateDummyData(80, noOfDatasets: 2))
         
     }
 
@@ -32,7 +30,6 @@ class TimeSeriesChartViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -46,12 +43,10 @@ class TimeSeriesChartViewController: UIViewController {
     @IBAction func sliderValueChanged(_ sender: Any) {
         let tempratureMax = Int(self.tempratureRangeSlider.value)
         let maxDatasets = Int(self.datasetsRangeSlider.value)
-//        DispatchQueue.global(qos: .userInitiated).async {
-            self.tsChartView.loadLabelsAndValues(self.generateDummyData(tempratureMax, noOfDatasets: maxDatasets))
-//        }
+        self.tsChartView.loadLabelsAndValues(self.generateDummyData(tempratureMax, noOfDatasets: maxDatasets))
     }
     
-    // MARK:- private functions
+    // MARK: - private functions
     private func generateDummyData(_ maxTemp: Int, noOfDatasets: Int) -> [TimeSeriesTag] {
         print("generating dummy data maxTemp: \(maxTemp), no of datasets: \(noOfDatasets)")
         var tags: [TimeSeriesTag] = []
@@ -79,7 +74,7 @@ class TimeSeriesChartViewController: UIViewController {
 }
 
 extension TimeSeriesChartViewController: ChartViewDelegate {
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) -> Void {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print("chartValueSelected")
     }
     
@@ -91,7 +86,7 @@ extension TimeSeriesChartViewController: ChartViewDelegate {
         print("chartScaled")
     }
     
-    func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
+    func chartTranslated(_ chartView: ChartViewBase, pointX: CGFloat, pointY: CGFloat) {
         print("chartTranslated")
     }
 }

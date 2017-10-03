@@ -22,7 +22,6 @@ class PredixTimeSeriesViewTests: XCTestCase {
         super.tearDown()
     }
 
-    
     // MARK: PredixTimeSeriesView IBInspectables test
     
     func testPrepareForInterfaceBuilderShouldInitializeWithDummyData() {
@@ -99,7 +98,6 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertTrue(tsView.rightAxisEnabled, "Right axis should be enabled")
     }
     
-    
     func testSetLegendAlignedLeft() {
         let tsView = PredixTimeSeriesView()
         tsView.legendAlignedLeft = true
@@ -130,16 +128,11 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertEqual(tsView.legend.verticalAlignment, .bottom, "Legend should be aligned to bottom")
     }
     
-    
     func testGetLegendAlignedTop() {
         let tsView = PredixTimeSeriesView()
         tsView.legend.verticalAlignment = .top
         XCTAssertTrue(tsView.legendAlignedTop, "Legend should be aligned to top")
     }
-    
-    
-    
-    
     
     // MARK: PredixTimeSeriesView tests
     
@@ -170,7 +163,7 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertTrue(tsView.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
     }
     
-    private func generateDummyData() -> [TimeSeriesTag]{
+    private func generateDummyData() -> [TimeSeriesTag] {
         var tags: [TimeSeriesTag] = []
         let range = 8
         let upperRange = 2018

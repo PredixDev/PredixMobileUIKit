@@ -9,15 +9,18 @@
 import Foundation
 import Charts
 
+//IBInspectable properties can be internal, and still show up in IB
 extension PredixTimeSeriesView {
+    
+    /// :nodoc
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         initializeWithDummyData()
         self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
     }
     
-    // MARK:- private functions
-    private func initializeWithDummyData() -> Void {
+    // MARK: - private functions
+    private func initializeWithDummyData() {
         var tags: [TimeSeriesTag] = []
         let range = 8
         let upperRange = 2018
@@ -36,7 +39,7 @@ extension PredixTimeSeriesView {
         loadLabelsAndValues(tags)
     }
     
-    // MARK:- IBInspectable properties
+    // MARK: - IBInspectable properties
     
     @IBInspectable
     var labelText: String? {
@@ -73,7 +76,7 @@ extension PredixTimeSeriesView {
         }
     }
     
-    @IBInspectable open var leftAxisEnabled: Bool {
+    @IBInspectable var leftAxisEnabled: Bool {
         get {
             return leftAxis.enabled
         }
