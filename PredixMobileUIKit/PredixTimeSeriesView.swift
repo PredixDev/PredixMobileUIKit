@@ -61,9 +61,13 @@ open class PredixTimeSeriesView: LineChartView {
         }
         
         let data: LineChartData = LineChartData(dataSets: dataSets)
-        data.setValueFont(UIFont.init(name: "HelveticaNeue-Light", size: 7))
+        data.setValueFont(UIFont.init(name: "HelveticaNeue-Light", size: 9.0))
+//        DispatchQueue.main.sync {
+            self.data = data;
+            self.notifyDataSetChanged()
+//            setNeedsDisplay()
+//        }
         
-        self.data = data;        
     }
     
     // MARK:- fileprivate functions

@@ -13,7 +13,7 @@ public struct TimeSeriesTag {
     public var dataPoints: [TimeSeriesDataPoint]
     public var attributes: [String : String]?
     
-    init(name: String, dataPoints: [TimeSeriesDataPoint], attributes: [String : String]? = nil) {
+    public init(name: String, dataPoints: [TimeSeriesDataPoint], attributes: [String : String]? = nil) {
         self.name = name
         self.dataPoints = dataPoints
         self.attributes = attributes

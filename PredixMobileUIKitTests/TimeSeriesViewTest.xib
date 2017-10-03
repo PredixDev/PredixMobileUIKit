@@ -20,7 +20,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Test"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="labelEnabled" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="labelEnabled" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="legendVerticalOrientation" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>

@@ -12,9 +12,10 @@ public struct TimeSeriesDataPoint {
     public var epochInMs: Double
     public var measure: Double
     public var quality: Int?
+
     private let defaultQuality = 3
     
-    init(epochInMs: Double, measure: Double, quality: Int? = 3) {
+    public init(epochInMs: Double, measure: Double, quality: Int? = 3) {
         self.epochInMs = epochInMs
         self.measure = measure
         self.quality = defaultQuality

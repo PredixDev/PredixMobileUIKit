@@ -27,10 +27,10 @@ extension PredixTimeSeriesView {
             for j in 0...range {
                 let time = Double(lowerRange + j)
                 let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) )
-                let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure)
+                let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure, quality: 3)
                 dataPoints.append(dataPoint)
             }
-            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints)
+            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: nil)
             tags.append(tag)
         }
         loadLabelsAndValues(tags)
