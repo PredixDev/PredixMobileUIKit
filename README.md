@@ -49,4 +49,26 @@ Licensed under the Apache License, Version 2.0
 
 [https://github.com/danielgindi/Charts](https://github.com/danielgindi/Charts)
 
+Tools
+====
+The PredixMobileUIKit project uses the following tools in it's CI build process:
+
+#### SwiftLint
+A tool to enforce Swift style and conventions
+
+SwiftLint is maintained and funded by Realm Inc.
+
+[MIT licensed](https://github.com/realm/SwiftLint/blob/master/LICENSE)
+
+[https://github.com/realm/SwiftLint](https://github.com/realm/SwiftLint)
+
+#### Jazzy
+Jazzy is a command-line utility that generates documentation for Swift or Objective-C
+
+Jazzy is maintained and funded by Realm Inc.
+
+[MIT licensed](https://github.com/realm/jazzy/blob/master/LICENSE)
+
+[https://github.com/realm/jazzy](https://github.com/realm/jazzy)
+
 ---
