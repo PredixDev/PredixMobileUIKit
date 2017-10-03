@@ -264,30 +264,30 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Nh-ax-yJl">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Nh-ax-yJl">
                                         <rect key="frame" x="10" y="569" width="355" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgJ-9v-397">
-                                                <rect key="frame" x="137" y="0.0" width="81.333333333333343" height="18"/>
+                                                <rect key="frame" x="137" y="0.0" width="81.333333333333343" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="50" maxValue="150" translatesAutoresizingMaskIntoConstraints="NO" id="R4P-fG-fl0">
-                                                <rect key="frame" x="-2" y="36" width="359" height="31"/>
+                                                <rect key="frame" x="8" y="28" width="339" height="48"/>
                                                 <color key="backgroundColor" red="1" green="0.51283643629999998" blue="0.35435642020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="sliderValueChanged:" destination="aN2-zn-X2P" eventType="valueChanged" id="viI-l1-qaX"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No of datasets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZr-h6-KCu">
-                                                <rect key="frame" x="127.33333333333334" y="84" width="100.33333333333331" height="18"/>
+                                                <rect key="frame" x="127.33333333333334" y="75" width="100.33333333333331" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="QjI-BF-OgF">
-                                                <rect key="frame" x="-2" y="120" width="359" height="31"/>
+                                                <rect key="frame" x="8" y="103" width="339" height="48"/>
                                                 <color key="backgroundColor" red="1" green="0.51283643629999998" blue="0.35435642020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="sliderValueChanged:" destination="aN2-zn-X2P" eventType="valueChanged" id="Q5c-M7-GOV"/>
@@ -295,6 +295,10 @@
                                             </slider>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="R4P-fG-fl0" secondAttribute="trailing" constant="10" id="8Qk-wk-OqJ"/>
+                                            <constraint firstItem="R4P-fG-fl0" firstAttribute="leading" secondItem="7Nh-ax-yJl" secondAttribute="leading" constant="10" id="K2r-ge-KPI"/>
+                                            <constraint firstAttribute="trailing" secondItem="QjI-BF-OgF" secondAttribute="trailing" constant="10" id="YPG-sB-kpG"/>
+                                            <constraint firstItem="QjI-BF-OgF" firstAttribute="leading" secondItem="7Nh-ax-yJl" secondAttribute="leading" constant="10" id="j1l-PY-etl"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="qHD-dJ-wdx"/>
                                         </constraints>
                                     </stackView>
