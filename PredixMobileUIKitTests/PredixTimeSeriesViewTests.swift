@@ -2,7 +2,7 @@
 //  PredixTimeSeriesViewTests.swift
 //  PredixMobileUIKitTests
 //
-//  Created by  on 10/2/17.
+//  Created by 212460388 on 10/2/17.
 //  Copyright © 2017 GE. All rights reserved.
 //
 

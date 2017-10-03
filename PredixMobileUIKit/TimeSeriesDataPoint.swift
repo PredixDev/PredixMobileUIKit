@@ -2,7 +2,7 @@
 //  TimeSeriesDataPoint.swift
 //  PredixMobileUIKit
 //
-//  Created by  on 9/28/17.
+//  Created by 212460388 on 9/28/17.
 //  Copyright © 2017 GE. All rights reserved.
 //
 
