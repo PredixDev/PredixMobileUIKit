@@ -9,6 +9,7 @@
 import Foundation
 import Charts
 
+/// PredixTimeSeriesView -- TimeSeries chart built with `LineChartView`.
 @IBDesignable
 open class PredixTimeSeriesView: LineChartView {
     
