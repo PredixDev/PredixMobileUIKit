@@ -10,8 +10,7 @@ iOS UI Components designed for [Predix](https://predix.io)
 
 ## Components
 #### PredixDonutView
-[placeholder]
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The PredixDonutView is a donut and pie chart, that defaults to the regular Predix data visualization color set. It's Interface Builder enabled, and has various properties for controlling its legend placement, donut characteristics, and an easy helper-method for loading data from a simple name/value dictionary.
 
 
 ---
@@ -19,7 +18,7 @@ Getting Started
 ====
 The PredixMobileUIKit project uses [Carthage](https://github.com/Carthage/Carthage) package manager to manage it's [dependencies](#dependencies).
 
-Users should install Carthage, then once you've downloaded the PredixMobileUIKit repository, run the command: `carthage build` to download and build the required project dependancies before opening the project files in Xcode.
+Users should install Carthage, then once you've downloaded the PredixMobileUIKit repository, run the command: `carthage update` to download and build the required project dependancies before opening the project files in Xcode.
 
 The PredixMobileUIKit repo includes a demonstration project: PredixMobileUIKitDemo. This project can show you usage of some of the PredixMobileUIKit provided views. 
 
