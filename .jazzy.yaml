@@ -1,0 +1,11 @@
+clean: true
+author: "GE Digital"
+author_url: http://predix.io
+github_url: https://github.com/PredixDev/PredixMobileUIKit
+theme: fullwidth
+sdk: iphone
+xcodebuild_arguments: [-scheme, PredixMobileUIKit]
+module: PredixMobileUIKit
+output: build/docs
+hide_documentation_coverage: true
+download_badge: false

@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */; };
+		4F1A53771F85A1E800DCB0CF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131481F7B19F2004861A7 /* Charts.framework */; };
+		4F1A53781F85A1E800DCB0CF /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131481F7B19F2004861A7 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4F1A53791F85A1E800DCB0CF /* PredixMobileUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */; };
+		4F1A537A1F85A1E800DCB0CF /* PredixMobileUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4F1A537E1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */; };
+		4F1A537F1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */; };
+		4F503B281F6C58BC00B8EE10 /* DonutChartDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */; };
+		4F503B2B1F6C58BC00B8EE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B291F6C58BC00B8EE10 /* Main.storyboard */; };
+		4F503B2D1F6C58BC00B8EE10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */; };
+		4F503B301F6C58BC00B8EE10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */; };
+		4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FF131521F7B1C30004861A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F503AF31F6C560900B8EE10;
+			remoteInfo = PredixMobileUIKit;
+		};
+		4FF131541F7B1C30004861A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F503AFC1F6C560900B8EE10;
+			remoteInfo = PredixMobileUIKitTests;
+		};
+		4FF131561F7B1C43004861A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F503AF21F6C560900B8EE10;
+			remoteInfo = PredixMobileUIKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4F1A537B1F85A1E800DCB0CF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4F1A537F1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Embed Frameworks */,
+				4F1A53781F85A1E800DCB0CF /* Charts.framework in Embed Frameworks */,
+				4F1A537A1F85A1E800DCB0CF /* PredixMobileUIKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesChartViewController.swift; sourceTree = "<group>"; };
+		4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredixMobileUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChartDemoViewController.swift; sourceTree = "<group>"; };
+		4F503B2A1F6C58BC00B8EE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F503B2F1F6C58BC00B8EE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F503B311F6C58BC00B8EE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FF131481F7B19F2004861A7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PredixMobileUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PredixMobileUIKit.xcodeproj; path = ../PredixMobileUIKit.xcodeproj; sourceTree = "<group>"; };
+		4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PredixMobileSDK.framework; path = ../Carthage/Build/iOS/PredixMobileSDK.framework; sourceTree = "<group>"; };
+		4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDemoViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F503B1F1F6C58BC00B8EE10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F1A537E1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Frameworks */,
+				4F1A53771F85A1E800DCB0CF /* Charts.framework in Frameworks */,
+				4F1A53791F85A1E800DCB0CF /* PredixMobileUIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F503B191F6C58BC00B8EE10 = {
+			isa = PBXGroup;
+			children = (
+				4F503B241F6C58BC00B8EE10 /* PredixMobileUIKitDemo */,
+				4F503B231F6C58BC00B8EE10 /* Products */,
+				4F503B5F1F6C5A2300B8EE10 /* Frameworks */,
+				4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		4F503B231F6C58BC00B8EE10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F503B241F6C58BC00B8EE10 /* PredixMobileUIKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4FB5C43C1F7DA6C400824A9D /* Supporting Files */,
+				4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */,
+				4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */,
+				3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */,
+				4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */,
+				4F503B291F6C58BC00B8EE10 /* Main.storyboard */,
+				4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */,
+			);
+			path = PredixMobileUIKitDemo;
+			sourceTree = "<group>";
+		};
+		4F503B5F1F6C5A2300B8EE10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FF131481F7B19F2004861A7 /* Charts.framework */,
+				4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */,
+				4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FB5C43C1F7DA6C400824A9D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */,
+				4F503B311F6C58BC00B8EE10 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FF1314D1F7B1C2F004861A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FF131531F7B1C30004861A7 /* PredixMobileUIKit.framework */,
+				4FF131551F7B1C30004861A7 /* PredixMobileUIKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F503B211F6C58BC00B8EE10 /* PredixMobileUIKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F503B4A1F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemo" */;
+			buildPhases = (
+				4F503B1E1F6C58BC00B8EE10 /* Sources */,
+				4F503B1F1F6C58BC00B8EE10 /* Frameworks */,
+				4F503B201F6C58BC00B8EE10 /* Resources */,
+				4F1A537B1F85A1E800DCB0CF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FF131571F7B1C43004861A7 /* PBXTargetDependency */,
+			);
+			name = PredixMobileUIKitDemo;
+			productName = PredixMobileUIKitDemo;
+			productReference = 4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F503B1A1F6C58BC00B8EE10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = GE;
+				TargetAttributes = {
+					4F503B211F6C58BC00B8EE10 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 4F503B1D1F6C58BC00B8EE10 /* Build configuration list for PBXProject "PredixMobileUIKitDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F503B191F6C58BC00B8EE10;
+			productRefGroup = 4F503B231F6C58BC00B8EE10 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4FF1314D1F7B1C2F004861A7 /* Products */;
+					ProjectRef = 4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				4F503B211F6C58BC00B8EE10 /* PredixMobileUIKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4FF131531F7B1C30004861A7 /* PredixMobileUIKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PredixMobileUIKit.framework;
+			remoteRef = 4FF131521F7B1C30004861A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4FF131551F7B1C30004861A7 /* PredixMobileUIKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PredixMobileUIKitTests.xctest;
+			remoteRef = 4FF131541F7B1C30004861A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F503B201F6C58BC00B8EE10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F503B301F6C58BC00B8EE10 /* LaunchScreen.storyboard in Resources */,
+				4F503B2D1F6C58BC00B8EE10 /* Assets.xcassets in Resources */,
+				4F503B2B1F6C58BC00B8EE10 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F503B1E1F6C58BC00B8EE10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F503B281F6C58BC00B8EE10 /* DonutChartDemoViewController.swift in Sources */,
+				3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */,
+				4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */,
+				4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4FF131571F7B1C43004861A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PredixMobileUIKit;
+			targetProxy = 4FF131561F7B1C43004861A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F503B291F6C58BC00B8EE10 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F503B2A1F6C58BC00B8EE10 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F503B2F1F6C58BC00B8EE10 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F503B481F6C58BC00B8EE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4F503B491F6C58BC00B8EE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F503B4B1F6C58BC00B8EE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = PredixMobileUIKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F503B4C1F6C58BC00B8EE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = PredixMobileUIKitDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F503B1D1F6C58BC00B8EE10 /* Build configuration list for PBXProject "PredixMobileUIKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F503B481F6C58BC00B8EE10 /* Debug */,
+				4F503B491F6C58BC00B8EE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F503B4A1F6C58BC00B8EE10 /* Build configuration list for PBXNativeTarget "PredixMobileUIKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F503B4B1F6C58BC00B8EE10 /* Debug */,
+				4F503B4C1F6C58BC00B8EE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F503B1A1F6C58BC00B8EE10 /* Project object */;
+}
