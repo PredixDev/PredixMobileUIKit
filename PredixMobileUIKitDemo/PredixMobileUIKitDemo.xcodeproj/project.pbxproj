@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */; };
 		4F1A53771F85A1E800DCB0CF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131481F7B19F2004861A7 /* Charts.framework */; };
 		4F1A53781F85A1E800DCB0CF /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131481F7B19F2004861A7 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F1A53791F85A1E800DCB0CF /* PredixMobileUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */; };
@@ -62,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesChartViewController.swift; sourceTree = "<group>"; };
 		4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredixMobileUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChartDemoViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				4FB5C43C1F7DA6C400824A9D /* Supporting Files */,
 				4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */,
 				4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */,
+				3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */,
 				4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */,
 				4F503B291F6C58BC00B8EE10 /* Main.storyboard */,
 				4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */,
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F503B281F6C58BC00B8EE10 /* DonutChartDemoViewController.swift in Sources */,
+				3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */,
 				4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */,
 				4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */,
 			);
@@ -394,7 +398,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H62B4T98ND;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -414,7 +418,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H62B4T98ND;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

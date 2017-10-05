@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */; };
+		374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */; };
+		374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */; };
+		374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */; };
+		374DC80B1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */; };
+		374DC80F1F7DB8330091C5C5 /* TimeSeriesViewTest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374DC80E1F7DB8330091C5C5 /* TimeSeriesViewTest.xib */; };
 		4F1A53831F85A51100DCB0CF /* PredixMobileSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4F503B6D1F70726300B8EE10 /* PredixMobileSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F3C198B1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3C198A1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift */; };
 		4F503AFD1F6C560900B8EE10 /* PredixMobileUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503AF31F6C560900B8EE10 /* PredixMobileUIKit.framework */; };
@@ -59,6 +65,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesViewTests.swift; sourceTree = "<group>"; };
+		374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesView.swift; sourceTree = "<group>"; };
+		374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesTag.swift; sourceTree = "<group>"; };
+		374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesDataPoint.swift; sourceTree = "<group>"; };
+		374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PredixTimeSeriesView+IBInspectable.swift"; sourceTree = "<group>"; };
+		374DC80E1F7DB8330091C5C5 /* TimeSeriesViewTest.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSeriesViewTest.xib; sourceTree = "<group>"; };
 		4F3C198A1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PredixDonutView+IBInspectable.swift"; sourceTree = "<group>"; };
 		4F503AF31F6C560900B8EE10 /* PredixMobileUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PredixMobileUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PredixMobileUIKit.h; sourceTree = "<group>"; };
@@ -128,6 +140,10 @@
 				4F503B621F6C5A5600B8EE10 /* PredixDonutView.swift */,
 				4F3C198A1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift */,
 				4F503B671F6C73DB00B8EE10 /* UIColor+Predix.swift */,
+				374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */,
+				374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */,
+				374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */,
+				374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */,
 			);
 			path = PredixMobileUIKit;
 			sourceTree = "<group>";
@@ -137,8 +153,10 @@
 			children = (
 				4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */,
 				4F503B011F6C560900B8EE10 /* PredixDonutViewTests.swift */,
+				374DC80E1F7DB8330091C5C5 /* TimeSeriesViewTest.xib */,
 				4F503B031F6C560900B8EE10 /* Info.plist */,
 				4F992BD11F75836700C132B1 /* TestView.xib */,
+				3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */,
 			);
 			path = PredixMobileUIKitTests;
 			sourceTree = "<group>";
@@ -199,7 +217,6 @@
 				4F503AEE1F6C560900B8EE10 /* Sources */,
 				4F503AEF1F6C560900B8EE10 /* Frameworks */,
 				4F503AF01F6C560900B8EE10 /* Headers */,
-				4F503AF11F6C560900B8EE10 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -292,17 +309,11 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4F503AF11F6C560900B8EE10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4F503AFA1F6C560900B8EE10 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374DC80F1F7DB8330091C5C5 /* TimeSeriesViewTest.xib in Resources */,
 				4F992BD21F75836700C132B1 /* TestView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,8 +325,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,
+				374DC80B1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift in Sources */,
+				374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */,
+				374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */,
 				4F3C198B1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +341,7 @@
 			files = (
 				4F503B021F6C560900B8EE10 /* PredixDonutViewTests.swift in Sources */,
 				4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */,
+				3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
