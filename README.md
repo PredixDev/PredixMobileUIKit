@@ -1,6 +1,6 @@
 ![alt tag](./Assets/PredixMobileUIKitTitle.png)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Releases](https://img.shields.io/badge/Release-0-blue.svg)](https://github.com/PredixDev/PredixMobileUIKit/releases)
+[![Releases](https://img.shields.io/badge/Release-0.1-blue.svg)](https://github.com/PredixDev/PredixMobileUIKit/releases)
 
 PredixMobileUIKit
 ====
@@ -12,6 +12,8 @@ iOS UI Components designed for [Predix](https://predix.io)
 #### PredixDonutView
 The PredixDonutView is a donut and pie chart, that defaults to the regular Predix data visualization color set. It's Interface Builder enabled, and has various properties for controlling its legend placement, donut characteristics, and an easy helper-method for loading data from a simple name/value dictionary.
 
+#### PredixTimeSeriesView
+The PredixTimeSeriesView is a line chart that easily shows Time Series data from the Predix Time Series service.  It's Interface Builder enabled, and has various properties for controlling its legend placement, title and other characteristics, and an easy method for loading time series data.
 
 ---
 Getting Started
@@ -22,6 +24,9 @@ Users should install Carthage, then once you've downloaded the PredixMobileUIKit
 
 The PredixMobileUIKit repo includes a demonstration project: PredixMobileUIKitDemo. This project can show you usage of some of the PredixMobileUIKit provided views. 
 
+Documentation
+====
+The framework is fully documented for Xcode's quick help. Additionally, full online documentation can be found here: [documentation site](http://predixdev.github.io/PredixMobileUIKit/)
 
 ---
 
