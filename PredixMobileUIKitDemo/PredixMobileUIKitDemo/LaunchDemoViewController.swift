@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PredixMobileSDK
 
 class LaunchDemoViewController: UITableViewController {
 
@@ -22,6 +23,10 @@ class LaunchDemoViewController: UITableViewController {
 
         // Do any additional setup after loading the view.
 
+        // Until we have more integration with PredixMobileSDK, this just ensures the frameworks are linked properly
+        let predixSDKVersionInfo = PredixMobilityConfiguration.versionInfo
+        print("PredixSDK Version Info: \(predixSDKVersionInfo)")
+        
         self.demos = [DemoData(title: "Donut Chart", description: "Simple demonstration of a donut chart, can also be a pie chart.", storyboardId: "DonutChartDemo"),
                       DemoData(title: "Show Demo 1", description: "Shows temp demo", storyboardId: "demo1")]
 

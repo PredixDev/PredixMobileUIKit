@@ -236,6 +236,11 @@ class PredixDonutViewTests: XCTestCase {
         self.waitForExpectations(timeout: 1, handler: nil)
     }
 
+    func testSDKVersion() {
+        let donut = PredixDonutView()
+        let versionInfo = donut.predixMobileSDKVersion()
+        XCTAssertTrue(versionInfo.contains("pm sdk build version"), "No Predix version info")
+    }
 }
 
 class TestAnimator: Animator {
