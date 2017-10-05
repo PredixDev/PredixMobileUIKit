@@ -8,6 +8,7 @@
 
 import Foundation
 import Charts
+import PredixMobileSDK
 
 /// PredixDonutView -- Donut view chart, also can be a pie chart.
 @IBDesignable
@@ -66,6 +67,14 @@ open class PredixDonutView: PieChartView {
             self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
         }
         super.setNeedsDisplay()
+    }
+
+    // Used in unit testing
+    // Until we have more integration with PredixMobileSDK, this just ensures the frameworks are linked properly
+    internal func predixMobileSDKVersion() -> String {
+        let predixSDKVersionInfo = PredixMobilityConfiguration.versionInfo
+        print("\(#function) PredixSDK Version Info: \(predixSDKVersionInfo)")
+        return predixSDKVersionInfo
     }
 
 }
