@@ -71,7 +71,7 @@ open class PredixDonutView: PieChartView {
 
     // Used in unit testing
     // Until we have more integration with PredixMobileSDK, this just ensures the frameworks are linked properly
-    internal func predixMobileSDKVersion()->String {
+    internal func predixMobileSDKVersion() -> String {
         let predixSDKVersionInfo = PredixMobilityConfiguration.versionInfo
         print("\(#function) PredixSDK Version Info: \(predixSDKVersionInfo)")
         return predixSDKVersionInfo
