@@ -23,7 +23,7 @@ class LaunchDemoViewController: UITableViewController {
         // Do any additional setup after loading the view.
 
         self.demos = [DemoData(title: "Donut Chart", description: "Simple demonstration of a donut chart, can also be a pie chart.", storyboardId: "DonutChartDemo"),
-                      DemoData(title: "Show Demo 1", description: "Shows temp demo", storyboardId: "demo1")]
+                      DemoData(title: "TimeSeries Chart", description: "An example showcasing TimeSeries chart view usage.", storyboardId: "TimeSeriesChart")]
 
     }
 
