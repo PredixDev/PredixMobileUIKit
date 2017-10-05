@@ -12,7 +12,7 @@ import Charts
 //IBInspectable properties can be internal, and still show up in IB
 extension PredixTimeSeriesView {
     
-    /// :nodoc
+    ///:nodoc:
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         initializeWithDummyData()
@@ -33,7 +33,7 @@ extension PredixTimeSeriesView {
                 let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure, quality: 3)
                 dataPoints.append(dataPoint)
             }
-            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: nil)
+            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: [:])
             tags.append(tag)
         }
         loadLabelsAndValues(tags)

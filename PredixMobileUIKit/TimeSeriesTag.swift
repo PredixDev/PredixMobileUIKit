@@ -11,17 +11,17 @@ import Foundation
 /// A TimeSeries tag model.
 public struct TimeSeriesTag {
     
-    /// tag name
+    /// Tag name
     public var name: String
     
-    /// array of data points `TimeSeriesDataPoint`
+    /// Array of data points `TimeSeriesDataPoint`
     public var dataPoints: [TimeSeriesDataPoint]
     
     /// Attributes are key/value pairs used to store data associated with a tag.
-    public var attributes: [String : String]?
+    public var attributes: [String : String]
     
-    /// :nodoc:
-    public init(name: String, dataPoints: [TimeSeriesDataPoint], attributes: [String : String]? = nil) {
+    ///:nodoc:
+    public init(name: String, dataPoints: [TimeSeriesDataPoint], attributes: [String : String] = [:]) {
         self.name = name
         self.dataPoints = dataPoints
         self.attributes = attributes

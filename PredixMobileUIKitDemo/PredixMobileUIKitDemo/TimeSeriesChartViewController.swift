@@ -61,7 +61,7 @@ class TimeSeriesChartViewController: UIViewController {
                 let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure)
                 dataPoints.append(dataPoint)
             }
-            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: nil)
+            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: [:])
             tags.append(tag)
         }
         return tags
