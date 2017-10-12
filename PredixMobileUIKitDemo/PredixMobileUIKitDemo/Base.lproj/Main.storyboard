@@ -260,6 +260,9 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Test description"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="legendVerticalOrientation" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="leftAxisEnabled" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="legendAlignedTop" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
@@ -333,6 +336,333 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjs-Vw-8GE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="336.80000000000001" y="784.72906403940885"/>
+        </scene>
+        <!--Circle Progress View View Controller-->
+        <scene sceneID="eTH-kd-DiH">
+            <objects>
+                <viewController storyboardIdentifier="CircleProgressDemo" id="X1l-2r-gBB" customClass="CircleProgressViewViewController" customModule="PredixMobileUIKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ATn-LC-eUu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byf-3Q-uPr">
+                                <rect key="frame" x="67.666666666666686" y="44" width="240" height="240"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPC-Cz-I6P" customClass="PredixCircleProgressView" customModule="PredixMobileUIKit">
+                                        <rect key="frame" x="-0.6666666666666714" y="0.0" width="240" height="240"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="PsE-EY-JmL"/>
+                                            <constraint firstAttribute="height" constant="240" id="bJh-rw-Ezh"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                <real key="value" value="0.65000000000000002"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isTitleHidden" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isTitleAnimated" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="thresholdColorMatching" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="warningThreshold">
+                                                <real key="value" value="0.69999999999999996"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="criticalThreshold">
+                                                <real key="value" value="0.80000000000000004"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thresholdLineLength">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="thresholdLineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="titleScaleFactor">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="counterClockwise" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="invertThresholds" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="circleLineWidth">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="V7o-bW-VDU"/>
+                                    <constraint firstItem="JPC-Cz-I6P" firstAttribute="centerX" secondItem="Byf-3Q-uPr" secondAttribute="centerX" id="nQp-la-h7v"/>
+                                    <constraint firstAttribute="width" constant="240" id="nmF-rn-3oE"/>
+                                    <constraint firstItem="JPC-Cz-I6P" firstAttribute="centerY" secondItem="Byf-3Q-uPr" secondAttribute="centerY" id="uLR-sh-N3t"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="rMm-DF-8hl">
+                                <rect key="frame" x="16" y="304" width="343" height="286"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-0q-KKb">
+                                        <rect key="frame" x="0.0" y="0.0" width="170.66666666666666" height="286"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95F-fR-9w9">
+                                                <rect key="frame" x="0.0" y="0.0" width="170.66666666666666" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning Thold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0A-RX-8Ey">
+                                                <rect key="frame" x="0.0" y="33.333333333333314" width="170.66666666666666" height="20.333333333333371"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Critical Thold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-TS-Xwn">
+                                                <rect key="frame" x="0.0" y="66.333333333333314" width="170.66666666666666" height="20.333333333333371"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Scale Factor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVU-xj-1WT">
+                                                <rect key="frame" x="0.0" y="99.666666666666686" width="170.66666666666666" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z1-h2-cnZ">
+                                                <rect key="frame" x="0.0" y="133" width="170.66666666666666" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thold Line L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YA-mz-6vL">
+                                                <rect key="frame" x="0.0" y="166" width="170.66666666666666" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thold Line W" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-rJ-ChS">
+                                                <rect key="frame" x="0.0" y="199.33333333333331" width="170.66666666666666" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress Line W" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s31-Pl-Xxq">
+                                                <rect key="frame" x="0.0" y="232.33333333333337" width="170.66666666666666" height="20.333333333333258"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incomplete Line W" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-x4-bmC">
+                                                <rect key="frame" x="0.0" y="265.66666666666663" width="170.66666666666666" height="20.333333333333371"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lla-FP-Xbz">
+                                        <rect key="frame" x="172.66666666666663" y="0.0" width="170.33333333333337" height="286"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xQb-uV-xdv">
+                                                <rect key="frame" x="-2" y="0.0" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="progressSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="QEc-Zy-93N"/>
+                                                    <action selector="progressSliderMoveComplete:" destination="X1l-2r-gBB" eventType="touchUpInside" id="5Cg-l2-7Bt"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qhr-mM-5Qh">
+                                                <rect key="frame" x="-2" y="32" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="warningTholdSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="krA-lk-EI4"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mnv-de-wee">
+                                                <rect key="frame" x="-2" y="64" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="criticalTholdSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="xQQ-Kk-ZzE"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EHS-Lk-JAS">
+                                                <rect key="frame" x="-2" y="96" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="titleScaleFactorSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="1QF-rk-ofm"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="320" minValue="50" maxValue="320" translatesAutoresizingMaskIntoConstraints="NO" id="TWH-eO-x7H">
+                                                <rect key="frame" x="-2" y="128" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="resizeProgressViewSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="8h3-UZ-bNl"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="6QR-ic-7yR">
+                                                <rect key="frame" x="-2" y="160" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="tholdLineLengthSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="Gwr-LP-Wlb"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q5U-cM-9Ci">
+                                                <rect key="frame" x="-2" y="192" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="tholdLineWidthSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="cX2-vP-HPu"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="m49-Db-7Ms">
+                                                <rect key="frame" x="-2" y="224" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="progressLineSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="UXb-CE-Pa2"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="nMs-zn-QSq">
+                                                <rect key="frame" x="-2" y="256" width="174.33333333333334" height="31"/>
+                                                <connections>
+                                                    <action selector="circleLineSliderChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="aab-cz-l3S"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="AbU-0q-KKb" firstAttribute="leading" secondItem="rMm-DF-8hl" secondAttribute="leading" id="Df2-sU-MNd"/>
+                                    <constraint firstAttribute="bottom" secondItem="AbU-0q-KKb" secondAttribute="bottom" id="cTP-Ke-rIz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lla-FP-Xbz" secondAttribute="bottom" id="lbQ-Ss-DJO"/>
+                                    <constraint firstItem="Lla-FP-Xbz" firstAttribute="top" secondItem="rMm-DF-8hl" secondAttribute="top" id="nYm-u5-QJB"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lla-FP-Xbz" secondAttribute="trailing" id="roH-Z5-Vw7"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fzq-rr-Vcz">
+                                <rect key="frame" x="16" y="610" width="343" height="163"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yGv-ib-btI">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adapt Progress Color:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1q-Kf-dps">
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VSn-ju-jvs">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="adaptProgressColorChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="C3X-ch-NVp"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="H8X-fj-AXv">
+                                        <rect key="frame" x="0.0" y="33" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animate Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcX-aS-iQs">
+                                                <rect key="frame" x="0.0" y="0.0" width="105" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbB-6n-WuG">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="animateTitleChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="5AN-io-669"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="pys-eb-DfM">
+                                        <rect key="frame" x="0.0" y="66" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10w-hS-4PC">
+                                                <rect key="frame" x="0.0" y="0.0" width="77.666666666666671" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pAX-rf-CT1">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="hideTitleChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="VaG-YB-1NR"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="HiN-S6-eqo">
+                                        <rect key="frame" x="0.0" y="99" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter Clockwise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OR-dq-2cL">
+                                                <rect key="frame" x="0.0" y="0.0" width="143.66666666666666" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZZG-eC-vmW">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="counterClockwiseChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="jAq-pa-gGf"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PoJ-Kh-d6g">
+                                        <rect key="frame" x="0.0" y="132" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invert Thresholds:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYs-LD-CF0">
+                                                <rect key="frame" x="0.0" y="0.0" width="138.33333333333334" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-3e-Pgn">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="invertThresholdsChanged:" destination="X1l-2r-gBB" eventType="valueChanged" id="Vp9-I6-gxX"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fzq-rr-Vcz" firstAttribute="width" secondItem="rMm-DF-8hl" secondAttribute="width" id="Cdv-PY-5Ry"/>
+                            <constraint firstItem="pgd-iO-mV7" firstAttribute="trailing" secondItem="rMm-DF-8hl" secondAttribute="trailing" constant="16" id="Rm6-WF-IbM"/>
+                            <constraint firstItem="Byf-3Q-uPr" firstAttribute="top" secondItem="pgd-iO-mV7" secondAttribute="top" id="TSV-kY-eRo"/>
+                            <constraint firstItem="Byf-3Q-uPr" firstAttribute="centerX" secondItem="ATn-LC-eUu" secondAttribute="centerX" id="WGW-PC-0w2"/>
+                            <constraint firstItem="rMm-DF-8hl" firstAttribute="leading" secondItem="pgd-iO-mV7" secondAttribute="leading" constant="16" id="Z2p-0R-ifI"/>
+                            <constraint firstItem="fzq-rr-Vcz" firstAttribute="top" secondItem="rMm-DF-8hl" secondAttribute="bottom" constant="20" id="jgb-6r-bCO"/>
+                            <constraint firstItem="rMm-DF-8hl" firstAttribute="top" secondItem="Byf-3Q-uPr" secondAttribute="bottom" constant="20" id="o6Q-QB-dYq"/>
+                            <constraint firstItem="fzq-rr-Vcz" firstAttribute="centerX" secondItem="ATn-LC-eUu" secondAttribute="centerX" id="xcI-c7-Kx2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pgd-iO-mV7"/>
+                    </view>
+                    <connections>
+                        <outlet property="adaptProgressColor" destination="VSn-ju-jvs" id="bQG-zZ-UGR"/>
+                        <outlet property="animateTitle" destination="qbB-6n-WuG" id="Wli-zb-F3U"/>
+                        <outlet property="circleLineLabel" destination="mkZ-x4-bmC" id="aE9-kp-VnC"/>
+                        <outlet property="circleLineSlider" destination="nMs-zn-QSq" id="ZhC-TA-PVQ"/>
+                        <outlet property="counterClockwise" destination="ZZG-eC-vmW" id="EIu-Ad-4t2"/>
+                        <outlet property="criticalTholdLabel" destination="YNd-TS-Xwn" id="flb-HM-GRh"/>
+                        <outlet property="criticalTholdSlider" destination="mnv-de-wee" id="0Df-XB-8L4"/>
+                        <outlet property="hideTitle" destination="pAX-rf-CT1" id="vK3-hR-AaA"/>
+                        <outlet property="invertThresholds" destination="WnP-3e-Pgn" id="GoH-Os-XLs"/>
+                        <outlet property="progressLabel" destination="95F-fR-9w9" id="3YV-KZ-mYm"/>
+                        <outlet property="progressLineLabel" destination="s31-Pl-Xxq" id="cSd-XK-qmJ"/>
+                        <outlet property="progressLineSlider" destination="m49-Db-7Ms" id="g5a-T1-ckd"/>
+                        <outlet property="progressSlider" destination="xQb-uV-xdv" id="uPl-cQ-Qi8"/>
+                        <outlet property="progressView" destination="JPC-Cz-I6P" id="t0d-IH-7Dm"/>
+                        <outlet property="progressViewHeight" destination="bJh-rw-Ezh" id="cjJ-EX-m7C"/>
+                        <outlet property="progressViewWidth" destination="PsE-EY-JmL" id="xw6-fT-Go1"/>
+                        <outlet property="scaleTitleLabel" destination="ZVU-xj-1WT" id="LPh-Vt-EaK"/>
+                        <outlet property="scaleViewLabel" destination="3Z1-h2-cnZ" id="xye-O7-kpK"/>
+                        <outlet property="scaleViewSlider" destination="TWH-eO-x7H" id="P0y-Yc-XEi"/>
+                        <outlet property="tholdLineLengthLabel" destination="1YA-mz-6vL" id="0kI-Eb-2FB"/>
+                        <outlet property="tholdLineLengthSlider" destination="6QR-ic-7yR" id="vsz-oB-4PI"/>
+                        <outlet property="tholdLineWidthLabel" destination="Ghp-rJ-ChS" id="8zy-0q-fic"/>
+                        <outlet property="tholdLineWidthSlider" destination="Q5U-cM-9Ci" id="EeI-jr-pNN"/>
+                        <outlet property="titleScaleFactorSlider" destination="EHS-Lk-JAS" id="OFo-ZG-Oyv"/>
+                        <outlet property="warningTholdLabel" destination="s0A-RX-8Ey" id="eJt-4A-vFM"/>
+                        <outlet property="warningTholdSlider" destination="Qhr-mM-5Qh" id="w3Q-3K-dY0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ySi-Uu-B3U" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1205.5999999999999" y="-62.068965517241381"/>
         </scene>
     </scenes>
 </document>

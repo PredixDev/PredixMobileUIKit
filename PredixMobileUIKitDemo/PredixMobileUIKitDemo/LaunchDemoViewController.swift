@@ -28,7 +28,8 @@ class LaunchDemoViewController: UITableViewController {
         print("PredixSDK Version Info: \(predixSDKVersionInfo)")
         
         self.demos = [DemoData(title: "Donut Chart", description: "Simple demonstration of a donut chart, can also be a pie chart.", storyboardId: "DonutChartDemo"),
-                      DemoData(title: "TimeSeries Chart", description: "An example showcasing TimeSeries chart view usage.", storyboardId: "TimeSeriesChart")]
+                      DemoData(title: "TimeSeries Chart", description: "An example showcasing TimeSeries chart view usage.", storyboardId: "TimeSeriesChart"),
+                      DemoData(title: "Progress Circle", description: "Demonstration of a progress circle", storyboardId: "CircleProgressDemo")]
 
     }
 

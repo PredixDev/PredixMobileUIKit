@@ -19,6 +19,7 @@
 		4F503B2B1F6C58BC00B8EE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B291F6C58BC00B8EE10 /* Main.storyboard */; };
 		4F503B2D1F6C58BC00B8EE10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */; };
 		4F503B301F6C58BC00B8EE10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */; };
+		4FE22EAE1F8801F300F9C300 /* CircleProgressViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */; };
 		4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		4F503B2C1F6C58BC00B8EE10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F503B2F1F6C58BC00B8EE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F503B311F6C58BC00B8EE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressViewViewController.swift; sourceTree = "<group>"; };
 		4FF131481F7B19F2004861A7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PredixMobileUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PredixMobileUIKit.xcodeproj; path = ../PredixMobileUIKit.xcodeproj; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				4FB5C43C1F7DA6C400824A9D /* Supporting Files */,
 				4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */,
+				4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */,
 				4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */,
 				3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */,
 				4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F503B281F6C58BC00B8EE10 /* DonutChartDemoViewController.swift in Sources */,
+				4FE22EAE1F8801F300F9C300 /* CircleProgressViewViewController.swift in Sources */,
 				3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */,
 				4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */,
 				4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */,

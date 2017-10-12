@@ -23,8 +23,14 @@
 		4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B621F6C5A5600B8EE10 /* PredixDonutView.swift */; };
 		4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B671F6C73DB00B8EE10 /* UIColor+Predix.swift */; };
 		4F503B6E1F70726300B8EE10 /* PredixMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B6D1F70726300B8EE10 /* PredixMobileSDK.framework */; };
+		4F627A351F8E7E4400CB4AEE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627A341F8E7E4400CB4AEE /* Utilities.swift */; };
+		4F627A371F8ECAFB00CB4AEE /* CircleProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */; };
+		4F627A391F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627A381F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift */; };
+		4F627A3B1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627A3A1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift */; };
+		4F627A3D1F8FC98900CB4AEE /* RandomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627A3C1F8FC98900CB4AEE /* RandomExtensions.swift */; };
 		4F992BD21F75836700C132B1 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F992BD11F75836700C132B1 /* TestView.xib */; };
 		4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B161F6C586500B8EE10 /* Charts.framework */; };
+		4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */; };
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,8 +100,14 @@
 		4F503B671F6C73DB00B8EE10 /* UIColor+Predix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Predix.swift"; sourceTree = "<group>"; };
 		4F503B6D1F70726300B8EE10 /* PredixMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PredixMobileSDK.framework; path = Carthage/Build/iOS/PredixMobileSDK.framework; sourceTree = "<group>"; };
 		4F503B741F7073FA00B8EE10 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		4F627A341F8E7E4400CB4AEE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressLayer.swift; sourceTree = "<group>"; };
+		4F627A381F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressLayerTests.swift; sourceTree = "<group>"; };
+		4F627A3A1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixCircleProgressViewTests.swift; sourceTree = "<group>"; };
+		4F627A3C1F8FC98900CB4AEE /* RandomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomExtensions.swift; sourceTree = "<group>"; };
 		4F992BD11F75836700C132B1 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		4FB5C4471F82AB7100824A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = PredixMobileUIKit/Info.plist; sourceTree = "<group>"; };
+		4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixCircleProgressView.swift; sourceTree = "<group>"; };
 		4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionExtensions.swift; sourceTree = "<group>"; };
 		4FF131421F7AF83C004861A7 /* cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
+				4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */,
+				4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */,
 				4F503B621F6C5A5600B8EE10 /* PredixDonutView.swift */,
 				4F3C198A1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift */,
 				4F503B671F6C73DB00B8EE10 /* UIColor+Predix.swift */,
@@ -155,6 +169,7 @@
 				374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */,
 				374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */,
 				374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */,
+				4F627A341F8E7E4400CB4AEE /* Utilities.swift */,
 			);
 			path = PredixMobileUIKit;
 			sourceTree = "<group>";
@@ -168,6 +183,9 @@
 				4F503B031F6C560900B8EE10 /* Info.plist */,
 				4F992BD11F75836700C132B1 /* TestView.xib */,
 				3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */,
+				4F627A381F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift */,
+				4F627A3A1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift */,
+				4F627A3C1F8FC98900CB4AEE /* RandomExtensions.swift */,
 			);
 			path = PredixMobileUIKitTests;
 			sourceTree = "<group>";
@@ -339,9 +357,12 @@
 			files = (
 				374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
+				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,
 				374DC80B1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift in Sources */,
 				374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */,
+				4F627A371F8ECAFB00CB4AEE /* CircleProgressLayer.swift in Sources */,
+				4F627A351F8E7E4400CB4AEE /* Utilities.swift in Sources */,
 				374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */,
 				4F3C198B1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift in Sources */,
 			);
@@ -351,6 +372,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F627A3B1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift in Sources */,
+				4F627A391F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift in Sources */,
+				4F627A3D1F8FC98900CB4AEE /* RandomExtensions.swift in Sources */,
 				4F503B021F6C560900B8EE10 /* PredixDonutViewTests.swift in Sources */,
 				4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */,
 				3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */,
