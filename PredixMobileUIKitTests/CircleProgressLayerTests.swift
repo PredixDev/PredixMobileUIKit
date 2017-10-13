@@ -95,7 +95,7 @@ class CircleProgressLayerTests: XCTestCase {
         expectedLayer.circleLineWidth = CGFloat.random
         expectedLayer.counterClockwise = Bool.random
         expectedLayer.progress = CGFloat.random
-        expectedLayer.colorCorrection = UIColor.random
+        expectedLayer.colorCorrection = UIColor.random.cgColor
         
         let layer = CircleProgressLayer(layer: expectedLayer)
         
@@ -134,7 +134,7 @@ class CircleProgressLayerTests: XCTestCase {
         expectedLayer.circleLineWidth = CGFloat.random
         expectedLayer.counterClockwise = Bool.random
         expectedLayer.progress = CGFloat.random
-        expectedLayer.colorCorrection = UIColor.random
+        expectedLayer.colorCorrection = UIColor.random.cgColor
         
         let data = NSKeyedArchiver.archivedData(withRootObject: expectedLayer)
         

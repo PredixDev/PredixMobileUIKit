@@ -17,17 +17,20 @@ import UIKit
 @IBDesignable
 open class PredixCircleProgressView: UIView {
     
+    internal let progressAnimationKey = "progress_animation"
+    internal let colorAnimationKey = "color_animation"
     //MARK: public properties
     
     /// Progress value, from 0 to 1
     @IBInspectable
     public var progress: CGFloat = 0.0 {
         didSet {
-            if isAnimating() {
-                pauseAnimation()
+            if isAnimatingProgress() {
+                cancelAnimation()
             }
             progressLayer.progress = progress
             updateTitle(to: progress)
+            adjustPerceivedProgressColor()
         }
     }
     
@@ -115,9 +118,7 @@ open class PredixCircleProgressView: UIView {
         didSet {
             progressLayer.warningThreshold = warningThreshold
             progressLayer.setNeedsDisplay()
-            if thresholdColorMatching {
-                adjustPerceivedProgressColor()
-            }
+            adjustPerceivedProgressColor()
         }
     }
     
@@ -128,9 +129,7 @@ open class PredixCircleProgressView: UIView {
         didSet {
             progressLayer.criticalThreshold = criticalThreshold
             progressLayer.setNeedsDisplay()
-            if thresholdColorMatching {
-                adjustPerceivedProgressColor()
-            }
+            adjustPerceivedProgressColor()
         }
     }
     
@@ -197,6 +196,7 @@ open class PredixCircleProgressView: UIView {
         didSet {
             progressLayer.counterClockwise = counterClockwise
             progressLayer.setNeedsDisplay()
+            adjustPerceivedProgressColor()
         }
     }
 
@@ -232,9 +232,7 @@ open class PredixCircleProgressView: UIView {
     }
     
     open override func didMoveToWindow() {
-        if let window = window {
-            layer.contentsScale = window.screen.scale
-        }
+        layer.contentsScale = self.window?.screen.scale ?? layer.contentsScale
     }
     
     override open func setNeedsDisplay() {
@@ -314,13 +312,13 @@ open class PredixCircleProgressView: UIView {
     private func compare(threshold: CGFloat, progress: CGFloat)-> Bool {
         if invertThresholds {
             return progress <= threshold
-        } else {
-            return progress >= threshold
         }
+        return progress >= threshold
     }
+    
     fileprivate func adjustPerceivedProgressColor() {
         
-        guard criticalThreshold > 0.0 || warningThreshold > 0.0 else { return }
+        guard thresholdColorMatching && (criticalThreshold > 0.0 || warningThreshold > 0.0) else { return }
         
         var expectedColor = self.progressColor
 
@@ -350,11 +348,11 @@ open class PredixCircleProgressView: UIView {
             animation.duration = 0.5
             animation.isRemovedOnCompletion = false
             self.perceivedProgressColor = expectedColor
-            progressLayer.add(animation, forKey: "correct_color_animation")
+            progressLayer.add(animation, forKey: self.colorAnimationKey)
         }
     }
 
-    public func pauseAnimation() {
+    public func cancelAnimation() {
         guard let presentationLayer = layer.presentation() as? CircleProgressLayer else { return }
         
         let currentValue = presentationLayer.progress
@@ -362,19 +360,14 @@ open class PredixCircleProgressView: UIView {
         progress = currentValue
         
     }
-    
-    public func stopAnimation() {
-        layer.removeAllAnimations()
-        self.progress = 0
-    }
-    
-    public func isAnimating() -> Bool {
-        return layer.animation(forKey: "appear_animation") != nil
+
+    public func isAnimatingProgress() -> Bool {
+        return layer.animation(forKey: progressAnimationKey) != nil
     }
     
     public func animateProgress(to value: CGFloat) {
-        if isAnimating() {
-            pauseAnimation()
+        if isAnimatingProgress() {
+            cancelAnimation()
         }
         let animation = CABasicAnimation(keyPath: "progress")
         
@@ -388,7 +381,7 @@ open class PredixCircleProgressView: UIView {
         animation.delegate = self
         animation.isRemovedOnCompletion = false
         self.progress = value
-        progressLayer.add(animation, forKey: "appear_animation")
+        progressLayer.add(animation, forKey: progressAnimationKey)
         
     }
     
@@ -402,9 +395,6 @@ open class PredixCircleProgressView: UIView {
 extension PredixCircleProgressView: CAAnimationDelegate {
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if thresholdColorMatching {
-            adjustPerceivedProgressColor()
-        }
         updateTitle(to: self.progress)
     }
 }

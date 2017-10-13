@@ -74,8 +74,265 @@ class PredixCircleProgressViewTests: XCTestCase {
         
         XCTAssertEqual(value, view.isTitleHidden, "Values did not match: isTitleHidden")
     }
+    
+    
+    func testProgressChangeUpdatesTitle() {
+        let view = PredixCircleProgressView()
+
+        view.progress = 0.12
+        
+        XCTAssertEqual("12%", view.title.text, "Title text was not updated")
+    }
+    
+    func testAnimateToProgressCreatesAnimation() {
+        let view = PredixCircleProgressView()
+        let expectedProgress: CGFloat = 0.99
+        view.animateProgress(to: expectedProgress)
+        
+        if let animation = view.layer.animation(forKey: view.progressAnimationKey) as? CABasicAnimation, let animationToValue = animation.toValue as? CGFloat {
+            
+            XCTAssertEqual(expectedProgress, animationToValue, accuracy: 0.001, "Updated height not changed as expected")
+            
+        } else {
+            XCTFail("Animation was not created as expected")
+        }
+    }
+    
+    func testAnimateToProgressWhileInAnimatingReplacesAnimation() {
+        let view = PredixCircleProgressView()
+        let notExpectedProgress: CGFloat = 0.99
+        let expectedProgress: CGFloat = 0.5
+        view.animateProgress(to: notExpectedProgress)
+        view.animateProgress(to: expectedProgress)
+        
+        if let animation = view.layer.animation(forKey: view.progressAnimationKey) as? CABasicAnimation, let animationToValue = animation.toValue as? CGFloat {
+            
+            XCTAssertEqual(expectedProgress, animationToValue, accuracy: 0.001, "Updated height not changed as expected")
+            
+        } else {
+            XCTFail("Animation was not created as expected")
+        }
+    }
+    
+    func testSetThresholdColorMatchingTrueChangesColorToCritical() {
+        let view = PredixCircleProgressView()
+
+        view.thresholdColorMatching = false // start as false
+        view.criticalThreshold = 0.7 // set threshold
+        view.progress = 0.75 // progress above threshold
+
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+
+        view.thresholdColorMatching = true // this should change layer color
+        
+        validateColorAnimation(view: view, from: view.progressColor, to: view.criticalThresholdColor)
+    }
+    
+    func testSetThresholdColorMatchingTrueChangesColorToWarning() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = false // start as false
+        view.criticalThreshold = 0.7 // set threshold
+        view.warningThreshold = 0.6 // set threshold
+        view.progress = 0.65 // progress above threshold
+        
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+
+        view.thresholdColorMatching = true // this should change layer color
+        
+        validateColorAnimation(view: view, from: view.progressColor, to: view.warningThresholdColor)
+    }
+    
+    func testSetProgressWhenThresholdColorMatchingTrueChangesColorToCritical() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = true // this should change layer color
+        view.criticalThreshold = 0.7 // set threshold
+        
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+
+        view.progress = 0.75 // progress above threshold
+        
+        validateColorAnimation(view: view, from: view.progressColor, to: view.criticalThresholdColor)
+    }
+    
+    func testSetProgressWhenThresholdColorMatchingTrueChangesColorToWarning() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = true // this should change layer color
+        view.criticalThreshold = 0.7 // set threshold
+        view.warningThreshold = 0.6 // set threshold
+        
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+
+        view.progress = 0.65 // progress above threshold
+        
+        validateColorAnimation(view: view, from: view.progressColor, to: view.warningThresholdColor)
+    }
+    
+    func testSetCriticalTholdWhenThresholdColorMatchingTrueChangesColorToCritical() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = true // this should change layer color
+        view.progress = 0.75 // progress above threshold
+        
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+
+        view.criticalThreshold = 0.7 // set threshold
+
+        validateColorAnimation(view: view, from: view.progressColor, to: view.criticalThresholdColor)
+    }
+    
+    func testSetWarningTholdWhenThresholdColorMatchingTrueChangesColorToWarning() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = true // this should change layer color
+        view.progress = 0.65 // progress above warning threshold
+        view.criticalThreshold = 0.7 // set threshold
+        
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+
+        view.warningThreshold = 0.6 // set threshold
+
+        validateColorAnimation(view: view, from: view.progressColor, to: view.warningThresholdColor)
+    }
+    
+    func testSetInvertTholdWhenThresholdColorMatchingTrueChangesColor() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = true // this should change layer color
+        view.criticalThreshold = 0.7 // set threshold
+        view.progress = 0.65 // progress below threshold
+        
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+        
+        view.invertThresholds = true // invert threshold
+        
+        validateColorAnimation(view: view, from: view.progressColor, to: view.criticalThresholdColor)
+    }
+
+    func testSetInvertTholdWhenThresholdColorMatchingTrueSwapsWarningAndCriticalColors() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = true // this should change layer color
+        view.criticalThreshold = 0.7 // set threshold
+        view.warningThreshold = 0.6 // set threshold
+        view.progress = 0.65 // progress between thresholds
+        
+        // should be warning color
+        validateColorAnimation(view: view, from: view.progressColor, to: view.warningThresholdColor)
+        
+        view.invertThresholds = true // invert threshold
+        
+        // after inverting should be going from warning to critical color
+        validateColorAnimation(view: view, from: view.warningThresholdColor, to: view.criticalThresholdColor)
+    }
+    
+    func testThresholdColorMatchingTrueCriticalBelowWarning() {
+        let view = PredixCircleProgressView()
+        
+        view.thresholdColorMatching = true // this should change layer color
+        view.criticalThreshold = 0.6 // set threshold
+        view.warningThreshold = 0.7 // set threshold
+        view.progress = 0.65 // progress between thresholds
+        
+        // should be critical color
+        validateColorAnimation(view: view, from: view.progressColor, to: view.criticalThresholdColor)
+    }
+    
+    func testThresholdColorMatchingFalseDoesNotChangeColor() {
+        let view = PredixCircleProgressView()
+
+        view.thresholdColorMatching = false // start as false
+        view.criticalThreshold = 0.7 // set threshold
+        view.warningThreshold = 0.6 // set threshold
+        view.progress = 0.65 // progress above threshold
+
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNil(animation, "Animation was set before setting key test value")
+    }
+    
+    func testSetTitleScaleFactorUpdatesConstraints() {
+        let view = PredixCircleProgressView(frame: CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0))
+        
+        let constraints = titleConstraints(for: view)
+        
+        if let height = constraints.height, let width = constraints.width {
+            
+            view.titleScaleFactor = view.titleScaleFactor * 0.5 // cut scale in half
+            let updatedConstraints = titleConstraints(for: view)
+            if let updatedHeight = updatedConstraints.height, let updatedwidth = updatedConstraints.width {
+                
+                XCTAssertEqual(height, updatedHeight * 2, accuracy: 0.0001, "Updated height not changed as expected")
+                XCTAssertEqual(width, updatedwidth * 2, accuracy: 0.0001, "Updated height not changed as expected")
+                
+            } else {
+                XCTFail("Did not find expected updated title constraints")
+            }
+            
+            
+        } else {
+            XCTFail("Did not find expected title constraints")
+        }
+    }
+    
+    func testMoveToWindowUpdatesLayerScale() {
+        let win = UIWindow()
+        
+        let expectedScale = win.screen.scale
+        let view = PredixCircleProgressView()
+        let layerScale = view.layer.contentsScale
+        
+        XCTAssertNotEqual(expectedScale, layerScale, accuracy: 0.001, "Scales matched at test start")
+        win.addSubview(view)
+        
+        // ensure scale matches
+        XCTAssertEqual(expectedScale, view.layer.contentsScale, accuracy: 0.001, "Scales matched at test start")
+    }
+    
+
+    
+    func titleConstraints(for view: PredixCircleProgressView)->(width: CGFloat?, height: CGFloat?) {
+        var height: CGFloat?
+        var width: CGFloat?
+        for constraint in view.constraints {
+            if let label = constraint.firstItem as? UILabel, label == view.title {
+                // found constraint for label
+                if constraint.firstAttribute == .height {
+                    height = constraint.multiplier
+                }
+                if constraint.firstAttribute == .width {
+                    width = constraint.multiplier
+                }
+            }
+        }
+        return (height, width)
+    }
+    
+    func validateColorAnimation(view: PredixCircleProgressView, from expectedFromColor: UIColor, to expectedToColor: UIColor) {
+        
+        let animation = view.layer.animation(forKey: view.colorAnimationKey)
+        XCTAssertNotNil(animation, "Animation was not set")
+        if let animation = animation as? CABasicAnimation {
+            let fromColor = animation.fromValue as! CGColor
+            let toColor = animation.toValue as! CGColor
+            
+            XCTAssertEqual(expectedFromColor.cgColor, fromColor, "Animation from value was not expected color")
+            XCTAssertEqual(expectedToColor.cgColor, toColor, "Animation to value was not expected color")
+        } else {
+            XCTFail("Animation was not expected type")
+        }
+    }
 
     func assignValues(view: PredixCircleProgressView) {
+        view.thresholdColorMatching = false // set to false so progress color doesn't change.
         view.thresholdLineLength = CGFloat.random
         view.thresholdLineWidth = CGFloat.random
         view.circleColor = UIColor.random

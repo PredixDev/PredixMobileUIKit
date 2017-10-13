@@ -50,7 +50,7 @@ internal class CircleProgressLayer: CALayer  {
             }
         }
     }
-    @objc internal var colorCorrection: UIColor?
+    @objc internal var colorCorrection: CGColor?
     
     //MARK: CALayer overrides
     override class func needsDisplay(forKey key: String) -> Bool {
@@ -132,7 +132,7 @@ internal class CircleProgressLayer: CALayer  {
         self.circleColor = circleColor
         self.warningThresholdColor = warningThresholdColor
         if aDecoder.containsValue(forKey: "colorCorrection") {
-            self.colorCorrection = aDecoder.decodeObject(forKey: "colorCorrection") as? UIColor
+            self.colorCorrection = (aDecoder.decodeObject(forKey: "colorCorrection") as? UIColor)?.cgColor
         }
         
     }
@@ -141,7 +141,7 @@ internal class CircleProgressLayer: CALayer  {
         aCoder.encode(clicks, forKey: "clicks")
         aCoder.encode(progressColor, forKey: "progressColor")
         if let colorCorrection = colorCorrection {
-            aCoder.encode(colorCorrection, forKey: "colorCorrection")
+            aCoder.encode(UIColor(cgColor: colorCorrection), forKey: "colorCorrection")
         }
         aCoder.encode(Double(criticalThreshold), forKey: "criticalThreshold")
         aCoder.encode(criticalThresholdColor, forKey: "criticalThresholdColor")
@@ -172,7 +172,7 @@ internal class CircleProgressLayer: CALayer  {
         
         var progressColor = self.progressColor.cgColor
         if let colorCorrection = colorCorrection {
-            progressColor = colorCorrection.cgColor
+            progressColor = colorCorrection
         }
         
         let endAngle: CGFloat = self.calculateAngle(percent: self.progress)
