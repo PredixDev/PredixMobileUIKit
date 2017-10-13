@@ -185,8 +185,6 @@ internal class CircleProgressLayer: CALayer {
         ctx.setLineWidth(self.progressLineWidth)
         ctx.setLineCap(.butt)
         
-        print("startAngle: \(startAngle)  endAngle: \(endAngle)")
-        print("startAngle: \(Utilities.degrees(radians: startAngle))  endAngle: \(Utilities.degrees(radians: endAngle)) diff: \(Utilities.degrees(radians: endAngle) - Utilities.degrees(radians: startAngle))")
         ctx.addArc(center: self.center, radius: self.radius, startAngle: self.startAngle, endAngle: endAngle, clockwise: self.counterClockwise)
         ctx.drawPath(using: .stroke)
     }
