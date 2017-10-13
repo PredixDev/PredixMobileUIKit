@@ -17,29 +17,23 @@ import UIKit
 @IBDesignable
 open class PredixCircleProgressView: UIView {
     
+    // MARK: Internal constants
+    
     internal let progressAnimationKey = "progress_animation"
     internal let colorAnimationKey = "color_animation"
-    //MARK: public properties
+    
+    // MARK: public properties
     
     /// Progress value, from 0 to 1
     @IBInspectable
     public var progress: CGFloat = 0.0 {
         didSet {
-            if isAnimatingProgress() {
+            if isAnimating() {
                 cancelAnimation()
             }
             progressLayer.progress = progress
             updateTitle(to: progress)
             adjustPerceivedProgressColor()
-        }
-    }
-    
-    /// Total duration used to animate progress from 0 to 100%.
-    /// Actual duration of progress animation will be dependant on the value change.
-    @IBInspectable
-    public var progressAnimationDuration: CFTimeInterval = 1.5 {
-        didSet {
-            progressLayer.clicks = self.clickDuration
         }
     }
     
@@ -171,7 +165,7 @@ open class PredixCircleProgressView: UIView {
 
     /// Line width of the incomplete circle
     @IBInspectable
-    public var circleLineWidth: CGFloat = 10.0{
+    public var circleLineWidth: CGFloat = 10.0 {
         didSet {
             progressLayer.circleLineWidth = circleLineWidth
             progressLayer.setNeedsDisplay()
@@ -199,6 +193,14 @@ open class PredixCircleProgressView: UIView {
             adjustPerceivedProgressColor()
         }
     }
+    
+    /// Total duration used to animate progress from 0 to 100%.
+    /// Actual duration of progress animation will be dependant on the value change.
+    public var progressAnimationDuration: CFTimeInterval = 1.5 {
+        didSet {
+            progressLayer.clicks = self.clickDuration
+        }
+    }
 
     /// Title Label
     public var title: UILabel! {
@@ -207,7 +209,7 @@ open class PredixCircleProgressView: UIView {
         }
     }
 
-    //MARK: private properties
+    // MARK: private properties
     private var clickDuration: CFTimeInterval { return progressAnimationDuration / 360.0 }
     
     private var perceivedProgressColor: UIColor! {
@@ -226,31 +228,37 @@ open class PredixCircleProgressView: UIView {
     private var titleHeightConstraint: NSLayoutConstraint?
     private var titleWidthConstraint: NSLayoutConstraint?
     
-    //MARK: UIView overrides
+    // MARK: UIView overrides
+    /// :nodoc:
     open override class var layerClass: AnyClass {
         return CircleProgressLayer.self
     }
     
+    /// :nodoc:
     open override func didMoveToWindow() {
         layer.contentsScale = self.window?.screen.scale ?? layer.contentsScale
     }
     
+    /// :nodoc:
     override open func setNeedsDisplay() {
         super.setNeedsDisplay()
         progressLayer.setNeedsDisplay()
     }
     
+    /// :nodoc:
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.initialization()
     }
 
+    /// :nodoc:
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initialization()
     }
     
-    fileprivate func createtitleSizeConstraints() {
+    // MARK: private methods
+    private func createtitleSizeConstraints() {
         
         if let heightConstraint = self.titleHeightConstraint {
             self.removeConstraint(heightConstraint)
@@ -309,14 +317,16 @@ open class PredixCircleProgressView: UIView {
         layer.counterClockwise = self.counterClockwise
     }
     
-    private func compare(threshold: CGFloat, progress: CGFloat)-> Bool {
+    private func compare(threshold: CGFloat, progress: CGFloat) -> Bool {
+        
         if invertThresholds {
             return progress <= threshold
         }
+        
         return progress >= threshold
     }
     
-    fileprivate func adjustPerceivedProgressColor() {
+    private func adjustPerceivedProgressColor() {
         
         guard thresholdColorMatching && (criticalThreshold > 0.0 || warningThreshold > 0.0) else { return }
         
@@ -352,7 +362,10 @@ open class PredixCircleProgressView: UIView {
         }
     }
 
-    public func cancelAnimation() {
+    // MARK: Public Methods
+    
+    /// Cancels the current `progress` update animation, if running
+    open func cancelAnimation() {
         guard let presentationLayer = layer.presentation() as? CircleProgressLayer else { return }
         
         let currentValue = presentationLayer.progress
@@ -360,13 +373,16 @@ open class PredixCircleProgressView: UIView {
         progress = currentValue
         
     }
-
-    public func isAnimatingProgress() -> Bool {
+    
+    /// Returns true if the `progress` animation is currently running
+    open func isAnimating() -> Bool {
         return layer.animation(forKey: progressAnimationKey) != nil
     }
     
-    public func animateProgress(to value: CGFloat) {
-        if isAnimatingProgress() {
+    /// Change the `progress` property to the provided value, and animate the circle from the current value to the provided value.
+    /// - parameter value: Value to set the `progress` property.
+    open func animateProgress(to value: CGFloat) {
+        if isAnimating() {
             cancelAnimation()
         }
         let animation = CABasicAnimation(keyPath: "progress")
@@ -385,21 +401,24 @@ open class PredixCircleProgressView: UIView {
         
     }
     
-    open func updateTitle(to: CGFloat) {
-        self.title.text = String(format: self.titleFormat, to * self.titleProgessMultiplier)
+    /// Updates the title text to the given value, using the `titleFormat` and the `titleProgessMultiplier`
+    /// - parameter value: Value, usually matching the `progress` property to set the title text
+    open func updateTitle(to value: CGFloat) {
+        self.title.text = String(format: self.titleFormat, value * self.titleProgessMultiplier)
         self.title.setNeedsDisplay()
     }
 }
 
-//MARK: CAAnimationDelegate implementation
+// MARK: CAAnimationDelegate implementation
 extension PredixCircleProgressView: CAAnimationDelegate {
     
-    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    /// :nodoc:
+    open func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         updateTitle(to: self.progress)
     }
 }
 
-//MARK: ProgressAnimationDelegate implementation
+// MARK: ProgressAnimationDelegate implementation
 extension PredixCircleProgressView: ProgressAnimationDelegate {
     
     func progressAnimationUpdated(value: CGFloat) {
@@ -408,5 +427,3 @@ extension PredixCircleProgressView: ProgressAnimationDelegate {
         }
     }
 }
-
-

@@ -184,18 +184,14 @@ class CircleProgressLayerTests: XCTestCase {
         if let dataProvider = image.cgImage?.dataProvider {
             let data: Data = dataProvider.data.unsafelyUnwrapped as Data
             let array = [UInt8](data)
-            for ndx in 0...array.count - 1 {
-                if array[ndx] != 0 {
-                    foundNonZeroBytes = true
-                    break
-                }
+            for ndx in 0...array.count - 1 where array[ndx] != 0 {
+                foundNonZeroBytes = true
+                break
             }
         }
         
         XCTAssertTrue(foundNonZeroBytes, "Drawn image contained no data")
     }
-
-    
     
     func testDrawCounterClockwise() {
 
@@ -233,11 +229,9 @@ class CircleProgressLayerTests: XCTestCase {
         layer.progress = expectedValue
         
         self.waitForExpectations(timeout: 1, handler: nil)
-        
     }
     
-    
-    func createImage(from layer: CALayer)->UIImage {
+    func createImage(from layer: CALayer) -> UIImage {
         let bounds = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
         layer.bounds = bounds
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
@@ -248,7 +242,7 @@ class CircleProgressLayerTests: XCTestCase {
     }
 
     class TestAnimationDelegate: ProgressAnimationDelegate, Equatable {
-        static func ==(lhs: CircleProgressLayerTests.TestAnimationDelegate, rhs: CircleProgressLayerTests.TestAnimationDelegate) -> Bool {
+        static func == (lhs: CircleProgressLayerTests.TestAnimationDelegate, rhs: CircleProgressLayerTests.TestAnimationDelegate) -> Bool {
             return lhs.id == rhs.id
         }
         
@@ -268,10 +262,5 @@ class CircleProgressLayerTests: XCTestCase {
             }
             expectation?.fulfill()
         }
-        
-        
     }
-
 }
-
-

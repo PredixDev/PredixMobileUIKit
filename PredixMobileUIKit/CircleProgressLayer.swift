@@ -12,14 +12,14 @@ internal protocol ProgressAnimationDelegate: class {
     func progressAnimationUpdated(value: CGFloat)
 }
 
-internal class CircleProgressLayer: CALayer  {
+internal class CircleProgressLayer: CALayer {
     
-    //MARK: Private constants
+    // MARK: Private constants
     private let startAngle = 3 * CGFloat.pi / 2
     private let completeCircle = CGFloat.pi * 2
     private let paddingSpaceFactor: CGFloat = 0.95
     
-    //MARK: Internal properties
+    // MARK: Internal properties
     internal weak var progressAnimationDelegate: ProgressAnimationDelegate?
     internal var thresholdLineLength: CGFloat = 20
     internal var thresholdLineWidth: CGFloat = 1.0
@@ -34,7 +34,7 @@ internal class CircleProgressLayer: CALayer  {
     internal var circleLineWidth: CGFloat = 10.0
     internal var counterClockwise: Bool = false
     
-    //MARK: Private properties
+    // MARK: Private properties
     private var center: CGPoint {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
@@ -42,17 +42,18 @@ internal class CircleProgressLayer: CALayer  {
         return (bounds.midX - (progressLineWidth * 0.5)) * paddingSpaceFactor
     }
     
-    //MARK: Animation properties
-    @objc internal var progress: CGFloat = 0.0{
+    // MARK: Animation properties
+    @objc internal var progress: CGFloat = 0.0 {
         didSet {
             if let progressAnimationDelegate = self.progressAnimationDelegate {
                 progressAnimationDelegate.progressAnimationUpdated(value: progress)
             }
         }
     }
+    
     @objc internal var colorCorrection: CGColor?
     
-    //MARK: CALayer overrides
+    // MARK: CALayer overrides
     override class func needsDisplay(forKey key: String) -> Bool {
         switch key {
         case "progress" : return true
@@ -82,7 +83,7 @@ internal class CircleProgressLayer: CALayer  {
         UIGraphicsPopContext()
     }
     
-    //MARK: Initialization
+    // MARK: Initialization
     override init(layer: Any) {
         if let layer = layer as? CircleProgressLayer {
             self.clicks = layer.clicks
@@ -156,7 +157,8 @@ internal class CircleProgressLayer: CALayer  {
         aCoder.encode(counterClockwise, forKey: "counterClockwise")
         super.encode(with: aCoder)
     }
-    //MARK: Private methods
+    
+    // MARK: Private methods
     
     private func drawIncomplete(_ ctx: CGContext) {
         ctx.setStrokeColor(circleColor.cgColor)
@@ -189,7 +191,7 @@ internal class CircleProgressLayer: CALayer  {
         ctx.drawPath(using: .stroke)
     }
     
-    private func calculateAngle(percent: CGFloat)->CGFloat {
+    private func calculateAngle(percent: CGFloat) -> CGFloat {
         
         var angle: CGFloat = completeCircle * CGFloat(percent)
         
@@ -219,7 +221,7 @@ internal class CircleProgressLayer: CALayer  {
         context.drawPath(using: .stroke)
     }
     
-    private func pointOnCircle(angle: CGFloat, radius: CGFloat, center: CGPoint)->CGPoint {
+    private func pointOnCircle(angle: CGFloat, radius: CGFloat, center: CGPoint) -> CGPoint {
         
         let x = center.x + radius * cos(angle)
         let y = center.y + radius * sin(angle)

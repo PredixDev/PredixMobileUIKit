@@ -47,7 +47,6 @@ class CircleProgressViewViewController: UIViewController {
     @IBOutlet var tholdLineWidthSlider: UISlider!
     @IBOutlet var progressLineSlider: UISlider!
     @IBOutlet var circleLineSlider: UISlider!
-    override var canBecomeFirstResponder: Bool  { return true }
     
     override func viewDidLoad() {
         progressLabelBase = progressLabel.text ?? ""
@@ -60,7 +59,6 @@ class CircleProgressViewViewController: UIViewController {
         progressLineLabelBase = progressLineLabel.text ?? ""
         circleLineLabelBase = circleLineLabel.text ?? ""
     }
-    
 
     override func viewDidAppear(_ animated: Bool) {
         loadDefaults()

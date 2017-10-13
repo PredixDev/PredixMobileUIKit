@@ -19,12 +19,12 @@ public extension Int {
         return Int.random(Int(UInt32.max))
     }
     
-    /// Random integer between 0 and n-1.
+    /// Random integer between 0 and max-1.
     ///
     /// - Parameter n:  Interval max
-    /// - Returns:      Returns a random Int point number between 0 and n max
-    public static func random(_ n: Int) -> Int {
-        return Int(arc4random_uniform(UInt32(n)))
+    /// - Returns:      Returns a random Int point number between 0 and max - 1
+    public static func random(_ max: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(max)))
     }
     
     ///  Random integer between min and max
@@ -32,7 +32,7 @@ public extension Int {
     /// - Parameters:
     ///   - min:    Interval minimun
     ///   - max:    Interval max
-    /// - Returns:  Returns a random Int point number between 0 and n max
+    /// - Returns:  Returns a random Int point number between 0 and max - 1
     public static func random(min: Int, max: Int) -> Int {
         return Int.random(max - min + 1) + min
         
@@ -48,10 +48,10 @@ public extension Double {
         return Double(arc4random()) / 0xFFFFFFFF
     }
     
-    /// Random double between 0 and n-1.
+    /// Random double between min and max-1.
     ///
     /// - Parameter n:  Interval max
-    /// - Returns:      Returns a random double point number between 0 and n max
+    /// - Returns:      Returns a random double point number between min and max-1
     public static func random(min: Double, max: Double) -> Double {
         return Double.random * (max - min) + min
     }
@@ -66,10 +66,10 @@ public extension Float {
         return Float(arc4random()) / 0xFFFFFFFF
     }
     
-    /// Random float between 0 and n-1.
+    /// Random float between min and max - 1.
     ///
     /// - Parameter n:  Interval max
-    /// - Returns:      Returns a random float point number between 0 and n max
+    /// - Returns:      Returns a random float point number between 0 and max - 1
     public static func random(min: Float, max: Float) -> Float {
         return Float.random * (max - min) + min
     }
@@ -89,10 +89,10 @@ public extension CGFloat {
         return CGFloat(Float.random)
     }
     
-    /// Random CGFloat between 0 and n-1.
+    /// Random CGFloat between min and max - 1.
     ///
     /// - Parameter n:  Interval max
-    /// - Returns:      Returns a random CGFloat point number between 0 and n max
+    /// - Returns:      Returns a random CGFloat point number between 0 and max - 1
     public static func random(min: CGFloat, max: CGFloat) -> CGFloat {
         return CGFloat.random * (max - min) + min
     }
@@ -106,6 +106,9 @@ public extension Bool {
 // MARK: UIColor Extension
 
 public extension UIColor {
+    
+    /// Returns a random color from:
+    /// red, orange, yellow, green, blue, purple, white, black, clear, magenta, cyan
     public static var random: UIColor {
         // Don't need infinite random colors, just a few will do for testing
         switch Int.random(10) {

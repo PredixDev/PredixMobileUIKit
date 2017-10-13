@@ -75,7 +75,6 @@ class PredixCircleProgressViewTests: XCTestCase {
         XCTAssertEqual(value, view.isTitleHidden, "Values did not match: isTitleHidden")
     }
     
-    
     func testProgressChangeUpdatesTitle() {
         let view = PredixCircleProgressView()
 
@@ -276,8 +275,7 @@ class PredixCircleProgressViewTests: XCTestCase {
             } else {
                 XCTFail("Did not find expected updated title constraints")
             }
-            
-            
+
         } else {
             XCTFail("Did not find expected title constraints")
         }
@@ -296,8 +294,6 @@ class PredixCircleProgressViewTests: XCTestCase {
         // ensure scale matches
         XCTAssertEqual(expectedScale, view.layer.contentsScale, accuracy: 0.001, "Scales matched at test start")
     }
-    
-
     
     func titleConstraints(for view: PredixCircleProgressView)->(width: CGFloat?, height: CGFloat?) {
         var height: CGFloat?
@@ -321,8 +317,8 @@ class PredixCircleProgressViewTests: XCTestCase {
         let animation = view.layer.animation(forKey: view.colorAnimationKey)
         XCTAssertNotNil(animation, "Animation was not set")
         if let animation = animation as? CABasicAnimation {
-            let fromColor = animation.fromValue as! CGColor
-            let toColor = animation.toValue as! CGColor
+            let fromColor = animation.fromValue as! CGColor // swiftlint:disable:this force_cast
+            let toColor = animation.toValue as! CGColor // swiftlint:disable:this force_cast
             
             XCTAssertEqual(expectedFromColor.cgColor, fromColor, "Animation from value was not expected color")
             XCTAssertEqual(expectedToColor.cgColor, toColor, "Animation to value was not expected color")
@@ -348,7 +344,7 @@ class PredixCircleProgressViewTests: XCTestCase {
         view.progressAnimationDuration = Double.random
     }
     
-    func progressLayer(_ view: PredixCircleProgressView)->CircleProgressLayer {
+    func progressLayer(_ view: PredixCircleProgressView) -> CircleProgressLayer {
         guard let progressLayer = view.layer as? CircleProgressLayer else {
             XCTFail("View layer is not expected type")
             return CircleProgressLayer()
