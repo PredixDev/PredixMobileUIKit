@@ -221,6 +221,7 @@ open class PredixCircleProgressView: UIView {
     private var progressLayer: CircleProgressLayer {
         guard let progressLayer = layer as? CircleProgressLayer else {
             assert(false, "layer not expected type")
+            return CircleProgressLayer(layer: layer)
         }
         return progressLayer
     }
