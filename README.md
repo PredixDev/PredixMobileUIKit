@@ -15,6 +15,9 @@ The PredixDonutView is a donut and pie chart, that defaults to the regular Predi
 #### PredixTimeSeriesView
 The PredixTimeSeriesView is a line chart that easily shows Time Series data from the Predix Time Series service.  It's Interface Builder enabled, and has various properties for controlling its legend placement, title and other characteristics, and an easy method for loading time series data.
 
+#### PredixCircleProgressView
+The PredixCircleProgressView is a circular progress display. It supports two thresholds, with color animations when those thresholds are crossed, progress update animation, clockwise or counterclockwise display, and many other options.
+
 ---
 Getting Started
 ====
