@@ -33,6 +33,9 @@
 		4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B161F6C586500B8EE10 /* Charts.framework */; };
 		4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */; };
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
+		E8D7E4A21F9ABEE0002EF8AA /* PredixAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */; };
+		E8D7E4A61F9ABF41002EF8AA /* predixTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */; };
+		E8D7E4A71F9ABF41002EF8AA /* Framework.classdescriptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,9 @@
 		4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixCircleProgressView.swift; sourceTree = "<group>"; };
 		4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionExtensions.swift; sourceTree = "<group>"; };
 		4FF131421F7AF83C004861A7 /* cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = cartfile; sourceTree = "<group>"; };
+		E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixAuthenticationView.swift; sourceTree = "<group>"; };
+		E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Framework.classdescriptions.plist; sourceTree = "<group>"; };
+		E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = predixTitle.png; path = Assets/predixTitle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,8 @@
 		4F503AF51F6C560900B8EE10 /* PredixMobileUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */,
+				E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */,
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
 				4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */,
 				4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */,
@@ -222,6 +230,7 @@
 		4FF1313F1F7AF7FE004861A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */,
 				4FB5C4471F82AB7100824A9D /* Info.plist */,
 				4FF131421F7AF83C004861A7 /* cartfile */,
 			);
@@ -250,6 +259,7 @@
 				4F503AEF1F6C560900B8EE10 /* Frameworks */,
 				4F503AF01F6C560900B8EE10 /* Headers */,
 				4F1A53A41F87E14D00DCB0CF /* CopyFiles */,
+				E8D7E4A51F9ABF3B002EF8AA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -351,6 +361,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E8D7E4A51F9ABF3B002EF8AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8D7E4A61F9ABF41002EF8AA /* predixTitle.png in Resources */,
+				E8D7E4A71F9ABF41002EF8AA /* Framework.classdescriptions.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -362,6 +381,7 @@
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,
+				E8D7E4A21F9ABEE0002EF8AA /* PredixAuthenticationView.swift in Sources */,
 				374DC80B1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift in Sources */,
 				374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */,
 				4F627A371F8ECAFB00CB4AEE /* CircleProgressLayer.swift in Sources */,

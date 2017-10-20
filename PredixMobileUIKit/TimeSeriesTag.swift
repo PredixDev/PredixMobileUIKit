@@ -9,7 +9,7 @@
 import Foundation
 
 /// A TimeSeries tag model.
-public struct TimeSeriesTag {
+public class TimeSeriesTag: NSObject {
     
     /// Tag name
     public var name: String

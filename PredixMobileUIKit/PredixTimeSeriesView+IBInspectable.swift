@@ -40,14 +40,13 @@ extension PredixTimeSeriesView {
     }
     
     // MARK: - IBInspectable properties
-    
     @IBInspectable
     var labelText: String? {
         get {
-            return self.chartDescription?.text
+            return chartDescription?.text
         }
         set(newValue) {
-            self.chartDescription?.text = newValue
+            chartDescription?.text = newValue
         }
     }
     
@@ -62,20 +61,6 @@ extension PredixTimeSeriesView {
         
     }
     
-    @IBInspectable
-    var legendVerticalOrientation: Bool {
-        get {
-            return self.legend.orientation == .vertical
-        }
-        set(newValue) {
-            if newValue {
-                self.legend.orientation = .vertical
-            } else {
-                self.legend.orientation = .horizontal
-            }
-        }
-    }
-    
     @IBInspectable var leftAxisEnabled: Bool {
         get {
             return leftAxis.enabled
@@ -85,13 +70,26 @@ extension PredixTimeSeriesView {
         }
     }
     
-    @IBInspectable
-    var rightAxisEnabled: Bool {
+    
+    @IBInspectable var rightAxisEnabled: Bool {
         get {
             return rightAxis.enabled
         }
         set(newValue) {
             rightAxis.enabled = newValue
+        }
+    }
+    
+    @IBInspectable var legendVerticalOrientation: Bool {
+        get {
+            return legend.orientation == .vertical
+        }
+        set(newValue) {
+            if newValue {
+                legend.orientation = .vertical
+            } else {
+                legend.orientation = .horizontal
+            }
         }
     }
     
@@ -123,5 +121,73 @@ extension PredixTimeSeriesView {
             }
         }
     }
- 
+    
+    @IBInspectable
+    var dataPointFont: UIFont {
+        get {
+            return UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        }
+        set(newValue) {
+            dataFont = newValue
+        }
+    }
+    
+    @IBInspectable
+    var chartBorderColor: UIColor {
+        get {
+            return borderColor
+        }
+        set(newValue) {
+            borderColor = newValue
+        }
+    }
+    
+    @IBInspectable
+    var xAxisTextColor: UIColor {
+        get {
+            return xAxis.labelTextColor
+        }
+        set(newValue) {
+            xAxis.labelTextColor = newValue
+        }
+    }
+    
+    @IBInspectable
+    var rightAxisTextColor: UIColor {
+        get {
+            return rightAxis.labelTextColor
+        }
+        set(newValue) {
+            rightAxis.labelTextColor = newValue
+        }
+    }
+    
+    @IBInspectable
+    var leftAxisTextColor: UIColor {
+        get {
+            return leftAxis.labelTextColor
+        }
+        set(newValue) {
+            leftAxis.labelTextColor = newValue
+        }
+    }
+    
+    @IBInspectable
+    var legendTextColor: UIColor {
+        get {
+            return legend.textColor
+        }
+        set(newValue) {
+            legend.textColor = newValue
+        }
+    }
+    
+    @IBInspectable
+    open var noDataColor: UIColor {
+        set(newValue) {
+            self.noDataTextColor = newValue
+        } get {
+            return self.noDataTextColor
+        }
+    }
 }
