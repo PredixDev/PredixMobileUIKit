@@ -36,6 +36,7 @@
 		E8D7E4A21F9ABEE0002EF8AA /* PredixAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */; };
 		E8D7E4A61F9ABF41002EF8AA /* predixTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */; };
 		E8D7E4A71F9ABF41002EF8AA /* Framework.classdescriptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */; };
+		E8D7E4AB1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7E4AA1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +53,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
-		};
-		4F503B171F6C586500B8EE10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F503B101F6C586400B8EE10 /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -118,6 +112,7 @@
 		E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixAuthenticationView.swift; sourceTree = "<group>"; };
 		E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Framework.classdescriptions.plist; sourceTree = "<group>"; };
 		E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = predixTitle.png; path = Assets/predixTitle.png; sourceTree = "<group>"; };
+		E8D7E4AA1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixAuthenticationViewTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +192,7 @@
 				4F627A3A1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift */,
 				4F627A3C1F8FC98900CB4AEE /* RandomExtensions.swift */,
 				4F2F2E941F91532000BDAFEF /* UtilitiesTests.swift */,
+				E8D7E4AA1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift */,
 			);
 			path = PredixMobileUIKitTests;
 			sourceTree = "<group>";
@@ -214,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				4F503B161F6C586500B8EE10 /* Charts.framework */,
-				4F503B181F6C586500B8EE10 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,13 +337,6 @@
 			remoteRef = 4F503B151F6C586500B8EE10 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4F503B181F6C586500B8EE10 /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = 4F503B171F6C586500B8EE10 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -399,6 +387,7 @@
 				4F627A391F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift in Sources */,
 				4F627A3D1F8FC98900CB4AEE /* RandomExtensions.swift in Sources */,
 				4F2F2E951F91532000BDAFEF /* UtilitiesTests.swift in Sources */,
+				E8D7E4AB1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift in Sources */,
 				4F503B021F6C560900B8EE10 /* PredixDonutViewTests.swift in Sources */,
 				4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */,
 				3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */,

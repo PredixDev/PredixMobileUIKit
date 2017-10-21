@@ -13,22 +13,21 @@ import QuartzCore
 @IBDesignable
 open class PredixAuthenticationView: UIView {
     private var scrollView: UIScrollView = UIScrollView()
-    private var label: UILabel = UILabel()
-    private var titleImageView: UIImageView = UIImageView()
-    private var emailTextField: UITextField = UITextField()
-    private var passwordTextField: UITextField = UITextField()
-    private var signInButton: UIButton = UIButton(type: .system)
     private var footerLabel: UILabel = UILabel()
     private var activeTextField: UITextField?
     private var keyboardRect: CGRect?
     private var firstSet = true
-    private var authenticationManager: AuthenticationManager?
+    internal private(set) var authenticationManager: AuthenticationManager?
     private var credentialProvider: AuthenticationCredentialsProvider?
-    private var authenticationInProgress = false
+    public private(set) var authenticationInProgress = false
     private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
-    open var configuration: AuthenticationManagerConfiguration = AuthenticationManagerConfiguration()
+    open let titleImageView: UIImageView = UIImageView()
+    open let emailTextField: UITextField = UITextField()
+    open let passwordTextField: UITextField = UITextField()
+    open let signInButton: UIButton = UIButton(type: .system)
     
+    open var configuration: AuthenticationManagerConfiguration = AuthenticationManagerConfiguration()
     open var onelineHandler: ServiceBasedAuthenticationHandler? {
         didSet {
             authenticationManager?.onlineAuthenticationHandler = onelineHandler
@@ -39,42 +38,6 @@ open class PredixAuthenticationView: UIView {
     open var titleImage: UIImage? = UIImage(named: "predixTitle.png", in: Bundle(for: PredixAuthenticationView.self), compatibleWith: nil) {
         didSet {
             titleImageView.image = titleImage
-        }
-    }
-    
-    @IBInspectable
-    open var clientId: String? {
-        set(newValue) {
-            configuration.clientId = newValue
-        } get {
-            return configuration.clientId
-        }
-    }
-    
-    @IBInspectable
-    open var clientSecret: String? {
-        set(newValue) {
-            configuration.clientSecret = newValue
-        } get {
-            return configuration.clientSecret
-        }
-    }
-    
-    @IBInspectable
-    open var host: String? {
-        set(newValue) {
-            configuration.baseURL = URL(string: newValue ?? "")
-        } get {
-            return configuration.baseURL?.absoluteString
-        }
-    }
-    
-    @IBInspectable
-    open var biometricAuthentication: Bool {
-        set(newValue) {
-            configuration.useTouchID = newValue
-        } get {
-            return configuration.useTouchID
         }
     }
     
@@ -93,9 +56,6 @@ open class PredixAuthenticationView: UIView {
     public weak var delegate: PredixAuthenticationViewDelegate? {
         didSet {
             authenticationInProgress = false
-            if let canUseTouchID = delegate?.useBiometricAuthentication {
-                configuration.useTouchID = canUseTouchID
-            }
         }
     }
     
@@ -112,8 +72,6 @@ open class PredixAuthenticationView: UIView {
     }
     
     private func initialization() {
-        initializeAuthenticationManager()
-        
         //A basic rectangle starting point.  The size doesn't matter because autolayout will adjust the frame for us once we set our bounds in layoutSubviews
         let baseRect = CGRect(x: 0, y: 0, width: 320, height: 480)
         let baseInsetX: CGFloat = 16.0
@@ -138,50 +96,6 @@ open class PredixAuthenticationView: UIView {
         scrollView.frame = self.bounds
     }
     
-    override open func didMoveToSuperview() {
-        super.didMoveToSuperview()
-    }
-    
-    open func beginAuthentication() {
-        guard !authenticationInProgress else {
-            return
-        }
-        authenticationInProgress = true
-        
-        if configuration.baseURL == nil, let serverUrlString = Bundle.main.object(forInfoDictionaryKey: "server_url") as? String {
-            configuration.baseURL = URL(string: serverUrlString)
-        }
-        
-        authenticationManager = AuthenticationManager(configuration: configuration)
-        authenticationManager?.authorizationHandler = UAAAuthorizationHandler()
-        if onelineHandler == nil {
-            onelineHandler = UAAServiceAuthenticationHandler()
-            onelineHandler?.authenticationServiceDelegate = self
-            onelineHandler?.refreshAuthenticationHandler = AuthenticationViewRefreshHandler(authenticationView: self)
-        }
-        authenticationManager?.onlineAuthenticationHandler = onelineHandler
-        
-        authenticationManager?.authenticate { status in
-            DispatchQueue.main.async {[weak self] in
-                self?.hideActivitySpinner()
-                if case AuthenticationManager.AuthenticationCompletionStatus.failed(let error) = status {
-                    self?.delegate?.authenticationComplete?(success: false, error: error)
-                } else {
-                    self?.delegate?.authenticationComplete?(success: true, error: nil)
-                }
-            }
-        }
-    }
-    
-    @objc func signIn(sender: Any) {
-        if let signInFunction = self.delegate?.signInPressed {
-            signInFunction()
-        } else {
-            showActivitySpinner()
-            credentialProvider?(emailTextField.text ?? "", passwordTextField.text ?? "")
-        }
-    }
-    
     fileprivate func showActivitySpinner() {
         self.activityIndicator.startAnimating()
         self.isUserInteractionEnabled = false
@@ -192,11 +106,6 @@ open class PredixAuthenticationView: UIView {
         self.activityIndicator.stopAnimating()
         self.isUserInteractionEnabled = true
         self.signInButton.setTitle("Sign In", for: .normal)
-    }
-    
-    private func initializeAuthenticationManager() {
-//        authenticationInProgress = false
-//        beginAuthentication()
     }
     
     private func setupScrollView(with rect: CGRect) {
@@ -304,7 +213,49 @@ private class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler 
 @objc public protocol PredixAuthenticationViewDelegate: NSObjectProtocol {
     @objc optional func signInPressed()
     @objc optional func authenticationComplete(success: Bool, error: Error?)
-    @objc optional var useBiometricAuthentication: Bool { get set }
+}
+
+//Authenticating logic
+extension PredixAuthenticationView {
+    open func beginAuthentication() {
+        guard !authenticationInProgress else {
+            return
+        }
+        authenticationInProgress = true
+        
+        if configuration.baseURL == nil, let serverUrlString = Bundle.main.object(forInfoDictionaryKey: "server_url") as? String {
+            configuration.baseURL = URL(string: serverUrlString)
+        }
+        
+        authenticationManager = AuthenticationManager(configuration: configuration)
+        authenticationManager?.authorizationHandler = UAAAuthorizationHandler()
+        if onelineHandler == nil {
+            onelineHandler = UAAServiceAuthenticationHandler()
+            onelineHandler?.authenticationServiceDelegate = self
+            onelineHandler?.refreshAuthenticationHandler = AuthenticationViewRefreshHandler(authenticationView: self)
+        }
+        authenticationManager?.onlineAuthenticationHandler = onelineHandler
+        
+        authenticationManager?.authenticate { status in
+            DispatchQueue.main.async {[weak self] in
+                self?.hideActivitySpinner()
+                if case AuthenticationManager.AuthenticationCompletionStatus.failed(let error) = status {
+                    self?.delegate?.authenticationComplete?(success: false, error: error)
+                } else {
+                    self?.delegate?.authenticationComplete?(success: true, error: nil)
+                }
+            }
+        }
+    }
+    
+    @objc func signIn(sender: Any) {
+        if let signInFunction = self.delegate?.signInPressed {
+            signInFunction()
+        } else {
+            showActivitySpinner()
+            credentialProvider?(emailTextField.text ?? "", passwordTextField.text ?? "")
+        }
+    }
 }
 
 extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {

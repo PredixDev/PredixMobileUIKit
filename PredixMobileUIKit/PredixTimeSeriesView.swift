@@ -14,7 +14,7 @@ import Charts
 open class PredixTimeSeriesView: LineChartView {
     
     @IBInspectable @IBOutlet
-    open var timeSeriesDataDelegate: PredixTimeSeriesViewDelegate? {
+    open weak var timeSeriesDataDelegate: PredixTimeSeriesViewDelegate? {
         didSet {
             if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesData {
                 self.showSpinner()
@@ -34,8 +34,8 @@ open class PredixTimeSeriesView: LineChartView {
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
     internal var dataFont: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    private let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-    private let grayView = UIView()
+    internal let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    internal let grayView = UIView()
     
     /// :nodoc:
     public override init(frame: CGRect) {
@@ -91,7 +91,6 @@ open class PredixTimeSeriesView: LineChartView {
         super.layoutSubviews()
         activityView.frame = self.bounds
         grayView.frame = self.bounds
-        activityView.autoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
         let highlight = self.lastHighlighted ?? Highlight(x: 0, y: 0, xPx: 0, yPx: 0, dataIndex: 0, dataSetIndex: 0, stackIndex: 0, axis: .left)
         self.highlightValue(highlight, callDelegate: true)
         if self.data != nil {
@@ -137,6 +136,9 @@ open class PredixTimeSeriesView: LineChartView {
         
         grayView.backgroundColor = .black
         grayView.alpha = 0.5
+        let fullyScreenResizeMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        grayView.autoresizingMask = fullyScreenResizeMask
+        activityView.autoresizingMask = fullyScreenResizeMask
         addSubview(activityView)
     }
     

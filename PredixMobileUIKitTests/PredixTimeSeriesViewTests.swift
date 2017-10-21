@@ -163,6 +163,23 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertTrue(tsView.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
     }
     
+    func testLayoutSubViewsSetsTheBoundsOnTheGrayViewAndActivityView() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.bounds = CGRect(x: 5, y: 1, width: 44, height: 1044)
+        view.layoutSubviews()
+        
+        XCTAssertEqual(view.bounds, view.grayView.frame)
+        XCTAssertEqual(view.bounds, view.activityView.frame)
+    }
+    
+    func testTheGrayViewAndActivityViewHaveTheCorrectAutoResizeMask() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        let expectedMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        
+        XCTAssertEqual(expectedMask, view.grayView.autoresizingMask)
+        XCTAssertEqual(expectedMask, view.activityView.autoresizingMask)
+    }
+    
     private func generateDummyData() -> [TimeSeriesTag] {
         var tags: [TimeSeriesTag] = []
         let range = 8
