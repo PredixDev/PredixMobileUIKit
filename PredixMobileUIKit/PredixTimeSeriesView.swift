@@ -8,6 +8,7 @@
 
 import Foundation
 import Charts
+import PredixMobileSDK
 
 /// PredixTimeSeriesView -- TimeSeries chart built with `LineChartView`.
 @IBDesignable
@@ -24,6 +25,37 @@ open class PredixTimeSeriesView: LineChartView {
                         self.hideSpinner()
                     }                    
                 }
+            } else if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesTags {
+                self.showSpinner()
+                dataFunction { (tags) in
+                    DispatchQueue.main.async {
+                        self.loadLabelsAndValues(tags ?? [])
+                        self.hideSpinner()
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBInspectable
+    open var darkTheme: Bool = false {
+        didSet {
+            if darkTheme {
+                self.backgroundColor = UIColor(hue: 51.0/255.0, saturation: 51.0/255.0, brightness: 51.0/255.0, alpha: 1.0)
+                self.chartBorderColor = UIColor.white
+                self.xAxisTextColor = UIColor.white
+                self.rightAxisTextColor = UIColor.white
+                self.leftAxisTextColor = UIColor.white
+                self.legendTextColor = UIColor.white
+                self.noDataColor = UIColor.white
+            } else {
+                self.backgroundColor = UIColor.clear
+                self.chartBorderColor = UIColor.black
+                self.xAxisTextColor = UIColor.black
+                self.leftAxisTextColor = UIColor.black
+                self.rightAxisTextColor = UIColor.black
+                self.legendTextColor = UIColor.black
+                self.noDataColor = UIColor.black
             }
         }
     }
@@ -53,10 +85,10 @@ open class PredixTimeSeriesView: LineChartView {
     
     /// Helper function to populate the timeseries chart based on timeseries tags array.
     /// - parameter tags: Array of `TimeSeriesTag`.
-    public func loadLabelsAndValues(_ tags: [TimeSeriesTag]) {
+    public func loadLabelsAndValues(_ timeSeriesTags: [TimeSeriesTag]) {
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
-        for tag in tags {
+        for tag in timeSeriesTags {
             var dataEntries: [ChartDataEntry] = []
             for dataPoint in tag.dataPoints {
                 let dataEntry: ChartDataEntry = ChartDataEntry(x: dataPoint.epochInMs, y: dataPoint.measure) //quality can be shown as an image
@@ -85,6 +117,26 @@ open class PredixTimeSeriesView: LineChartView {
         self.notifyDataSetChanged()
         self.setNeedsLayout()
         
+    }
+    
+    public func loadLabelsAndValues(_ tags: [Tag]) {
+        var responseTags: [TimeSeriesTag] = []
+        var dataPoints: [TimeSeriesDataPoint] = []
+        
+        for currentTag in tags {
+            for result in currentTag.results {
+                for values in result.values {
+                    let dPoints = values as! [Double]
+                    let dataPoint = TimeSeriesDataPoint(epochInMs: dPoints[0], measure: dPoints[1])
+                    dataPoints.append(dataPoint)
+                }
+                
+            }
+            let tag = TimeSeriesTag(name: currentTag.name, dataPoints: dataPoints, attributes: [:])
+            responseTags.append(tag)
+        }
+        
+        self.loadLabelsAndValues(responseTags)
     }
     
     open override func layoutSubviews() {
@@ -176,6 +228,7 @@ extension PredixTimeSeriesView: ChartViewDelegate {
 }
 
 @objc public protocol PredixTimeSeriesViewDelegate {
-    @objc optional func loadTimeSeriesData(completionHandler: @escaping ([TimeSeriesTag]?)->Void)
+    @objc optional func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?)->Void)
+    @objc optional func loadTimeSeriesData(completionHandler: @escaping ([Tag]?)->Void)
     @objc optional func valueSelected(timeSeriesView: PredixTimeSeriesView, timeScale: Double)
 }
