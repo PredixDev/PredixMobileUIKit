@@ -98,7 +98,7 @@ open class PredixCircleProgressView: UIView {
             if !thresholdColorMatching {
                 perceivedProgressColor = progressColor
                 progressLayer.colorCorrection = nil
-                progressLayer.setNeedsDisplay()
+                updateProgressLayer()
             } else {
                 adjustPerceivedProgressColor()
             }
@@ -111,7 +111,7 @@ open class PredixCircleProgressView: UIView {
     public var warningThreshold: CGFloat = 0.00 {
         didSet {
             progressLayer.warningThreshold = warningThreshold
-            progressLayer.setNeedsDisplay()
+            updateProgressLayer()
             adjustPerceivedProgressColor()
         }
     }
@@ -122,7 +122,7 @@ open class PredixCircleProgressView: UIView {
     public var criticalThreshold: CGFloat = 0.00 {
         didSet {
             progressLayer.criticalThreshold = criticalThreshold
-            progressLayer.setNeedsDisplay()
+            updateProgressLayer()
             adjustPerceivedProgressColor()
         }
     }
@@ -133,7 +133,7 @@ open class PredixCircleProgressView: UIView {
     public var thresholdLineLength: CGFloat = 20 {
         didSet {
             progressLayer.thresholdLineLength = thresholdLineLength
-            progressLayer.setNeedsDisplay()
+            updateProgressLayer()
         }
     }
     
@@ -142,7 +142,7 @@ open class PredixCircleProgressView: UIView {
     public var thresholdLineWidth: CGFloat = 1.0 {
         didSet {
             progressLayer.thresholdLineWidth = thresholdLineWidth
-            progressLayer.setNeedsDisplay()
+            updateProgressLayer()
         }
     }
     
@@ -159,7 +159,8 @@ open class PredixCircleProgressView: UIView {
     public var progressLineWidth: CGFloat = 10.0 {
         didSet {
             progressLayer.progressLineWidth = progressLineWidth
-            progressLayer.setNeedsDisplay()
+            self.createtitleSizeConstraints()
+            updateProgressLayer()
         }
     }
 
@@ -168,7 +169,8 @@ open class PredixCircleProgressView: UIView {
     public var circleLineWidth: CGFloat = 10.0 {
         didSet {
             progressLayer.circleLineWidth = circleLineWidth
-            progressLayer.setNeedsDisplay()
+            createtitleSizeConstraints()
+            updateProgressLayer()
         }
     }
     
@@ -178,7 +180,7 @@ open class PredixCircleProgressView: UIView {
     public var counterClockwise: Bool = false {
         didSet {
             progressLayer.counterClockwise = counterClockwise
-            progressLayer.setNeedsDisplay()
+            updateProgressLayer()
         }
     }
     
@@ -188,9 +190,9 @@ open class PredixCircleProgressView: UIView {
     @IBInspectable
     public var invertThresholds: Bool = false {
         didSet {
-            progressLayer.counterClockwise = counterClockwise
-            progressLayer.setNeedsDisplay()
-            adjustPerceivedProgressColor()
+            self.perceivedProgressColor = progressLayer.progressColor
+            updateProgressLayer()
+            self.adjustPerceivedProgressColor()
         }
     }
     
@@ -210,6 +212,8 @@ open class PredixCircleProgressView: UIView {
     }
 
     // MARK: private properties
+    internal var animationsEnabled = false // we don't need animations until the UI is displayed
+
     private var clickDuration: CFTimeInterval { return progressAnimationDuration / 360.0 }
     
     private var perceivedProgressColor: UIColor! {
@@ -230,6 +234,7 @@ open class PredixCircleProgressView: UIView {
     private var titleWidthConstraint: NSLayoutConstraint?
     
     // MARK: UIView overrides
+    
     /// :nodoc:
     open override class var layerClass: AnyClass {
         return CircleProgressLayer.self
@@ -238,12 +243,13 @@ open class PredixCircleProgressView: UIView {
     /// :nodoc:
     open override func didMoveToWindow() {
         layer.contentsScale = self.window?.screen.scale ?? layer.contentsScale
+        animationsEnabled = true
     }
     
     /// :nodoc:
     override open func setNeedsDisplay() {
         super.setNeedsDisplay()
-        progressLayer.setNeedsDisplay()
+        updateProgressLayer()
     }
     
     /// :nodoc:
@@ -258,6 +264,26 @@ open class PredixCircleProgressView: UIView {
         self.initialization()
     }
     
+    /// :nodoc:
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        adjustPerceivedProgressColor()
+        animationsEnabled = true
+    }
+    
+    /// :nodoc:
+    open override func prepareForInterfaceBuilder() {
+        animationsEnabled = false
+        self.initializeLayerValues(self.progressLayer)
+        self.adjustPerceivedProgressColor()
+        self.layer.setNeedsDisplay()
+    }
+    
+    /// :nodoc:
+    override open func setNeedsUpdateConstraints() {
+        self.createtitleSizeConstraints()
+    }
+    
     // MARK: private methods
     private func createtitleSizeConstraints() {
         
@@ -270,9 +296,14 @@ open class PredixCircleProgressView: UIView {
         
         self.titleWidthConstraint = self.title.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: CGFloat(self.titleScaleFactor))
         self.titleHeightConstraint = self.title.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: CGFloat(self.titleScaleFactor))
+
+        // shrink by 1.5 times the line width of the circle on each side (1.5 * 2 = 3.0). This places the title text just within the circle.
+        self.titleWidthConstraint?.constant = max(self.circleLineWidth, self.progressLineWidth) * -3.0
+        self.titleHeightConstraint?.constant = max(self.circleLineWidth, self.progressLineWidth) * -3.0
+        
         self.titleWidthConstraint?.isActive = true
         self.titleHeightConstraint?.isActive = true
-        self.setNeedsUpdateConstraints()
+        super.setNeedsUpdateConstraints()
     }
     
     private func initialization() {
@@ -301,21 +332,23 @@ open class PredixCircleProgressView: UIView {
     
     private func initializeLayerValues(_ layer: CircleProgressLayer) {
         
+        layer.colorCorrection = nil
         layer.clicks = self.clickDuration
         layer.progressColor = self.progressColor
-        layer.colorCorrection = nil
-        layer.criticalThreshold = self.criticalThreshold
-        layer.criticalThresholdColor = self.criticalThresholdColor
         layer.circleColor = self.circleColor
-        layer.progressLineWidth = self.progressLineWidth
-        layer.circleLineWidth = self.circleLineWidth
-        layer.progress = self.progress
-        layer.progressAnimationDelegate = self
+        layer.warningThresholdColor = self.warningThresholdColor
+        layer.criticalThresholdColor = self.criticalThresholdColor
+
         layer.thresholdLineLength = self.thresholdLineLength
         layer.thresholdLineWidth = self.thresholdLineWidth
-        layer.warningThreshold = self.warningThreshold
-        layer.warningThresholdColor = self.warningThresholdColor
+        layer.progressLineWidth = self.progressLineWidth
+        layer.circleLineWidth = self.circleLineWidth
         layer.counterClockwise = self.counterClockwise
+        layer.progressAnimationDelegate = self
+
+        layer.criticalThreshold = self.criticalThreshold
+        layer.warningThreshold = self.warningThreshold
+        layer.progress = self.progress
     }
     
     private func compare(threshold: CGFloat, progress: CGFloat) -> Bool {
@@ -327,7 +360,7 @@ open class PredixCircleProgressView: UIView {
         return progress >= threshold
     }
     
-    private func adjustPerceivedProgressColor() {
+    private func adjustPerceivedProgressColor(withAnimation: Bool = true) {
         
         guard thresholdColorMatching && (criticalThreshold > 0.0 || warningThreshold > 0.0) else { return }
         
@@ -353,14 +386,22 @@ open class PredixCircleProgressView: UIView {
         }
         
         if expectedColor != progressLayer.progressColor {
-            let animation = CABasicAnimation(keyPath: "colorCorrection")
-            animation.fromValue = progressLayer.progressColor.cgColor
-            animation.toValue = expectedColor.cgColor
-            animation.duration = 0.5
-            animation.isRemovedOnCompletion = false
-            self.perceivedProgressColor = expectedColor
-            progressLayer.add(animation, forKey: self.colorAnimationKey)
+            if animationsEnabled {
+                let animation = CABasicAnimation(keyPath: "colorCorrection")
+                animation.fromValue = progressLayer.progressColor.cgColor
+                animation.toValue = expectedColor.cgColor
+                animation.duration = 0.5
+                animation.isRemovedOnCompletion = false
+                self.perceivedProgressColor = expectedColor
+                progressLayer.add(animation, forKey: self.colorAnimationKey)
+            } else {
+                self.perceivedProgressColor = expectedColor
+            }
         }
+    }
+    
+    func updateProgressLayer() {
+        self.progressLayer.setNeedsDisplay()
     }
 
     // MARK: Public Methods

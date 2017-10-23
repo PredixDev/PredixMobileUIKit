@@ -39,7 +39,7 @@ internal class CircleProgressLayer: CALayer {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     private var radius: CGFloat {
-        return (bounds.midX - (progressLineWidth * 0.5)) * paddingSpaceFactor
+        return (bounds.midX - (max(self.progressLineWidth, self.circleLineWidth) * 0.5)) * paddingSpaceFactor
     }
     
     // MARK: Animation properties
@@ -94,13 +94,13 @@ internal class CircleProgressLayer: CALayer {
             self.circleColor = layer.circleColor
             self.progressLineWidth = layer.progressLineWidth
             self.circleLineWidth = layer.circleLineWidth
-            self.progress = layer.progress
             self.progressAnimationDelegate = layer.progressAnimationDelegate
             self.thresholdLineLength = layer.thresholdLineLength
             self.thresholdLineWidth = layer.thresholdLineWidth
             self.warningThreshold = layer.warningThreshold
             self.warningThresholdColor = layer.warningThresholdColor
             self.counterClockwise = layer.counterClockwise
+            self.progress = layer.progress
         }
         super.init(layer: layer)
     }
@@ -123,7 +123,6 @@ internal class CircleProgressLayer: CALayer {
         self.criticalThreshold =  CGFloat(aDecoder.decodeDouble(forKey: "criticalThreshold"))
         self.progressLineWidth =  CGFloat(aDecoder.decodeDouble(forKey: "progressLineWidth"))
         self.circleLineWidth =  CGFloat(aDecoder.decodeDouble(forKey: "circleLineWidth"))
-        self.progress =  CGFloat(aDecoder.decodeDouble(forKey: "progress"))
         self.thresholdLineLength =  CGFloat(aDecoder.decodeDouble(forKey: "thresholdLineLength"))
         self.thresholdLineWidth =  CGFloat(aDecoder.decodeDouble(forKey: "thresholdLineWidth"))
         self.warningThreshold =  CGFloat(aDecoder.decodeDouble(forKey: "warningThreshold"))
@@ -135,7 +134,8 @@ internal class CircleProgressLayer: CALayer {
         if aDecoder.containsValue(forKey: "colorCorrection") {
             self.colorCorrection = (aDecoder.decodeObject(forKey: "colorCorrection") as? UIColor)?.cgColor
         }
-        
+        self.progress =  CGFloat(aDecoder.decodeDouble(forKey: "progress"))
+
     }
     
     override func encode(with aCoder: NSCoder) {

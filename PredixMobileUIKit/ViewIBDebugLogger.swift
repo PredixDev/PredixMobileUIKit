@@ -26,6 +26,8 @@ extension UIView {
                 let data = "\(formatter.string(from: Date())) \(application) \(message)\n".data(using: .utf8, allowLossyConversion: true) ?? Data()
                 fileHandle.write(data)
             }
+        #else
+            print(message)
         #endif
     }
 }
