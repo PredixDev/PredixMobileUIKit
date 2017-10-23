@@ -1,2 +1,2 @@
-binary "https://raw.githubusercontent.com/PredixDev/PredixMobileSDK/master/Carthage/ios.json" "3.7"
+binary "https://raw.githubusercontent.com/PredixDev/PredixMobileSDK/master/Carthage/ios.json" "3.8"
 github "danielgindi/Charts" "v3.0.4"
