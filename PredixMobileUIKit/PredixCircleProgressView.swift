@@ -283,7 +283,6 @@ open class PredixCircleProgressView: UIView {
     override open func setNeedsUpdateConstraints() {
         self.createtitleSizeConstraints()
     }
-
     
     // MARK: private methods
     private func createtitleSizeConstraints() {
