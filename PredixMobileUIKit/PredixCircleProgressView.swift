@@ -235,10 +235,6 @@ open class PredixCircleProgressView: UIView {
     
     // MARK: UIView overrides
     
-    override open func setNeedsUpdateConstraints() {
-        self.createtitleSizeConstraints()
-    }
-    
     /// :nodoc:
     open override class var layerClass: AnyClass {
         return CircleProgressLayer.self
@@ -267,19 +263,27 @@ open class PredixCircleProgressView: UIView {
         super.init(coder: aDecoder)
         self.initialization()
     }
-
+    
+    /// :nodoc:
     open override func awakeFromNib() {
         super.awakeFromNib()
         adjustPerceivedProgressColor()
         animationsEnabled = true
     }
     
+    /// :nodoc:
     open override func prepareForInterfaceBuilder() {
         animationsEnabled = false
         self.initializeLayerValues(self.progressLayer)
         self.adjustPerceivedProgressColor()
         self.layer.setNeedsDisplay()
     }
+    
+    /// :nodoc:
+    override open func setNeedsUpdateConstraints() {
+        self.createtitleSizeConstraints()
+    }
+
     
     // MARK: private methods
     private func createtitleSizeConstraints() {
