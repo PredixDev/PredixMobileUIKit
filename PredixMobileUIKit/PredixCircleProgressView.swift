@@ -286,11 +286,13 @@ open class PredixCircleProgressView: UIView {
     
     // MARK: private methods
     private func createtitleSizeConstraints() {
-        
+
         if let heightConstraint = self.titleHeightConstraint {
+            self.title.removeConstraint(heightConstraint)
             self.removeConstraint(heightConstraint)
         }
         if let widthConstraint = self.titleWidthConstraint {
+            self.title.removeConstraint(widthConstraint)
             self.removeConstraint(widthConstraint)
         }
         
@@ -301,6 +303,9 @@ open class PredixCircleProgressView: UIView {
         self.titleWidthConstraint?.constant = max(self.circleLineWidth, self.progressLineWidth) * -3.0
         self.titleHeightConstraint?.constant = max(self.circleLineWidth, self.progressLineWidth) * -3.0
         
+        self.titleWidthConstraint?.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
+        self.titleHeightConstraint?.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
+
         self.titleWidthConstraint?.isActive = true
         self.titleHeightConstraint?.isActive = true
         super.setNeedsUpdateConstraints()
@@ -324,6 +329,10 @@ open class PredixCircleProgressView: UIView {
         
         title.textAlignment = .center
         title.baselineAdjustment = .alignCenters
+        title.adjustsFontForContentSizeCategory = true
+        title.allowsDefaultTighteningForTruncation = true
+        title.numberOfLines = 1
+        title.isUserInteractionEnabled = false
         
         self.title.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         self.title.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
