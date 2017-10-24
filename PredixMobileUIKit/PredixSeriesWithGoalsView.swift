@@ -47,6 +47,8 @@ open class PredixSeriesWithGoalsView: LineChartView {
     /// Helper function to populate the timeseries chart based on timeseries tags array.
     /// - parameter tags: Array of `SeriesData`.
     public func loadLabelsAndValues(_ data: [TimeSeriesTag], limits:[TimeSeriesLimitLine]) {
+        self.xAxis.valueFormatter = DateFormatterValueFormatter(self.horizontalDateFormat)
+        
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
         for dataPoints in data {
@@ -118,7 +120,6 @@ open class PredixSeriesWithGoalsView: LineChartView {
         
         self.legend.enabled = false
         
-        self.xAxis.valueFormatter = DateFormatterValueFormatter(self.horizontalDateFormat)
         self.xAxis.labelPosition = .bottom
         self.chartDescription?.text = ""
         
