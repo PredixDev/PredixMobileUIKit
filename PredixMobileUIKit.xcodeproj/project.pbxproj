@@ -35,8 +35,6 @@
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
 		875730E91F9E95C8004AC6C7 /* PredixSeriesWithGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730E51F9E95C8004AC6C7 /* PredixSeriesWithGoalsView.swift */; };
 		875730EC1F9E9608004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730EB1F9E9607004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift */; };
-		875730F31F9E979E004AC6C7 /* SeriesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730F21F9E979E004AC6C7 /* SeriesData.swift */; };
-		875730F51F9E97F4004AC6C7 /* SeriesDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730F41F9E97F4004AC6C7 /* SeriesDataPoint.swift */; };
 		879BBF071F9FC7D900FA87BF /* TimeSeriesLimitLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,8 +117,6 @@
 		4FF131421F7AF83C004861A7 /* cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = cartfile; sourceTree = "<group>"; };
 		875730E51F9E95C8004AC6C7 /* PredixSeriesWithGoalsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixSeriesWithGoalsView.swift; sourceTree = "<group>"; };
 		875730EB1F9E9607004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PredixSeriesWithGoalsView+IBInspectable.swift"; sourceTree = "<group>"; };
-		875730F21F9E979E004AC6C7 /* SeriesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesData.swift; sourceTree = "<group>"; };
-		875730F41F9E97F4004AC6C7 /* SeriesDataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesDataPoint.swift; sourceTree = "<group>"; };
 		879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeriesLimitLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,8 +167,6 @@
 		4F503AF51F6C560900B8EE10 /* PredixMobileUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				875730F41F9E97F4004AC6C7 /* SeriesDataPoint.swift */,
-				875730F21F9E979E004AC6C7 /* SeriesData.swift */,
 				875730EB1F9E9607004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift */,
 				875730E51F9E95C8004AC6C7 /* PredixSeriesWithGoalsView.swift */,
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
@@ -381,9 +375,7 @@
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,
 				374DC80B1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift in Sources */,
 				374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */,
-				875730F51F9E97F4004AC6C7 /* SeriesDataPoint.swift in Sources */,
 				4F627A371F8ECAFB00CB4AEE /* CircleProgressLayer.swift in Sources */,
-				875730F31F9E979E004AC6C7 /* SeriesData.swift in Sources */,
 				875730EC1F9E9608004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift in Sources */,
 				4F627A351F8E7E4400CB4AEE /* Utilities.swift in Sources */,
 				374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */,
