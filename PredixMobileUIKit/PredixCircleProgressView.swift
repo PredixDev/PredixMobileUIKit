@@ -369,9 +369,27 @@ open class PredixCircleProgressView: UIView {
         return progress >= threshold
     }
     
-    private func adjustPerceivedProgressColor(withAnimation: Bool = true) {
+    private func animateProgressColor(to expectedColor: UIColor) {
+
+        if animationsEnabled && expectedColor != progressLayer.progressColor {
+            let animation = CABasicAnimation(keyPath: "colorCorrection")
+            animation.fromValue = progressLayer.progressColor.cgColor
+            animation.toValue = expectedColor.cgColor
+            animation.duration = 0.5
+            animation.isRemovedOnCompletion = false
+            progressLayer.add(animation, forKey: self.colorAnimationKey)
+        }
         
-        guard thresholdColorMatching && (criticalThreshold > 0.0 || warningThreshold > 0.0) else { return }
+        self.perceivedProgressColor = expectedColor
+
+    }
+    
+    private func adjustPerceivedProgressColor() {
+        
+        guard thresholdColorMatching && (criticalThreshold > 0.0 || warningThreshold > 0.0) else {
+            self.animateProgressColor(to: self.progressColor)
+            return
+        }
         
         var expectedColor = self.progressColor
 
@@ -394,19 +412,7 @@ open class PredixCircleProgressView: UIView {
             expectedColor = secondColor
         }
         
-        if expectedColor != progressLayer.progressColor {
-            if animationsEnabled {
-                let animation = CABasicAnimation(keyPath: "colorCorrection")
-                animation.fromValue = progressLayer.progressColor.cgColor
-                animation.toValue = expectedColor.cgColor
-                animation.duration = 0.5
-                animation.isRemovedOnCompletion = false
-                self.perceivedProgressColor = expectedColor
-                progressLayer.add(animation, forKey: self.colorAnimationKey)
-            } else {
-                self.perceivedProgressColor = expectedColor
-            }
-        }
+        animateProgressColor(to: expectedColor)
     }
     
     func updateProgressLayer() {
