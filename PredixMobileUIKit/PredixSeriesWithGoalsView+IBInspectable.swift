@@ -51,7 +51,7 @@ extension PredixSeriesWithGoalsView {
             let goalValue = Double(getRandom(50, ceiling: maxValue))
             var goalPoints: [SeriesDataPoint] = []
             let startPoint = SeriesDataPoint(label:dataPoints[0].label, measure: goalValue)
-            let endPoint   = SeriesDataPoint(label:dataPoints[-1].label, measure: goalValue)
+            let endPoint   = SeriesDataPoint(label:dataPoints[dataPoints.count-1].label, measure: goalValue)
             goalPoints.append(startPoint)
             goalPoints.append(endPoint)
             

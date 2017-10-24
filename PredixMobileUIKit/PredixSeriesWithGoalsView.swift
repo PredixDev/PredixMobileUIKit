@@ -9,7 +9,7 @@
 import Foundation
 import Charts
 
-/// PredixTimeSeriesView -- TimeSeries chart built with `LineChartView`.
+/// PredixSeriesWithGoalsView -- Line Area Series chart  with optional goal lines.
 @IBDesignable
 open class PredixSeriesWithGoalsView: LineChartView {
     
@@ -91,5 +91,36 @@ open class PredixSeriesWithGoalsView: LineChartView {
         self.pinchZoomEnabled = true
         
         self.legend.enabled = false
+        
+        self.xAxis.valueFormatter = DateFormatterValueFormatter()
     }
 }
+
+open class DateFormatterValueFormatter: NSObject, IAxisValueFormatter {
+    open var formatter: DateFormatter?
+    fileprivate var stringReps: [String]?
+
+    public override init()
+    {
+        super.init()
+        
+        self.formatter = DateFormatter()
+        self.stringReps = self.formatter?.shortWeekdaySymbols
+    }
+    
+    @objc public init(formatter: DateFormatter)
+    {
+        super.init()
+        
+        self.formatter = formatter
+        self.stringReps = self.formatter?.shortWeekdaySymbols
+    }
+    
+    public func stringForValue(_ value: Double,
+                               axis: AxisBase?) -> String {
+        let idx = Calendar.current.component(.weekday, from: Date(timeIntervalSince1970: value))
+        return self.stringReps?[idx-1] ?? ""
+    }
+    
+}
+

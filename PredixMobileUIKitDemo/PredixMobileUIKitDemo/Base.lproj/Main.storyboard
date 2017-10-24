@@ -730,5 +730,95 @@
             </objects>
             <point key="canvasLocation" x="1205.5999999999999" y="-62.068965517241381"/>
         </scene>
+        <!--Series With Goals Chart View Controller-->
+        <scene sceneID="0ir-Af-Jgi">
+            <objects>
+                <viewController storyboardIdentifier="SeriesWithGoalsChart" id="9Hk-7R-s3P" customClass="SeriesWithGoalsChartViewController" customModule="PredixMobileUIKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tpT-gu-mDe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZE1-I9-E1O">
+                                <rect key="frame" x="0.0" y="35" width="375" height="632"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dDS-hY-Mdb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="424"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmb-U8-umR" customClass="PredixSeriesWithGoalsView" customModule="PredixMobileUIKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="424"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AOE-84-u7Q">
+                                        <rect key="frame" x="10" y="482" width="355" height="150"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Data Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZW-84-gZx">
+                                                <rect key="frame" x="123" y="0.0" width="109.5" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="3" maxValue="21" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-pB-X1Y">
+                                                <rect key="frame" x="8" y="28" width="339" height="48"/>
+                                                <color key="tintColor" red="1" green="0.51283643629999998" blue="0.35435642020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="sliderValueChanged:" destination="9Hk-7R-s3P" eventType="valueChanged" id="BaR-Dc-JMw"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Goal lines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sat-1f-hBH">
+                                                <rect key="frame" x="128.5" y="75" width="98" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="yq4-iA-SPL">
+                                                <rect key="frame" x="8" y="103" width="339" height="48"/>
+                                                <color key="tintColor" red="1" green="0.51283643629999998" blue="0.35435642020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="sliderValueChanged:" destination="9Hk-7R-s3P" eventType="valueChanged" id="74M-cW-l8F"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yq4-iA-SPL" firstAttribute="leading" secondItem="AOE-84-u7Q" secondAttribute="leading" constant="10" id="Eny-Lv-LHT"/>
+                                            <constraint firstAttribute="trailing" secondItem="IDf-pB-X1Y" secondAttribute="trailing" constant="10" id="Njd-En-nqd"/>
+                                            <constraint firstItem="IDf-pB-X1Y" firstAttribute="leading" secondItem="AOE-84-u7Q" secondAttribute="leading" constant="10" id="cM0-lK-UqO"/>
+                                            <constraint firstAttribute="trailing" secondItem="yq4-iA-SPL" secondAttribute="trailing" constant="10" id="dfQ-Gd-EXy"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="xJ5-Jb-Kei"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dDS-hY-Mdb" firstAttribute="leading" secondItem="ZE1-I9-E1O" secondAttribute="leading" id="IVv-jh-DnF"/>
+                                    <constraint firstAttribute="bottom" secondItem="AOE-84-u7Q" secondAttribute="bottom" id="K2F-Ud-mb6"/>
+                                    <constraint firstAttribute="trailing" secondItem="dDS-hY-Mdb" secondAttribute="trailing" id="UuA-P1-u6V"/>
+                                    <constraint firstItem="AOE-84-u7Q" firstAttribute="leading" secondItem="ZE1-I9-E1O" secondAttribute="leading" constant="10" id="YmU-e0-K0g"/>
+                                    <constraint firstAttribute="trailing" secondItem="AOE-84-u7Q" secondAttribute="trailing" constant="10" id="ftA-CF-yyY"/>
+                                    <constraint firstItem="dDS-hY-Mdb" firstAttribute="top" secondItem="ZE1-I9-E1O" secondAttribute="top" id="qgk-JY-mvF"/>
+                                    <constraint firstAttribute="bottom" secondItem="dDS-hY-Mdb" secondAttribute="bottom" constant="208" id="sa1-Mg-pdg"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lmb-U8-umR" secondAttribute="bottom" constant="208" id="tnk-p1-Mts"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZE1-I9-E1O" firstAttribute="top" secondItem="GM3-Kv-iEl" secondAttribute="top" constant="15" id="5iE-iC-xY4"/>
+                            <constraint firstItem="GM3-Kv-iEl" firstAttribute="trailing" secondItem="ZE1-I9-E1O" secondAttribute="trailing" id="7Uz-rb-Zna"/>
+                            <constraint firstItem="ZE1-I9-E1O" firstAttribute="leading" secondItem="GM3-Kv-iEl" secondAttribute="leading" id="GPc-5G-Bkh"/>
+                            <constraint firstItem="GM3-Kv-iEl" firstAttribute="bottom" secondItem="ZE1-I9-E1O" secondAttribute="bottom" id="Jv0-YD-cj3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GM3-Kv-iEl"/>
+                    </view>
+                    <connections>
+                        <outlet property="chartView" destination="Lmb-U8-umR" id="BOZ-t0-Pp1"/>
+                        <outlet property="goalLinesSlider" destination="yq4-iA-SPL" id="Tj3-Gu-9cV"/>
+                        <outlet property="valuesRangeSlider" destination="IDf-pB-X1Y" id="gdr-JA-VK4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbN-f3-Crs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1206" y="784"/>
+        </scene>
     </scenes>
 </document>

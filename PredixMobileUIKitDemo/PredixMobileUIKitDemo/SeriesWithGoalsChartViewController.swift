@@ -20,7 +20,7 @@ class SeriesWithGoalsChartViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        chartView.delegate = self
+        self.chartView.delegate = self
         self.chartView.loadLabelsAndValues(self.generateDummyData(7, numGoalLines: 2))
         
     }
@@ -54,13 +54,8 @@ class SeriesWithGoalsChartViewController: UIViewController {
         let maxValue = 250
         var date = Date()
         
-//        let dateFormatter = DateFormatter()
-//        let daysOfWeek = dateFormatter.shortWeekdaySymbols
-//
         var dataPoints: [SeriesDataPoint] = []
         for _ in 1 ... numPoints {
-            // let dayIdx = Calendar.current.component(.weekday, from: myDate)
-            // let label = daysOfWeek[dayIdx]
             let label = date.timeIntervalSince1970
             let measure = Double(getRandom(50, ceiling: maxValue))
             let dataPoint = SeriesDataPoint(label:label, measure: measure)
