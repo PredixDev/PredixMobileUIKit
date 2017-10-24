@@ -13,16 +13,19 @@ import Charts
 class SeriesWithGoalsChartViewController: UIViewController {
 
     @IBOutlet weak var chartView: PredixSeriesWithGoalsView!
-    @IBOutlet weak var valuesRangeSlider: UISlider!
-    @IBOutlet weak var goalLinesSlider: UISlider!
+    @IBOutlet weak var numPointsSlider: UISlider!
+    @IBOutlet weak var limitLinesSlider: UISlider!
+    @IBOutlet weak var numPointsLabel: UILabel!
+    @IBOutlet weak var limitLinesLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.chartView.delegate = self
-        self.chartView.loadLabelsAndValues(self.generateDummyData(7, numGoalLines: 2))
         
+        let (data, limits) = self.generateDummyData(7, numLimitLines: 2)
+        self.chartView.loadLabelsAndValues(data, limits:limits)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,43 +44,45 @@ class SeriesWithGoalsChartViewController: UIViewController {
     */
 
     @IBAction func sliderValueChanged(_ sender: Any) {
-        let numPoints = Int(self.valuesRangeSlider.value)
-        let numGoalLines = Int(self.goalLinesSlider.value)
-        self.chartView.loadLabelsAndValues(self.generateDummyData(numPoints, numGoalLines: numGoalLines))
+        let numPoints = Int(self.numPointsSlider.value)
+        let numLimitLines = Int(self.limitLinesSlider.value)
+        let (data, limits) = self.generateDummyData(numPoints, numLimitLines: numLimitLines)
+        self.chartView.loadLabelsAndValues(data, limits:limits)
     }
 
     // MARK: - private functions
-    private func generateDummyData(_ numPoints: Int, numGoalLines: Int) -> [SeriesData] {
-        print("generating dummy data maxValue: \(numPoints), no of datasets: \(numGoalLines)")
-        var data: [SeriesData] = []
-
-        let maxValue = 250
-        var date = Date()
+    private func generateDummyData(_ numPoints: Int, numLimitLines: Int) -> ([TimeSeriesTag], [TimeSeriesLimitLine]) {
+        var data: [TimeSeriesTag] = []
         
-        var dataPoints: [SeriesDataPoint] = []
+        var colors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
+        
+        self.numPointsLabel.text = "\(numPoints) Data Points Selected"
+        self.limitLinesLabel.text = "\(numLimitLines) Limit Lines Selected"
+        let maxValue = 250
+        let minValue = 50
+        var date = Date()
+        date = (Calendar.current as NSCalendar).date(byAdding: .day, value: (-1 * (numPoints-1)), to: date, options: [])!
+        
+        var dataPoints: [TimeSeriesDataPoint] = []
         for _ in 1 ... numPoints {
-            let label = date.timeIntervalSince1970
-            let measure = Double(getRandom(50, ceiling: maxValue))
-            let dataPoint = SeriesDataPoint(label:label, measure: measure)
+            let epochInMs = date.timeIntervalSince1970
+            let measure = Double(getRandom(minValue, ceiling: maxValue))
+            print ("generateDummyData \(epochInMs) \(date)")
+            let dataPoint = TimeSeriesDataPoint(epochInMs:epochInMs, measure: measure)
             dataPoints.append(dataPoint)
             date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: date, options: [])!
-            print(date)
         }
-        let series = SeriesData(name: "", dataPoints: dataPoints, attributes: [:])
+        let series = TimeSeriesTag(name: "", dataPoints: dataPoints)
         data.append(series)
         
-        for _ in 1 ... numGoalLines {
-            let goalValue = Double(getRandom(50, ceiling: maxValue))
-            var goalPoints: [SeriesDataPoint] = []
-            let startPoint = SeriesDataPoint(label:dataPoints[0].label, measure: goalValue)
-            let endPoint   = SeriesDataPoint(label:dataPoints[dataPoints.count-1].label, measure: goalValue)
-            goalPoints.append(startPoint)
-            goalPoints.append(endPoint)
-            
-            let series = SeriesData(name: "", dataPoints: goalPoints, attributes: [:])
-            data.append(series)
+        var limits:[TimeSeriesLimitLine] = []
+        for idx in 1 ... numLimitLines {
+            let color: UIColor = colors[idx % colors.count]
+            let limitValue = Double(getRandom(minValue, ceiling: maxValue))
+            let limit = TimeSeriesLimitLine(measure:limitValue, color:color)
+            limits.append(limit)
         }
-        return data
+        return (data, limits)
     }
     
     private func getRandom(_ floor: Int, ceiling: Int) -> Int {

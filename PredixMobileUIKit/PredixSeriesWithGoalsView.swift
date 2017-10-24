@@ -16,6 +16,12 @@ open class PredixSeriesWithGoalsView: LineChartView {
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
     
+    open var fillColor:UIColor?
+    
+    open var horizontalDateFormat: String = "EEE"
+    
+    open var verticalNumberFormat: String?
+    
     /// :nodoc:
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,13 +46,13 @@ open class PredixSeriesWithGoalsView: LineChartView {
     
     /// Helper function to populate the timeseries chart based on timeseries tags array.
     /// - parameter tags: Array of `SeriesData`.
-    public func loadLabelsAndValues(_ data: [SeriesData]) {
+    public func loadLabelsAndValues(_ data: [TimeSeriesTag], limits:[TimeSeriesLimitLine]) {
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
         for dataPoints in data {
             var dataEntries: [ChartDataEntry] = []
             for dataPoint in dataPoints.dataPoints {
-                let dataEntry: ChartDataEntry = ChartDataEntry(x: dataPoint.label, y: dataPoint.measure)
+                let dataEntry: ChartDataEntry = ChartDataEntry(x: dataPoint.epochInMs, y: dataPoint.measure)
                 dataEntries.append(dataEntry)
             }
             colorCounter += 1
@@ -54,15 +60,35 @@ open class PredixSeriesWithGoalsView: LineChartView {
             let dataSet: LineChartDataSet = LineChartDataSet(values: dataEntries, label: "")
             dataSet.lineWidth = 1.5
             dataSet.mode = .horizontalBezier
-            dataSet.circleRadius = 0
-            dataSet.circleHoleRadius = 0.0
+            dataSet.lineCapType = .round
+            //dataSet.circleRadius = 0
+            //dataSet.circleHoleRadius = 0.0
             
-            let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
+//            let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
+            
+            let color = self.fillColor ?? .lightGray
             dataSet.setColor(color)
-            dataSet.setCircleColor(color)
+            //dataSet.setCircleColor(color)
             dataSet.colors = [color]
-            dataSet.circleColors = [.red]
+            //dataSet.circleColors = [.red]
+            
+            dataSet.drawValuesEnabled = false
+            dataSet.drawCirclesEnabled = false
+            dataSet.drawFilledEnabled = true
+            dataSet.fillColor = color
+            
             dataSets.append(dataSet)
+            
+            self.xAxis.setLabelCount(dataPoints.dataPoints.count, force:true)
+        }
+        
+        // draw horizontal limit lines
+        self.leftAxis.removeAllLimitLines()
+        for limit in limits {
+            let limitLine = ChartLimitLine()
+            limitLine.limit = limit.measure
+            limitLine.lineColor = limit.color
+            self.leftAxis.addLimitLine(limitLine)
         }
         
         let data: LineChartData = LineChartData(dataSets: dataSets)
@@ -92,35 +118,60 @@ open class PredixSeriesWithGoalsView: LineChartView {
         
         self.legend.enabled = false
         
-        self.xAxis.valueFormatter = DateFormatterValueFormatter()
+        self.xAxis.valueFormatter = DateFormatterValueFormatter(self.horizontalDateFormat)
+        self.xAxis.labelPosition = .bottom
+        self.chartDescription?.text = ""
+        
+        self.xAxis.drawGridLinesEnabled = false
+        
+        self.leftAxis.drawGridLinesEnabled = true
+        //self.leftAxis.gridLineDashLengths = [5.0, 5.0];
+        self.leftAxis.gridLineWidth = 0.5
+        self.leftAxis.drawZeroLineEnabled = false;
+        self.leftAxis.gridColor = .lightGray
+        self.leftAxis.drawLimitLinesBehindDataEnabled = true;
     }
 }
 
-open class DateFormatterValueFormatter: NSObject, IAxisValueFormatter {
-    open var formatter: DateFormatter?
-    fileprivate var stringReps: [String]?
+class DateFormatterValueFormatter: NSObject, IAxisValueFormatter {
+    fileprivate var formatter: DateFormatter?
 
     public override init()
     {
         super.init()
         
         self.formatter = DateFormatter()
-        self.stringReps = self.formatter?.shortWeekdaySymbols
+        self.formatter?.dateFormat = "EEE"
     }
     
-    @objc public init(formatter: DateFormatter)
+    public init(_ format:String)
     {
         super.init()
         
-        self.formatter = formatter
-        self.stringReps = self.formatter?.shortWeekdaySymbols
+        self.formatter = DateFormatter()
+        self.formatter?.dateFormat = format
+        
+        print ("** \(format)")
     }
     
     public func stringForValue(_ value: Double,
                                axis: AxisBase?) -> String {
-        let idx = Calendar.current.component(.weekday, from: Date(timeIntervalSince1970: value))
-        return self.stringReps?[idx-1] ?? ""
+        let today = Date()
+        let otherDay = Date(timeIntervalSince1970: value)
+        
+        let todayDay = Calendar.current.component(.day, from: today)
+        let todayMonth = Calendar.current.component(.month, from: today)
+        let todayYear = Calendar.current.component(.year, from: today)
+        
+        let day = Calendar.current.component(.day, from: otherDay)
+        let month = Calendar.current.component(.month, from: otherDay)
+        let year = Calendar.current.component(.year, from: otherDay)
+        
+        if todayDay == day && todayMonth == month && todayYear == year {
+            return "Today"
+        }
+        
+        return self.formatter?.string(from: otherDay) ?? ""
     }
-    
 }
 

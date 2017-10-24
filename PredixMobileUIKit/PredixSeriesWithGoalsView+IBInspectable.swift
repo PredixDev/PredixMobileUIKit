@@ -23,43 +23,36 @@ extension PredixSeriesWithGoalsView {
     private func initializeWithDummyData() {
         
         let numPoints = 7
-        let numGoalLines = 2
+        let numLimitLines = 2
         
-        print("generating dummy data maxValue: \(numPoints), no of datasets: \(numGoalLines)")
-        var data: [SeriesData] = []
+        var data: [TimeSeriesTag] = []
+        var colors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
         
         let maxValue = 250
+        let minValue = 50
         var date = Date()
+        date = (Calendar.current as NSCalendar).date(byAdding: .day, value: (-1 * (numPoints-1)), to: date, options: [])!
         
-//        let dateFormatter = DateFormatter()
-//        let daysOfWeek = dateFormatter.shortWeekdaySymbols
-        
-        var dataPoints: [SeriesDataPoint] = []
+        var dataPoints: [TimeSeriesDataPoint] = []
         for _ in 1 ... numPoints {
-            // let dayIdx = Calendar.current.component(.weekday, from: myDate)
-            // let label = daysOfWeek[dayIdx]
-            let label = date.timeIntervalSince1970
-            let measure = Double(getRandom(50, ceiling: maxValue))
-            let dataPoint = SeriesDataPoint(label:label, measure: measure)
+            let epochInMs = date.timeIntervalSince1970
+            let measure = Double(getRandom(minValue, ceiling: maxValue))
+            let dataPoint = TimeSeriesDataPoint(epochInMs:epochInMs, measure: measure)
             dataPoints.append(dataPoint)
             date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: date, options: [])!
         }
-        let series = SeriesData(name: "", dataPoints: dataPoints, attributes: [:])
+        let series = TimeSeriesTag(name: "", dataPoints: dataPoints)
         data.append(series)
         
-        for _ in 1 ... numGoalLines {
-            let goalValue = Double(getRandom(50, ceiling: maxValue))
-            var goalPoints: [SeriesDataPoint] = []
-            let startPoint = SeriesDataPoint(label:dataPoints[0].label, measure: goalValue)
-            let endPoint   = SeriesDataPoint(label:dataPoints[dataPoints.count-1].label, measure: goalValue)
-            goalPoints.append(startPoint)
-            goalPoints.append(endPoint)
-            
-            let series = SeriesData(name: "", dataPoints: goalPoints, attributes: [:])
-            data.append(series)
+        var limits:[TimeSeriesLimitLine] = []
+        for idx in 1 ... numLimitLines {
+            let limitValue = Double(getRandom(minValue, ceiling: maxValue))
+            let color: UIColor = colors[idx % colors.count]
+            let limit = TimeSeriesLimitLine(measure:limitValue, color:color)
+            limits.append(limit)
         }
         
-        loadLabelsAndValues(data)
+        loadLabelsAndValues(data, limits:limits)
     }
     
     private func getRandom(_ floor: Int, ceiling: Int) -> Int {
@@ -123,33 +116,34 @@ extension PredixSeriesWithGoalsView {
 //        }
 //    }
 //    
-//    @IBInspectable
-//    var legendAlignedLeft: Bool {
-//        get {
-//            return legend.horizontalAlignment == .left
-//        }
-//        set(newValue) {
-//            if newValue {
-//                legend.horizontalAlignment = .left
-//            } else {
-//                legend.horizontalAlignment = .right
-//            }
-//        }
-//        
-//    }
-//    
-//    @IBInspectable
-//    var legendAlignedTop: Bool {
-//        get {
-//            return legend.verticalAlignment == .top
-//        }
-//        set(newValue) {
-//            if newValue {
-//                legend.verticalAlignment = .top
-//            } else {
-//                legend.verticalAlignment = .bottom
-//            }
-//        }
-//    }
+    @IBInspectable
+    var xAxisDateFormat: String? {
+        get {
+            return self.horizontalDateFormat
+        }
+        set(newValue) {
+            self.horizontalDateFormat = newValue!
+        }
+    }
+    
+    @IBInspectable
+    var yAxisNumberFormat: String? {
+        get {
+            return self.verticalNumberFormat
+        }
+        set(newValue) {
+            self.verticalNumberFormat = newValue
+        }
+    }
+    
+    @IBInspectable
+    var seriesFillColor: UIColor? {
+        get {
+            return self.fillColor ?? .lightGray
+        }
+        set(newValue) {
+            self.fillColor = newValue
+        }
+    }
  
 }

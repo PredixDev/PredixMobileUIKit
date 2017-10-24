@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttF-Dt-Oqd" customClass="PredixDonutView" customModule="PredixMobileUIKit">
-                                <rect key="frame" x="0.0" y="20" width="0.0" height="390"/>
+                                <rect key="frame" x="16" y="20" width="343" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="holeRadiusPercent">
@@ -101,36 +101,36 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="TopLeft" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lDs-wu-esq">
-                                <rect key="frame" x="0.0" y="426" width="0.0" height="225"/>
+                                <rect key="frame" x="16" y="426" width="343" height="225"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="51p-J2-Rvf">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="75"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend Placement" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjL-O1-4yF">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="75"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QGc-6k-00A">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="114.5" y="0.0" width="114" height="75"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tF-Be-35y">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="25"/>
                                                         <state key="normal" title="Top"/>
                                                         <connections>
                                                             <action selector="vertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4a-Bf-Ir3"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MS7-Rm-SEf">
-                                                        <rect key="frame" x="0.0" y="25" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="25" width="114" height="25"/>
                                                         <state key="normal" title="Center"/>
                                                         <connections>
                                                             <action selector="vertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XGP-J2-D8W"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktz-Ai-zzj">
-                                                        <rect key="frame" x="0.0" y="50" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="50" width="114" height="25"/>
                                                         <state key="normal" title="Bottom"/>
                                                         <connections>
                                                             <action selector="vertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7tN-lw-6Vl"/>
@@ -139,24 +139,24 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-FW-HaU">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="228.5" y="0.0" width="114.5" height="75"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZ0-SN-iQP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="25"/>
                                                         <state key="normal" title="Left"/>
                                                         <connections>
                                                             <action selector="horzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hik-wk-SpK"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tA6-uh-F4w">
-                                                        <rect key="frame" x="0.0" y="25" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="25" width="114.5" height="25"/>
                                                         <state key="normal" title="Center"/>
                                                         <connections>
                                                             <action selector="horzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="keu-YR-QIu"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eG6-Fk-fS3">
-                                                        <rect key="frame" x="0.0" y="50" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="50" width="114.5" height="25"/>
                                                         <state key="normal" title="Right"/>
                                                         <connections>
                                                             <action selector="horzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="73w-KT-LQm"/>
@@ -167,23 +167,23 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qG7-yG-g2Q">
-                                        <rect key="frame" x="0.0" y="75" width="0.0" height="75"/>
+                                        <rect key="frame" x="0.0" y="75" width="343" height="75"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend Orientation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jD-ii-Pf2">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="75"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBX-xd-Z1h">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="114.5" y="0.0" width="114" height="75"/>
                                                 <state key="normal" title="Vertical"/>
                                                 <connections>
                                                     <action selector="orientationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="THe-bc-hKd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClP-Ui-HLb">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="228.5" y="0.0" width="114.5" height="75"/>
                                                 <state key="normal" title="Horizontal"/>
                                                 <connections>
                                                     <action selector="orientationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tMu-7L-dni"/>
@@ -192,16 +192,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VgJ-2A-8oI">
-                                        <rect key="frame" x="0.0" y="150" width="0.0" height="75"/>
+                                        <rect key="frame" x="0.0" y="150" width="343" height="75"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hole Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIg-fw-XBz">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="75"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.90000000000000002" minValue="-0.01" maxValue="0.97999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Col-lx-dMv">
-                                                <rect key="frame" x="-2" y="0.0" width="4" height="76"/>
+                                                <rect key="frame" x="169.5" y="0.0" width="175.5" height="76"/>
                                                 <connections>
                                                     <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="AZa-7A-lvw"/>
                                                 </connections>
@@ -747,6 +747,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmb-U8-umR" customClass="PredixSeriesWithGoalsView" customModule="PredixMobileUIKit">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="424"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="xAxisDateFormat" value="EEEEE"/>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -759,20 +762,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="3" maxValue="21" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-pB-X1Y">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="2" maxValue="14" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-pB-X1Y">
                                                 <rect key="frame" x="8" y="28" width="339" height="48"/>
                                                 <color key="tintColor" red="1" green="0.51283643629999998" blue="0.35435642020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="sliderValueChanged:" destination="9Hk-7R-s3P" eventType="valueChanged" id="BaR-Dc-JMw"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Goal lines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sat-1f-hBH">
-                                                <rect key="frame" x="128.5" y="75" width="98" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Limit lines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sat-1f-hBH">
+                                                <rect key="frame" x="127.5" y="75" width="100" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="yq4-iA-SPL">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="4" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq4-iA-SPL">
                                                 <rect key="frame" x="8" y="103" width="339" height="48"/>
                                                 <color key="tintColor" red="1" green="0.51283643629999998" blue="0.35435642020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
@@ -812,8 +815,10 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="Lmb-U8-umR" id="BOZ-t0-Pp1"/>
-                        <outlet property="goalLinesSlider" destination="yq4-iA-SPL" id="Tj3-Gu-9cV"/>
-                        <outlet property="valuesRangeSlider" destination="IDf-pB-X1Y" id="gdr-JA-VK4"/>
+                        <outlet property="limitLinesLabel" destination="sat-1f-hBH" id="wOC-xZ-gIG"/>
+                        <outlet property="limitLinesSlider" destination="yq4-iA-SPL" id="tgc-kQ-FNJ"/>
+                        <outlet property="numPointsLabel" destination="bZW-84-gZx" id="vaH-DW-WSM"/>
+                        <outlet property="numPointsSlider" destination="IDf-pB-X1Y" id="A0D-Vt-Oxo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbN-f3-Crs" userLabel="First Responder" sceneMemberID="firstResponder"/>

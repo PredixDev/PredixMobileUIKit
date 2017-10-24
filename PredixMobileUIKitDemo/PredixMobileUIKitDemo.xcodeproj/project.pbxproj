@@ -21,7 +21,7 @@
 		4F503B301F6C58BC00B8EE10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */; };
 		4FE22EAE1F8801F300F9C300 /* CircleProgressViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */; };
 		4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */; };
-		875730EF1F9E967B004AC6C7 /* SeriesWithGoalsChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730ED1F9E967B004AC6C7 /* SeriesWithGoalsChartViewController.swift */; };
+		879BBF0A1F9FEE5600FA87BF /* SeriesWithGoalsChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BBF091F9FEE5600FA87BF /* SeriesWithGoalsChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,7 @@
 		4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PredixMobileUIKit.xcodeproj; path = ../PredixMobileUIKit.xcodeproj; sourceTree = "<group>"; };
 		4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PredixMobileSDK.framework; path = ../Carthage/Build/iOS/PredixMobileSDK.framework; sourceTree = "<group>"; };
 		4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDemoViewController.swift; sourceTree = "<group>"; };
-		875730ED1F9E967B004AC6C7 /* SeriesWithGoalsChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesWithGoalsChartViewController.swift; sourceTree = "<group>"; };
+		879BBF091F9FEE5600FA87BF /* SeriesWithGoalsChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesWithGoalsChartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +122,8 @@
 				4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */,
 				4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */,
 				3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */,
-				875730ED1F9E967B004AC6C7 /* SeriesWithGoalsChartViewController.swift */,
 				4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */,
+				879BBF091F9FEE5600FA87BF /* SeriesWithGoalsChartViewController.swift */,
 				4F503B291F6C58BC00B8EE10 /* Main.storyboard */,
 				4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */,
 			);
@@ -258,7 +258,7 @@
 				4F503B281F6C58BC00B8EE10 /* DonutChartDemoViewController.swift in Sources */,
 				4FE22EAE1F8801F300F9C300 /* CircleProgressViewViewController.swift in Sources */,
 				3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */,
-				875730EF1F9E967B004AC6C7 /* SeriesWithGoalsChartViewController.swift in Sources */,
+				879BBF0A1F9FEE5600FA87BF /* SeriesWithGoalsChartViewController.swift in Sources */,
 				4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */,
 				4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */,
 			);

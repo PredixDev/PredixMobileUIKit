@@ -37,6 +37,7 @@
 		875730EC1F9E9608004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730EB1F9E9607004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift */; };
 		875730F31F9E979E004AC6C7 /* SeriesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730F21F9E979E004AC6C7 /* SeriesData.swift */; };
 		875730F51F9E97F4004AC6C7 /* SeriesDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875730F41F9E97F4004AC6C7 /* SeriesDataPoint.swift */; };
+		879BBF071F9FC7D900FA87BF /* TimeSeriesLimitLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		875730EB1F9E9607004AC6C7 /* PredixSeriesWithGoalsView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PredixSeriesWithGoalsView+IBInspectable.swift"; sourceTree = "<group>"; };
 		875730F21F9E979E004AC6C7 /* SeriesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesData.swift; sourceTree = "<group>"; };
 		875730F41F9E97F4004AC6C7 /* SeriesDataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesDataPoint.swift; sourceTree = "<group>"; };
+		879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeriesLimitLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */,
 				374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */,
 				374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */,
+				879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */,
 				4F627A341F8E7E4400CB4AEE /* Utilities.swift */,
 			);
 			path = PredixMobileUIKit;
@@ -372,6 +375,7 @@
 			files = (
 				875730E91F9E95C8004AC6C7 /* PredixSeriesWithGoalsView.swift in Sources */,
 				374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */,
+				879BBF071F9FC7D900FA87BF /* TimeSeriesLimitLine.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,

@@ -8,10 +8,10 @@
 
 import Foundation
 
-/// A TimeSeries tag model.
+/// A Series data model.
 public struct SeriesData {
     
-    /// Tag name
+    /// Series name
     public var name: String
     
     /// Array of data points `SeriesDataPoint`
