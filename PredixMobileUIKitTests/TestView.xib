@@ -65,9 +65,9 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="criticalThreshold">
                             <real key="value" value="0.80000000000000004"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="invertThresholds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="invertThresholds" value="NO"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="thresholdColorMatching" value="YES"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="counterClockwise" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="counterClockwise" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
