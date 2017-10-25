@@ -141,8 +141,6 @@ class TimestampValueFormatter: NSObject, IAxisValueFormatter {
         
         self.formatter = DateFormatter()
         self.formatter?.dateFormat = format
-        
-        print ("** \(format)")
     }
     
     public func stringForValue(_ value: Double,
