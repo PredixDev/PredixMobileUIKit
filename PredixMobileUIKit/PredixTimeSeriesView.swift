@@ -13,9 +13,8 @@ import PredixMobileSDK
 /// PredixTimeSeriesView -- TimeSeries chart built with `LineChartView`.
 @IBDesignable
 open class PredixTimeSeriesView: LineChartView {
-    
-    @IBOutlet
     ///A delegate to allow a class to know when it's time to load data into the view
+    @IBOutlet
     open weak var timeSeriesDataDelegate: PredixTimeSeriesViewDelegate? {
         didSet {
             if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesData {

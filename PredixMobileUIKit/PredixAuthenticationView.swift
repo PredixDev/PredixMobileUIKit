@@ -10,10 +10,8 @@ import UIKit
 import PredixMobileSDK
 import QuartzCore
 
+///A basic authentication view that works with the PredixSDKForiOS to simplify authentication.
 @IBDesignable
-/**
- * A basic authentication view that works with the PredixSDKForiOS to simplify authentication.
- */
 open class PredixAuthenticationView: UIView {
     private var scrollView: UIScrollView = UIScrollView()
     private var footerLabel: UILabel = UILabel()
@@ -42,14 +40,14 @@ open class PredixAuthenticationView: UIView {
             authenticationManager?.onlineAuthenticationHandler = onlineHandler
         }
     }
-    //Title image you want to use for the title header
+    ///Title image you want to use for the title header
     @IBInspectable
     open var titleImage: UIImage? = UIImage(named: "predixTitle.png", in: Bundle(for: PredixAuthenticationView.self), compatibleWith: nil) {
         didSet {
             titleImageView.image = titleImage
         }
     }
-    //Background color to use for the view
+    ///Background color to use for the view
     @IBInspectable
     open override var backgroundColor: UIColor? {
         didSet {
@@ -60,7 +58,7 @@ open class PredixAuthenticationView: UIView {
             }
         }
     }
-    //The PredixAuthenticationViewDelegate
+    ///The PredixAuthenticationViewDelegate
     @IBOutlet
     public weak var delegate: PredixAuthenticationViewDelegate? {
         didSet {
@@ -227,11 +225,12 @@ private class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler 
     *NOTE:* If an application implements this method from the implementor is expected to control all aspects of the authentication process and auto sign-in will not operate.
      */
     @objc optional func signInPressed()
-    //Alerts a delegate when authentication is complete
+    ///Alerts a delegate when authentication is complete
     @objc optional func authenticationComplete(success: Bool, error: Error?)
 }
 
-//Authenticating logic
+//MARK: Authenticating logic
+/// :nodoc:
 extension PredixAuthenticationView {
     /// let the view know it is OK to start the authentication process
     open func beginAuthentication() {
@@ -274,7 +273,7 @@ extension PredixAuthenticationView {
         }
     }
 }
-
+/// :nodoc:
 extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {
     /// :nodoc:
     public func authenticationHandler(_ authenticationHandler: AuthenticationHandler, provideCredentialsWithCompletionHandler completionHandler: @escaping AuthenticationCredentialsProvider) {
@@ -296,7 +295,7 @@ extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {
         }
     }
 }
-
+/// :nodoc:
 extension PredixAuthenticationView: UITextFieldDelegate {
     /// :nodoc:
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

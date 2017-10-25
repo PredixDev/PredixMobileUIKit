@@ -182,9 +182,8 @@ extension PredixTimeSeriesView {
             legend.textColor = newValue
         }
     }
-    
-    @IBInspectable
     /// text color to display when there is no chart data loaded *default:* black
+    @IBInspectable
     open var noDataColor: UIColor {
         set(newValue) {
             self.noDataTextColor = newValue
