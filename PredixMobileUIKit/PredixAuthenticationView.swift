@@ -229,7 +229,7 @@ private class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler 
     @objc optional func authenticationComplete(success: Bool, error: Error?)
 }
 
-//MARK: Authenticating logic
+// MARK: - Authenticating logic
 /// :nodoc:
 extension PredixAuthenticationView {
     /// let the view know it is OK to start the authentication process
