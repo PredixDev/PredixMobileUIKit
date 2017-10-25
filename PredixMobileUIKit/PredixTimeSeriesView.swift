@@ -14,7 +14,8 @@ import PredixMobileSDK
 @IBDesignable
 open class PredixTimeSeriesView: LineChartView {
     
-    @IBInspectable @IBOutlet
+    @IBOutlet
+    ///A delegate to allow a class to know when it's time to load data into the view
     open weak var timeSeriesDataDelegate: PredixTimeSeriesViewDelegate? {
         didSet {
             if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesData {
@@ -36,7 +37,7 @@ open class PredixTimeSeriesView: LineChartView {
             }
         }
     }
-    
+    /// set the color scheme to dark *default:* false
     @IBInspectable
     open var darkTheme: Bool = false {
         didSet {
@@ -60,7 +61,7 @@ open class PredixTimeSeriesView: LineChartView {
         }
     }
     
-    //Allows a developer to set some basic padding for the chart legend labels *Default 10.0*
+    ///Allows a developer to set some basic padding for the chart legend labels *Default 10.0*
     open var legendLabelPadding: CGFloat = 10.0
     
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
@@ -118,7 +119,7 @@ open class PredixTimeSeriesView: LineChartView {
         self.setNeedsLayout()
         
     }
-    
+    ///Loads data from a TimeseriesManager response
     public func loadLabelsAndValues(_ tags: [Tag]) {
         var responseTags: [TimeSeriesTag] = []
         var dataPoints: [TimeSeriesDataPoint] = []
@@ -126,9 +127,10 @@ open class PredixTimeSeriesView: LineChartView {
         for currentTag in tags {
             for result in currentTag.results {
                 for values in result.values {
-                    let dPoints = values as! [Double]
-                    let dataPoint = TimeSeriesDataPoint(epochInMs: dPoints[0], measure: dPoints[1])
-                    dataPoints.append(dataPoint)
+                    if let dPoints = values as? [Double] {
+                        let dataPoint = TimeSeriesDataPoint(epochInMs: dPoints[0], measure: dPoints[1])
+                        dataPoints.append(dataPoint)
+                    }
                 }
                 
             }
@@ -138,7 +140,7 @@ open class PredixTimeSeriesView: LineChartView {
         
         self.loadLabelsAndValues(responseTags)
     }
-    
+    /// :nodoc:
     open override func layoutSubviews() {
         super.layoutSubviews()
         activityView.frame = self.bounds
@@ -213,6 +215,7 @@ open class PredixTimeSeriesView: LineChartView {
 }
 
 extension PredixTimeSeriesView: ChartViewDelegate {
+    /// :nodoc:
     public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         if let datasets = self.data?.dataSets {
             for (index, dataset) in datasets.enumerated() {
@@ -226,9 +229,12 @@ extension PredixTimeSeriesView: ChartViewDelegate {
         self.timeSeriesDataDelegate?.valueSelected?(timeSeriesView: self, timeScale: highlight.x)
     }
 }
-
+///A delegate to allow a class to know when it's time to load data into the view
 @objc public protocol PredixTimeSeriesViewDelegate {
-    @objc optional func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?)->Void)
-    @objc optional func loadTimeSeriesData(completionHandler: @escaping ([Tag]?)->Void)
+    ///Will be called to ask to load time series data based on the TimeSeriesTag object
+    @objc optional func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?) -> Void)
+    ///Will be called to ask to load time series data based on the TimeSeriesManager Tag object
+    @objc optional func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void)
+    ///Notifies a delegate when an item on a chart is selected by the user
     @objc optional func valueSelected(timeSeriesView: PredixTimeSeriesView, timeScale: Double)
 }

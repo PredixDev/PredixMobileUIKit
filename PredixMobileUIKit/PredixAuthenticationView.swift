@@ -11,6 +11,9 @@ import PredixMobileSDK
 import QuartzCore
 
 @IBDesignable
+/**
+ * A basic authentication view that works with the PredixSDKForiOS to simplify authentication.
+ */
 open class PredixAuthenticationView: UIView {
     private var scrollView: UIScrollView = UIScrollView()
     private var footerLabel: UILabel = UILabel()
@@ -19,28 +22,34 @@ open class PredixAuthenticationView: UIView {
     private var firstSet = true
     internal private(set) var authenticationManager: AuthenticationManager?
     private var credentialProvider: AuthenticationCredentialsProvider?
-    public private(set) var authenticationInProgress = false
     private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
+    ///Indicates if authentication is in progress
+    open private(set) var authenticationInProgress = false
+    ///The title image
     open let titleImageView: UIImageView = UIImageView()
+    ///The email text filed used by the authentication view
     open let emailTextField: UITextField = UITextField()
+    ///The password text filed used by the authentication view
     open let passwordTextField: UITextField = UITextField()
+    ///The sign-in button used by the authentication view
     open let signInButton: UIButton = UIButton(type: .system)
-    
+    ///An authentication configuration to be used with the underlying authentication manager
     open var configuration: AuthenticationManagerConfiguration = AuthenticationManagerConfiguration()
-    open var onelineHandler: ServiceBasedAuthenticationHandler? {
+    ///A ServiceBasedAuthenticationHandler to use with the authentication manager *defaults to UAAServiceAuthenticationHandler*
+    open var onlineHandler: ServiceBasedAuthenticationHandler? {
         didSet {
-            authenticationManager?.onlineAuthenticationHandler = onelineHandler
+            authenticationManager?.onlineAuthenticationHandler = onlineHandler
         }
     }
-    
+    //Title image you want to use for the title header
     @IBInspectable
     open var titleImage: UIImage? = UIImage(named: "predixTitle.png", in: Bundle(for: PredixAuthenticationView.self), compatibleWith: nil) {
         didSet {
             titleImageView.image = titleImage
         }
     }
-    
+    //Background color to use for the view
     @IBInspectable
     open override var backgroundColor: UIColor? {
         didSet {
@@ -51,8 +60,8 @@ open class PredixAuthenticationView: UIView {
             }
         }
     }
-    
-    @IBInspectable @IBOutlet
+    //The PredixAuthenticationViewDelegate
+    @IBOutlet
     public weak var delegate: PredixAuthenticationViewDelegate? {
         didSet {
             authenticationInProgress = false
@@ -79,7 +88,7 @@ open class PredixAuthenticationView: UIView {
         let width = baseRect.size.width - floor(baseInsetX * 2)
         let fieldHeight: CGFloat = 44.0
         let fieldSpacing: CGFloat = 70.0
-        let fieldResizeMask:UIViewAutoresizing = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        let fieldResizeMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
         
         setupScrollView(with: baseRect)
         setupTitleImage(with: CGRect(x: baseInsetX, y: top, width: width, height: 56), autoresizingMask: fieldResizeMask)
@@ -90,7 +99,7 @@ open class PredixAuthenticationView: UIView {
 
         addSubview(scrollView)
     }
-    
+    /// :nodoc:
     override open func layoutSubviews() {
         super.layoutSubviews()
         scrollView.frame = self.bounds
@@ -203,20 +212,28 @@ private class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler 
         self.authenticationView = authenticationView
     }
     
-    
     override func performRefresh(token: String) {
         authenticationView?.showActivitySpinner()
         super.performRefresh(token: token)
     }
 }
-
+/**
+ An delegate that allows a controller to be notified when certain actions take place
+ */
 @objc public protocol PredixAuthenticationViewDelegate: NSObjectProtocol {
+    /**
+         Called when the user presses the sign in button.
+ 
+    *NOTE:* If an application implements this method from the implementor is expected to control all aspects of the authentication process and auto sign-in will not operate.
+     */
     @objc optional func signInPressed()
+    //Alerts a delegate when authentication is complete
     @objc optional func authenticationComplete(success: Bool, error: Error?)
 }
 
 //Authenticating logic
 extension PredixAuthenticationView {
+    /// let the view know it is OK to start the authentication process
     open func beginAuthentication() {
         guard !authenticationInProgress else {
             return
@@ -229,12 +246,12 @@ extension PredixAuthenticationView {
         
         authenticationManager = AuthenticationManager(configuration: configuration)
         authenticationManager?.authorizationHandler = UAAAuthorizationHandler()
-        if onelineHandler == nil {
-            onelineHandler = UAAServiceAuthenticationHandler()
-            onelineHandler?.authenticationServiceDelegate = self
-            onelineHandler?.refreshAuthenticationHandler = AuthenticationViewRefreshHandler(authenticationView: self)
+        if onlineHandler == nil {
+            onlineHandler = UAAServiceAuthenticationHandler()
+            onlineHandler?.authenticationServiceDelegate = self
+            onlineHandler?.refreshAuthenticationHandler = AuthenticationViewRefreshHandler(authenticationView: self)
         }
-        authenticationManager?.onlineAuthenticationHandler = onelineHandler
+        authenticationManager?.onlineAuthenticationHandler = onlineHandler
         
         authenticationManager?.authenticate { status in
             DispatchQueue.main.async {[weak self] in
@@ -259,17 +276,18 @@ extension PredixAuthenticationView {
 }
 
 extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {
+    /// :nodoc:
     public func authenticationHandler(_ authenticationHandler: AuthenticationHandler, provideCredentialsWithCompletionHandler completionHandler: @escaping AuthenticationCredentialsProvider) {
         credentialProvider = completionHandler
     }
-    
+    /// :nodoc:
     public func authenticationHandler(_ authenticationHandler: AuthenticationHandler, didFailWithError error: Error) {
         DispatchQueue.main.async { [weak self] in
             self?.hideActivitySpinner()
             self?.delegate?.authenticationComplete?(success: false, error: error)
         }
     }
-    
+    /// :nodoc:
     public func authenticationHandlerProvidedCredentialsWereInvalid(_ authenticationHandler: AuthenticationHandler) {
         DispatchQueue.main.async { [weak self] in
             self?.hideActivitySpinner()
@@ -280,13 +298,14 @@ extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {
 }
 
 extension PredixAuthenticationView: UITextFieldDelegate {
+    /// :nodoc:
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.activeTextField = textField
         self.checkIfKeyboardIsBlockingTextField()
         
         return true
     }
-    
+    /// :nodoc:
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.emailTextField {
             self.passwordTextField.becomeFirstResponder()
