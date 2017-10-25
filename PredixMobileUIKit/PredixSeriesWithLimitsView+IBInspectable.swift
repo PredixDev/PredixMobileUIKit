@@ -1,5 +1,5 @@
 //
-//  PredixTimeSeriesView+IBInspectable.swift
+//  PredixSeriesWithLimitsView+IBInspectable.swift
 //  PredixMobileUIKit
 //
 //  Created by Goel, Shalab (GE Corporate) on 10/23/17.
@@ -10,7 +10,7 @@ import Foundation
 import Charts
 
 //IBInspectable properties can be internal, and still show up in IB
-extension PredixSeriesWithGoalsView {
+extension PredixSeriesWithLimitsView {
     
     ///:nodoc:
     open override func prepareForInterfaceBuilder() {
@@ -26,17 +26,27 @@ extension PredixSeriesWithGoalsView {
         let numLimitLines = 2
         
         var data: [TimeSeriesTag] = []
+        
         var colors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
         
-        let maxValue = 250
-        let minValue = 50
+        let maxValueRand = 250.0
+        let minValueRand = 50.0
         var date = Date()
         date = (Calendar.current as NSCalendar).date(byAdding: .day, value: (-1 * (numPoints-1)), to: date, options: [])!
+        
+        var minMeasure = maxValueRand
+        var maxMeasure = minValueRand
         
         var dataPoints: [TimeSeriesDataPoint] = []
         for _ in 1 ... numPoints {
             let epochInMs = date.timeIntervalSince1970
-            let measure = Double(getRandom(minValue, ceiling: maxValue))
+            let measure = Double(getRandom(minValueRand, ceiling: maxValueRand))
+            if measure < minMeasure {
+                minMeasure = measure
+            }
+            if measure > maxMeasure {
+                maxMeasure = measure
+            }
             let dataPoint = TimeSeriesDataPoint(epochInMs:epochInMs, measure: measure)
             dataPoints.append(dataPoint)
             date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: date, options: [])!
@@ -46,8 +56,9 @@ extension PredixSeriesWithGoalsView {
         
         var limits:[TimeSeriesLimitLine] = []
         for idx in 1 ... numLimitLines {
-            let limitValue = Double(getRandom(minValue, ceiling: maxValue))
             let color: UIColor = colors[idx % colors.count]
+            let limitValue = maxMeasure - 20 * Double(idx-1)
+            
             let limit = TimeSeriesLimitLine(measure:limitValue, color:color)
             limits.append(limit)
         }
@@ -55,67 +66,13 @@ extension PredixSeriesWithGoalsView {
         loadLabelsAndValues(data, limits:limits)
     }
     
-    private func getRandom(_ floor: Int, ceiling: Int) -> Int {
+    private func getRandom(_ floor: Double, ceiling: Double) -> Int {
         let upperBound = ceiling - floor + 1
-        return Int(arc4random_uniform(UInt32(upperBound))) + floor
+        return Int(arc4random_uniform(UInt32(upperBound)) + UInt32(floor))
     }
     
     // MARK: - IBInspectable properties
     
-//    @IBInspectable
-//    var labelText: String? {
-//        get {
-//            return self.chartDescription?.text
-//        }
-//        set(newValue) {
-//            self.chartDescription?.text = newValue
-//        }
-//    }
-//    
-//    @IBInspectable
-//    var labelEnabled: Bool {
-//        get {
-//            return chartDescription?.enabled ?? false
-//        }
-//        set(newValue) {
-//            chartDescription?.enabled = newValue
-//        }
-//        
-//    }
-//    
-//    @IBInspectable
-//    var legendVerticalOrientation: Bool {
-//        get {
-//            return self.legend.orientation == .vertical
-//        }
-//        set(newValue) {
-//            if newValue {
-//                self.legend.orientation = .vertical
-//            } else {
-//                self.legend.orientation = .horizontal
-//            }
-//        }
-//    }
-//    
-//    @IBInspectable var leftAxisEnabled: Bool {
-//        get {
-//            return leftAxis.enabled
-//        }
-//        set(newValue) {
-//            leftAxis.enabled = newValue
-//        }
-//    }
-//    
-//    @IBInspectable
-//    var rightAxisEnabled: Bool {
-//        get {
-//            return rightAxis.enabled
-//        }
-//        set(newValue) {
-//            rightAxis.enabled = newValue
-//        }
-//    }
-//    
     @IBInspectable
     var xAxisDateFormat: String? {
         get {
@@ -123,16 +80,6 @@ extension PredixSeriesWithGoalsView {
         }
         set(newValue) {
             self.horizontalDateFormat = newValue!
-        }
-    }
-    
-    @IBInspectable
-    var yAxisNumberFormat: String? {
-        get {
-            return self.verticalNumberFormat
-        }
-        set(newValue) {
-            self.verticalNumberFormat = newValue
         }
     }
     

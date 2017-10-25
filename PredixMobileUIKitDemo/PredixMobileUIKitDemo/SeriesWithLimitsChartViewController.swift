@@ -1,5 +1,5 @@
 //
-//  TimeSeriesChartViewController.swift
+//  SeriesWithLimitsChartViewController.swift
 //  PredixMobileUIKitDemo
 //
 //  Created by Goel, Shalab (GE Corporate) on 10/23/17.
@@ -10,9 +10,9 @@ import UIKit
 import PredixMobileUIKit
 import Charts
 
-class SeriesWithGoalsChartViewController: UIViewController {
+class SeriesWithLimitsChartViewController: UIViewController {
 
-    @IBOutlet weak var chartView: PredixSeriesWithGoalsView!
+    @IBOutlet weak var chartView: PredixSeriesWithLimitsView!
     @IBOutlet weak var numPointsSlider: UISlider!
     @IBOutlet weak var limitLinesSlider: UISlider!
     @IBOutlet weak var numPointsLabel: UILabel!
@@ -58,16 +58,24 @@ class SeriesWithGoalsChartViewController: UIViewController {
         
         self.numPointsLabel.text = "\(numPoints) Data Points Selected"
         self.limitLinesLabel.text = "\(numLimitLines) Limit Lines Selected"
-        let maxValue = 250
-        let minValue = 50
+        let maxValueRand = 250.0
+        let minValueRand = 50.0
         var date = Date()
         date = (Calendar.current as NSCalendar).date(byAdding: .day, value: (-1 * (numPoints-1)), to: date, options: [])!
+        
+        var minMeasure = maxValueRand
+        var maxMeasure = minValueRand
         
         var dataPoints: [TimeSeriesDataPoint] = []
         for _ in 1 ... numPoints {
             let epochInMs = date.timeIntervalSince1970
-            let measure = Double(getRandom(minValue, ceiling: maxValue))
-            print ("generateDummyData \(epochInMs) \(date)")
+            let measure = Double(getRandom(minValueRand, ceiling: maxValueRand))
+            if measure < minMeasure {
+                minMeasure = measure
+            }
+            if measure > maxMeasure {
+                maxMeasure = measure
+            }
             let dataPoint = TimeSeriesDataPoint(epochInMs:epochInMs, measure: measure)
             dataPoints.append(dataPoint)
             date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: date, options: [])!
@@ -78,20 +86,21 @@ class SeriesWithGoalsChartViewController: UIViewController {
         var limits:[TimeSeriesLimitLine] = []
         for idx in 1 ... numLimitLines {
             let color: UIColor = colors[idx % colors.count]
-            let limitValue = Double(getRandom(minValue, ceiling: maxValue))
+            let limitValue = maxMeasure - 20 * Double(idx-1)
+
             let limit = TimeSeriesLimitLine(measure:limitValue, color:color)
             limits.append(limit)
         }
         return (data, limits)
     }
     
-    private func getRandom(_ floor: Int, ceiling: Int) -> Int {
+    private func getRandom(_ floor: Double, ceiling: Double) -> Int {
         let upperBound = ceiling - floor + 1
-        return Int(arc4random_uniform(UInt32(upperBound))) + floor
+        return Int(arc4random_uniform(UInt32(upperBound)) + UInt32(floor))
     }
 }
 
-extension SeriesWithGoalsChartViewController: ChartViewDelegate {
+extension SeriesWithLimitsChartViewController: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print("chartValueSelected")
     }
