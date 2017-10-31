@@ -13,14 +13,15 @@ import QuartzCore
 ///A basic authentication view that works with the PredixSDKForiOS to simplify authentication.
 @IBDesignable
 open class PredixAuthenticationView: UIView {
-    private var scrollView: UIScrollView = UIScrollView()
-    private var footerLabel: UILabel = UILabel()
-    private var activeTextField: UITextField?
     private var keyboardRect: CGRect?
     private var firstSet = true
-    internal private(set) var authenticationManager: AuthenticationManager?
     private var credentialProvider: AuthenticationCredentialsProvider?
-    private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    private var footerLabel: UILabel = UILabel()
+    
+    internal private(set) var scrollView: UIScrollView = UIScrollView()
+    internal private(set) var activeTextField: UITextField?
+    internal var authenticationManager: AuthenticationManager?
+    internal private(set) var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     ///Indicates if authentication is in progress
     open private(set) var authenticationInProgress = false
@@ -40,6 +41,7 @@ open class PredixAuthenticationView: UIView {
             authenticationManager?.onlineAuthenticationHandler = onlineHandler
         }
     }
+    
     ///Title image you want to use for the title header
     @IBInspectable
     open var titleImage: UIImage? = UIImage(named: "predixTitle.png", in: Bundle(for: PredixAuthenticationView.self), compatibleWith: nil) {
@@ -47,17 +49,7 @@ open class PredixAuthenticationView: UIView {
             titleImageView.image = titleImage
         }
     }
-    ///Background color to use for the view
-    @IBInspectable
-    open override var backgroundColor: UIColor? {
-        didSet {
-            //Temporary work around to get past an IB limitation where you can't set a default background color and have it changeable in IB at the same time
-            if firstSet {
-                firstSet = false
-                backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
-            }
-        }
-    }
+    
     ///The PredixAuthenticationViewDelegate
     @IBOutlet
     public weak var delegate: PredixAuthenticationViewDelegate? {
@@ -202,15 +194,15 @@ open class PredixAuthenticationView: UIView {
     }
 }
 
-private class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler {
+internal class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler {
     private weak var authenticationView: PredixAuthenticationView?
     
-    fileprivate init(authenticationView: PredixAuthenticationView) {
+    internal init(authenticationView: PredixAuthenticationView) {
         super.init()
         self.authenticationView = authenticationView
     }
     
-    override func performRefresh(token: String) {
+    override internal func performRefresh(token: String) {
         authenticationView?.showActivitySpinner()
         super.performRefresh(token: token)
     }
@@ -239,6 +231,7 @@ extension PredixAuthenticationView {
         }
         authenticationInProgress = true
         
+        //TODO: This should be in the SDK itself...
         if configuration.baseURL == nil, let serverUrlString = Bundle.main.object(forInfoDictionaryKey: "server_url") as? String {
             configuration.baseURL = URL(string: serverUrlString)
         }
@@ -253,14 +246,7 @@ extension PredixAuthenticationView {
         authenticationManager?.onlineAuthenticationHandler = onlineHandler
         
         authenticationManager?.authenticate { status in
-            DispatchQueue.main.async {[weak self] in
-                self?.hideActivitySpinner()
-                if case AuthenticationManager.AuthenticationCompletionStatus.failed(let error) = status {
-                    self?.delegate?.authenticationComplete?(success: false, error: error)
-                } else {
-                    self?.delegate?.authenticationComplete?(success: true, error: nil)
-                }
-            }
+            self.authenticationComplete(status: status)
         }
     }
     
@@ -272,29 +258,44 @@ extension PredixAuthenticationView {
             credentialProvider?(emailTextField.text ?? "", passwordTextField.text ?? "")
         }
     }
+    
+    internal func authenticationComplete(status: AuthenticationManager.AuthenticationCompletionStatus) {
+        Utilities.runOnMainThread { [weak self] in
+            self?.hideActivitySpinner()
+            if case AuthenticationManager.AuthenticationCompletionStatus.failed(let error) = status {
+                self?.delegate?.authenticationComplete?(success: false, error: error)
+            } else {
+                self?.delegate?.authenticationComplete?(success: true, error: nil)
+            }
+        }
+    }
 }
+
 /// :nodoc:
 extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {
     /// :nodoc:
     public func authenticationHandler(_ authenticationHandler: AuthenticationHandler, provideCredentialsWithCompletionHandler completionHandler: @escaping AuthenticationCredentialsProvider) {
         credentialProvider = completionHandler
     }
+    
     /// :nodoc:
     public func authenticationHandler(_ authenticationHandler: AuthenticationHandler, didFailWithError error: Error) {
-        DispatchQueue.main.async { [weak self] in
+        Utilities.runOnMainThread { [weak self] in
             self?.hideActivitySpinner()
             self?.delegate?.authenticationComplete?(success: false, error: error)
         }
     }
+    
     /// :nodoc:
     public func authenticationHandlerProvidedCredentialsWereInvalid(_ authenticationHandler: AuthenticationHandler) {
-        DispatchQueue.main.async { [weak self] in
+        Utilities.runOnMainThread { [weak self] in
             self?.hideActivitySpinner()
             let error = NSError(domain:  PredixMobileErrorDomain.authentication.description, code: 999, userInfo: [NSLocalizedDescriptionKey: "credentials were invalid"])
             self?.delegate?.authenticationComplete?(success: false, error: error)
         }
     }
 }
+
 /// :nodoc:
 extension PredixAuthenticationView: UITextFieldDelegate {
     /// :nodoc:
@@ -304,9 +305,10 @@ extension PredixAuthenticationView: UITextFieldDelegate {
         
         return true
     }
+    
     /// :nodoc:
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.emailTextField {
+        if textField == self.emailTextField {            
             self.passwordTextField.becomeFirstResponder()
         } else {
             self.signIn(sender: self)

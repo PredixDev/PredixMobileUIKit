@@ -33,6 +33,7 @@
 		4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B161F6C586500B8EE10 /* Charts.framework */; };
 		4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */; };
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
+		E8426D311FA0411B0075DBD0 /* PredixMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B6D1F70726300B8EE10 /* PredixMobileSDK.framework */; };
 		E8D7E4A21F9ABEE0002EF8AA /* PredixAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */; };
 		E8D7E4A61F9ABF41002EF8AA /* predixTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */; };
 		E8D7E4A71F9ABF41002EF8AA /* Framework.classdescriptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */; };
@@ -53,6 +54,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
+		};
+		E8426D341FA0411B0075DBD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F503B101F6C586400B8EE10 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -129,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8426D311FA0411B0075DBD0 /* PredixMobileSDK.framework in Frameworks */,
 				4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */,
 				4F503AFD1F6C560900B8EE10 /* PredixMobileUIKit.framework in Frameworks */,
 			);
@@ -210,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				4F503B161F6C586500B8EE10 /* Charts.framework */,
+				E8426D351FA0411B0075DBD0 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -335,6 +345,13 @@
 			fileType = wrapper.framework;
 			path = Charts.framework;
 			remoteRef = 4F503B151F6C586500B8EE10 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8426D351FA0411B0075DBD0 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = E8426D341FA0411B0075DBD0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -580,6 +597,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PredixMobileUIKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitTests;
@@ -594,6 +615,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PredixMobileUIKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitTests;
