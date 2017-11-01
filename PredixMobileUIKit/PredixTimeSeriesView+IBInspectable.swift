@@ -50,9 +50,8 @@ extension PredixTimeSeriesView {
             chartDescription?.text = newValue
         }
     }
-    
-    @IBInspectable
     /// indicates whether the chats embedded label should be displayed *default:* false
+    @IBInspectable
     open var labelEnabled: Bool {
         get {
             return chartDescription?.enabled ?? false
@@ -108,9 +107,8 @@ extension PredixTimeSeriesView {
         }
         
     }
-    
-    @IBInspectable
     /// indicates whether legend chart should be aligned on the top *default:* true
+    @IBInspectable
     open var legendAlignedTop: Bool {
         get {
             return legend.verticalAlignment == .top

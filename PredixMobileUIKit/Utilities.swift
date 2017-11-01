@@ -21,7 +21,7 @@ public enum Utilities {
         return radians * 180 / CGFloat(CGFloat.pi)
     }
     
-    public static func runOnMainThread(closure: @escaping () -> Void) {
+    internal static func runOnMainThread(closure: @escaping () -> Void) {
         if !Thread.current.isMainThread {
             DispatchQueue.main.async {
                 closure()
