@@ -346,6 +346,6 @@ extension PredixAuthenticationView: UITextFieldDelegate {
     
     func disableScrolling() {
         self.scrollView.contentSize = CGSize()
-        self.scrollView.setContentOffset(CGPoint(), animated: true)
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: self.bounds.origin.y), animated: true)
     }
 }

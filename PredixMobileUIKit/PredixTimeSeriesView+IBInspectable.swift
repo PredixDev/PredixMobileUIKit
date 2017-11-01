@@ -36,13 +36,13 @@ extension PredixTimeSeriesView {
             let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: [:])
             tags.append(tag)
         }
-        loadLabelsAndValues(tags)
+        loadLabelsAndValues(timeSeriesTags: tags)
     }
     
     // MARK: - IBInspectable properties
     /// the chart embedded label text
     @IBInspectable
-    var labelText: String? {
+    open var labelText: String? {
         get {
             return chartDescription?.text
         }
@@ -53,7 +53,7 @@ extension PredixTimeSeriesView {
     
     @IBInspectable
     /// indicates whether the chats embedded label should be displayed *default:* false
-    var labelEnabled: Bool {
+    open var labelEnabled: Bool {
         get {
             return chartDescription?.enabled ?? false
         }
@@ -63,7 +63,7 @@ extension PredixTimeSeriesView {
         
     }
     /// indicates whether left axis label should be displayed *default:* true
-    @IBInspectable var leftAxisEnabled: Bool {
+    @IBInspectable open var leftAxisEnabled: Bool {
         get {
             return leftAxis.enabled
         }
@@ -72,7 +72,7 @@ extension PredixTimeSeriesView {
         }
     }
     /// indicates whether right axis label should be displayed *default:* true
-    @IBInspectable var rightAxisEnabled: Bool {
+    @IBInspectable open var rightAxisEnabled: Bool {
         get {
             return rightAxis.enabled
         }
@@ -81,7 +81,7 @@ extension PredixTimeSeriesView {
         }
     }
     /// indicates whether legend chart should be displayed vertically *default:* true
-    @IBInspectable var legendVerticalOrientation: Bool {
+    @IBInspectable open var legendVerticalOrientation: Bool {
         get {
             return legend.orientation == .vertical
         }
@@ -95,7 +95,7 @@ extension PredixTimeSeriesView {
     }
     /// indicates whether legend chart should be aligned on the left *default:* true
     @IBInspectable
-    var legendAlignedLeft: Bool {
+    open var legendAlignedLeft: Bool {
         get {
             return legend.horizontalAlignment == .left
         }
@@ -111,7 +111,7 @@ extension PredixTimeSeriesView {
     
     @IBInspectable
     /// indicates whether legend chart should be aligned on the top *default:* true
-    var legendAlignedTop: Bool {
+    open var legendAlignedTop: Bool {
         get {
             return legend.verticalAlignment == .top
         }
@@ -122,19 +122,10 @@ extension PredixTimeSeriesView {
                 legend.verticalAlignment = .bottom
             }
         }
-    }
-    /// the data point font
-    var dataPointFont: UIFont {
-        get {
-            return UIFont.systemFont(ofSize: UIFont.systemFontSize)
-        }
-        set(newValue) {
-            dataFont = newValue
-        }
-    }
+    }//MARK: from here
     /// the chart boarder color *default:* white
     @IBInspectable
-    var chartBorderColor: UIColor {
+    open var chartBorderColor: UIColor {
         get {
             return borderColor
         }
@@ -144,7 +135,7 @@ extension PredixTimeSeriesView {
     }
     /// the chart x Axis text color *default:* black
     @IBInspectable
-    var xAxisTextColor: UIColor {
+    open var xAxisTextColor: UIColor {
         get {
             return xAxis.labelTextColor
         }
@@ -154,7 +145,7 @@ extension PredixTimeSeriesView {
     }
     /// the right chart x Axis text color *default:* black
     @IBInspectable
-    var rightAxisTextColor: UIColor {
+    open var rightAxisTextColor: UIColor {
         get {
             return rightAxis.labelTextColor
         }
@@ -164,7 +155,7 @@ extension PredixTimeSeriesView {
     }
     /// the left chart x Axis text color *default:* black
     @IBInspectable
-    var leftAxisTextColor: UIColor {
+    open var leftAxisTextColor: UIColor {
         get {
             return leftAxis.labelTextColor
         }
@@ -174,7 +165,7 @@ extension PredixTimeSeriesView {
     }
     /// the legend chart x Axis text color *default:* black
     @IBInspectable
-    var legendTextColor: UIColor {
+    open var legendTextColor: UIColor {
         get {
             return legend.textColor
         }
@@ -184,7 +175,7 @@ extension PredixTimeSeriesView {
     }
     /// text color to display when there is no chart data loaded *default:* black
     @IBInspectable
-    open var noDataColor: UIColor {
+    open var noChartDataTextColor: UIColor {
         set(newValue) {
             self.noDataTextColor = newValue
         } get {

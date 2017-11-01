@@ -15,21 +15,21 @@ import PredixMobileSDK
 open class PredixTimeSeriesView: LineChartView {
     ///A delegate to allow a class to know when it's time to load data into the view
     @IBOutlet
-    open weak var timeSeriesDataDelegate: PredixTimeSeriesViewDelegate? {
+    open weak var timeSeriesDataDelegate: TimeSeriesViewDelegate? {
         didSet {
             if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesData {
                 self.showSpinner()
                 dataFunction { (tags) in
-                    DispatchQueue.main.async {
-                        self.loadLabelsAndValues(tags ?? [])
+                    Utilities.runOnMainThread {
+                        self.loadLabelsAndValues(tags: tags ?? [])
                         self.hideSpinner()
-                    }                    
+                    }
                 }
             } else if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesTags {
                 self.showSpinner()
                 dataFunction { (tags) in
-                    DispatchQueue.main.async {
-                        self.loadLabelsAndValues(tags ?? [])
+                    Utilities.runOnMainThread {
+                        self.loadLabelsAndValues(timeSeriesTags: tags ?? [])
                         self.hideSpinner()
                     }
                 }
@@ -47,7 +47,7 @@ open class PredixTimeSeriesView: LineChartView {
                 self.rightAxisTextColor = UIColor.white
                 self.leftAxisTextColor = UIColor.white
                 self.legendTextColor = UIColor.white
-                self.noDataColor = UIColor.white
+                self.noChartDataTextColor = UIColor.white
             } else {
                 self.backgroundColor = UIColor.clear
                 self.chartBorderColor = UIColor.black
@@ -55,17 +55,20 @@ open class PredixTimeSeriesView: LineChartView {
                 self.leftAxisTextColor = UIColor.black
                 self.rightAxisTextColor = UIColor.black
                 self.legendTextColor = UIColor.black
-                self.noDataColor = UIColor.black
+                self.noChartDataTextColor = UIColor.black
             }
         }
     }
+    
+    /// the data point font
+    @IBInspectable
+    open var dataPointFont: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     
     ///Allows a developer to set some basic padding for the chart legend labels *Default 10.0*
     open var legendLabelPadding: CGFloat = 10.0
     
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
-    internal var dataFont: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     internal let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     internal let grayView = UIView()
     
@@ -85,7 +88,7 @@ open class PredixTimeSeriesView: LineChartView {
     
     /// Helper function to populate the timeseries chart based on timeseries tags array.
     /// - parameter tags: Array of `TimeSeriesTag`.
-    public func loadLabelsAndValues(_ timeSeriesTags: [TimeSeriesTag]) {
+    public func loadLabelsAndValues(timeSeriesTags: [TimeSeriesTag]) {
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
         for tag in timeSeriesTags {
@@ -112,14 +115,14 @@ open class PredixTimeSeriesView: LineChartView {
         
         let data: LineChartData = LineChartData(dataSets: dataSets)
         data.setValueTextColor(NSUIColor.white)
-        data.setValueFont(dataFont)
+        data.setValueFont(dataPointFont)
         self.data = data
         self.notifyDataSetChanged()
         self.setNeedsLayout()
         
     }
     ///Loads data from a TimeseriesManager response
-    public func loadLabelsAndValues(_ tags: [Tag]) {
+    public func loadLabelsAndValues(tags: [Tag]) {
         var responseTags: [TimeSeriesTag] = []
         var dataPoints: [TimeSeriesDataPoint] = []
         
@@ -137,24 +140,13 @@ open class PredixTimeSeriesView: LineChartView {
             responseTags.append(tag)
         }
         
-        self.loadLabelsAndValues(responseTags)
+        self.loadLabelsAndValues(timeSeriesTags: responseTags)
     }
     /// :nodoc:
     open override func layoutSubviews() {
         super.layoutSubviews()
         activityView.frame = self.bounds
         grayView.frame = self.bounds
-        let highlight = self.lastHighlighted ?? Highlight(x: 0, y: 0, xPx: 0, yPx: 0, dataIndex: 0, dataSetIndex: 0, stackIndex: 0, axis: .left)
-        self.highlightValue(highlight, callDelegate: true)
-        if self.data != nil {
-            self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
-            var paddedSizes = [CGSize]()
-            for size in self.legend.calculatedLabelSizes {
-                let newSize = CGSize(width: size.width + legendLabelPadding, height: size.height)
-                paddedSizes.append(newSize)
-            }
-            self.legend.calculatedLabelSizes = paddedSizes
-        }
     }
     
     // MARK: - fileprivate functions
@@ -212,24 +204,15 @@ open class PredixTimeSeriesView: LineChartView {
     }
     
 }
-
+/// :nodoc:
 extension PredixTimeSeriesView: ChartViewDelegate {
     /// :nodoc:
     public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        if let datasets = self.data?.dataSets {
-            for (index, dataset) in datasets.enumerated() {
-                let entry = dataset.entriesForXValue(highlight.x).first
-                if let label = dataset.label, let value = entry?.y {
-                    self.legend.entries[index].label = "\(label): \(value)"
-                }
-            }
-        }
-        
         self.timeSeriesDataDelegate?.valueSelected?(timeSeriesView: self, timeScale: highlight.x)
     }
 }
 ///A delegate to allow a class to know when it's time to load data into the view
-@objc public protocol PredixTimeSeriesViewDelegate {
+@objc public protocol TimeSeriesViewDelegate {
     ///Will be called to ask to load time series data based on the TimeSeriesTag object
     @objc optional func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?) -> Void)
     ///Will be called to ask to load time series data based on the TimeSeriesManager Tag object
