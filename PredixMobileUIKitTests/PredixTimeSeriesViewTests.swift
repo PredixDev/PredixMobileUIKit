@@ -318,7 +318,7 @@ class PredixTimeSeriesViewTests: XCTestCase {
     
     func testSettingThePredixTimeSeriesViewDelegateWithLoadTimeSeriesDataDefinedLoadsDataIntoTheChart() {
         let values = [1.0, 2.0]
-        let results = ["values" : [values]]
+        let results = ["values": [values]]
         let jsonArray = ["results": [results]]
         let tagData: [Tag] = [Tag(json: jsonArray)!]
         let delegate = SDKTimeSeriesViewDelegate(data: tagData)
