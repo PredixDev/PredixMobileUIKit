@@ -60,8 +60,7 @@ open class PredixTimeSeriesView: LineChartView {
         }
     }
     
-    /// the data point font
-    @IBInspectable
+    /// the data point font *default:* System font with system font size
     open var dataPointFont: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     
     ///Allows a developer to set some basic padding for the chart legend labels *Default 10.0*

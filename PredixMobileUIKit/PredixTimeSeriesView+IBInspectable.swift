@@ -122,7 +122,7 @@ extension PredixTimeSeriesView {
                 legend.verticalAlignment = .bottom
             }
         }
-    }//MARK: from here
+    }
     /// the chart boarder color *default:* white
     @IBInspectable
     open var chartBorderColor: UIColor {

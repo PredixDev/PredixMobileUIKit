@@ -231,7 +231,6 @@ extension PredixAuthenticationView {
         }
         authenticationInProgress = true
         
-        //TODO: This should be in the SDK itself...
         if configuration.baseURL == nil, let serverUrlString = Bundle.main.object(forInfoDictionaryKey: "server_url") as? String {
             configuration.baseURL = URL(string: serverUrlString)
         }
