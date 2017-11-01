@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import PredixMobileUIKit
+@testable import PredixMobileUIKit
 
 class UtilitiesTest: XCTestCase {
     func testShouldRunTheBlockOnTheRunningThread() {
