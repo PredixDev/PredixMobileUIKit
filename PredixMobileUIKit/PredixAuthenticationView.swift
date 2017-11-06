@@ -21,22 +21,22 @@ import QuartzCore
  Example usage from Interface builder:
  
  class ViewController: UIViewController, PredixAuthenticationViewDelegate {
- @IBOutlet weak var authenticationView: PredixAuthenticationView!
+     @IBOutlet weak var authenticationView: PredixAuthenticationView!
  
- override func viewDidLoad() {
- super.viewDidLoad()
- var configuration = AuthenticationManagerConfiguration()
- configuration.baseURL = URL(string: "https://youruaahost.com")
- configuration.clientId = "a clientID"
- configuration.clientSecret = "a client secret"
+     override func viewDidLoad() {
+         super.viewDidLoad()
+         var configuration = AuthenticationManagerConfiguration()
+         configuration.baseURL = URL(string: "https://youruaahost.com")
+         configuration.clientId = "a clientID"
+         configuration.clientSecret = "a client secret"
  
- authenticationView.configuration = configuration
- authenticationView.beginAuthentication()
- }
+         authenticationView.configuration = configuration
+         authenticationView.beginAuthentication()
+     }
  
- func authenticationComplete(success: Bool, error: Error?) {
- //Code you want to execute when Authentication has completed
- }
+     func authenticationComplete(success: Bool, error: Error?) {
+        //Code you want to execute when Authentication has completed
+     }
  }
  */
 @IBDesignable
