@@ -10,7 +10,35 @@ import UIKit
 import PredixMobileSDK
 import QuartzCore
 
-///A basic authentication view that works with the PredixSDKForiOS to simplify authentication.
+/**
+ Provides an authentication view that represents the default Predix UAA authentication view.
+ 
+ The authentication view is intended to handle most of the interactions with UAA for you using a native UI form.  Simply provider your configuration and tell
+ the PredixAuthenticationView to start authentication.
+ 
+ *NOTE:*  The baseURL, clientId and clientSecret can be defined in your info.plist instead of in code using the following keys: server_url, client_id and client_secret
+ 
+ Example usage from Interface builder:
+ 
+ class ViewController: UIViewController, PredixAuthenticationViewDelegate {
+ @IBOutlet weak var authenticationView: PredixAuthenticationView!
+ 
+ override func viewDidLoad() {
+ super.viewDidLoad()
+ var configuration = AuthenticationManagerConfiguration()
+ configuration.baseURL = URL(string: "https://youruaahost.com")
+ configuration.clientId = "a clientID"
+ configuration.clientSecret = "a client secret"
+ 
+ authenticationView.configuration = configuration
+ authenticationView.beginAuthentication()
+ }
+ 
+ func authenticationComplete(success: Bool, error: Error?) {
+ //Code you want to execute when Authentication has completed
+ }
+ }
+ */
 @IBDesignable
 open class PredixAuthenticationView: UIView {
     private var keyboardRect: CGRect?
@@ -20,12 +48,11 @@ open class PredixAuthenticationView: UIView {
     
     internal private(set) var scrollView: UIScrollView = UIScrollView()
     internal private(set) var activeTextField: UITextField?
-    internal var authenticationManager: AuthenticationManager?
     internal private(set) var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     ///Indicates if authentication is in progress
     open private(set) var authenticationInProgress = false
-    ///The title image
+    ///The title image that will be displayed above the email filed
     open let titleImageView: UIImageView = UIImageView()
     ///The email text filed used by the authentication view
     open let emailTextField: UITextField = UITextField()
@@ -41,8 +68,10 @@ open class PredixAuthenticationView: UIView {
             authenticationManager?.onlineAuthenticationHandler = onlineHandler
         }
     }
+    ///The authentication manager that is used by the PredixAuthenticationView to authenticate with Predix UAA
+    open private(set) var authenticationManager: AuthenticationManager?
     
-    ///Title image you want to use for the title header
+    ///Title image you want to use for the title header that is displayed above the email text field
     @IBInspectable
     open var titleImage: UIImage? = UIImage(named: "predixTitle.png", in: Bundle(for: PredixAuthenticationView.self), compatibleWith: nil) {
         didSet {
@@ -208,16 +237,23 @@ internal class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler
     }
 }
 /**
- An delegate that allows a controller to be notified when certain actions take place
+ An delegate that works with the PredixAuthenticationView that allows an implementer to be notified when certain actions take place during the authentication process
  */
 @objc public protocol PredixAuthenticationViewDelegate: NSObjectProtocol {
     /**
-         Called when the user presses the sign in button.
- 
-    *NOTE:* If an application implements this method from the implementor is expected to control all aspects of the authentication process and auto sign-in will not operate.
+     Called when the user presses the sign in button.
+     
+     Overriding this delegate method requires an implementer to take control of all sign in actions for the authentication manager.  The PredixAuthenticationView will stop doing sign-in actions
+     when this delegate method is implemented.
      */
     @objc optional func signInPressed()
-    ///Alerts a delegate when authentication is complete
+    /**
+     Provides the delegate with the ability to do an action when authentication is completed.
+     
+     - parameters:
+     - success: Indicates is authentication was successful or not
+     - error: If an error was encountered during authentication the error property will give an indication why authentication failed or encountered an error
+     */
     @objc optional func authenticationComplete(success: Bool, error: Error?)
 }
 
