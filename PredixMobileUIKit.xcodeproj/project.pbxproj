@@ -168,6 +168,7 @@
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
 				4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */,
 				4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */,
+				872373661FA111C100E015B5 /* PredixTrendProgressView.swift */,
 				4F503B621F6C5A5600B8EE10 /* PredixDonutView.swift */,
 				4F3C198A1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift */,
 				4F503B671F6C73DB00B8EE10 /* UIColor+Predix.swift */,
@@ -175,7 +176,6 @@
 				374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */,
 				374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */,
 				374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */,
-				872373661FA111C100E015B5 /* PredixTrendProgressView.swift */,
 				4F627A341F8E7E4400CB4AEE /* Utilities.swift */,
 			);
 			path = PredixMobileUIKit;

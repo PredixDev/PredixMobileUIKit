@@ -194,33 +194,18 @@ extension PredixTrendProgressView {
     // MARK: - private functions
     private func initializeWithDummyData() {
         
-        let numPoints = 7
         let numLimitLines = 2
-        let maxValueRand = 250.0
-        let minValueRand = 50.0
         
+        let daysOfTheWeek = ["Mon", "Tues", "Wed", "Thurs", "Today"]
         var colors: [UIColor] = [self.warningThresholdColor, self.criticalThresholdColor]
-        var thresholds = [(maxValueRand - minValueRand) * 0.70, (maxValueRand - minValueRand) * 0.80]
-        
-        var date = Date()
-        date = (Calendar.current as NSCalendar).date(byAdding: .day, value: (-1 * (numPoints-1)), to: date, options: [])!
-        
-        var minMeasure = maxValueRand
-        var maxMeasure = minValueRand
+        var thresholds = [0.70, 0.80]
         
         var dataPoints: [ChartDataEntry] = []
-        for i in 1 ... numPoints {
-            let epochInMs = 1000.0 + Double(i)
-            let measure = Double(getRandom(minValueRand, ceiling: maxValueRand))
-            if measure < minMeasure {
-                minMeasure = measure
-            }
-            if measure > maxMeasure {
-                maxMeasure = measure
-            }
+        for i in 0 ... daysOfTheWeek.count {
+            let epochInMs = Double(i)
+            let measure = Double(arc4random_uniform(UInt32(100)))
             let dataPoint = ChartDataEntry(x:epochInMs, y: measure)
             dataPoints.append(dataPoint)
-            date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: date, options: [])!
         }
         
         var limits:[ChartDataEntryLimitLine] = []
