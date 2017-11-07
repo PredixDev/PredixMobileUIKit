@@ -69,7 +69,7 @@ open class PredixAuthenticationView: UIView {
         }
     }
     ///The authentication manager that is used by the PredixAuthenticationView to authenticate with Predix UAA
-    open private(set) var authenticationManager: AuthenticationManager?
+    open internal(set) var authenticationManager: AuthenticationManager?
     
     ///Title image you want to use for the title header that is displayed above the email text field
     @IBInspectable
