@@ -34,9 +34,7 @@
 		4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */; };
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
 		8721F1CC1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721F1CB1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift */; };
-		872373671FA111C200E015B5 /* PredixSeriesWithLimitsView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872373651FA111C100E015B5 /* PredixSeriesWithLimitsView+IBInspectable.swift */; };
-		872373681FA111C200E015B5 /* PredixSeriesWithLimitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872373661FA111C100E015B5 /* PredixSeriesWithLimitsView.swift */; };
-		879BBF071F9FC7D900FA87BF /* TimeSeriesLimitLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */; };
+		872373681FA111C200E015B5 /* PredixTrendProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872373661FA111C100E015B5 /* PredixTrendProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,9 +115,7 @@
 		4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionExtensions.swift; sourceTree = "<group>"; };
 		4FF131421F7AF83C004861A7 /* cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = cartfile; sourceTree = "<group>"; };
 		8721F1CB1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixSeriesWithLimitsViewTests.swift; sourceTree = "<group>"; };
-		872373651FA111C100E015B5 /* PredixSeriesWithLimitsView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PredixSeriesWithLimitsView+IBInspectable.swift"; sourceTree = "<group>"; };
-		872373661FA111C100E015B5 /* PredixSeriesWithLimitsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixSeriesWithLimitsView.swift; sourceTree = "<group>"; };
-		879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeriesLimitLine.swift; sourceTree = "<group>"; };
+		872373661FA111C100E015B5 /* PredixTrendProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixTrendProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,9 +175,7 @@
 				374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */,
 				374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */,
 				374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */,
-				879BBF041F9FC7D900FA87BF /* TimeSeriesLimitLine.swift */,
-				872373661FA111C100E015B5 /* PredixSeriesWithLimitsView.swift */,
-				872373651FA111C100E015B5 /* PredixSeriesWithLimitsView+IBInspectable.swift */,
+				872373661FA111C100E015B5 /* PredixTrendProgressView.swift */,
 				4F627A341F8E7E4400CB4AEE /* Utilities.swift */,
 			);
 			path = PredixMobileUIKit;
@@ -371,8 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */,
-				872373681FA111C200E015B5 /* PredixSeriesWithLimitsView.swift in Sources */,
-				879BBF071F9FC7D900FA87BF /* TimeSeriesLimitLine.swift in Sources */,
+				872373681FA111C200E015B5 /* PredixTrendProgressView.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,
@@ -380,7 +373,6 @@
 				374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */,
 				4F627A371F8ECAFB00CB4AEE /* CircleProgressLayer.swift in Sources */,
 				4F627A351F8E7E4400CB4AEE /* Utilities.swift in Sources */,
-				872373671FA111C200E015B5 /* PredixSeriesWithLimitsView+IBInspectable.swift in Sources */,
 				374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */,
 				4F3C198B1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift in Sources */,
 			);

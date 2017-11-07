@@ -10,9 +10,9 @@ import UIKit
 import PredixMobileUIKit
 import Charts
 
-class SeriesWithLimitsChartViewController: UIViewController {
+class TrendProgressChartViewController: UIViewController {
 
-    @IBOutlet weak var chartView: PredixSeriesWithLimitsView!
+    @IBOutlet weak var chartView: PredixTrendProgressView!
     @IBOutlet weak var numPointsSlider: UISlider!
     @IBOutlet weak var limitLinesSlider: UISlider!
     @IBOutlet weak var numPointsLabel: UILabel!
@@ -51,11 +51,7 @@ class SeriesWithLimitsChartViewController: UIViewController {
     }
 
     // MARK: - private functions
-    private func generateDummyData(_ numPoints: Int, numLimitLines: Int) -> ([TimeSeriesTag], [TimeSeriesLimitLine]) {
-        var data: [TimeSeriesTag] = []
-        
-        var colors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
-        
+    private func generateDummyData(_ numPoints: Int, numLimitLines: Int) -> ([ChartDataEntry], [ChartDataEntryLimitLine]) {
         self.numPointsLabel.text = "\(numPoints) Data Points Selected"
         self.limitLinesLabel.text = "\(numLimitLines) Limit Lines Selected"
         let maxValueRand = 250.0
@@ -63,12 +59,15 @@ class SeriesWithLimitsChartViewController: UIViewController {
         var date = Date()
         date = (Calendar.current as NSCalendar).date(byAdding: .day, value: (-1 * (numPoints-1)), to: date, options: [])!
         
+        var thresholdColors: [UIColor] = [self.chartView.warningThresholdColor, self.chartView.criticalThresholdColor, UIColor.Predix.green3, UIColor.Predix.blue4]
+        var thresholds = [maxValueRand * 0.70, maxValueRand * 0.80]
+        
         var minMeasure = maxValueRand
         var maxMeasure = minValueRand
         
-        var dataPoints: [TimeSeriesDataPoint] = []
-        for _ in 1 ... numPoints {
-            let epochInMs = date.timeIntervalSince1970
+        var dataPoints: [ChartDataEntry] = []
+        for i in 1 ... numPoints {
+            let epochInMs = 1000.0 + Double(i)
             let measure = Double(getRandom(minValueRand, ceiling: maxValueRand))
             if measure < minMeasure {
                 minMeasure = measure
@@ -76,22 +75,20 @@ class SeriesWithLimitsChartViewController: UIViewController {
             if measure > maxMeasure {
                 maxMeasure = measure
             }
-            let dataPoint = TimeSeriesDataPoint(epochInMs:epochInMs, measure: measure)
+            let dataPoint = ChartDataEntry(x:epochInMs, y: measure)
             dataPoints.append(dataPoint)
             date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: date, options: [])!
         }
-        let series = TimeSeriesTag(name: "", dataPoints: dataPoints)
-        data.append(series)
         
-        var limits:[TimeSeriesLimitLine] = []
+        var limits:[ChartDataEntryLimitLine] = []
         for idx in 1 ... numLimitLines {
-            let color: UIColor = colors[idx % colors.count]
-            let limitValue = maxMeasure - 20 * Double(idx-1)
+            let color: UIColor = thresholdColors[idx - 1]
+            let limitValue = (idx <= thresholds.count) ? thresholds[idx - 1] : maxMeasure - 20 * Double(idx-1)
 
-            let limit = TimeSeriesLimitLine(measure:limitValue, color:color)
+            let limit = ChartDataEntryLimitLine(y: limitValue, color: color)
             limits.append(limit)
         }
-        return (data, limits)
+        return (dataPoints, limits)
     }
     
     private func getRandom(_ floor: Double, ceiling: Double) -> Int {
@@ -100,7 +97,7 @@ class SeriesWithLimitsChartViewController: UIViewController {
     }
 }
 
-extension SeriesWithLimitsChartViewController: ChartViewDelegate {
+extension TrendProgressChartViewController: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print("chartValueSelected")
     }
