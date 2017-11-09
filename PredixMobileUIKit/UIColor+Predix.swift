@@ -836,11 +836,11 @@ extension UIColor {
         return CIColor(color: self).green
     }
     ///Returns the current set blue for the color
-    var blueValue: CGFloat{
+    var blueValue: CGFloat {
         return CIColor(color: self).blue
     }
     ///Returns the current set alpha for the color
-    var alphaValue: CGFloat{
+    var alphaValue: CGFloat {
         return CIColor(color: self).alpha
     }
 }

@@ -222,6 +222,7 @@ public struct ChartDataEntryLimitLine {
     /// color for line to be drawn.
     public var color: UIColor
     
+    // swiftlint:disable identifier_name
     /**
      Creates a ChartDataEntryLimitLine with where the line should be drawn and color
      
@@ -229,7 +230,6 @@ public struct ChartDataEntryLimitLine {
          - y: Where on the Y-Axis you want the line to be drawn
          - color: The color of the line to be drawn
      */
-    // swiftlint:disable identifier_name
     public init(y: Double, color: UIColor) {
         self.y = y
         self.color = color

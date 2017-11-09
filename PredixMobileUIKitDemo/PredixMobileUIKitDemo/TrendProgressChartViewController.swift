@@ -111,7 +111,7 @@ private class TimestampValueFormatter: NSObject, IAxisValueFormatter {
         self.formatter?.dateFormat = "EEE"
     }
     
-    init(_ format:String) {
+    init(_ format: String) {
         super.init()
         
         self.formatter = DateFormatter()
