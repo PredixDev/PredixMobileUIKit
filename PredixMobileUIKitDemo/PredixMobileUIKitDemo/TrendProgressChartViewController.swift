@@ -57,7 +57,7 @@ class TrendProgressChartViewController: UIViewController {
             dataPoints.append(dataPoint)
         }
         
-        var limits:[ChartDataEntryLimitLine] = []
+        var limits: [ChartDataEntryLimitLine] = []
         for idx in 0 ..< numLimitLines {
             let color: UIColor = colors[idx]
             let limitValue = (idx < thresholds.count) ? thresholds[idx] : 35 + (Double(idx-1) * 10)
@@ -104,21 +104,21 @@ private class PercentValueFormatter: NSObject, IAxisValueFormatter {
 private class TimestampValueFormatter: NSObject, IAxisValueFormatter {
     fileprivate var formatter: DateFormatter?
     
-    public override init() {
+    override init() {
         super.init()
         
         self.formatter = DateFormatter()
         self.formatter?.dateFormat = "EEE"
     }
     
-    public init(_ format:String) {
+    init(_ format:String) {
         super.init()
         
         self.formatter = DateFormatter()
         self.formatter?.dateFormat = format
     }
     
-    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let today = Date()
         let otherDay = Date(timeIntervalSince1970: value)
         

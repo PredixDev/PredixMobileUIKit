@@ -150,7 +150,7 @@ class PredixTrendProgressViewTests: XCTestCase {
             dataPoints.append(dataPoint)
         }
         
-        var limits:[ChartDataEntryLimitLine] = []
+        var limits: [ChartDataEntryLimitLine] = []
         for idx in 0 ..< 2 {
             let color: UIColor = colors[idx]
             let limitValue = (idx < thresholds.count) ? thresholds[idx] : 35 + (Double(idx-1) * 10)

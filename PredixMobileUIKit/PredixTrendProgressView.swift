@@ -84,7 +84,7 @@ open class PredixTrendProgressView: LineChartView {
          - data: The data entries to be displayed on the chart
      */
     open func loadChart(data: [ChartDataEntry]) {
-        var limits:[ChartDataEntryLimitLine] = []
+        var limits: [ChartDataEntryLimitLine] = []
         
         if self.warningThresholdEnabled {
             limits.append(ChartDataEntryLimitLine(y: self.warningThreshold, color: self.warningThresholdColor))
@@ -99,7 +99,7 @@ open class PredixTrendProgressView: LineChartView {
     
     /// Helper function to populate the Area series chart based on timeseries tags array.
     /// - parameter tags: Array of `TimeSeriesTag`.
-    open func loadChart(data: [ChartDataEntry], limits:[ChartDataEntryLimitLine]) {
+    open func loadChart(data: [ChartDataEntry], limits: [ChartDataEntryLimitLine]) {
         var dataSets: [LineChartDataSet] = []
         
         let dataSet: LineChartDataSet = LineChartDataSet(values: data, label: "")
@@ -169,9 +169,9 @@ open class PredixTrendProgressView: LineChartView {
         
         self.leftAxis.drawGridLinesEnabled = true
         self.leftAxis.gridLineWidth = 0.5
-        self.leftAxis.drawZeroLineEnabled = false;
+        self.leftAxis.drawZeroLineEnabled = false
         self.leftAxis.gridColor = .lightGray
-        self.leftAxis.drawLimitLinesBehindDataEnabled = true;
+        self.leftAxis.drawLimitLinesBehindDataEnabled = true
     }
 }
 
@@ -214,8 +214,10 @@ extension PredixTrendProgressView {
 
 /// TimeSeries limit line model
 public struct ChartDataEntryLimitLine {
+    // swiftlint:disable identifier_name
     /// The value on the y access where you want the line to be displayed
     public var y: Double
+    // swiftlint:enable identifier_name
     
     /// color for line to be drawn.
     public var color: UIColor
@@ -227,10 +229,10 @@ public struct ChartDataEntryLimitLine {
          - y: Where on the Y-Axis you want the line to be drawn
          - color: The color of the line to be drawn
      */
+    // swiftlint:disable identifier_name
     public init(y: Double, color: UIColor) {
         self.y = y
         self.color = color
     }
+    // swiftlint:enable identifier_name
 }
-
-
