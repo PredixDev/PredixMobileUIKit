@@ -17,12 +17,13 @@ open class PredixTrendProgressView: LineChartView {
     @IBInspectable
     open var textColor: UIColor = UIColor.black {
         didSet {
-            self.xAxis.labelTextColor = textColor
-            self.leftAxis.labelTextColor = textColor
-            self.rightAxis.labelTextColor = textColor
-            self.legend.textColor = textColor
+            xAxis.labelTextColor = textColor
+            leftAxis.labelTextColor = textColor
+            rightAxis.labelTextColor = textColor
+            legend.textColor = textColor
         }
     }
+    /// The border color of the chart
     @IBInspectable
     open var chartBorderColor: UIColor {
         get {
@@ -30,8 +31,8 @@ open class PredixTrendProgressView: LineChartView {
         }
         set(newValue) {
             borderColor = newValue
-            self.leftAxis.axisLineColor = newValue
-            self.rightAxis.axisLineColor = newValue
+            leftAxis.axisLineColor = newValue
+            rightAxis.axisLineColor = newValue
         }
     }
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
@@ -42,35 +43,26 @@ open class PredixTrendProgressView: LineChartView {
     /// The fill color you want to use to fill under the graph line
     @IBInspectable
     open var progressFillColor: UIColor?
+    /// Display the warning threshold line on the chart
+    @IBInspectable
+    open var warningThresholdEnabled: Bool = true
+    /// Display the critical threshold line on the chart
+    @IBInspectable
+    open var criticalThresholdEnabled: Bool = true
     /// Warning threshold color
     @IBInspectable
-    public var warningThresholdColor: UIColor = UIColor.orange
+    open var warningThresholdColor: UIColor = UIColor.orange
     /// Critical threshold color
     @IBInspectable
-    public var criticalThresholdColor: UIColor = UIColor.red
+    open var criticalThresholdColor: UIColor = UIColor.red
     /// Warning threshold
     /// Set to zero to disable warning thresholds
     @IBInspectable
-    public var warningThreshold: Double = 0.00
+    open var warningThreshold: Double = 70.0
     /// Critical threshold
     /// Set to zero to disable critical thresholds
     @IBInspectable
-    public var criticalThreshold: Double = 0.00
-    /// The data formation for the horizontal date *default:* EEE
-    @IBInspectable
-    open var xAxisDateFormat: String = "EEE" {
-        didSet {
-            self.xAxis.valueFormatter = TimestampValueFormatter(xAxisDateFormat)
-        }
-    }
-    /// The number format for the vertical label
-    @IBInspectable
-    open var yAxisNumberFormat: String? {
-        didSet {
-            let format = yAxisNumberFormat ?? ""
-            self.leftAxis.valueFormatter = MeasureValueFormatter(format)
-        }
-    }
+    open var criticalThreshold: Double = 80.0
     
     /// :nodoc:
     public override init(frame: CGRect) {
@@ -84,29 +76,30 @@ open class PredixTrendProgressView: LineChartView {
         initialize()
     }
     
-    /// :nodoc:
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if self.data != nil {
-            self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
-        }
-    }
-    
-    /// :nodoc:
-    override open func setNeedsDisplay() {
-        if self.data != nil {
-            self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
-        }
-        
-        super.setNeedsDisplay()
-    }
-    
     // MARK: - public functions
+    /**
+     Loads chart data with the given ChartDataEntrys.  If the warning or critical threshold limits have been enabled and set they will be displayed on the graph.
+     
+     - parameters:
+         - data: The data entries to be displayed on the chart
+     */
+    open func loadChart(data: [ChartDataEntry]) {
+        var limits:[ChartDataEntryLimitLine] = []
+        
+        if self.warningThresholdEnabled {
+            limits.append(ChartDataEntryLimitLine(y: self.warningThreshold, color: self.warningThresholdColor))
+        }
+        
+        if self.criticalThresholdEnabled {
+            limits.append(ChartDataEntryLimitLine(y: self.criticalThreshold, color: self.criticalThresholdColor))
+        }
+        
+        self.loadChart(data: data, limits: limits)
+    }
     
     /// Helper function to populate the Area series chart based on timeseries tags array.
     /// - parameter tags: Array of `TimeSeriesTag`.
-    public func loadLabelsAndValues(_ data: [ChartDataEntry], limits:[ChartDataEntryLimitLine]) {
+    open func loadChart(data: [ChartDataEntry], limits:[ChartDataEntryLimitLine]) {
         var dataSets: [LineChartDataSet] = []
         
         let dataSet: LineChartDataSet = LineChartDataSet(values: data, label: "")
@@ -182,47 +175,40 @@ open class PredixTrendProgressView: LineChartView {
     }
 }
 
-//IB Inspectables
+//Interface Builder dummy data generation
 extension PredixTrendProgressView {
     ///:nodoc:
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         initializeWithDummyData()
-        self.legend.calculateDimensions(labelFont: self.legend.font, viewPortHandler: self.viewPortHandler)
     }
     
     // MARK: - private functions
     private func initializeWithDummyData() {
-        
-        let numLimitLines = 2
-        
-        let daysOfTheWeek = ["Mon", "Tues", "Wed", "Thurs", "Today"]
-        var colors: [UIColor] = [self.warningThresholdColor, self.criticalThresholdColor]
-        var thresholds = [0.70, 0.80]
-        
         var dataPoints: [ChartDataEntry] = []
-        for i in 0 ... daysOfTheWeek.count {
-            let epochInMs = Double(i)
+        var maxDataPoint = 0.0
+        
+        for i in 0 ... 7 {
+            let epochInMs = Double(i) + 1
             let measure = Double(arc4random_uniform(UInt32(100)))
             let dataPoint = ChartDataEntry(x:epochInMs, y: measure)
             dataPoints.append(dataPoint)
+            if measure > maxDataPoint {
+                maxDataPoint = measure
+            }
         }
         
-        var limits:[ChartDataEntryLimitLine] = []
-        for idx in 1 ... numLimitLines {
-            let color: UIColor = colors[idx - 1]
-            let limitValue = thresholds[idx - 1]
-            
-            let limit = ChartDataEntryLimitLine(y:limitValue, color:color)
-            limits.append(limit)
+        if self.warningThreshold > maxDataPoint {
+            maxDataPoint = warningThreshold
         }
         
-        loadLabelsAndValues(dataPoints, limits:limits)
-    }
-    
-    private func getRandom(_ floor: Double, ceiling: Double) -> Int {
-        let upperBound = ceiling - floor + 1
-        return Int(arc4random_uniform(UInt32(upperBound)) + UInt32(floor))
+        if self.criticalThreshold > maxDataPoint {
+            maxDataPoint = criticalThreshold
+        }
+        
+        leftAxis.axisMaximum = maxDataPoint + 10.0
+        
+        loadChart(data: dataPoints)
     }
 }
 
@@ -244,68 +230,6 @@ public struct ChartDataEntryLimitLine {
     public init(y: Double, color: UIColor) {
         self.y = y
         self.color = color
-    }
-}
-
-/// Date Formatter -- format can be specified as inspectable property via IB
-// programmatically as chart property
-private class TimestampValueFormatter: NSObject, IAxisValueFormatter {
-    fileprivate var formatter: DateFormatter?
-
-    public override init() {
-        super.init()
-        
-        self.formatter = DateFormatter()
-        self.formatter?.dateFormat = "EEE"
-    }
-    
-    public init(_ format:String) {
-        super.init()
-        
-        self.formatter = DateFormatter()
-        self.formatter?.dateFormat = format
-    }
-    
-    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let today = Date()
-        let otherDay = Date(timeIntervalSince1970: value)
-        
-        let todayDay = Calendar.current.component(.day, from: today)
-        let todayMonth = Calendar.current.component(.month, from: today)
-        let todayYear = Calendar.current.component(.year, from: today)
-        
-        let day = Calendar.current.component(.day, from: otherDay)
-        let month = Calendar.current.component(.month, from: otherDay)
-        let year = Calendar.current.component(.year, from: otherDay)
-        
-        if todayDay == day && todayMonth == month && todayYear == year {
-            return "Today"
-        }
-        
-        return self.formatter?.string(from: otherDay) ?? ""
-    }
-}
-
-///Converts measure values as percent strings
-private class MeasureValueFormatter: NSObject, IAxisValueFormatter {
-    fileprivate var formatter: NumberFormatter?
-    
-    public override init() {
-        super.init()
-        
-        self.formatter = NumberFormatter()
-        self.formatter?.numberStyle = .percent
-    }
-    
-    public init(_ format:String) {
-        super.init()
-        
-        self.formatter = NumberFormatter()
-        self.formatter?.numberStyle = .percent
-    }
-    
-    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return self.formatter?.string(from:NSNumber(value:value/100.0)) ?? ""
     }
 }
 

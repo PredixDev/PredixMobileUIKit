@@ -25,69 +25,47 @@ class TrendProgressChartViewController: UIViewController {
         self.chartView.delegate = self
         
         let (data, limits) = self.generateDummyData(7, numLimitLines: 2)
-        self.chartView.loadLabelsAndValues(data, limits:limits)
+        self.chartView.loadChart(data: data, limits:limits)
+        self.chartView.leftAxis.axisRange = 100.0
+        self.chartView.leftAxis.axisMinimum = 0.0
+        self.chartView.leftAxis.axisMaximum = 100.0
+        self.chartView.xAxis.valueFormatter = TimestampValueFormatter()
+        self.chartView.leftAxis.valueFormatter = PercentValueFormatter()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func sliderValueChanged(_ sender: Any) {
         let numPoints = Int(self.numPointsSlider.value)
         let numLimitLines = Int(self.limitLinesSlider.value)
         let (data, limits) = self.generateDummyData(numPoints, numLimitLines: numLimitLines)
-        self.chartView.loadLabelsAndValues(data, limits:limits)
+        self.chartView.loadChart(data: data, limits:limits)
     }
 
     // MARK: - private functions
     private func generateDummyData(_ numPoints: Int, numLimitLines: Int) -> ([ChartDataEntry], [ChartDataEntryLimitLine]) {
         self.numPointsLabel.text = "\(numPoints) Data Points Selected"
         self.limitLinesLabel.text = "\(numLimitLines) Limit Lines Selected"
-        let maxValueRand = 250.0
-        let minValueRand = 50.0
-        var date = Date()
-        date = (Calendar.current as NSCalendar).date(byAdding: .day, value: (-1 * (numPoints-1)), to: date, options: [])!
         
-        var thresholdColors: [UIColor] = [self.chartView.warningThresholdColor, self.chartView.criticalThresholdColor, UIColor.Predix.green3, UIColor.Predix.blue4]
-        var thresholds = [maxValueRand * 0.70, maxValueRand * 0.80]
-        
-        var minMeasure = maxValueRand
-        var maxMeasure = minValueRand
+        var colors: [UIColor] = [self.chartView.warningThresholdColor, self.chartView.criticalThresholdColor, UIColor.Predix.green3, UIColor.Predix.blue4]
+        var thresholds = [70.0, 80.0]
+        let today = Date()
         
         var dataPoints: [ChartDataEntry] = []
-        for i in 1 ... numPoints {
-            let epochInMs = 1000.0 + Double(i)
-            let measure = Double(getRandom(minValueRand, ceiling: maxValueRand))
-            if measure < minMeasure {
-                minMeasure = measure
-            }
-            if measure > maxMeasure {
-                maxMeasure = measure
-            }
-            let dataPoint = ChartDataEntry(x:epochInMs, y: measure)
+        for i in 0 ... numPoints {
+            let epochInMs = floor((today.timeIntervalSince1970 - 86400000.0 * Double(numPoints - i)))
+            let measure = Double(arc4random_uniform(UInt32(100)))
+            let dataPoint = ChartDataEntry(x: epochInMs, y: measure)
             dataPoints.append(dataPoint)
-            date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: date, options: [])!
         }
         
         var limits:[ChartDataEntryLimitLine] = []
-        for idx in 1 ... numLimitLines {
-            let color: UIColor = thresholdColors[idx - 1]
-            let limitValue = (idx <= thresholds.count) ? thresholds[idx - 1] : maxMeasure - 20 * Double(idx-1)
-
-            let limit = ChartDataEntryLimitLine(y: limitValue, color: color)
+        for idx in 0 ..< numLimitLines {
+            let color: UIColor = colors[idx]
+            let limitValue = (idx < thresholds.count) ? thresholds[idx] : 35 + (Double(idx-1) * 10)
+            
+            let limit = ChartDataEntryLimitLine(y:limitValue, color:color)
             limits.append(limit)
         }
+        
         return (dataPoints, limits)
     }
     
@@ -112,5 +90,50 @@ extension TrendProgressChartViewController: ChartViewDelegate {
     
     func chartTranslated(_ chartView: ChartViewBase, pointX: CGFloat, pointY: CGFloat) {
         print("chartTranslated")
+    }
+}
+
+private class PercentValueFormatter: NSObject, IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return String(format: "%d%%", Int(value))
+    }
+}
+
+/// Date Formatter -- format can be specified as inspectable property via IB
+// programmatically as chart property
+private class TimestampValueFormatter: NSObject, IAxisValueFormatter {
+    fileprivate var formatter: DateFormatter?
+    
+    public override init() {
+        super.init()
+        
+        self.formatter = DateFormatter()
+        self.formatter?.dateFormat = "EEE"
+    }
+    
+    public init(_ format:String) {
+        super.init()
+        
+        self.formatter = DateFormatter()
+        self.formatter?.dateFormat = format
+    }
+    
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let today = Date()
+        let otherDay = Date(timeIntervalSince1970: value)
+        
+        let todayDay = Calendar.current.component(.day, from: today)
+        let todayMonth = Calendar.current.component(.month, from: today)
+        let todayYear = Calendar.current.component(.year, from: today)
+        
+        let day = Calendar.current.component(.day, from: otherDay)
+        let month = Calendar.current.component(.month, from: otherDay)
+        let year = Calendar.current.component(.year, from: otherDay)
+        
+        if todayDay == day && todayMonth == month && todayYear == year {
+            return "Today"
+        }
+        
+        return self.formatter?.string(from: otherDay) ?? ""
     }
 }

@@ -33,7 +33,7 @@
 		4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B161F6C586500B8EE10 /* Charts.framework */; };
 		4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */; };
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
-		8721F1CC1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721F1CB1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift */; };
+		8721F1CC1FA7AEC900FAC697 /* PredixTrendProgressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721F1CB1FA7AEC900FAC697 /* PredixTrendProgressViewTests.swift */; };
 		872373681FA111C200E015B5 /* PredixTrendProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872373661FA111C100E015B5 /* PredixTrendProgressView.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +114,7 @@
 		4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixCircleProgressView.swift; sourceTree = "<group>"; };
 		4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionExtensions.swift; sourceTree = "<group>"; };
 		4FF131421F7AF83C004861A7 /* cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = cartfile; sourceTree = "<group>"; };
-		8721F1CB1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixSeriesWithLimitsViewTests.swift; sourceTree = "<group>"; };
+		8721F1CB1FA7AEC900FAC697 /* PredixTrendProgressViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixTrendProgressViewTests.swift; sourceTree = "<group>"; };
 		872373661FA111C100E015B5 /* PredixTrendProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixTrendProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,7 +192,7 @@
 				3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */,
 				4F627A381F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift */,
 				4F627A3A1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift */,
-				8721F1CB1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift */,
+				8721F1CB1FA7AEC900FAC697 /* PredixTrendProgressViewTests.swift */,
 				4F627A3C1F8FC98900CB4AEE /* RandomExtensions.swift */,
 				4F2F2E941F91532000BDAFEF /* UtilitiesTests.swift */,
 			);
@@ -385,7 +385,7 @@
 				4F627A3B1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift in Sources */,
 				4F627A391F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift in Sources */,
 				4F627A3D1F8FC98900CB4AEE /* RandomExtensions.swift in Sources */,
-				8721F1CC1FA7AEC900FAC697 /* PredixSeriesWithLimitsViewTests.swift in Sources */,
+				8721F1CC1FA7AEC900FAC697 /* PredixTrendProgressViewTests.swift in Sources */,
 				4F2F2E951F91532000BDAFEF /* UtilitiesTests.swift in Sources */,
 				4F503B021F6C560900B8EE10 /* PredixDonutViewTests.swift in Sources */,
 				4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */,
