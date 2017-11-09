@@ -48,6 +48,7 @@ class PredixAuthenticationViewTest: XCTestCase {
         authenticationView.delegate = delegate
         authenticationView.signIn(sender: self)
         XCTAssertTrue(delegate.called)
+        XCTAssertEqual(authenticationView, delegate.authenticationView)
     }
     
     func testInitWithCoder() {
@@ -267,16 +268,21 @@ private class MockOnlineHandler: UAAServiceAuthenticationHandler {
 private class MockDelegate: NSObject, PredixAuthenticationViewDelegate {
     var lastSuccessValue: Bool?
     var lastError: Error?
+    var authenticationView: PredixAuthenticationView?
     
-    func authenticationComplete(success: Bool, error: Error?) {
+    func authenticationComplete(authenticationView: PredixAuthenticationView, success: Bool, error: Error?) {
         self.lastSuccessValue = success
         self.lastError = error
+        self.authenticationView = authenticationView
     }
 }
 
 private class MockSignInDelegate: NSObject, PredixAuthenticationViewDelegate {
-    public var called = false
-    func signInPressed() {
+    var called = false
+    var authenticationView: PredixAuthenticationView?
+    
+    func overrideAuthentication(authenticationView: PredixAuthenticationView) {
+        self.authenticationView = authenticationView
         called = true
     }
 }

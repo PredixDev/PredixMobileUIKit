@@ -241,20 +241,24 @@ internal class AuthenticationViewRefreshHandler: UAARefreshAuthenticationHandler
  */
 @objc public protocol PredixAuthenticationViewDelegate: NSObjectProtocol {
     /**
-     Called when the user presses the sign in button.
+     Called when authentication is requested by the user
      
-     Overriding this delegate method requires an implementer to take control of all sign in actions for the authentication manager.  The PredixAuthenticationView will stop doing sign-in actions
+     Overriding this delegate method requires an implementer to take control of all authentication actions for the authentication manager.  The PredixAuthenticationView will not execute its own sign-in actions
      when this delegate method is implemented.
+     
+     - parameters:
+     - authenticationView: The authentication view that is invoking the delegate
      */
-    @objc optional func signInPressed()
+    @objc optional func overrideAuthentication(authenticationView: PredixAuthenticationView)
     /**
      Provides the delegate with the ability to do an action when authentication is completed.
      
      - parameters:
+     - authenticationView: The authentication view that is invoking the delegate
      - success: Indicates is authentication was successful or not
      - error: If an error was encountered during authentication the error property will give an indication why authentication failed or encountered an error
      */
-    @objc optional func authenticationComplete(success: Bool, error: Error?)
+    @objc optional func authenticationComplete(authenticationView: PredixAuthenticationView, success: Bool, error: Error?)
 }
 
 // MARK: - Authenticating logic
@@ -286,8 +290,8 @@ extension PredixAuthenticationView {
     }
     
     @objc func signIn(sender: Any) {
-        if let signInFunction = self.delegate?.signInPressed {
-            signInFunction()
+        if let signInFunction = self.delegate?.overrideAuthentication(authenticationView:) {
+            signInFunction(self)
         } else {
             showActivitySpinner()
             credentialProvider?(emailTextField.text ?? "", passwordTextField.text ?? "")
@@ -296,11 +300,13 @@ extension PredixAuthenticationView {
     
     internal func authenticationComplete(status: AuthenticationManager.AuthenticationCompletionStatus) {
         Utilities.runOnMainThread { [weak self] in
-            self?.hideActivitySpinner()
-            if case AuthenticationManager.AuthenticationCompletionStatus.failed(let error) = status {
-                self?.delegate?.authenticationComplete?(success: false, error: error)
-            } else {
-                self?.delegate?.authenticationComplete?(success: true, error: nil)
+            if let strongSelf = self {
+                self?.hideActivitySpinner()
+                if case AuthenticationManager.AuthenticationCompletionStatus.failed(let error) = status {
+                    self?.delegate?.authenticationComplete?(authenticationView: strongSelf, success: false, error: error)
+                } else {
+                    self?.delegate?.authenticationComplete?(authenticationView: strongSelf, success: true, error: nil)
+                }
             }
         }
     }
@@ -316,17 +322,21 @@ extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {
     /// :nodoc:
     public func authenticationHandler(_ authenticationHandler: AuthenticationHandler, didFailWithError error: Error) {
         Utilities.runOnMainThread { [weak self] in
-            self?.hideActivitySpinner()
-            self?.delegate?.authenticationComplete?(success: false, error: error)
+            if let strongSelf = self {
+                self?.hideActivitySpinner()
+                self?.delegate?.authenticationComplete?(authenticationView: strongSelf, success: false, error: error)
+            }
         }
     }
     
     /// :nodoc:
     public func authenticationHandlerProvidedCredentialsWereInvalid(_ authenticationHandler: AuthenticationHandler) {
         Utilities.runOnMainThread { [weak self] in
-            self?.hideActivitySpinner()
-            let error = NSError(domain:  PredixMobileErrorDomain.authentication.description, code: 999, userInfo: [NSLocalizedDescriptionKey: "credentials were invalid"])
-            self?.delegate?.authenticationComplete?(success: false, error: error)
+            if let strongSelf = self {
+                self?.hideActivitySpinner()
+                let error = NSError(domain:  PredixMobileErrorDomain.authentication.description, code: 999, userInfo: [NSLocalizedDescriptionKey: "credentials were invalid"])
+                self?.delegate?.authenticationComplete?(authenticationView: strongSelf, success: false, error: error)
+            }
         }
     }
 }
