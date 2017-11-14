@@ -8,7 +8,7 @@
 
 import Foundation
 import Charts
-import PredixMobileSDK
+import PredixSDK
 
 /// PredixDonutView -- Donut view chart, also can be a pie chart.
 @IBDesignable

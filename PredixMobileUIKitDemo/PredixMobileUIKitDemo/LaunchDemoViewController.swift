@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PredixMobileSDK
+import PredixSDK
 
 class LaunchDemoViewController: UITableViewController {
 
