@@ -18,10 +18,10 @@ public struct TimeSeriesTag {
     public var dataPoints: [TimeSeriesDataPoint]
     
     /// Attributes are key/value pairs used to store data associated with a tag.
-    public var attributes: [String : String]
+    public var attributes: [String: String]
     
     ///:nodoc:
-    public init(name: String, dataPoints: [TimeSeriesDataPoint], attributes: [String : String] = [:]) {
+    public init(name: String, dataPoints: [TimeSeriesDataPoint], attributes: [String: String] = [:]) {
         self.name = name
         self.dataPoints = dataPoints
         self.attributes = attributes
