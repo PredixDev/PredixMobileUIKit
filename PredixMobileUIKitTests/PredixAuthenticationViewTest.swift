@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import PredixMobileSDK
+import PredixSDK
 @testable import PredixMobileUIKit
 
 class PredixAuthenticationViewTest: XCTestCase {

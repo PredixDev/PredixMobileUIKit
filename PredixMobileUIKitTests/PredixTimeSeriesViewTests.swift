@@ -10,7 +10,7 @@ import XCTest
 
 @testable import Charts
 @testable import PredixMobileUIKit
-import PredixMobileSDK
+import PredixSDK
 
 class PredixTimeSeriesViewTests: XCTestCase {
     

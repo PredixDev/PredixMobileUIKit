@@ -12,8 +12,8 @@
 		4F1A53781F85A1E800DCB0CF /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131481F7B19F2004861A7 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F1A53791F85A1E800DCB0CF /* PredixMobileUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */; };
 		4F1A537A1F85A1E800DCB0CF /* PredixMobileUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F1A537E1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */; };
-		4F1A537F1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4F3FF9061FBB5D3E003CFE09 /* PredixSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3FF9051FBB5D3E003CFE09 /* PredixSDK.framework */; };
+		4F3FF9071FBB5D47003CFE09 /* PredixSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3FF9051FBB5D3E003CFE09 /* PredixSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */; };
 		4F503B281F6C58BC00B8EE10 /* DonutChartDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */; };
 		4F503B2B1F6C58BC00B8EE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B291F6C58BC00B8EE10 /* Main.storyboard */; };
@@ -55,7 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4F1A537F1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Embed Frameworks */,
+				4F3FF9071FBB5D47003CFE09 /* PredixSDK.framework in Embed Frameworks */,
 				4F1A53781F85A1E800DCB0CF /* Charts.framework in Embed Frameworks */,
 				4F1A537A1F85A1E800DCB0CF /* PredixMobileUIKit.framework in Embed Frameworks */,
 			);
@@ -66,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesChartViewController.swift; sourceTree = "<group>"; };
+		4F3FF9051FBB5D3E003CFE09 /* PredixSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PredixSDK.framework; path = ../Carthage/Build/iOS/PredixSDK.framework; sourceTree = "<group>"; };
 		4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredixMobileUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChartDemoViewController.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		4FF131481F7B19F2004861A7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PredixMobileUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PredixMobileUIKit.xcodeproj; path = ../PredixMobileUIKit.xcodeproj; sourceTree = "<group>"; };
-		4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PredixMobileSDK.framework; path = ../Carthage/Build/iOS/PredixMobileSDK.framework; sourceTree = "<group>"; };
 		4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDemoViewController.swift; sourceTree = "<group>"; };
 		E898ABF51FA91B98001A0165 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F1A537E1F85A4DD00DCB0CF /* PredixMobileSDK.framework in Frameworks */,
+				4F3FF9061FBB5D3E003CFE09 /* PredixSDK.framework in Frameworks */,
 				4F1A53771F85A1E800DCB0CF /* Charts.framework in Frameworks */,
 				4F1A53791F85A1E800DCB0CF /* PredixMobileUIKit.framework in Frameworks */,
 			);
@@ -133,9 +133,9 @@
 		4F503B5F1F6C5A2300B8EE10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F3FF9051FBB5D3E003CFE09 /* PredixSDK.framework */,
 				4FF131481F7B19F2004861A7 /* Charts.framework */,
 				4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */,
-				4FF1315C1F7B1E1B004861A7 /* PredixMobileSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

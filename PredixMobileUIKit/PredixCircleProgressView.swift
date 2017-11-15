@@ -286,11 +286,13 @@ open class PredixCircleProgressView: UIView {
     
     // MARK: private methods
     private func createtitleSizeConstraints() {
-        
+
         if let heightConstraint = self.titleHeightConstraint {
+            self.title.removeConstraint(heightConstraint)
             self.removeConstraint(heightConstraint)
         }
         if let widthConstraint = self.titleWidthConstraint {
+            self.title.removeConstraint(widthConstraint)
             self.removeConstraint(widthConstraint)
         }
         
@@ -301,6 +303,9 @@ open class PredixCircleProgressView: UIView {
         self.titleWidthConstraint?.constant = max(self.circleLineWidth, self.progressLineWidth) * -3.0
         self.titleHeightConstraint?.constant = max(self.circleLineWidth, self.progressLineWidth) * -3.0
         
+        self.titleWidthConstraint?.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
+        self.titleHeightConstraint?.priority = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 1)
+
         self.titleWidthConstraint?.isActive = true
         self.titleHeightConstraint?.isActive = true
         super.setNeedsUpdateConstraints()
@@ -324,6 +329,10 @@ open class PredixCircleProgressView: UIView {
         
         title.textAlignment = .center
         title.baselineAdjustment = .alignCenters
+        title.adjustsFontForContentSizeCategory = true
+        title.allowsDefaultTighteningForTruncation = true
+        title.numberOfLines = 1
+        title.isUserInteractionEnabled = false
         
         self.title.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         self.title.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
@@ -360,9 +369,27 @@ open class PredixCircleProgressView: UIView {
         return progress >= threshold
     }
     
-    private func adjustPerceivedProgressColor(withAnimation: Bool = true) {
+    private func animateProgressColor(to expectedColor: UIColor) {
+
+        if animationsEnabled && expectedColor != progressLayer.progressColor {
+            let animation = CABasicAnimation(keyPath: "colorCorrection")
+            animation.fromValue = progressLayer.progressColor.cgColor
+            animation.toValue = expectedColor.cgColor
+            animation.duration = 0.5
+            animation.isRemovedOnCompletion = false
+            progressLayer.add(animation, forKey: self.colorAnimationKey)
+        }
         
-        guard thresholdColorMatching && (criticalThreshold > 0.0 || warningThreshold > 0.0) else { return }
+        self.perceivedProgressColor = expectedColor
+
+    }
+    
+    private func adjustPerceivedProgressColor() {
+        
+        guard thresholdColorMatching && (criticalThreshold > 0.0 || warningThreshold > 0.0) else {
+            self.animateProgressColor(to: self.progressColor)
+            return
+        }
         
         var expectedColor = self.progressColor
 
@@ -385,19 +412,7 @@ open class PredixCircleProgressView: UIView {
             expectedColor = secondColor
         }
         
-        if expectedColor != progressLayer.progressColor {
-            if animationsEnabled {
-                let animation = CABasicAnimation(keyPath: "colorCorrection")
-                animation.fromValue = progressLayer.progressColor.cgColor
-                animation.toValue = expectedColor.cgColor
-                animation.duration = 0.5
-                animation.isRemovedOnCompletion = false
-                self.perceivedProgressColor = expectedColor
-                progressLayer.add(animation, forKey: self.colorAnimationKey)
-            } else {
-                self.perceivedProgressColor = expectedColor
-            }
-        }
+        animateProgressColor(to: expectedColor)
     }
     
     func updateProgressLayer() {

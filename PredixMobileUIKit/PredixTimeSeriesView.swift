@@ -8,7 +8,7 @@
 
 import Foundation
 import Charts
-import PredixMobileSDK
+import PredixSDK
 
 /// PredixTimeSeriesView -- TimeSeries chart built with `LineChartView`.
 @IBDesignable

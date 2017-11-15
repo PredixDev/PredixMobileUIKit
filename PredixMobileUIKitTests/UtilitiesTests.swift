@@ -32,11 +32,11 @@ class UtilitiesTests: XCTestCase {
     
     func testRadiansToDegrees() {
         XCTAssertEqual(45, Utilities.degrees(radians: CGFloat.pi / 4), accuracy: 0.001)
-        XCTAssertEqual(60, Utilities.degrees(radians:CGFloat.pi / 3), accuracy: 0.001)
-        XCTAssertEqual(90, Utilities.degrees(radians:CGFloat.pi / 2), accuracy: 0.001)
-        XCTAssertEqual(180, Utilities.degrees(radians:CGFloat.pi), accuracy: 0.001)
-        XCTAssertEqual(270, Utilities.degrees(radians:(CGFloat.pi * 3) / 2), accuracy: 0.001)
-        XCTAssertEqual(360, Utilities.degrees(radians:CGFloat.pi * 2), accuracy: 0.001)
+        XCTAssertEqual(60, Utilities.degrees(radians: CGFloat.pi / 3), accuracy: 0.001)
+        XCTAssertEqual(90, Utilities.degrees(radians: CGFloat.pi / 2), accuracy: 0.001)
+        XCTAssertEqual(180, Utilities.degrees(radians: CGFloat.pi), accuracy: 0.001)
+        XCTAssertEqual(270, Utilities.degrees(radians: (CGFloat.pi * 3) / 2), accuracy: 0.001)
+        XCTAssertEqual(360, Utilities.degrees(radians: CGFloat.pi * 2), accuracy: 0.001)
     }
 
 }
