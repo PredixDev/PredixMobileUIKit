@@ -17,7 +17,6 @@
 		4F3C198B1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3C198A1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift */; };
 		4F3FF9001FBB5C11003CFE09 /* PredixSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3FF8FF1FBB5C11003CFE09 /* PredixSDK.framework */; };
 		4F3FF9011FBB5C9F003CFE09 /* PredixSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4F3FF8FF1FBB5C11003CFE09 /* PredixSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F503AFD1F6C560900B8EE10 /* PredixMobileUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503AF31F6C560900B8EE10 /* PredixMobileUIKit.framework */; };
 		4F503B021F6C560900B8EE10 /* PredixDonutViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B011F6C560900B8EE10 /* PredixDonutViewTests.swift */; };
 		4F503B041F6C560900B8EE10 /* PredixMobileUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F503B0F1F6C580E00B8EE10 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B0E1F6C580E00B8EE10 /* Charts.framework */; };
@@ -32,8 +31,9 @@
 		4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B161F6C586500B8EE10 /* Charts.framework */; };
 		4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */; };
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
-		E8426D311FA0411B0075DBD0 /* PredixMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503B6D1F70726300B8EE10 /* PredixMobileSDK.framework */; };
 		E8871A571FA9484F0075ECD4 /* UtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8871A561FA9484F0075ECD4 /* UtilitiesTest.swift */; };
+		E89C2FCC1FBCC06B00E76032 /* PredixMobileUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503AF31F6C560900B8EE10 /* PredixMobileUIKit.framework */; };
+		E89C2FCD1FBCC09800E76032 /* PredixSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3FF8FF1FBB5C11003CFE09 /* PredixSDK.framework */; };
 		E8D7E4A21F9ABEE0002EF8AA /* PredixAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */; };
 		E8D7E4A61F9ABF41002EF8AA /* predixTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */; };
 		E8D7E4A71F9ABF41002EF8AA /* Framework.classdescriptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */; };
@@ -137,9 +137,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8426D311FA0411B0075DBD0 /* PredixMobileSDK.framework in Frameworks */,
+				E89C2FCD1FBCC09800E76032 /* PredixSDK.framework in Frameworks */,
+				E89C2FCC1FBCC06B00E76032 /* PredixMobileUIKit.framework in Frameworks */,
 				4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */,
-				4F503AFD1F6C560900B8EE10 /* PredixMobileUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

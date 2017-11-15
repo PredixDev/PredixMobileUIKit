@@ -316,21 +316,21 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertEqual(2.0, chartData?.y)
     }
     
-    func testSettingThePredixTimeSeriesViewDelegateWithLoadTimeSeriesDataDefinedLoadsDataIntoTheChart() {
-        let values = [1.0, 2.0]
-        let results = ["values": [values]]
-        let jsonArray = ["results": [results]]
-        let tagData: [Tag] = [Tag(json: jsonArray)!]
-        let delegate = SDKTimeSeriesViewDelegate(data: tagData)
-        
-        let view = PredixTimeSeriesView(frame: CGRect())
-        view.timeSeriesDataDelegate = delegate
-        
-        let chartData = view.data?.dataSets.first?.entryForIndex(0)
-        
-        XCTAssertEqual(1.0, chartData?.x)
-        XCTAssertEqual(2.0, chartData?.y)
-    }
+//    func testSettingThePredixTimeSeriesViewDelegateWithLoadTimeSeriesDataDefinedLoadsDataIntoTheChart() {
+//        let values = [1.0, 2.0]
+//        let results = ["values": [values]]
+//        let jsonArray = ["results": [results]]
+//        let tagData: [Tag] = [Tag(json: jsonArray)!]
+//        let delegate = SDKTimeSeriesViewDelegate(data: tagData)
+//        
+//        let view = PredixTimeSeriesView(frame: CGRect())
+//        view.timeSeriesDataDelegate = delegate
+//        
+//        let chartData = view.data?.dataSets.first?.entryForIndex(0)
+//        
+//        XCTAssertEqual(1.0, chartData?.x)
+//        XCTAssertEqual(2.0, chartData?.y)
+//    }
     
     func testTheSelectedGraphValueIsToldToTheDelegate() {
         let tagData = [TimeSeriesTag(name: "MyData", dataPoints: [TimeSeriesDataPoint(epochInMs: 1, measure: 2)])]
@@ -363,17 +363,17 @@ class PredixTimeSeriesViewTests: XCTestCase {
     }
 }
 
-private class SDKTimeSeriesViewDelegate: TimeSeriesViewDelegate {
-    private let timeSeriesTagData: [Tag]?
-    
-    init(data: [Tag]?) {
-        self.timeSeriesTagData = data
-    }
-    
-    func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void) {
-        completionHandler(timeSeriesTagData)
-    }
-}
+//private class SDKTimeSeriesViewDelegate: TimeSeriesViewDelegate {
+//    private let timeSeriesTagData: [Tag]?
+//
+//    init(data: [Tag]?) {
+//        self.timeSeriesTagData = data
+//    }
+//
+//    func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void) {
+//        completionHandler(timeSeriesTagData)
+//    }
+//}
 
 private class RawDataTimeSeriesViewDelegate: TimeSeriesViewDelegate {
     private let timeSeriesTagData: [TimeSeriesTag]?

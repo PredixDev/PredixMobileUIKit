@@ -17,7 +17,8 @@ open class PredixTimeSeriesView: LineChartView {
     @IBOutlet
     open weak var timeSeriesDataDelegate: TimeSeriesViewDelegate? {
         didSet {
-            if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesData {
+            
+            /*if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesData {
                 self.showSpinner()
                 dataFunction { (tags) in
                     Utilities.runOnMainThread {
@@ -25,7 +26,7 @@ open class PredixTimeSeriesView: LineChartView {
                         self.hideSpinner()
                     }
                 }
-            } else if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesTags {
+            } else*/ if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesTags { //<-- Will return once the Timeseries refactoring is complete
                 self.showSpinner()
                 dataFunction { (tags) in
                     Utilities.runOnMainThread {
@@ -121,26 +122,26 @@ open class PredixTimeSeriesView: LineChartView {
         
     }
     ///Loads data from a TimeseriesManager response
-    public func loadLabelsAndValues(tags: [Tag]) {
-        var responseTags: [TimeSeriesTag] = []
-        var dataPoints: [TimeSeriesDataPoint] = []
-        
-        for currentTag in tags {
-            for result in currentTag.results {
-                for values in result.values {
-                    if let dPoints = values as? [Double] {
-                        let dataPoint = TimeSeriesDataPoint(epochInMs: dPoints[0], measure: dPoints[1])
-                        dataPoints.append(dataPoint)
-                    }
-                }
-                
-            }
-            let tag = TimeSeriesTag(name: currentTag.name, dataPoints: dataPoints, attributes: [:])
-            responseTags.append(tag)
-        }
-        
-        self.loadLabelsAndValues(timeSeriesTags: responseTags)
-    }
+//    public func loadLabelsAndValues(tags: [Tag]) { //<-- Will return once the Timeseries refactoring is complete
+//        var responseTags: [TimeSeriesTag] = []
+//        var dataPoints: [TimeSeriesDataPoint] = []
+//
+//        for currentTag in tags {
+//            for result in currentTag.results {
+//                for values in result.values {
+//                    if let dPoints = values as? [Double] {
+//                        let dataPoint = TimeSeriesDataPoint(epochInMs: dPoints[0], measure: dPoints[1])
+//                        dataPoints.append(dataPoint)
+//                    }
+//                }
+//
+//            }
+//            let tag = TimeSeriesTag(name: currentTag.name, dataPoints: dataPoints, attributes: [:])
+//            responseTags.append(tag)
+//        }
+//
+//        self.loadLabelsAndValues(timeSeriesTags: responseTags)
+//    }
     /// :nodoc:
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -215,7 +216,7 @@ extension PredixTimeSeriesView: ChartViewDelegate {
     ///Will be called to ask to load time series data based on the TimeSeriesTag object
     @objc optional func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?) -> Void)
     ///Will be called to ask to load time series data based on the TimeSeriesManager Tag object
-    @objc optional func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void)
+//    @objc optional func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void) //<-- Will return once the Timeseries refactoring is complete
     ///Notifies a delegate when an item on a chart is selected by the user
     @objc optional func valueSelected(timeSeriesView: PredixTimeSeriesView, timeScale: Double)
 }
