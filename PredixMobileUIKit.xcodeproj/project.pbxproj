@@ -33,11 +33,12 @@
 		4FF1313E1F79C5D7004861A7 /* ConversionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1313C1F79C441004861A7 /* ConversionExtensions.swift */; };
 		E8871A571FA9484F0075ECD4 /* UtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8871A561FA9484F0075ECD4 /* UtilitiesTest.swift */; };
 		E89C2FCC1FBCC06B00E76032 /* PredixMobileUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F503AF31F6C560900B8EE10 /* PredixMobileUIKit.framework */; };
-		E89C2FCD1FBCC09800E76032 /* PredixSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3FF8FF1FBB5C11003CFE09 /* PredixSDK.framework */; };
 		E8D7E4A21F9ABEE0002EF8AA /* PredixAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */; };
 		E8D7E4A61F9ABF41002EF8AA /* predixTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A41F9ABF33002EF8AA /* predixTitle.png */; };
 		E8D7E4A71F9ABF41002EF8AA /* Framework.classdescriptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */; };
 		E8D7E4AB1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7E4AA1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift */; };
+		E8DF7F621FBD0C34008F5E1D /* PredixSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3FF8FF1FBB5C11003CFE09 /* PredixSDK.framework */; };
+		E8DF7F631FBD0C46008F5E1D /* PredixSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4F3FF8FF1FBB5C11003CFE09 /* PredixSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E8DF7F631FBD0C46008F5E1D /* PredixSDK.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +139,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E89C2FCD1FBCC09800E76032 /* PredixSDK.framework in Frameworks */,
-				E89C2FCC1FBCC06B00E76032 /* PredixMobileUIKit.framework in Frameworks */,
+				E8DF7F621FBD0C34008F5E1D /* PredixSDK.framework in Frameworks */,
 				4FB5C45F1F82F60C00824A9D /* Charts.framework in Frameworks */,
+				E89C2FCC1FBCC06B00E76032 /* PredixMobileUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
