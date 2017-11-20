@@ -1,6 +1,6 @@
 ![alt tag](./Assets/PredixMobileUIKitTitle.png)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Releases](https://img.shields.io/badge/Release-0.1-blue.svg)](https://github.com/PredixDev/PredixMobileUIKit/releases)
+[![Releases](https://img.shields.io/badge/Release-0.3-blue.svg)](https://github.com/PredixDev/PredixMobileUIKit/releases)
 
 PredixMobileUIKit
 ====
@@ -19,7 +19,7 @@ The PredixMobileUIKit repo includes a demonstration project: PredixMobileUIKitDe
 Documentation
 ====
 
-* [PredixUIKit Documentation](https://github.com/PredixDev/PredixMobileUIKit/wiki)
+[PredixUIKit Documentation](https://github.com/PredixDev/PredixMobileUIKit/wiki)
 
 ---
 
