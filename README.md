@@ -5,18 +5,7 @@
 PredixMobileUIKit
 ====
 
-iOS UI Components designed for [Predix](https://predix.io)
-
-
-## Components
-#### PredixDonutView
-The PredixDonutView is a donut and pie chart, that defaults to the regular Predix data visualization color set. It's Interface Builder enabled, and has various properties for controlling its legend placement, donut characteristics, and an easy helper-method for loading data from a simple name/value dictionary.
-
-#### PredixTimeSeriesView
-The PredixTimeSeriesView is a line chart that easily shows Time Series data from the Predix Time Series service.  It's Interface Builder enabled, and has various properties for controlling its legend placement, title and other characteristics, and an easy method for loading time series data.
-
-#### PredixCircleProgressView
-The PredixCircleProgressView is a circular progress display. It supports two thresholds, with color animations when those thresholds are crossed, progress update animation, clockwise or counterclockwise display, and many other options.
+The PredixUIKit is a framework desinged to make building UI applications for [Predix](https://predix.io) simple by providing a rich set of data visualization components based on the [Predix Design System](https://www.predix-ui.com/#/home) and common components meant to speed development when used with the [Predix SDK for iOS](https://github.com/predixdev/predixsdkforios). 
 
 ---
 Getting Started
@@ -29,7 +18,8 @@ The PredixMobileUIKit repo includes a demonstration project: PredixMobileUIKitDe
 
 Documentation
 ====
-The framework is fully documented for Xcode's quick help. Additionally, full online documentation can be found here: [documentation site](http://predixdev.github.io/PredixMobileUIKit/)
+
+* [PredixUIKit Documentation](https://github.com/PredixDev/PredixMobileUIKit/wiki)
 
 ---
 
