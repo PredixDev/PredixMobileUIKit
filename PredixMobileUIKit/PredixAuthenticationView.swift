@@ -334,7 +334,7 @@ extension PredixAuthenticationView: ServiceBasedAuthenticationHandlerDelegate {
         Utilities.runOnMainThread { [weak self] in
             if let strongSelf = self {
                 self?.hideActivitySpinner()
-                let error = NSError(domain:  PredixMobileErrorDomain.authentication.description, code: 999, userInfo: [NSLocalizedDescriptionKey: "credentials were invalid"])
+                let error = NSError(domain: PredixMobileErrorDomain.authentication.description, code: 999, userInfo: [NSLocalizedDescriptionKey: "credentials were invalid"])
                 self?.delegate?.authenticationComplete?(authenticationView: strongSelf, success: false, error: error)
             }
         }
