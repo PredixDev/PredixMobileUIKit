@@ -8,7 +8,7 @@
 
 import UIKit
 import PredixMobileUIKit
-import PredixMobileSDK
+import PredixSDK
 
 class AuthenticationViewController: UIViewController, PredixAuthenticationViewDelegate {
 
