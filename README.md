@@ -34,17 +34,17 @@ License
 <a name="dependencies"></a>
 Dependencies:
 ====
-#### PredixMobileSDK
+#### PredixSDKForiOS
 Copyright 2017 GE Digital
 
-[https://github.com/PredixDev/PredixMobileSDK](https://github.com/PredixDev/PredixMobileSDK)
+[PredixSDKForiOS](https://github.com/PredixDev/PredixSDKForiOS)
 
 #### Charts
 Copyright 2016 Daniel Cohen Gindi & Philipp Jahoda
 
 Licensed under the Apache License, Version 2.0
 
-[https://github.com/danielgindi/Charts](https://github.com/danielgindi/Charts)
+[Charts](https://github.com/danielgindi/Charts)
 
 Tools
 ====
