@@ -31,7 +31,7 @@ class AuthenticationViewController: UIViewController, PredixAuthenticationViewDe
         authenticationView.beginAuthentication()
     }
     
-    func authenticationComplete(success: Bool, error: Error?) {
+    func authenticationComplete(authenticationView: PredixAuthenticationView, success: Bool, error: Error?) {
         let alert = UIAlertController(title: "Login", message: "Authentication was \(success ? "successful" : "failed")", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
