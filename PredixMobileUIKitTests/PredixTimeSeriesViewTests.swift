@@ -10,6 +10,8 @@ import XCTest
 
 @testable import Charts
 @testable import PredixMobileUIKit
+import PredixSDK
+
 class PredixTimeSeriesViewTests: XCTestCase {
     
     override func setUp() {
@@ -134,8 +136,6 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertTrue(tsView.legendAlignedTop, "Legend should be aligned to top")
     }
     
-    // MARK: PredixTimeSeriesView tests
-    
     func testInitWithCoder() {
         let tsView = PredixTimeSeriesView()
         let data = NSMutableData()
@@ -159,8 +159,188 @@ class PredixTimeSeriesViewTests: XCTestCase {
     
     func testloadLabelsAndValues() {
         let tsView = PredixTimeSeriesView()
-        tsView.loadLabelsAndValues(generateDummyData())
+        tsView.loadLabelsAndValues(timeSeriesTags: generateDummyData())
         XCTAssertTrue(tsView.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
+    }
+    
+    func testLayoutSubViewsSetsTheBoundsOnTheGrayViewAndActivityView() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.bounds = CGRect(x: 5, y: 1, width: 44, height: 1044)
+        view.layoutSubviews()
+        
+        XCTAssertEqual(view.bounds, view.grayView.frame)
+        XCTAssertEqual(view.bounds, view.activityView.frame)
+    }
+    
+    func testTheGrayViewAndActivityViewHaveTheCorrectAutoResizeMask() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        let expectedMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        
+        XCTAssertEqual(expectedMask, view.grayView.autoresizingMask)
+        XCTAssertEqual(expectedMask, view.activityView.autoresizingMask)
+    }
+    
+    func testLabelEnabledReturnsFalseWhenTheChartDiscriptionIsNil() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.chartDescription = nil
+        XCTAssertFalse(view.labelEnabled)
+    }
+    
+    func testTheDataPointFontIsTheSystemFontAndSizeByDefault() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        let expectedFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        
+        XCTAssertEqual(expectedFont, view.dataPointFont)
+    }
+    
+    func testTheChartBoarderColorReturnsTheBoarderColorFromTheChartsLibrary() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.borderColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.chartBorderColor)
+    }
+    
+    func testSettingTheChartBoarderColorSetsTheBoarderColorFromTheChartsLibrary() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.chartBorderColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.borderColor)
+    }
+    
+    func testSettingTheXAxisTextColorSetsTheXAxisLabelTextColor() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.xAxisTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.xAxis.labelTextColor)
+    }
+    
+    func testGettingTheXAxisTextColorGetsTheXAxisLabelTextColor() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.xAxis.labelTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.xAxisTextColor)
+    }
+    
+    func testSettingTheRightAxisTextColorTextColorSetsTheXAxisLabelTextColor() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.rightAxisTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.rightAxis.labelTextColor)
+    }
+    
+    func testGettingTheRightAxisTextColorTextColorGetsTheXAxisLabelTextColor() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.rightAxis.labelTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.rightAxisTextColor)
+    }
+    
+    func testSettingTheLeftAxisTextColorTextColorSetsTheXAxisLabelTextColor() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.leftAxisTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.leftAxis.labelTextColor)
+    }
+    
+    func testGettingTheLeftAxisTextColorTextColorGetsTheXAxisLabelTextColor() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.leftAxis.labelTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.leftAxisTextColor)
+    }
+    
+    func testTheLegendTextColorReturnsTheLegendColorFromTheChartsLibrary() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.legend.textColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.legendTextColor)
+    }
+    
+    func testSettingTheLegendTextColorSetsTheLegendColorFromTheChartsLibrary() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.legendTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.legend.textColor)
+    }
+    
+    func testTheNoDataColorReturnsTheNoDataTextColorFromTheChartsLibrary() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.noDataTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.noChartDataTextColor)
+    }
+    
+    func testSettingTheNoDataColorSetsTheNoDataTextColorFromTheChartsLibrary() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.noChartDataTextColor = .red
+        
+        XCTAssertEqual(UIColor.red, view.noDataTextColor)
+    }
+    
+    func testSettingDarkThemeToTrueSetsTheProperColors() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.darkTheme = true
+        
+        XCTAssertEqual(UIColor(hue: 51.0/255.0, saturation: 51.0/255.0, brightness: 51.0/255.0, alpha: 1.0), view.backgroundColor)
+        XCTAssertEqual(UIColor.white, view.chartBorderColor)
+        XCTAssertEqual(UIColor.white, view.xAxisTextColor)
+        XCTAssertEqual(UIColor.white, view.rightAxisTextColor)
+        XCTAssertEqual(UIColor.white, view.leftAxisTextColor)
+        XCTAssertEqual(UIColor.white, view.legendTextColor)
+        XCTAssertEqual(UIColor.white, view.noChartDataTextColor)
+    }
+    
+    func testSettingDarkThemeToFalseSetsTheProperColors() {
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.darkTheme = false
+        
+        XCTAssertEqual(UIColor.clear, view.backgroundColor)
+        XCTAssertEqual(UIColor.black, view.chartBorderColor)
+        XCTAssertEqual(UIColor.black, view.xAxisTextColor)
+        XCTAssertEqual(UIColor.black, view.rightAxisTextColor)
+        XCTAssertEqual(UIColor.black, view.leftAxisTextColor)
+        XCTAssertEqual(UIColor.black, view.legendTextColor)
+        XCTAssertEqual(UIColor.black, view.noChartDataTextColor)
+    }
+    
+    func testSettingThePredixTimeSeriesViewDelegateWithLoadTimeSeriesTagsDefinedLoadsDataIntoTheChart() {
+        let tagData = [TimeSeriesTag(name: "MyData", dataPoints: [TimeSeriesDataPoint(epochInMs: 1, measure: 2)])]
+        let delegate = RawDataTimeSeriesViewDelegate(data: tagData)
+        
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.timeSeriesDataDelegate = delegate
+        
+        let chartData = view.data?.dataSets.first?.entryForIndex(0)
+        
+        XCTAssertEqual(1.0, chartData?.x)
+        XCTAssertEqual(2.0, chartData?.y)
+    }
+    
+//    func testSettingThePredixTimeSeriesViewDelegateWithLoadTimeSeriesDataDefinedLoadsDataIntoTheChart() {
+//        let values = [1.0, 2.0]
+//        let results = ["values": [values]]
+//        let jsonArray = ["results": [results]]
+//        let tagData: [Tag] = [Tag(json: jsonArray)!]
+//        let delegate = SDKTimeSeriesViewDelegate(data: tagData)
+//        
+//        let view = PredixTimeSeriesView(frame: CGRect())
+//        view.timeSeriesDataDelegate = delegate
+//        
+//        let chartData = view.data?.dataSets.first?.entryForIndex(0)
+//        
+//        XCTAssertEqual(1.0, chartData?.x)
+//        XCTAssertEqual(2.0, chartData?.y)
+//    }
+    
+    func testTheSelectedGraphValueIsToldToTheDelegate() {
+        let tagData = [TimeSeriesTag(name: "MyData", dataPoints: [TimeSeriesDataPoint(epochInMs: 1, measure: 2)])]
+        let delegate = RawDataTimeSeriesViewDelegate(data: tagData)
+        
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.timeSeriesDataDelegate = delegate
+        view.highlightValue(x: 1, dataSetIndex: 0)
+        
+        XCTAssertEqual(1.0, delegate.selectedTimeScale)
     }
     
     private func generateDummyData() -> [TimeSeriesTag] {
@@ -180,5 +360,34 @@ class PredixTimeSeriesViewTests: XCTestCase {
             tags.append(tag)
         }
         return tags
+    }
+}
+
+//private class SDKTimeSeriesViewDelegate: TimeSeriesViewDelegate {
+//    private let timeSeriesTagData: [Tag]?
+//
+//    init(data: [Tag]?) {
+//        self.timeSeriesTagData = data
+//    }
+//
+//    func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void) {
+//        completionHandler(timeSeriesTagData)
+//    }
+//}
+
+private class RawDataTimeSeriesViewDelegate: TimeSeriesViewDelegate {
+    private let timeSeriesTagData: [TimeSeriesTag]?
+    var selectedTimeScale: Double?
+    
+    init(data: [TimeSeriesTag]?) {
+        self.timeSeriesTagData = data
+    }
+    
+    func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?) -> Void) {
+        completionHandler(timeSeriesTagData)
+    }
+    
+    func valueSelected(timeSeriesView: PredixTimeSeriesView, timeScale: Double) {
+        self.selectedTimeScale = timeScale
     }
 }

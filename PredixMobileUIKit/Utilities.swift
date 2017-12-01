@@ -20,4 +20,14 @@ public enum Utilities {
     public static func degrees(radians: CGFloat) -> CGFloat {
         return radians * 180 / CGFloat(CGFloat.pi)
     }
+    
+    internal static func runOnMainThread(closure: @escaping () -> Void) {
+        if !Thread.current.isMainThread {
+            DispatchQueue.main.async {
+                closure()
+            }
+        } else {
+            closure()
+        }
+    }
 }

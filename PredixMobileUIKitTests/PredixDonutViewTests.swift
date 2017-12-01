@@ -238,7 +238,7 @@ class PredixDonutViewTests: XCTestCase {
 
     func testSDKVersion() {
         let donut = PredixDonutView()
-        let versionInfo = donut.predixMobileSDKVersion()
+        let versionInfo = donut.predixSDKVersion()
         XCTAssertTrue(versionInfo.contains("pm sdk build version"), "No Predix version info")
     }
 }

@@ -21,6 +21,7 @@
 		4F503B301F6C58BC00B8EE10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F503B2E1F6C58BC00B8EE10 /* LaunchScreen.storyboard */; };
 		4FE22EAE1F8801F300F9C300 /* CircleProgressViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */; };
 		4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */; };
+		E898ABF61FA91B98001A0165 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898ABF51FA91B98001A0165 /* AuthenticationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		4FF131491F7B19F2004861A7 /* PredixMobileUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PredixMobileUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF1314C1F7B1C2F004861A7 /* PredixMobileUIKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PredixMobileUIKit.xcodeproj; path = ../PredixMobileUIKit.xcodeproj; sourceTree = "<group>"; };
 		4FF1315E1F7B201F004861A7 /* LaunchDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDemoViewController.swift; sourceTree = "<group>"; };
+		E898ABF51FA91B98001A0165 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				4FB5C43C1F7DA6C400824A9D /* Supporting Files */,
 				4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */,
+				E898ABF51FA91B98001A0165 /* AuthenticationViewController.swift */,
 				4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */,
 				4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */,
 				3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */,
@@ -256,6 +259,7 @@
 				4FE22EAE1F8801F300F9C300 /* CircleProgressViewViewController.swift in Sources */,
 				3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */,
 				4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */,
+				E898ABF61FA91B98001A0165 /* AuthenticationViewController.swift in Sources */,
 				4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
