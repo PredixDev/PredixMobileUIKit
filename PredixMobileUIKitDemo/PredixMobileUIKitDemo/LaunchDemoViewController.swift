@@ -6,8 +6,8 @@
 //  Copyright © 2017 GE. All rights reserved.
 //
 
-import UIKit
 import PredixSDK
+import UIKit
 
 class LaunchDemoViewController: UITableViewController {
 
@@ -26,11 +26,13 @@ class LaunchDemoViewController: UITableViewController {
         // Until we have more integration with PredixMobileSDK, this just ensures the frameworks are linked properly
         let predixSDKVersionInfo = PredixMobilityConfiguration.versionInfo
         print("PredixSDK Version Info: \(predixSDKVersionInfo)")
-        
-        self.demos = [DemoData(title: "Donut Chart", description: "Simple demonstration of a donut chart, can also be a pie chart.", storyboardId: "DonutChartDemo"),
-                      DemoData(title: "TimeSeries Chart", description: "An example showcasing TimeSeries chart view usage.", storyboardId: "TimeSeriesChart"),
-                      DemoData(title: "Progress Circle", description: "Demonstration of a progress circle", storyboardId: "CircleProgressDemo"),
-                      DemoData(title: "Bar Chart", description: "Demonstration of a Chart Bar",storyboardId: "BarChartDemo")]
+
+        demos = [
+            DemoData(title: "Donut Chart", description: "Simple demonstration of a donut chart, can also be a pie chart.", storyboardId: "DonutChartDemo"),
+            DemoData(title: "TimeSeries Chart", description: "An example showcasing TimeSeries chart view usage.", storyboardId: "TimeSeriesChart"),
+            DemoData(title: "Progress Circle", description: "Demonstration of a progress circle", storyboardId: "CircleProgressDemo"),
+            DemoData(title: "Bar Chart", description: "Demonstration of a Chart Bar", storyboardId: "BarChartDemo"),
+        ]
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,22 +41,23 @@ class LaunchDemoViewController: UITableViewController {
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
 
 extension LaunchDemoViewController {
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in _: UITableView) -> Int {
         return 1
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return demos.count
     }
 
@@ -73,11 +76,10 @@ extension LaunchDemoViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let demoInfo = demos[indexPath.row]
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: demoInfo.storyboardId) {
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
-
     }
 }
