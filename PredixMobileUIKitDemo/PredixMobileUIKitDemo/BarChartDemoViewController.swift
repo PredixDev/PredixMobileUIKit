@@ -21,7 +21,7 @@ class BarchartDemoViewController: UIViewController {
         let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
         
         // Load and Stack the Bar Chart with two data entry
-        barChartView.loadAndStackChart(xValues: months, yValues1: unitsSold, yValues2: unitsBought, label1: "Units Sold", label2: "Units Bought", uiColor1: NSUIColor.red, uiColor2: NSUIColor.blue, showWithDefaultAnimation: false)
+        barChartView.loadAndStackChart(xValues: months, yValues1: unitsSold, yValues2: unitsBought, label1: "Units Sold", label2: "Units Bought", uiColor1AnduiColor2: ([NSUIColor.red],[NSUIColor.blue]), showWithDefaultAnimation: false)
         
         // Load the Bar Char with one data entry
         // barChartView.loadChart(xValues: months, yValues: unitsSold, label: "Units Sold",showWithDefaultAnimation : false)

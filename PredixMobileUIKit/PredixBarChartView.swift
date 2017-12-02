@@ -10,6 +10,18 @@ import Charts
 import Foundation
 import PredixSDK
 
+class BarChartBuilder {
+    
+    var x: Double?
+    var y: Double?
+    var z: Double?
+    
+    typealias BuilderClosure = (BarChartBuilder) -> ()
+    
+    init(buildClosure: BuilderClosure) {
+        buildClosure(self)
+    }
+}
 open class PredixBarChartView: BarChartView {
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
@@ -88,7 +100,7 @@ open class PredixBarChartView: BarChartView {
     /// - parameter uiColor1: provide a color base on the class UIColor for the first data entry
     /// - parameter uiColor2: provide a color base on the class UIColor for the second data entry
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
-    public func loadAndStackChart(xValues: [String], yValues1: [Double], yValues2: [Double], label1: String, label2: String, uiColor1: UIColor, uiColor2: UIColor, showWithDefaultAnimation: Bool = true) {
+    public func loadAndStackChart(xValues: [String], yValues1: [Double], yValues2: [Double], label1: String, label2: String, uiColor1AnduiColor2: ([UIColor],[UIColor]), showWithDefaultAnimation: Bool = true) {
         
         var dataEntries: [BarChartDataEntry] = []
         var dataEntries2: [BarChartDataEntry] = []
@@ -108,8 +120,8 @@ open class PredixBarChartView: BarChartView {
         let chartDataSet = BarChartDataSet(values: dataEntries, label: label1)
         let chartDataSet1 = BarChartDataSet(values: dataEntries2, label: label2)
         
-        chartDataSet.colors = [uiColor1]
-        chartDataSet1.colors = [uiColor2]
+        (chartDataSet.colors, chartDataSet1.colors) = uiColor1AnduiColor2
+      
         
         let dataSets: [BarChartDataSet] = [chartDataSet, chartDataSet1]
         data = BarChartData(dataSets: dataSets)
