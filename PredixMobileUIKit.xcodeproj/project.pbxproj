@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2CC74C1FD210E40053F818 /* PredixBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CC7491FD210E30053F818 /* PredixBarChartView.swift */; };
 		3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */; };
 		374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */; };
 		374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D2CC7491FD210E30053F818 /* PredixBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixBarChartView.swift; sourceTree = "<group>"; };
 		3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesViewTests.swift; sourceTree = "<group>"; };
 		374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesView.swift; sourceTree = "<group>"; };
 		374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesTag.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		4F503AF51F6C560900B8EE10 /* PredixMobileUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				2D2CC7491FD210E30053F818 /* PredixBarChartView.swift */,
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
 				4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */,
 				4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */,
@@ -356,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2CC74C1FD210E40053F818 /* PredixBarChartView.swift in Sources */,
 				374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
