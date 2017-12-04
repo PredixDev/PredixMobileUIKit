@@ -9,7 +9,7 @@
 import Charts
 import Foundation
 import PredixSDK
-
+/// PredixBarChartView -- Bar Chart Example.
 open class PredixBarChartView: BarChartView {
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
