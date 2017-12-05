@@ -26,7 +26,7 @@ class BarchartDemoViewController: UIViewController {
         // barChartView.loadChart(xValues: months, yValues: unitsSold, label: "Units Sold",showWithDefaultAnimation : false)
 
         // Add a limit line
-        barChartView.addALimit(limit: 10.0, label: "Target")
+        barChartView.addALimit(limit: 19.0, label: "Target")
 
         /// By default the legend horizontal alignment is set to right and the vertical alignment is set to top.
         /// Below is an example of  how the legend can be position differently
