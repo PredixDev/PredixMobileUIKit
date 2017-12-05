@@ -81,9 +81,12 @@ open class PredixBarChartView: BarChartView {
 
     /// Helper function to populate the bar chart based on  two data entries
     /// - parameter xValues: String array of x values
-    /// - parameter yValues1AndyValue2: Double array of the first data entry and second data entry
-    /// - parameter label1AndLabel2: String label of the first data entry and second data entry
-    /// - parameter uiColor1AnduiColor2: provide a color base from the class UIColor for the first data entry and second data enty
+    /// - parameter yValues1: Double array of the first data entry
+    /// - parameter yValues2: Double array of the second data entry
+    /// - parameter label: String label of the first data entry
+    /// - parameter label2: String label of the second data entry
+    /// - parameter uiColor1: provide a color base on the class UIColor for the first data entry
+    /// - parameter uiColor2: provide a color base on the class UIColor for the second data entry
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
     public func loadAndStackChart(xValues: [String], yValues1AndyValue2: ([Double], [Double]), label1AndLabel2: (String, String), uiColor1AnduiColor2: ([UIColor], [UIColor]), showWithDefaultAnimation: Bool = true) {
 
