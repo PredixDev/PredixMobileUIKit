@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>ClassName</key>
+		<string>PredixAuthenticationView</string>
+		<key>IsDesignable</key>
+		<true/>
+		<key>Inspectables</key>
+		<dict>
+			<key>titleImage</key>
+			<string>UIImage</string>
+			<key>clientId</key>
+			<string>String</string>
+			<key>clientSecret</key>
+			<string>String</string>
+			<key>host</key>
+			<string>String</string>
+			<key>biometricAuthentication</key>
+			<string>Bool</string>
+			<key>backgroundColor</key>
+			<string>UIColor</string>
+			<key>delegate</key>
+			<string>PredixAuthenticationViewDelegate</string>
+		</dict>
+		<key>Outlets</key>
+		<dict>
+			<key>delegate</key>
+			<string>PredixAuthenticationViewDelegate</string>
+		</dict>
+		<key>SuperClass</key>
+		<string>UIView</string>
+	</dict>
+</array>
+</plist>

@@ -21,7 +21,7 @@ class TimeSeriesChartViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tsChartView.delegate = self
-        self.tsChartView.loadLabelsAndValues(self.generateDummyData(80, noOfDatasets: 2))
+        self.tsChartView.loadLabelsAndValues(timeSeriesTags: self.generateDummyData(80, noOfDatasets: 2))
         
     }
 
@@ -43,7 +43,7 @@ class TimeSeriesChartViewController: UIViewController {
     @IBAction func sliderValueChanged(_ sender: Any) {
         let tempratureMax = Int(self.tempratureRangeSlider.value)
         let maxDatasets = Int(self.datasetsRangeSlider.value)
-        self.tsChartView.loadLabelsAndValues(self.generateDummyData(tempratureMax, noOfDatasets: maxDatasets))
+        self.tsChartView.loadLabelsAndValues(timeSeriesTags: self.generateDummyData(tempratureMax, noOfDatasets: maxDatasets))
     }
     
     // MARK: - private functions

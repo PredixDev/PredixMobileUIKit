@@ -364,6 +364,39 @@
             </objects>
             <point key="canvasLocation" x="-1748" y="-510.49475262368821"/>
         </scene>
+        <!--Delegate-->
+        <scene sceneID="NgF-Vd-7LQ">
+            <objects>
+                <viewController storyboardIdentifier="AuthenticationViewDemo" id="Jj7-jX-riM" customClass="AuthenticationViewController" customModule="PredixMobileUIKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bbc-jN-T1S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xr7-Sg-2oT" customClass="PredixAuthenticationView" customModule="PredixMobileUIKit">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Jj7-jX-riM" id="oGV-eo-Glh"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xr7-Sg-2oT" firstAttribute="leading" secondItem="6Og-lL-Xfl" secondAttribute="leading" id="7Qa-ff-9WB"/>
+                            <constraint firstItem="Xr7-Sg-2oT" firstAttribute="trailing" secondItem="6Og-lL-Xfl" secondAttribute="trailing" id="S1n-Wk-kgn"/>
+                            <constraint firstItem="Xr7-Sg-2oT" firstAttribute="top" secondItem="6Og-lL-Xfl" secondAttribute="top" id="bf3-7m-Lmh"/>
+                            <constraint firstItem="Xr7-Sg-2oT" firstAttribute="bottom" secondItem="6Og-lL-Xfl" secondAttribute="bottom" id="bzg-Bt-gz8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Og-lL-Xfl"/>
+                    </view>
+                    <connections>
+                        <outlet property="authenticationView" destination="Xr7-Sg-2oT" id="47U-Cr-Eea"/>
+                        <outlet property="view" destination="bbc-jN-T1S" id="kwA-KA-wXe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IYd-WG-065" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="773.16341829085468"/>
+        </scene>
         <!--Circle Progress View View Controller-->
         <scene sceneID="eTH-kd-DiH">
             <objects>

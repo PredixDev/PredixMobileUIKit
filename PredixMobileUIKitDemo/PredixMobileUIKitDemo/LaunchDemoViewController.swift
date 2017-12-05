@@ -6,8 +6,8 @@
 //  Copyright © 2017 GE. All rights reserved.
 //
 
-import PredixSDK
 import UIKit
+import PredixSDK
 
 class LaunchDemoViewController: UITableViewController {
 
