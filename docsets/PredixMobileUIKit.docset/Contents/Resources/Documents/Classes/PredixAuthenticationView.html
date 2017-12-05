@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PredixAuthenticationView Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/PredixAuthenticationView" class="dashAnchor"></a>
+
+    <a title="PredixAuthenticationView Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          PredixMobileUIKit Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/PredixDev/PredixMobileUIKit">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">PredixMobileUIKit Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      PredixAuthenticationView Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixAuthenticationView.html">PredixAuthenticationView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixCircleProgressView.html">PredixCircleProgressView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixDonutView.html">PredixDonutView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixTimeSeriesView.html">PredixTimeSeriesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TimeSeriesTag.html">TimeSeriesTag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Utilities.html">Utilities</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIColor/Predix.html">– Predix</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PredixAuthenticationViewDelegate.html">PredixAuthenticationViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TimeSeriesViewDelegate.html">TimeSeriesViewDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TimeSeriesDataPoint.html">TimeSeriesDataPoint</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>PredixAuthenticationView</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">PredixAuthenticationView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides an authentication view that represents the default Predix UAA authentication view.</p>
+
+<p>The authentication view is intended to handle most of the interactions with UAA for you using a native UI form.  Simply provider your configuration and tell
+the PredixAuthenticationView to start authentication.</p>
+
+<p><em>NOTE:</em>  The baseURL, clientId and clientSecret can be defined in your info.plist instead of in code using the following keys: server_url, client_id and client_secret</p>
+
+<p>Example usage from Interface builder:</p>
+
+<p>class ViewController: UIViewController, PredixAuthenticationViewDelegate {
+    @IBOutlet weak var authenticationView: PredixAuthenticationView!</p>
+<pre class="highlight plaintext"><code>override func viewDidLoad() {
+    super.viewDidLoad()
+    var configuration = AuthenticationManagerConfiguration()
+    configuration.baseURL = URL(string: "https://youruaahost.com")
+    configuration.clientId = "a clientID"
+    configuration.clientSecret = "a client secret"
+
+    authenticationView.configuration = configuration
+    authenticationView.beginAuthentication()
+}
+
+func authenticationComplete(success: Bool, error: Error?) {
+   //Code you want to execute when Authentication has completed
+}
+</code></pre>
+
+<p>}</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC24authenticationInProgressSbv"></a>
+                    <a name="//apple_ref/swift/Property/authenticationInProgress" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC24authenticationInProgressSbv">authenticationInProgress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates if authentication is in progress</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">authenticationInProgress</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC010titleImageE0So07UIImageE0Cv"></a>
+                    <a name="//apple_ref/swift/Property/titleImageView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC010titleImageE0So07UIImageE0Cv">titleImageView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The title image that will be displayed above the email filed</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">titleImageView</span><span class="p">:</span> <span class="kt">UIImageView</span> <span class="o">=</span> <span class="kt">UIImageView</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC14emailTextFieldSo06UITextH0Cv"></a>
+                    <a name="//apple_ref/swift/Property/emailTextField" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC14emailTextFieldSo06UITextH0Cv">emailTextField</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The email text filed used by the authentication view</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">emailTextField</span><span class="p">:</span> <span class="kt">UITextField</span> <span class="o">=</span> <span class="kt">UITextField</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC17passwordTextFieldSo06UITextH0Cv"></a>
+                    <a name="//apple_ref/swift/Property/passwordTextField" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC17passwordTextFieldSo06UITextH0Cv">passwordTextField</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The password text filed used by the authentication view</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">passwordTextField</span><span class="p">:</span> <span class="kt">UITextField</span> <span class="o">=</span> <span class="kt">UITextField</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC12signInButtonSo8UIButtonCv"></a>
+                    <a name="//apple_ref/swift/Property/signInButton" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC12signInButtonSo8UIButtonCv">signInButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sign-in button used by the authentication view</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">signInButton</span><span class="p">:</span> <span class="kt">UIButton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">system</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC13configuration0A3SDK0D20ManagerConfigurationVv"></a>
+                    <a name="//apple_ref/swift/Property/configuration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC13configuration0A3SDK0D20ManagerConfigurationVv">configuration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An authentication configuration to be used with the underlying authentication manager</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">AuthenticationManagerConfiguration</span> <span class="o">=</span> <span class="kt">AuthenticationManagerConfiguration</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC13onlineHandler0A3SDK012ServiceBaseddG0CSgv"></a>
+                    <a name="//apple_ref/swift/Property/onlineHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC13onlineHandler0A3SDK012ServiceBaseddG0CSgv">onlineHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A ServiceBasedAuthenticationHandler to use with the authentication manager <em>defaults to UAAServiceAuthenticationHandler</em></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">onlineHandler</span><span class="p">:</span> <span class="kt">ServiceBasedAuthenticationHandler</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18AuthenticationViewC21authenticationManager0A3SDK0dG0CSgv"></a>
+                    <a name="//apple_ref/swift/Property/authenticationManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18AuthenticationViewC21authenticationManager0A3SDK0dG0CSgv">authenticationManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The authentication manager that is used by the PredixAuthenticationView to authenticate with Predix UAA</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">authenticationManager</span><span class="p">:</span> <span class="kt">AuthenticationManager</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixAuthenticationView(py)titleImage"></a>
+                    <a name="//apple_ref/swift/Property/titleImage" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixAuthenticationView(py)titleImage">titleImage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Title image you want to use for the title header that is displayed above the email text field</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">titleImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"predixTitle.png"</span><span class="p">,</span> <span class="nv">in</span><span class="p">:</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="kt">PredixAuthenticationView</span><span class="o">.</span><span class="k">self</span><span class="p">),</span> <span class="nv">compatibleWith</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixAuthenticationView(py)delegate"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixAuthenticationView(py)delegate">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The PredixAuthenticationViewDelegate</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PredixAuthenticationViewDelegate.html">PredixAuthenticationViewDelegate</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="http://predix.io" target="_blank" rel="external">GE Digital</a>. All rights reserved. (Last updated: 2017-12-05)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

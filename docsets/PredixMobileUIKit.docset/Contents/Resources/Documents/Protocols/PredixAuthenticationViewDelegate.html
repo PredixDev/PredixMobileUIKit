@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UIColor Extension Reference</title>
+    <title>PredixAuthenticationViewDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Extension/UIColor" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Protocol/PredixAuthenticationViewDelegate" class="dashAnchor"></a>
 
-    <a title="UIColor Extension Reference"></a>
+    <a title="PredixAuthenticationViewDelegate Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">PredixMobileUIKit Reference</a>
       <img class="carat" src="../img/carat.png" />
-      UIColor Extension Reference
+      PredixAuthenticationViewDelegate Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -114,8 +114,15 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>UIColor</h1>
-            
+            <h1>PredixAuthenticationViewDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">PredixAuthenticationViewDelegate</span><span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                </div>
+              </div>
+            <p>An delegate that works with the PredixAuthenticationView that allows an implementer to be notified when certain actions take place during the authentication process</p>
+
           </div>
         </section>
 
@@ -126,9 +133,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So7UIColorC17PredixMobileUIKitE0B0O"></a>
-                    <a name="//apple_ref/swift/Enum/Predix" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So7UIColorC17PredixMobileUIKitE0B0O">Predix</a>
+                    <a name="/c:@M@PredixMobileUIKit@objc(pl)PredixAuthenticationViewDelegate(im)overrideAuthenticationWithAuthenticationView:"></a>
+                    <a name="//apple_ref/swift/Method/overrideAuthentication(authenticationView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(pl)PredixAuthenticationViewDelegate(im)overrideAuthenticationWithAuthenticationView:">overrideAuthentication(authenticationView:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -136,15 +143,54 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Predix Color Palette</p>
+                        <p>Called when authentication is requested by the user</p>
 
-                        <a href="../Extensions/UIColor/Predix.html" class="slightly-smaller">See more</a>
+<p>Overriding this delegate method requires an implementer to take control of all authentication actions for the authentication manager.  The PredixAuthenticationView will not execute its own sign-in actions
+when this delegate method is implemented.</p>
+
+<ul>
+<li>authenticationView: The authentication view that is invoking the delegate</li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Predix</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">overrideAuthentication</span><span class="p">(</span><span class="nv">authenticationView</span><span class="p">:</span> <span class="kt"><a href="../Classes/PredixAuthenticationView.html">PredixAuthenticationView</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(pl)PredixAuthenticationViewDelegate(im)authenticationCompleteWithAuthenticationView:success:error:"></a>
+                    <a name="//apple_ref/swift/Method/authenticationComplete(authenticationView:success:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(pl)PredixAuthenticationViewDelegate(im)authenticationCompleteWithAuthenticationView:success:error:">authenticationComplete(authenticationView:success:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides the delegate with the ability to do an action when authentication is completed.</p>
+
+<ul>
+<li>authenticationView: The authentication view that is invoking the delegate</li>
+<li>success: Indicates is authentication was successful or not</li>
+<li>error: If an error was encountered during authentication the error property will give an indication why authentication failed or encountered an error</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">authenticationComplete</span><span class="p">(</span><span class="nv">authenticationView</span><span class="p">:</span> <span class="kt"><a href="../Classes/PredixAuthenticationView.html">PredixAuthenticationView</a></span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>

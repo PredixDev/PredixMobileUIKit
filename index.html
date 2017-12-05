@@ -53,10 +53,27 @@
             <a class="nav-group-name-link" href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/PredixAuthenticationView.html">PredixAuthenticationView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/PredixCircleProgressView.html">PredixCircleProgressView</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/PredixDonutView.html">PredixDonutView</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/PredixTimeSeriesView.html">PredixTimeSeriesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/TimeSeriesTag.html">TimeSeriesTag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Utilities.html">Utilities</a>
               </li>
             </ul>
           </li>
@@ -72,13 +89,21 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Structs.html">Structs</a>
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/PredixAuthenticationViewDelegate.html">PredixAuthenticationViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/TimeSeriesViewDelegate.html">TimeSeriesViewDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/TimeSeriesDataPoint.html">TimeSeriesDataPoint</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/TimeSeriesTag.html">TimeSeriesTag</a>
               </li>
             </ul>
           </li>
@@ -91,17 +116,12 @@
             
             <p><img src="./Assets/PredixMobileUIKitTitle.png" alt="alt tag">
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
-<a href="https://github.com/PredixDev/PredixMobileUIKit/releases"><img src="https://img.shields.io/badge/Release-0.1-blue.svg" alt="Releases"></a></p>
-<h1 id='predixmobileuikit' class='heading'>PredixMobileUIKit</h1>
+<a href="https://github.com/PredixDev/PredixMobileUIKit/releases"><img src="https://img.shields.io/badge/Release-0.3-blue.svg" alt="Releases"></a></p>
+<h1 id='predixmobileuikit-alpha' class='heading'>PredixMobileUIKit (Alpha)</h1>
 
-<p>iOS UI Components designed for <a href="https://predix.io">Predix</a></p>
-<h2 id='components' class='heading'>Components</h2>
-<h4 id='predixdonutview' class='heading'>PredixDonutView</h4>
+<p>The PredixUIKit is a framework desinged to make building UI applications for <a href="https://predix.io">Predix</a> simple by providing a rich set of data visualization components that follow <a href="https://www.predix-ui.com/#/develop/mobile">Predix Design System</a> guidelines and common components meant to speed development when used with the <a href="https://github.com/predixdev/predixsdkforios">Predix SDK for iOS</a>. </p>
 
-<p>The PredixDonutView is a donut and pie chart, that defaults to the regular Predix data visualization color set. It&rsquo;s Interface Builder enabled, and has various properties for controlling its legend placement, donut characteristics, and an easy helper-method for loading data from a simple name/value dictionary.</p>
-<h4 id='predixtimeseriesview' class='heading'>PredixTimeSeriesView</h4>
-
-<p>The PredixTimeSeriesView is a line chart that easily shows Time Series data from the Predix Time Series service.  It&rsquo;s Interface Builder enabled, and has various properties for controlling its legend placement, title and other characteristics, and an easy method for loading time series data.</p>
+<p>PredixUIKit is not a port of the Predix Design System and does not override or change stock iOS UI elements.  It is intended to enhance applications that use the Predix SDK for iOS with UI Elements that adhere to the Predix Design System guidelines and the <a href="https://developer.apple.com/ios/human-interface-guidelines/overview/themes/">Apple HIG</a>.</p>
 
 <hr>
 <h1 id='getting-started' class='heading'>Getting Started</h1>
@@ -113,7 +133,7 @@
 <p>The PredixMobileUIKit repo includes a demonstration project: PredixMobileUIKitDemo. This project can show you usage of some of the PredixMobileUIKit provided views. </p>
 <h1 id='documentation' class='heading'>Documentation</h1>
 
-<p>The framework is fully documented for Xcode&rsquo;s quick help. Additionally, full online documentation can be found here: <a href="http://predixdev.github.io/PredixMobileUIKit/">documentation site</a></p>
+<p><a href="https://github.com/PredixDev/PredixMobileUIKit/wiki">PredixUIKit Documentation</a></p>
 
 <hr>
 <h1 id='contributions' class='heading'>Contributions</h1>
@@ -125,18 +145,18 @@
 
 <p><a name="dependencies"></a></p>
 <h1 id='dependencies' class='heading'>Dependencies:</h1>
-<h4 id='predixmobilesdk' class='heading'>PredixMobileSDK</h4>
+<h4 id='predixsdkforios' class='heading'>PredixSDKForiOS</h4>
 
 <p>Copyright 2017 GE Digital</p>
 
-<p><a href="https://github.com/PredixDev/PredixMobileSDK">https://github.com/PredixDev/PredixMobileSDK</a></p>
+<p><a href="https://github.com/PredixDev/PredixSDKForiOS">PredixSDKForiOS</a></p>
 <h4 id='charts' class='heading'>Charts</h4>
 
 <p>Copyright 2016 Daniel Cohen Gindi &amp; Philipp Jahoda</p>
 
 <p>Licensed under the Apache License, Version 2.0</p>
 
-<p><a href="https://github.com/danielgindi/Charts">https://github.com/danielgindi/Charts</a></p>
+<p><a href="https://github.com/danielgindi/Charts">Charts</a></p>
 <h1 id='tools' class='heading'>Tools</h1>
 
 <p>The PredixMobileUIKit project uses the following tools in it&rsquo;s CI build process:</p>
@@ -168,8 +188,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="http://predix.io" target="_blank" rel="external">GE Digital</a>. All rights reserved. (Last updated: 2017-10-05)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2017 <a class="link" href="http://predix.io" target="_blank" rel="external">GE Digital</a>. All rights reserved. (Last updated: 2017-12-05)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

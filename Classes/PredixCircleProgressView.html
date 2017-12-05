@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PredixCircleProgressView Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/PredixCircleProgressView" class="dashAnchor"></a>
+
+    <a title="PredixCircleProgressView Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          PredixMobileUIKit Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/PredixDev/PredixMobileUIKit">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">PredixMobileUIKit Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      PredixCircleProgressView Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixAuthenticationView.html">PredixAuthenticationView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixCircleProgressView.html">PredixCircleProgressView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixDonutView.html">PredixDonutView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PredixTimeSeriesView.html">PredixTimeSeriesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TimeSeriesTag.html">TimeSeriesTag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Utilities.html">Utilities</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIColor/Predix.html">– Predix</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PredixAuthenticationViewDelegate.html">PredixAuthenticationViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TimeSeriesViewDelegate.html">TimeSeriesViewDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TimeSeriesDataPoint.html">TimeSeriesDataPoint</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>PredixCircleProgressView</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">PredixCircleProgressView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
+
+                </div>
+              </div>
+            <p>Progress Circle View
+Shows progress as an arc within a circular display
+Can display two threshold lines, and change the progress color when the progress passes those thresholds
+Can display the percentage progress value as a centered title
+Can animate changes to the progress arc, the threshold color change, and title updates</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/public%20properties"></a>
+                <a name="//apple_ref/swift/Section/public properties" class="dashAnchor"></a>
+                <a href="#/public%20properties">
+                  <h3 class="section-name">public properties</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progress"></a>
+                    <a name="//apple_ref/swift/Property/progress" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progress">progress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Progress value, from 0 to 1</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)isTitleHidden"></a>
+                    <a name="//apple_ref/swift/Property/isTitleHidden" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)isTitleHidden">isTitleHidden</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Controls whether or not the title text will show within the progress circle.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isTitleHidden</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)isTitleAnimated"></a>
+                    <a name="//apple_ref/swift/Property/isTitleAnimated" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)isTitleAnimated">isTitleAnimated</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Controls whether or not the title text will animate with progress display.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isTitleAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)titleFormat"></a>
+                    <a name="//apple_ref/swift/Property/titleFormat" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)titleFormat">titleFormat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Format string for the title text</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">titleFormat</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"%.0f%%"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18CircleProgressViewC22titleProgessMultiplier12CoreGraphics7CGFloatVv"></a>
+                    <a name="//apple_ref/swift/Property/titleProgessMultiplier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18CircleProgressViewC22titleProgessMultiplier12CoreGraphics7CGFloatVv">titleProgessMultiplier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Value to multiply the progress value by before formatting for the title display</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">titleProgessMultiplier</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">100.0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)circleColor"></a>
+                    <a name="//apple_ref/swift/Property/circleColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)circleColor">circleColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Color used for the incomplete portion of the progress display</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">circleColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">gray</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progressColor"></a>
+                    <a name="//apple_ref/swift/Property/progressColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progressColor">progressColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Progress circle color</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">progressColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">green</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)warningThresholdColor"></a>
+                    <a name="//apple_ref/swift/Property/warningThresholdColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)warningThresholdColor">warningThresholdColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Warning threshold color</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">warningThresholdColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">orange</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)criticalThresholdColor"></a>
+                    <a name="//apple_ref/swift/Property/criticalThresholdColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)criticalThresholdColor">criticalThresholdColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Critical threshold color</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">criticalThresholdColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">red</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)thresholdColorMatching"></a>
+                    <a name="//apple_ref/swift/Property/thresholdColorMatching" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)thresholdColorMatching">thresholdColorMatching</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When true, the color of the progress circle will change to match the crossed threshold</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">thresholdColorMatching</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)warningThreshold"></a>
+                    <a name="//apple_ref/swift/Property/warningThreshold" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)warningThreshold">warningThreshold</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Warning threshold
+Set to zero to disable warning thresholds</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">warningThreshold</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.00</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)criticalThreshold"></a>
+                    <a name="//apple_ref/swift/Property/criticalThreshold" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)criticalThreshold">criticalThreshold</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Critical threshold
+Set to zero to disable critical thresholds</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">criticalThreshold</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.00</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)thresholdLineLength"></a>
+                    <a name="//apple_ref/swift/Property/thresholdLineLength" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)thresholdLineLength">thresholdLineLength</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Length of the threshhold lines
+Set to zero to disable visible threshold lines</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">thresholdLineLength</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">20</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)thresholdLineWidth"></a>
+                    <a name="//apple_ref/swift/Property/thresholdLineWidth" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)thresholdLineWidth">thresholdLineWidth</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Witdh of the threshhold lines</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">thresholdLineWidth</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">1.0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)titleScaleFactor"></a>
+                    <a name="//apple_ref/swift/Property/titleScaleFactor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)titleScaleFactor">titleScaleFactor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Factor to scale the title text relative to the progress circle size</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">titleScaleFactor</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progressLineWidth"></a>
+                    <a name="//apple_ref/swift/Property/progressLineWidth" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progressLineWidth">progressLineWidth</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Line width of the progress circle</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">progressLineWidth</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">10.0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)circleLineWidth"></a>
+                    <a name="//apple_ref/swift/Property/circleLineWidth" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)circleLineWidth">circleLineWidth</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Line width of the incomplete circle</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">circleLineWidth</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">10.0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)counterClockwise"></a>
+                    <a name="//apple_ref/swift/Property/counterClockwise" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)counterClockwise">counterClockwise</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Draw the progress arc counterclockwise rather than clockwise
+Defaults to false, which uses a clockwise arc.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">counterClockwise</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)invertThresholds"></a>
+                    <a name="//apple_ref/swift/Property/invertThresholds" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)invertThresholds">invertThresholds</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Consider thresholds minimums rather than maximums.
+If true then thresholds are crossed when the progress is below the threshold
+Defaults to false, thresholds are crossed when the progress is above the threshold</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">invertThresholds</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18CircleProgressViewC25progressAnimationDurationSdv"></a>
+                    <a name="//apple_ref/swift/Property/progressAnimationDuration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18CircleProgressViewC25progressAnimationDurationSdv">progressAnimationDuration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Total duration used to animate progress from 0 to 100%.
+Actual duration of progress animation will be dependant on the value change.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">progressAnimationDuration</span><span class="p">:</span> <span class="kt">CFTimeInterval</span> <span class="o">=</span> <span class="mf">1.5</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18CircleProgressViewC5titleSQySo7UILabelCGv"></a>
+                    <a name="//apple_ref/swift/Property/title" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18CircleProgressViewC5titleSQySo7UILabelCGv">title</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Title Label</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">UILabel</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Public Methods" class="dashAnchor"></a>
+                <a href="#/Public%20Methods">
+                  <h3 class="section-name">Public Methods</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18CircleProgressViewC15cancelAnimationyyF"></a>
+                    <a name="//apple_ref/swift/Method/cancelAnimation()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18CircleProgressViewC15cancelAnimationyyF">cancelAnimation()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Cancels the current <code><a href="../Classes/PredixCircleProgressView.html#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progress">progress</a></code> update animation, if running</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">cancelAnimation</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18CircleProgressViewC11isAnimatingSbyF"></a>
+                    <a name="//apple_ref/swift/Method/isAnimating()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18CircleProgressViewC11isAnimatingSbyF">isAnimating()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns true if the <code><a href="../Classes/PredixCircleProgressView.html#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progress">progress</a></code> animation is currently running</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">isAnimating</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18CircleProgressViewC07animateE0y12CoreGraphics7CGFloatV2to_tF"></a>
+                    <a name="//apple_ref/swift/Method/animateProgress(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18CircleProgressViewC07animateE0y12CoreGraphics7CGFloatV2to_tF">animateProgress(to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change the <code><a href="../Classes/PredixCircleProgressView.html#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progress">progress</a></code> property to the provided value, and animate the circle from the current value to the provided value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">animateProgress</span><span class="p">(</span><span class="n">to</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Value to set the <code><a href="../Classes/PredixCircleProgressView.html#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progress">progress</a></code> property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17PredixMobileUIKit0A18CircleProgressViewC11updateTitley12CoreGraphics7CGFloatV2to_tF"></a>
+                    <a name="//apple_ref/swift/Method/updateTitle(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17PredixMobileUIKit0A18CircleProgressViewC11updateTitley12CoreGraphics7CGFloatV2to_tF">updateTitle(to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the title text to the given value, using the <code><a href="../Classes/PredixCircleProgressView.html#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)titleFormat">titleFormat</a></code> and the <code><a href="../Classes/PredixCircleProgressView.html#/s:17PredixMobileUIKit0A18CircleProgressViewC22titleProgessMultiplier12CoreGraphics7CGFloatVv">titleProgessMultiplier</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">updateTitle</span><span class="p">(</span><span class="n">to</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Value, usually matching the <code><a href="../Classes/PredixCircleProgressView.html#/c:@M@PredixMobileUIKit@objc(cs)PredixCircleProgressView(py)progress">progress</a></code> property to set the title text</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="http://predix.io" target="_blank" rel="external">GE Digital</a>. All rights reserved. (Last updated: 2017-12-05)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
