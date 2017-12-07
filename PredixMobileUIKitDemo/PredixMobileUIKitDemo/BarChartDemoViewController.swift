@@ -15,15 +15,17 @@ class BarchartDemoViewController: UIViewController {
     @IBOutlet var barChartView: PredixBarChartView!
     var months: [String]!
     override func viewDidLoad() {
+        title = "Unit Bought vs Units Sold"
+        
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
         let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
-
-        // Load and Stack the Bar Chart with two data entry
-        barChartView.loadAndStackChart(xValues: months, yValues1AndyValue2: (unitsSold, unitsBought), label1AndLabel2: ("Units Sold", "Units Bought"), uiColor1AnduiColor2: ([NSUIColor.red], [NSUIColor.blue]), showWithDefaultAnimation: false)
-
-        // Load the Bar Char with one data entry
-        // barChartView.loadChart(xValues: months, yValues: unitsSold, label: "Units Sold",showWithDefaultAnimation : false)
+       
+        
+        let bar1 = Bar(unitsBought, label: "Units Bought",color:[NSUIColor.orange])
+        let bar2 = Bar(unitsSold, label: "Units Sold",color:[NSUIColor.gray])
+        
+        barChartView.create(xAxisValues: months, bars: [bar1, bar2],stackBars: true, showWithDefaultAnimation : true)
 
         // Add a limit line
         barChartView.addALimit(limit: 10.0, label: "Target")

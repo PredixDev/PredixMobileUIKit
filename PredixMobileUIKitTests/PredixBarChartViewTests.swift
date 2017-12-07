@@ -30,7 +30,12 @@ class PredixBarChartViewTests: XCTestCase {
         var months: [String]!
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        barChart.loadChart(xValues: months, yValues: unitsSold, label: "Units Sold", showWithDefaultAnimation: true)
+        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
+        
+        let bar1 = Bar(unitsSold, label: "Units Sold",color:[NSUIColor.blue])
+        let bar2 = Bar(unitsBought, label: "Units Bought",color:[NSUIColor.red])
+        
+        barChart.create(xAxisValues: months, bars: [bar1,bar2],showWithDefaultAnimation : true)
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
         waitForExpectations(timeout: 1, handler: nil)
     }
@@ -47,37 +52,11 @@ class PredixBarChartViewTests: XCTestCase {
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
         let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
-        barChart.loadAndStackChart(xValues: months, yValues1AndyValue2: (unitsSold, unitsBought), label1AndLabel2: ("Units Sold", "Units Bought"), uiColor1AnduiColor2: ([NSUIColor.red], [NSUIColor.blue]), showWithDefaultAnimation: true)
+        let barChart1 = Bar(unitsSold, label: "Units Sold",color:[NSUIColor.blue])
+        let barChart2 = Bar(unitsBought, label: "Units Bought",color:[NSUIColor.red])
+        
+        barChart.create(xAxisValues: months, bars: [barChart1,barChart2],showWithDefaultAnimation : true)
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
         waitForExpectations(timeout: 1, handler: nil)
-    }
-
-    func testloadAndStackChartWithNoAnimation() {
-        let barChart = PredixBarChartView()
-
-        barChart.renderer?.animator = TestAnimator(animateHandler: {
-            XCTFail("Animation should not have been called")
-        })
-
-        var months: [String]!
-        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
-        barChart.loadAndStackChart(xValues: months, yValues1AndyValue2: (unitsSold, unitsBought), label1AndLabel2: ("Units Sold", "Units Bought"), uiColor1AnduiColor2: ([NSUIColor.red], [NSUIColor.blue]), showWithDefaultAnimation: true)
-        XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
-    }
-
-    func testLoadChartWithNoAnimation() {
-        let barChart = PredixBarChartView()
-
-        barChart.renderer?.animator = TestAnimator(animateHandler: {
-            XCTFail("Animation should not have been called")
-        })
-
-        var months: [String]!
-        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        barChart.loadChart(xValues: months, yValues: unitsSold, label: "Units Sold", showWithDefaultAnimation: true)
-        XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
     }
 }
