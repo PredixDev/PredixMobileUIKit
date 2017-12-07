@@ -2,7 +2,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Releases](https://img.shields.io/badge/Release-0.3-blue.svg)](https://github.com/PredixDev/PredixMobileUIKit/releases)
 
-PredixMobileUIKit (Beta)
+PredixMobileUIKit (Alpha)
 ====
 
 The PredixUIKit is a framework desinged to make building UI applications for [Predix](https://predix.io) simple by providing a rich set of data visualization components that follow [Predix Design System](https://www.predix-ui.com/#/develop/mobile) guidelines and common components meant to speed development when used with the [Predix SDK for iOS](https://github.com/predixdev/predixsdkforios). 
