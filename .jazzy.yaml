@@ -8,4 +8,3 @@ xcodebuild_arguments: [-scheme, PredixMobileUIKit]
 module: PredixMobileUIKit
 output: build/docs
 hide_documentation_coverage: true
-download_badge: false
