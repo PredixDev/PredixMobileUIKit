@@ -5,16 +5,16 @@
 PredixMobileUIKit (Alpha)
 ====
 
-The PredixUIKit is a framework desinged to make building UI applications for [Predix](https://predix.io) simple by providing a rich set of data visualization components that follow [Predix Design System](https://www.predix-ui.com/#/develop/mobile) guidelines and common components meant to speed development when used with the [Predix SDK for iOS](https://github.com/predixdev/predixsdkforios). 
+The PredixUIKit is a framework designed to make building UI applications for [Predix](https://predix.io) simpler with the help of a rich set of data visualization components that follow [Predix Design System](https://www.predix-ui.com/#/develop/mobile) guidelines and common components meant to accelerate development when used with the [Predix SDK for iOS](https://github.com/predixdev/predixsdkforios). 
 
-PredixUIKit is not a port of the Predix Design System and does not override or change stock iOS UI elements.  It is intended to enhance applications that use the Predix SDK for iOS with UI Elements that adhere to the Predix Design System guidelines and the [Apple HIG](https://developer.apple.com/ios/human-interface-guidelines/overview/themes/).
+PredixUIKit is not a part of the Predix Design System and does not override or change stock iOS UI elements.  It is intended to enhance applications that use the Predix SDK for iOS with UI elements that adhere to the Predix Design System guidelines and the [Apple HIG](https://developer.apple.com/ios/human-interface-guidelines/overview/themes/).
 
 ---
 Getting Started
 ====
 The PredixMobileUIKit project uses [Carthage](https://github.com/Carthage/Carthage) package manager to manage it's [dependencies](#dependencies).
 
-Users should install Carthage, then once you've downloaded the PredixMobileUIKit repository, run the command: `carthage update` to download and build the required project dependancies before opening the project files in Xcode.
+Users must install Carthage before downloading the PredixMobileUIKit repository, run the command: `carthage update` to download and build the required project dependencies before opening the project files in Xcode.
 
 The PredixMobileUIKit repo includes a demonstration project: PredixMobileUIKitDemo. This project can show you usage of some of the PredixMobileUIKit provided views. 
 
