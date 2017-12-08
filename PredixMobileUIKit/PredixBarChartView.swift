@@ -9,6 +9,7 @@
 import Charts
 import Foundation
 import PredixSDK
+
 /// The Bar class
 public class Bar {
     var yValues: [Double]
@@ -72,10 +73,11 @@ open class PredixBarChartView: BarChartView {
         xAxis.labelTextColor = uiColor
     }
 
-    /// Helper function to populate the bar chart based on each Bar data entry
-    /// - parameter xValues: String array of x the axis values
+    /// Helper function to populate the Bar Chart based on each Bar data entry
+    /// - parameter xAxisValues: String array of the x axis values
+    /// - parameter stackBars: optional parameter to show the bar staked or unstaked. Defaults to `true`.
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
-    public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = false, showWithDefaultAnimation: Bool = true) {
+    public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
             var dataEntries: [BarChartDataEntry] = []

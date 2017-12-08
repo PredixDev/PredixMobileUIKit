@@ -347,13 +347,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zb-Um-PmQ" userLabel="Bar Chart View" customClass="PredixBarChartView" customModule="PredixMobileUIKit">
-                                <rect key="frame" x="35" y="67" width="324" height="485"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zb-Um-PmQ" userLabel="Bar Chart View" customClass="PredixBarChartView" customModule="PredixMobileUIKit">
+                                <rect key="frame" x="25.5" y="140" width="324" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="324" id="oAQ-cJ-ekU"/>
+                                    <constraint firstAttribute="height" constant="387" id="uOJ-wJ-iv8"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3zb-Um-PmQ" firstAttribute="centerX" secondItem="QSM-pm-kqK" secondAttribute="centerX" id="BxP-03-rUG"/>
+                            <constraint firstItem="3zb-Um-PmQ" firstAttribute="centerY" secondItem="QSM-pm-kqK" secondAttribute="centerY" id="KQJ-VW-qvt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FhU-0h-e59"/>
                     </view>
                     <connections>
