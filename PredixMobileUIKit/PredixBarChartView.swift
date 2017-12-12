@@ -10,30 +10,36 @@ import Charts
 import Foundation
 import PredixSDK
 
-/// The Bar class
-public class Bar {
-    var yValues: [Double]
-    var label: String
-    var color: [UIColor]?
-    /// - parameter yValues: Double array of y values
-    /// - parameter label: bar label
-    /// - parameter color: provide a color base on the class UIColor
-    public init(_ yValues: [Double], label: String, color: [UIColor]) {
-        self.yValues = yValues
-        self.label = label
-        self.color = color
-    }
 
-    /// - parameter yValues: Double array of y values
-    /// - parameter label: bar label
-    public init(_ yValues: [Double], label: String) {
-        self.yValues = yValues
+/// To create a Bar Chart from the PredixBarChartView class, the Bar class is used to populate each data Bar on the chart.
+public class Bar {
+    var values: [Double]
+    var label: String
+    var colors: [UIColor] = []
+    
+    /// Initialize the values, label and color of the bar.
+    /// - parameter yValues: the values the bar hold
+    /// - parameter label: the bar label
+    /// - parameter color: the bar color based on the class UIColor
+    public init(_ values: [Double], label: String, colors: [UIColor]) {
+        self.values = values
+        self.label = label
+        self.colors = colors
+    }
+    
+    /// Initialize the values and label of the bar.
+    /// - parameter yValues: the values the bar hold
+    /// - parameter label: the bar label
+    public init(_ values: [Double], label: String) {
+        self.values = values
         self.label = label
     }
 }
 
 /// PredixBarChartView -- Bar Chart
+@IBDesignable
 open class PredixBarChartView: BarChartView {
+    
     /// :nodoc:
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,13 +64,17 @@ open class PredixBarChartView: BarChartView {
     public func setNoDataText(message: String) {
         noDataText = message
     }
-
+var ll = ChartLimitLine()
     /// Add a limit line
     /// - parameter limit: Double number of where the line should be drawn verticaly
     /// - parameter label: String label of the line
     public func addALimit(limit: Double, label: String) {
-        let ll = ChartLimitLine(limit: limit, label: label)
+        ll = ChartLimitLine(limit: limit, label: label)
         rightAxis.addLimitLine(ll)
+    }
+    
+    public func removeLimit(){
+        rightAxis.removeLimitLine(ll)
     }
 
     /// Set the x axis label text color
@@ -72,28 +82,28 @@ open class PredixBarChartView: BarChartView {
     public func setXAxisLabelTextColor(uiColor: UIColor) {
         xAxis.labelTextColor = uiColor
     }
-
-    /// Helper function to populate the Bar Chart based on each Bar data entry
-    /// - parameter xAxisValues: String array of the x axis values
+    /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
+    /// - parameter xAxisValues: String array of the x axis values.
+    /// - parameter bars: populate each data bars  on the Bar Chart.
     /// - parameter stackBars: optional parameter to show the bar staked or unstaked. Defaults to `true`.
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
     public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
             var dataEntries: [BarChartDataEntry] = []
-            for i in 0 ..< bar.yValues.count {
-                let dataEntry = BarChartDataEntry(x: Double(i), y: bar.yValues[i])
+            for i in 0 ..< bar.values.count {
+                let dataEntry = BarChartDataEntry(x: Double(i), y: bar.values[i])
                 dataEntries.append(dataEntry)
             }
             let chartDataSet = BarChartDataSet(values: dataEntries, label: bar.label)
-            if bar.color != nil {
-                chartDataSet.colors = bar.color!
+            if bar.colors != [] {
+                chartDataSet.colors = bar.colors
             }
             dataSets.append(chartDataSet)
         }
-
+        
         let ChartData = BarChartData(dataSets: dataSets)
-
+        
         if stackBars == false {
             let groupCount = xAxisValues.count
             let groupSpace: Double = 0.08
@@ -104,9 +114,10 @@ open class PredixBarChartView: BarChartView {
         }
         data = ChartData
         xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-
+        
         if showWithDefaultAnimation {
             animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
         }
     }
+
 }

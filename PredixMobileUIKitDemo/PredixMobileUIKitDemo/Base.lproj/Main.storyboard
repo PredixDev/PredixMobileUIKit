@@ -8,6 +8,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -83,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttF-Dt-Oqd" customClass="PredixDonutView" customModule="PredixMobileUIKit">
-                                <rect key="frame" x="0.0" y="20" width="0.0" height="390"/>
+                                <rect key="frame" x="16" y="20" width="343" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="holeRadiusPercent">
@@ -101,36 +102,36 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="TopLeft" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lDs-wu-esq">
-                                <rect key="frame" x="0.0" y="426" width="0.0" height="225"/>
+                                <rect key="frame" x="16" y="426" width="343" height="225"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="51p-J2-Rvf">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="75"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend Placement" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjL-O1-4yF">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="75"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QGc-6k-00A">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="114.5" y="0.0" width="114" height="75"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tF-Be-35y">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="25"/>
                                                         <state key="normal" title="Top"/>
                                                         <connections>
                                                             <action selector="vertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4a-Bf-Ir3"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MS7-Rm-SEf">
-                                                        <rect key="frame" x="0.0" y="25" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="25" width="114" height="25"/>
                                                         <state key="normal" title="Center"/>
                                                         <connections>
                                                             <action selector="vertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XGP-J2-D8W"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktz-Ai-zzj">
-                                                        <rect key="frame" x="0.0" y="50" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="50" width="114" height="25"/>
                                                         <state key="normal" title="Bottom"/>
                                                         <connections>
                                                             <action selector="vertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7tN-lw-6Vl"/>
@@ -139,24 +140,24 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-FW-HaU">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="228.5" y="0.0" width="114.5" height="75"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZ0-SN-iQP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="25"/>
                                                         <state key="normal" title="Left"/>
                                                         <connections>
                                                             <action selector="horzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hik-wk-SpK"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tA6-uh-F4w">
-                                                        <rect key="frame" x="0.0" y="25" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="25" width="114.5" height="25"/>
                                                         <state key="normal" title="Center"/>
                                                         <connections>
                                                             <action selector="horzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="keu-YR-QIu"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eG6-Fk-fS3">
-                                                        <rect key="frame" x="0.0" y="50" width="0.0" height="25"/>
+                                                        <rect key="frame" x="0.0" y="50" width="114.5" height="25"/>
                                                         <state key="normal" title="Right"/>
                                                         <connections>
                                                             <action selector="horzButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="73w-KT-LQm"/>
@@ -167,23 +168,23 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qG7-yG-g2Q">
-                                        <rect key="frame" x="0.0" y="75" width="0.0" height="75"/>
+                                        <rect key="frame" x="0.0" y="75" width="343" height="75"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend Orientation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jD-ii-Pf2">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="75"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBX-xd-Z1h">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="114.5" y="0.0" width="114" height="75"/>
                                                 <state key="normal" title="Vertical"/>
                                                 <connections>
                                                     <action selector="orientationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="THe-bc-hKd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClP-Ui-HLb">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="228.5" y="0.0" width="114.5" height="75"/>
                                                 <state key="normal" title="Horizontal"/>
                                                 <connections>
                                                     <action selector="orientationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tMu-7L-dni"/>
@@ -192,16 +193,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VgJ-2A-8oI">
-                                        <rect key="frame" x="0.0" y="150" width="0.0" height="75"/>
+                                        <rect key="frame" x="0.0" y="150" width="343" height="75"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hole Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIg-fw-XBz">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="75"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.90000000000000002" minValue="-0.01" maxValue="0.97999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Col-lx-dMv">
-                                                <rect key="frame" x="-2" y="0.0" width="4" height="76"/>
+                                                <rect key="frame" x="169.5" y="0.0" width="175.5" height="76"/>
                                                 <connections>
                                                     <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="AZa-7A-lvw"/>
                                                 </connections>
@@ -347,24 +348,170 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zb-Um-PmQ" userLabel="Bar Chart View" customClass="PredixBarChartView" customModule="PredixMobileUIKit">
-                                <rect key="frame" x="25.5" y="140" width="324" height="387"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zb-Um-PmQ" userLabel="Bar Chart View" customClass="PredixBarChartView" customModule="PredixMobileUIKit">
+                                <rect key="frame" x="16" y="86" width="336" height="410"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="324" id="oAQ-cJ-ekU"/>
-                                    <constraint firstAttribute="height" constant="387" id="uOJ-wJ-iv8"/>
-                                </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="j4I-ki-J4Y" userLabel="Label Position Stack">
+                                <rect key="frame" x="0.0" y="551" width="373" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtP-Jk-jpP" userLabel="Label Postion label">
+                                        <rect key="frame" x="0.0" y="0.0" width="107" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9v-Cj-j3h" userLabel="Label Position Top Button">
+                                        <rect key="frame" x="115" y="0.0" width="30" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Top"/>
+                                        <connections>
+                                            <action selector="labelPosButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="dta-Nv-ALT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V90-1d-GJ6" userLabel="Label Postion Top Inside Button">
+                                        <rect key="frame" x="153" y="0.0" width="67" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Top Inside"/>
+                                        <connections>
+                                            <action selector="labelPosButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="igv-bm-3VF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Eb-ep-d1l" userLabel="Label Position Bottom Inside">
+                                        <rect key="frame" x="228" y="0.0" width="47" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Botton "/>
+                                        <connections>
+                                            <action selector="labelPosButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="wVN-GY-Cyf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxO-uE-auR" userLabel="Label Position Bottom Button">
+                                        <rect key="frame" x="283" y="0.0" width="90" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Bottom Inside"/>
+                                        <connections>
+                                            <action selector="labelPosButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="8Xa-Ua-bJ5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-QX-Z9G" userLabel="Legend Placement Stack">
+                                <rect key="frame" x="0.0" y="524" width="338.5" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Legend Placement     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Deb-ja-F3G" userLabel="Legent Placement">
+                                        <rect key="frame" x="0.0" y="0.0" width="164.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCe-nv-Cz6" userLabel="Vert Top Button">
+                                        <rect key="frame" x="172.5" y="0.0" width="30" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Top"/>
+                                        <connections>
+                                            <action selector="horzButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="I6b-7N-ZzC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1Q-pc-yDe" userLabel="Vert Bottom Button">
+                                        <rect key="frame" x="210.5" y="0.0" width="48" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Bottom"/>
+                                        <connections>
+                                            <action selector="horzButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="fif-LB-NBq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSE-0q-o92" userLabel="Horz Right Button">
+                                        <rect key="frame" x="266.5" y="0.0" width="30" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Left"/>
+                                        <connections>
+                                            <action selector="horzButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="vHQ-8k-CWR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFp-DI-tSC" userLabel="Horz Left Button">
+                                        <rect key="frame" x="304.5" y="0.0" width="34" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Right"/>
+                                        <connections>
+                                            <action selector="horzButtonTapped:" destination="u6h-nz-9DV" eventType="touchUpInside" id="NIA-kc-qKP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9F-GB-t5G" userLabel="Legend Switch Stack">
+                                <rect key="frame" x="0.0" y="607" width="162" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Enable Legend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js6-yb-HWe" userLabel="Enable Legend Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="113" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YVa-2k-OPP">
+                                        <rect key="frame" x="113" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="enableLegendChanged:" destination="u6h-nz-9DV" eventType="valueChanged" id="534-kd-aMw"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-1A-NqO" userLabel="Vertical Line Stack">
+                                <rect key="frame" x="0.0" y="578" width="904.5" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Limit Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-Mp-mig">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="3DW-Px-R9K">
+                                        <rect key="frame" x="79.5" y="0.0" width="827" height="31"/>
+                                        <connections>
+                                            <action selector="verticalLineValueChanged:" destination="u6h-nz-9DV" eventType="valueChanged" id="Wgy-05-co8"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2NL-v0-kak">
+                                <rect key="frame" x="0.0" y="636" width="130.5" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Stack Bar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHH-bn-f87" userLabel="Stack Bar Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXU-j5-Jsf" userLabel="Stack Bar Switch">
+                                        <rect key="frame" x="81.5" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="stackBarChanged:" destination="u6h-nz-9DV" eventType="valueChanged" id="hLe-aA-g64"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3zb-Um-PmQ" firstAttribute="centerX" secondItem="QSM-pm-kqK" secondAttribute="centerX" id="BxP-03-rUG"/>
-                            <constraint firstItem="3zb-Um-PmQ" firstAttribute="centerY" secondItem="QSM-pm-kqK" secondAttribute="centerY" id="KQJ-VW-qvt"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FhU-0h-e59"/>
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="3zb-Um-PmQ" id="4Ek-Lz-QfR"/>
+                        <outlet property="enabledLegendSwitch" destination="YVa-2k-OPP" id="PbO-oI-pd3"/>
+                        <outlet property="horzLeftButton" destination="zFp-DI-tSC" id="sQh-ua-sUS"/>
+                        <outlet property="horzRightButton" destination="gSE-0q-o92" id="CiO-vq-rzD"/>
+                        <outlet property="labelPosBottom" destination="0Eb-ep-d1l" id="fB9-bH-Z75"/>
+                        <outlet property="labelPosBottomInside" destination="PxO-uE-auR" id="U7m-rv-h2L"/>
+                        <outlet property="labelPosTop" destination="x9v-Cj-j3h" id="wux-WF-97x"/>
+                        <outlet property="labelPosTopInside" destination="V90-1d-GJ6" id="EAm-So-7xB"/>
+                        <outlet property="stackBarSwitch" destination="IXU-j5-Jsf" id="6HV-fR-gby"/>
+                        <outlet property="vertBottomButton" destination="O1Q-pc-yDe" id="dBJ-ux-fUN"/>
+                        <outlet property="vertTopButton" destination="VCe-nv-Cz6" id="h2H-GQ-t2u"/>
+                        <outlet property="verticalLineSlider" destination="3DW-Px-R9K" id="KVh-kM-AK2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQQ-xI-s5a" userLabel="First Responder" sceneMemberID="firstResponder"/>

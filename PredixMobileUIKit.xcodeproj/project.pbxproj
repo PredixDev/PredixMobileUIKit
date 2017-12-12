@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D560BA11FD5CD59000B4F68 /* PredixBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */; };
 		2D560BA31FD5DDD5000B4F68 /* PredixBarChartViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */; };
+		2D67D3941FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */; };
 		3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */; };
 		374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */; };
 		374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */; };
@@ -93,6 +94,7 @@
 /* Begin PBXFileReference section */
 		2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixBarChartView.swift; sourceTree = "<group>"; };
 		2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixBarChartViewTests.swift; sourceTree = "<group>"; };
+		2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PredixBarChartView+IBInspectable.swift"; sourceTree = "<group>"; };
 		3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesViewTests.swift; sourceTree = "<group>"; };
 		374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesView.swift; sourceTree = "<group>"; };
 		374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesTag.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				374DC8041F7DA4950091C5C5 /* TimeSeriesTag.swift */,
 				374DC8061F7DA5150091C5C5 /* TimeSeriesDataPoint.swift */,
 				4F627A341F8E7E4400CB4AEE /* Utilities.swift */,
+				2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */,
 			);
 			path = PredixMobileUIKit;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D560BA11FD5CD59000B4F68 /* PredixBarChartView.swift in Sources */,
+				2D67D3941FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift in Sources */,
 				374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
