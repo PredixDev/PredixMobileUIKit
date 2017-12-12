@@ -10,13 +10,12 @@ import Charts
 import Foundation
 import PredixSDK
 
-
 /// To create a Bar Chart from the PredixBarChartView class, the Bar class is used to populate each data Bar on the chart.
 public class Bar {
     var values: [Double]
     var label: String
     var colors: [UIColor] = []
-    
+
     /// Initialize the values, label and color of the bar.
     /// - parameter yValues: the values the bar hold
     /// - parameter label: the bar label
@@ -26,7 +25,7 @@ public class Bar {
         self.label = label
         self.colors = colors
     }
-    
+
     /// Initialize the values and label of the bar.
     /// - parameter yValues: the values the bar hold
     /// - parameter label: the bar label
@@ -39,7 +38,7 @@ public class Bar {
 /// PredixBarChartView -- Bar Chart
 @IBDesignable
 open class PredixBarChartView: BarChartView {
-    
+
     /// :nodoc:
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +63,8 @@ open class PredixBarChartView: BarChartView {
     public func setNoDataText(message: String) {
         noDataText = message
     }
-var ll = ChartLimitLine()
+
+    var ll = ChartLimitLine()
     /// Add a limit line
     /// - parameter limit: Double number of where the line should be drawn verticaly
     /// - parameter label: String label of the line
@@ -72,8 +72,9 @@ var ll = ChartLimitLine()
         ll = ChartLimitLine(limit: limit, label: label)
         rightAxis.addLimitLine(ll)
     }
+
     /// Remove the added limit on the chart
-    public func removeLimit(){
+    public func removeLimit() {
         rightAxis.removeLimitLine(ll)
     }
 
@@ -82,7 +83,7 @@ var ll = ChartLimitLine()
     public func setXAxisLabelTextColor(uiColor: UIColor) {
         xAxis.labelTextColor = uiColor
     }
-    
+
     /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
     /// - parameter xAxisValues: String array of the x axis values.
     /// - parameter bars: populate each data bars  on the Bar Chart.
@@ -102,9 +103,9 @@ var ll = ChartLimitLine()
             }
             dataSets.append(chartDataSet)
         }
-        
+
         let ChartData = BarChartData(dataSets: dataSets)
-        
+
         if stackBars == false {
             let groupCount = xAxisValues.count
             let groupSpace: Double = 0.08
@@ -115,10 +116,9 @@ var ll = ChartLimitLine()
         }
         data = ChartData
         xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-        
+
         if showWithDefaultAnimation {
             animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
         }
     }
-
 }

@@ -18,95 +18,89 @@ class PredixBarChartViewTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-    
-    func testSetLabelText(){
+
+    func testSetLabelText() {
         let barChart = PredixBarChartView()
         let testString = "foo"
         barChart.labelText = testString
         XCTAssertEqual(testString, barChart.chartDescription?.text, "chartDescription text did not match")
     }
-    
-    
+
     func testSetLabelEnabled() {
         let barChart = PredixBarChartView()
         let testValue = !(barChart.chartDescription?.enabled ?? false)
         barChart.labelEnabled = testValue
         XCTAssertEqual(testValue, barChart.chartDescription?.enabled, "chartDescription enabled did not match")
     }
-    
+
     func testGetLabelEnabled() {
         let barChart = PredixBarChartView()
         let testValue = !(barChart.labelEnabled)
         barChart.chartDescription?.enabled = testValue
         XCTAssertEqual(testValue, barChart.labelEnabled, "labelEnabled did not match")
     }
-    
-    
+
     func testSetLegendHorizontalAlignment() {
         let barChart = PredixBarChartView()
         let testValue = Legend.HorizontalAlignment.center
         barChart.legendHorizontalAlignment = testValue.rawValue
         XCTAssertEqual(testValue, barChart.legend.horizontalAlignment, "Legend horizontalAlignment did not match")
     }
-    
+
     func testGetLegendHorizontalAlignment() {
         let barChart = PredixBarChartView()
         let testValue = Legend.HorizontalAlignment.center
         barChart.legend.horizontalAlignment = testValue
         XCTAssertEqual(testValue.rawValue, barChart.legendHorizontalAlignment, "legendHorizontalAlignment did not match")
     }
-    
-    
+
     func testSetLegendVerticalAlignment() {
         let barChart = PredixBarChartView()
         let testValue = Legend.VerticalAlignment.center
         barChart.legendVerticalAlignment = testValue.rawValue
         XCTAssertEqual(testValue, barChart.legend.verticalAlignment, "Legend VerticalAlignment did not match")
     }
-    
-    
+
     func testGetLegendVerticalAlignment() {
         let barChart = PredixBarChartView()
         let testValue = Legend.VerticalAlignment.center
         barChart.legend.verticalAlignment = testValue
         XCTAssertEqual(testValue.rawValue, barChart.legendVerticalAlignment, "legendVerticalAlignment did not match")
     }
-    
+
     func testSetLegendVerticalOrientation() {
         let barChart = PredixBarChartView()
         barChart.legendVerticalOrientation = true
         XCTAssertEqual(Legend.Orientation.vertical, barChart.legend.orientation, "Legend Orientation did not match")
-        
+
         barChart.legendVerticalOrientation = false
         XCTAssertEqual(Legend.Orientation.horizontal, barChart.legend.orientation, "Legend Orientation did not match")
     }
-    
-    func testSetXAxisLabelsPosition(){
+
+    func testSetXAxisLabelsPosition() {
         let barChart = PredixBarChartView()
-        let  testValue = XAxis.LabelPosition.bottom
+        let testValue = XAxis.LabelPosition.bottom
         barChart.xAxisLabelPosition = testValue.rawValue
         XCTAssertEqual(testValue, barChart.xAxis.labelPosition, "X Axis label Position did not match")
     }
-    
-    func testGetXAXisLabelsPosition(){
+
+    func testGetXAXisLabelsPosition() {
         let barChart = PredixBarChartView()
         let testValue = XAxis.LabelPosition.bothSided
         barChart.xAxis.labelPosition = testValue
         XCTAssertEqual(testValue.rawValue, barChart.xAxisLabelPosition, "x Axis label position had unexpected value")
-        
     }
-    
+
     func testGetLegendVerticalOrientation() {
         let barChart = PredixBarChartView()
-        
+
         barChart.legend.orientation = .horizontal
         XCTAssertFalse(barChart.legendVerticalOrientation, "legendVerticalOrientation had unexpected value")
-        
+
         barChart.legend.orientation = .vertical
         XCTAssertTrue(barChart.legendVerticalOrientation, "legendVerticalOrientation had unexpected value")
-        
     }
-    
+
     func testLoadChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
