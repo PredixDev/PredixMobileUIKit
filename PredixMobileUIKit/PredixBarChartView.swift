@@ -64,18 +64,18 @@ open class PredixBarChartView: BarChartView {
         noDataText = message
     }
 
-    var ll = ChartLimitLine()
+    var limitLine = ChartLimitLine()
     /// Add a limit line
     /// - parameter limit: Double number of where the line should be drawn verticaly
     /// - parameter label: String label of the line
     public func addALimit(limit: Double, label: String) {
-        ll = ChartLimitLine(limit: limit, label: label)
-        rightAxis.addLimitLine(ll)
+        limitLine = ChartLimitLine(limit: limit, label: label)
+        rightAxis.addLimitLine(limitLine)
     }
 
     /// Remove the added limit on the chart
     public func removeLimit() {
-        rightAxis.removeLimitLine(ll)
+        rightAxis.removeLimitLine(limitLine)
     }
 
     /// Set the x axis label text color
