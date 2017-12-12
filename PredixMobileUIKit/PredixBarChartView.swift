@@ -72,7 +72,7 @@ var ll = ChartLimitLine()
         ll = ChartLimitLine(limit: limit, label: label)
         rightAxis.addLimitLine(ll)
     }
-    
+    /// Remove the added limit on the chart
     public func removeLimit(){
         rightAxis.removeLimitLine(ll)
     }
@@ -82,6 +82,7 @@ var ll = ChartLimitLine()
     public func setXAxisLabelTextColor(uiColor: UIColor) {
         xAxis.labelTextColor = uiColor
     }
+    
     /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
     /// - parameter xAxisValues: String array of the x axis values.
     /// - parameter bars: populate each data bars  on the Bar Chart.
