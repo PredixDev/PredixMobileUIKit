@@ -47,6 +47,7 @@ class BarchartDemoViewController: UIViewController {
         // By default the x axis label position is set to bottom
         // Below is an example o how to change the x xais position
         barChartView.xAxis.labelPosition = .bottomInside
+        
     }
 
     /// Below is an example of how the legend can be position differently
