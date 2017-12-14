@@ -49,9 +49,11 @@ public class Bar {
 /// PredixBarChartView -- Bar Chart
 @IBDesignable
 open class PredixBarChartView: BarChartView {
-var limitLine = ChartLimitLine()
-var chartData = BarChartData(dataSets: [])
+
+    // MARK: Internal variables
+internal var limitLine = ChartLimitLine()
 var xAxisValues: [String] = []
+var bars:[Bar] = []
     
     /// :nodoc:
     public override init(frame: CGRect) {
@@ -70,6 +72,7 @@ var xAxisValues: [String] = []
            initLegend()
            initXaxis()
            initYaxis()
+        chartDescription?.enabled = false
     }
 
     /// Set message if there's no data provided
@@ -98,7 +101,6 @@ var xAxisValues: [String] = []
     }
 
     func initLegend(){
-         chartDescription?.enabled = false
         let legend = self.legend
         legend.enabled = true
         legend.horizontalAlignment = .right
@@ -119,11 +121,15 @@ var xAxisValues: [String] = []
     }
     
     func initYaxis(){
-        let yaxis = self.leftAxis
-        yaxis.spaceTop = 0.35
-        yaxis.axisMinimum = 1
-        yaxis.drawGridLinesEnabled = false
-        self.rightAxis.enabled = true
+        let yLeftAxis = self.leftAxis
+        yLeftAxis.spaceTop = 0.35
+        yLeftAxis.axisMinimum = 1
+        yLeftAxis.drawGridLinesEnabled = false
+        
+        let yRightAxis = self.rightAxis
+        yRightAxis.spaceTop = 0.35
+        yRightAxis.axisMinimum = 1
+        yRightAxis.drawGridLinesEnabled = false
     }
     
     
@@ -133,23 +139,10 @@ var xAxisValues: [String] = []
     /// - parameter stackBars: optional parameter to show the bar staked or unstaked. Defaults to `true`.
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
     public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
+        
         self.xAxisValues = xAxisValues
+        self.bars = bars
         
-        var dataSets: [BarChartDataSet] = []
-        for bar in bars {
-            var dataEntries: [BarChartDataEntry] = []
-            for i in 0 ..< bar.values.count {
-                let dataEntry = BarChartDataEntry(x: Double(i), y: bar.values[i])
-                dataEntries.append(dataEntry)
-            }
-            let chartDataSet = BarChartDataSet(values: dataEntries, label: bar.label)
-            if bar.colors != [] {
-                chartDataSet.colors = bar.colors
-            }
-            dataSets.append(chartDataSet)
-        }
-        
-        chartData = BarChartData(dataSets: dataSets)
         stack(stackBars)
         
         if showWithDefaultAnimation {
@@ -158,51 +151,77 @@ var xAxisValues: [String] = []
       
     }
     
-   public func stack(_ stackBars:Bool){
-
-        
-        //let groupSpace = (1-nb)/(n+1)
-
-        let groupCount = xAxisValues.count
-        let xaxis = self.xAxis
-        xaxis.valueFormatter = IndexAxisValueFormatter(values:xAxisValues)
-
+    public func stack(_ stackBars:Bool){
         if stackBars {
-            
-            let stackBarsStatingNumber = -0.5
-            xaxis.centerAxisLabelsEnabled = false
-            xaxis.axisMinimum = stackBarsStatingNumber
-            xaxis.axisMaximum = stackBarsStatingNumber +  Double(groupCount)
-            self.notifyDataSetChanged()
-            self.data = chartData
-           
-            
-            
+            stackBarsOnChart()
         }else{
+            groupBarsOnChart()
+        }
+    }
+    
+    func createDataSets(bars: [Bar]) -> [BarChartDataSet]{
+        var dataSets: [BarChartDataSet] = []
+        for bar in bars {
+            var dataEntries: [BarChartDataEntry] = []
+            for i in 0 ..< bar.values.count {
+                let dataEntry = BarChartDataEntry(x: Double(i), y: bar.values[i])
+                dataEntries.append(dataEntry)
+            }
+            let chartDataSet = BarChartDataSet(values: dataEntries, label: bar.label)
+            if !bar.colors.isEmpty {
+                chartDataSet.colors = bar.colors
+            }
+            dataSets.append(chartDataSet)
+        }
+        return dataSets
+    }
+    
+    func groupBarsOnChart(){
+        if(!bars.isEmpty){
             
-            let barCount =  chartData.dataSets.count
+            let groupCount = xAxisValues.count
+            let xaxis = self.xAxis
+            xaxis.valueFormatter = IndexAxisValueFormatter(values:xAxisValues)
+            
+            let dataSets = createDataSets(bars: bars)
+            let groupBarsChartData = BarChartData(dataSets:dataSets)
+            let barCount =  groupBarsChartData.dataSets.count
             let barSpace = 0.05
             let groupSpace = (1.0 - Double(barCount) * barSpace)/(Double(barCount)+1.0)
             let barWidth = groupSpace
-          
             
-            chartData.barWidth = barWidth
+            
+            groupBarsChartData.barWidth = barWidth
             xaxis.centerAxisLabelsEnabled = true
             let groupBarsStatingNumber = 0.0
             xaxis.axisMinimum = groupBarsStatingNumber
-            let individualGroupSpace = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+            let individualGroupSpace = groupBarsChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
             xaxis.axisMaximum = groupBarsStatingNumber + individualGroupSpace * Double(groupCount)
-            
-            chartData.groupBars(fromX: Double(groupBarsStatingNumber), groupSpace: groupSpace, barSpace: barSpace)
+            groupBarsChartData.groupBars(fromX: Double(groupBarsStatingNumber), groupSpace: groupSpace, barSpace: barSpace)
             self.notifyDataSetChanged()
-            self.data = chartData
-           
-
+            self.data = groupBarsChartData
         }
-        
 
     }
     
+    func stackBarsOnChart(){
+        if(!bars.isEmpty){
+        let groupCount = xAxisValues.count
+        let xaxis = self.xAxis
+        xaxis.valueFormatter = IndexAxisValueFormatter(values:xAxisValues)
+        
+        let stackBarsDataSets = createDataSets(bars: bars)
+        let stackBarsCharData = BarChartData(dataSets: stackBarsDataSets)
+        
+        let stackBarsStatingNumber = -0.5
+        xaxis.centerAxisLabelsEnabled = false
+        xaxis.axisMinimum = stackBarsStatingNumber
+        xaxis.axisMaximum = stackBarsStatingNumber +  Double(groupCount)
+        self.notifyDataSetChanged()
+        self.data = stackBarsCharData
+            
+        }
+    }
     
     public func handleOption(_ option: Option){
         self.legend.enabled = true
@@ -242,6 +261,7 @@ var xAxisValues: [String] = []
             self.rightAxis.drawLabelsEnabled = false
             self.leftAxis.drawLabelsEnabled = false
             self.setNeedsDisplay()
+            
         case .enableSideLabels:
             self.rightAxis.drawLabelsEnabled = true
             self.leftAxis.drawLabelsEnabled = true

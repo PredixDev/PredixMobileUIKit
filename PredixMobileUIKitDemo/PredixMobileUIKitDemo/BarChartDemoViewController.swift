@@ -27,13 +27,13 @@ class BarchartDemoViewController: UIViewController {
         title = "Unit Bought vs Units Sold"
         months = ["Jan", "Feb", "Mar", "Apr", "May"]
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0]
-        let unitsBought = [10.0, 14.0, 60.0, 13.0, 2.0]
-        let unitSaved = [10.0, 14.0, 30.0, 13.0, 2.0]
+        let unitsBought = [10.0, 14.0, 20.0, 13.0, 2.0]
+        let unitSaved = [10.0, 14.0, 20.0, 13.0, 2.0]
         
         
         unitsBoughtBar1 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
         unitsSoldBar2 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
-        unitSavedBar3 = Bar(unitSaved, label: "Units Saved", colors: [NSUIColor.blue])
+        unitSavedBar3 = Bar(unitSaved, label: "Units Saved")
         barChartView.create(xAxisValues: months, bars: [unitsBoughtBar1, unitsSoldBar2,unitSavedBar3], stackBars: true, showWithDefaultAnimation: false)
         
         // By default the x axis label text color is black.
@@ -91,9 +91,7 @@ class BarchartDemoViewController: UIViewController {
     }
 
     @IBAction func StakedChanged(_ sender: UISwitch) {
-        barChartView.create(xAxisValues: months, bars: [unitsBoughtBar1, unitsSoldBar2,unitSavedBar3], stackBars: sender.isOn, showWithDefaultAnimation: false)
-//        barChartView.stack(sender.isOn)
-//        barChartView.setNeedsDisplay()
+        barChartView.stack(sender.isOn)
     }
     
 }
