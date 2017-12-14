@@ -10,6 +10,17 @@ import Charts
 import Foundation
 import PredixSDK
 
+public enum Option{
+    case toggleValues
+    case toggleBarBorders
+    case toggleEnableLegend
+    case toggleDisableLegend
+    case disableSideLabels
+    case enableSideLabels
+    case animateX
+    case animateY
+    case animateXY
+}
 /// To create a Bar Chart from the PredixBarChartView class, the Bar class is used to populate each data Bar on the chart.
 public class Bar {
     var values: [Double]
@@ -38,7 +49,10 @@ public class Bar {
 /// PredixBarChartView -- Bar Chart
 @IBDesignable
 open class PredixBarChartView: BarChartView {
-
+var limitLine = ChartLimitLine()
+var chartData = BarChartData(dataSets: [])
+var xAxisValues: [String] = []
+    
     /// :nodoc:
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,10 +67,9 @@ open class PredixBarChartView: BarChartView {
 
     /// Predix Mobile Bar chart initial values
     fileprivate func initialize() {
-        legend.horizontalAlignment = .right
-        legend.verticalAlignment = .bottom
-        xAxis.labelPosition = .bottom
-        chartDescription?.enabled = false
+           initLegend()
+           initXaxis()
+           initYaxis()
     }
 
     /// Set message if there's no data provided
@@ -64,7 +77,7 @@ open class PredixBarChartView: BarChartView {
         noDataText = message
     }
 
-    var limitLine = ChartLimitLine()
+    
     /// Add a limit line
     /// - parameter limit: Double number of where the line should be drawn verticaly
     /// - parameter label: String label of the line
@@ -84,12 +97,44 @@ open class PredixBarChartView: BarChartView {
         xAxis.labelTextColor = uiColor
     }
 
+    func initLegend(){
+         chartDescription?.enabled = false
+        let legend = self.legend
+        legend.enabled = true
+        legend.horizontalAlignment = .right
+        legend.verticalAlignment = .top
+        legend.orientation = .vertical
+        legend.drawInside = true
+        legend.yOffset = 10.0;
+        legend.xOffset = 10.0;
+        legend.yEntrySpace = 0.0
+    }
+    
+    func initXaxis(){
+        let xaxis = self.xAxis
+        xaxis.valueFormatter = IndexAxisValueFormatter()
+        xaxis.drawGridLinesEnabled = true
+        xaxis.labelPosition = .bottom
+        xaxis.granularity = 1
+    }
+    
+    func initYaxis(){
+        let yaxis = self.leftAxis
+        yaxis.spaceTop = 0.35
+        yaxis.axisMinimum = 1
+        yaxis.drawGridLinesEnabled = false
+        self.rightAxis.enabled = true
+    }
+    
+    
     /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
     /// - parameter xAxisValues: String array of the x axis values.
     /// - parameter bars: populate each data bars  on the Bar Chart.
     /// - parameter stackBars: optional parameter to show the bar staked or unstaked. Defaults to `true`.
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
     public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
+        self.xAxisValues = xAxisValues
+        
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
             var dataEntries: [BarChartDataEntry] = []
@@ -103,22 +148,105 @@ open class PredixBarChartView: BarChartView {
             }
             dataSets.append(chartDataSet)
         }
-
-        let ChartData = BarChartData(dataSets: dataSets)
-
-        if stackBars == false {
-            let groupCount = xAxisValues.count
-            let groupSpace: Double = 0.08
-            let barSpace: Double = 0.05
-            ChartData.groupBars(fromX: Double(0.0), groupSpace: groupSpace, barSpace: barSpace)
-            let theGroupSpace = ChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
-            xAxis.axisMaximum = Double(0) + theGroupSpace * Double(groupCount)
-        }
-        data = ChartData
-        xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-
+        
+        chartData = BarChartData(dataSets: dataSets)
+        stack(stackBars)
+        
         if showWithDefaultAnimation {
             animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
         }
+      
+    }
+    
+   public func stack(_ stackBars:Bool){
+
+        
+        //let groupSpace = (1-nb)/(n+1)
+
+        let groupCount = xAxisValues.count
+        let xaxis = self.xAxis
+        xaxis.valueFormatter = IndexAxisValueFormatter(values:xAxisValues)
+
+        if stackBars {
+            
+            let stackBarsStatingNumber = -0.5
+            xaxis.centerAxisLabelsEnabled = false
+            xaxis.axisMinimum = stackBarsStatingNumber
+            xaxis.axisMaximum = stackBarsStatingNumber +  Double(groupCount)
+            self.notifyDataSetChanged()
+            self.data = chartData
+           
+            
+            
+        }else{
+            
+            let barCount =  chartData.dataSets.count
+            let barSpace = 0.05
+            let groupSpace = (1.0 - Double(barCount) * barSpace)/(Double(barCount)+1.0)
+            let barWidth = groupSpace
+          
+            
+            chartData.barWidth = barWidth
+            xaxis.centerAxisLabelsEnabled = true
+            let groupBarsStatingNumber = 0.0
+            xaxis.axisMinimum = groupBarsStatingNumber
+            let individualGroupSpace = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+            xaxis.axisMaximum = groupBarsStatingNumber + individualGroupSpace * Double(groupCount)
+            
+            chartData.groupBars(fromX: Double(groupBarsStatingNumber), groupSpace: groupSpace, barSpace: barSpace)
+            self.notifyDataSetChanged()
+            self.data = chartData
+           
+
+        }
+        
+
+    }
+    
+    
+    public func handleOption(_ option: Option){
+        self.legend.enabled = true
+        self.setNeedsDisplay()
+        switch option {
+        case .toggleValues:
+            for set in self.data!.dataSets {
+                set.drawValuesEnabled = !set.drawValuesEnabled
+            }
+            self.setNeedsDisplay()
+            
+        case .toggleBarBorders:
+            for set in self.data!.dataSets {
+                if let set = set as? BarChartDataSet {
+                    set.barBorderWidth = set.barBorderWidth == 1.0 ? 0.0 : 1.0
+                }
+            }
+            self.setNeedsDisplay()
+        case .animateX:
+            self.animate(xAxisDuration: 3,easingOption: .easeInBounce)
+        
+        case.animateY:
+            self.animate(yAxisDuration: 3,easingOption: .easeInBounce)
+            
+        case .animateXY:
+            self.animate(xAxisDuration: 3.0, yAxisDuration: 3.0,easingOption: .easeInBounce)
+            
+        case .toggleEnableLegend:
+            self.legend.enabled = true
+            self.setNeedsDisplay()
+            
+        case .toggleDisableLegend:
+            self.legend.enabled = false
+            self.setNeedsDisplay()
+            
+        case .disableSideLabels:
+            self.rightAxis.drawLabelsEnabled = false
+            self.leftAxis.drawLabelsEnabled = false
+            self.setNeedsDisplay()
+        case .enableSideLabels:
+            self.rightAxis.drawLabelsEnabled = true
+            self.leftAxis.drawLabelsEnabled = true
+            self.setNeedsDisplay()
+        }
     }
 }
+

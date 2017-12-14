@@ -12,89 +12,68 @@ import UIKit
 
 class BarchartDemoViewController: UIViewController {
 
-    @IBOutlet var vertTopButton: UIButton!
-    @IBOutlet var vertBottomButton: UIButton!
-    @IBOutlet var horzRightButton: UIButton!
-    @IBOutlet var horzLeftButton: UIButton!
+
     @IBOutlet var verticalLineSlider: UISlider!
     @IBOutlet var enabledLegendSwitch: UISwitch!
-
-    @IBOutlet var stackBarSwitch: UISwitch!
-    @IBOutlet var labelPosTop: UIButton!
-    @IBOutlet var labelPosTopInside: UIButton!
-    @IBOutlet var labelPosBottom: UIButton!
-    @IBOutlet var labelPosBottomInside: UIButton!
-
+    @IBOutlet weak var optionsButton: UIButton!
     @IBOutlet var barChartView: PredixBarChartView!
-    var months: [String]!
+    
+    var unitsBoughtBar1:Bar!
+    var unitsSoldBar2:Bar!
+    var unitSavedBar3:Bar!
+    var months:[String]!
 
     override func viewDidLoad() {
         title = "Unit Bought vs Units Sold"
-
-        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
-
-        let bar1 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
-        let bar2 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
-
-        barChartView.create(xAxisValues: months, bars: [bar1, bar2], stackBars: true, showWithDefaultAnimation: true)
-
+        months = ["Jan", "Feb", "Mar", "Apr", "May"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0]
+        let unitsBought = [10.0, 14.0, 60.0, 13.0, 2.0]
+        let unitSaved = [10.0, 14.0, 30.0, 13.0, 2.0]
+        
+        
+        unitsBoughtBar1 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
+        unitsSoldBar2 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
+        unitSavedBar3 = Bar(unitSaved, label: "Units Saved", colors: [NSUIColor.blue])
+        barChartView.create(xAxisValues: months, bars: [unitsBoughtBar1, unitsSoldBar2,unitSavedBar3], stackBars: true, showWithDefaultAnimation: false)
+        
         // By default the x axis label text color is black.
         // Below is an example on how to set the x axis label text color
         barChartView.setXAxisLabelTextColor(uiColor: NSUIColor.red)
+    }
 
-        // By default the x axis label position is set to bottom
-        // Below is an example o how to change the x xais position
-        barChartView.xAxis.labelPosition = .bottomInside
+    @IBAction func optionButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Animate X", style: .default) { _ in
+            self.barChartView.handleOption(.animateX)
+        })
         
+        alert.addAction(UIAlertAction(title: "Animte Y", style: .default) { _ in
+            self.barChartView.handleOption(.animateY)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Animte XY", style: .default) { _ in
+            self.barChartView.handleOption(.animateXY)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Add Bar Borders", style: .default) { _ in
+            self.barChartView.handleOption(.toggleBarBorders)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Toggle Values", style: .default) { _ in
+            self.barChartView.handleOption(.toggleValues)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Disable Side Labels ", style: .default) { _ in
+       self.barChartView.handleOption(.disableSideLabels)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Enable Side Labels ", style: .default) { _ in
+            self.barChartView.handleOption(.enableSideLabels)
+        })
+        
+        present(alert, animated: true)
     }
-
-    /// Below is an example of how the legend can be position differently
-    /// By default the legend horizontal alignment is set to right and the vertical alignment is set to top.
-    @IBAction func horzButtonTapped(_ sender: UIButton) {
-        vertTopButton.isSelected = false
-        vertBottomButton.isSelected = false
-        horzRightButton.isSelected = false
-        horzLeftButton.isSelected = false
-        sender.isSelected = true
-
-        switch sender {
-        case horzLeftButton:
-            barChartView.legend.horizontalAlignment = .left
-        case horzRightButton:
-            barChartView.legend.horizontalAlignment = .right
-        case vertTopButton:
-            barChartView.legend.verticalAlignment = .top
-        case vertBottomButton:
-            barChartView.legend.verticalAlignment = .bottom
-        default:
-            break
-        }
-        barChartView.setNeedsDisplay()
-    }
-
-    @IBAction func labelPosButtonTapped(_ sender: UIButton) {
-        labelPosBottom.isSelected = false
-        labelPosTop.isSelected = false
-        labelPosTopInside.isSelected = false
-        labelPosBottomInside.isSelected = false
-        sender.isSelected = true
-
-        switch sender {
-        case labelPosTop:
-            barChartView.xAxis.labelPosition = .top
-        case labelPosTopInside:
-            barChartView.xAxis.labelPosition = .topInside
-        case labelPosBottom:
-            barChartView.xAxis.labelPosition = .bottom
-        case labelPosBottomInside:
-            barChartView.xAxis.labelPosition = .bottomInside
-        default:
-            break
-        }
-        barChartView.setNeedsDisplay()
-    }
+    
 
     @IBAction func verticalLineValueChanged(_: UISlider) {
         barChartView.removeLimit()
@@ -104,10 +83,17 @@ class BarchartDemoViewController: UIViewController {
 
     // To enable or disable the legend
     @IBAction func enableLegendChanged(_ sender: UISwitch) {
-        barChartView.legend.enabled = sender.isOn
-        barChartView.setNeedsDisplay()
+        if sender.isOn == true {
+          barChartView.handleOption(.toggleEnableLegend)
+        }else{
+            barChartView.handleOption(.toggleDisableLegend)
+        }
     }
 
-    @IBAction func stackBarChanged(_: UISwitch) {
+    @IBAction func StakedChanged(_ sender: UISwitch) {
+        barChartView.create(xAxisValues: months, bars: [unitsBoughtBar1, unitsSoldBar2,unitSavedBar3], stackBars: sender.isOn, showWithDefaultAnimation: false)
+//        barChartView.stack(sender.isOn)
+//        barChartView.setNeedsDisplay()
     }
+    
 }
