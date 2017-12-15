@@ -78,6 +78,7 @@ open class PredixBarChartView: BarChartView {
         chartDescription?.enabled = false
     }
 
+    /// Initial legend
     internal func initLegend() {
         let legend = self.legend
         legend.enabled = true
@@ -90,6 +91,7 @@ open class PredixBarChartView: BarChartView {
         legend.yEntrySpace = 0.0
     }
 
+    /// Initial x axis
     internal func initXaxis() {
         let xaxis = xAxis
         xaxis.valueFormatter = IndexAxisValueFormatter()
@@ -98,6 +100,7 @@ open class PredixBarChartView: BarChartView {
         xaxis.granularity = 1
     }
 
+    /// Initial y axis
     internal func initYaxis() {
         let yLeftAxis = leftAxis
         yLeftAxis.spaceTop = 0.35
@@ -125,7 +128,7 @@ open class PredixBarChartView: BarChartView {
 
     /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
     /// - parameter xAxisValues: String array of the x axis values.
-    /// - parameter bars: populate each data bars  on the Bar Chart.
+    /// - parameter bars: populate each data bars on the Bar Chart.
     /// - parameter stackBars: optional parameter to show the bar staked or unstaked. Defaults to `true`.
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
     public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
@@ -149,6 +152,8 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
+    /// Create all the bar data sets from each Bar provided
+    /// - parameter bars: each data bars neend on the Chart.
     func createDataSets(bars: [Bar]) -> [BarChartDataSet] {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
@@ -166,6 +171,8 @@ open class PredixBarChartView: BarChartView {
         return dataSets
     }
 
+    /// Handle the options provided
+    /// - parameter option: choose one of the option from the Option class.
     public func handleOption(_ option: Option) {
         legend.enabled = true
         setNeedsDisplay()
@@ -186,10 +193,10 @@ open class PredixBarChartView: BarChartView {
             animate(xAxisDuration: 3.0, yAxisDuration: 3.0, easingOption: .easeInBounce)
 
         case .toggleEnableLegend:
-            toggleEnableLegend(true)
+            toggleLegend(true)
 
         case .toggleDisableLegend:
-            toggleEnableLegend(false)
+            toggleLegend(false)
 
         case .disableSideLabels:
             toggleSideLabels(false)
@@ -201,6 +208,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
+    /// Stacks all Bar DataSets  in the Chart
     internal func stackBarsOnChart() {
         if !bars.isEmpty {
 
@@ -219,13 +227,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    internal func toggleValues() {
-        for set in data!.dataSets {
-            set.drawValuesEnabled = !set.drawValuesEnabled
-        }
-        setNeedsDisplay()
-    }
-
+    /// Groups all Bar DataSets in the Chart
     internal func groupBarsOnChart() {
         if !bars.isEmpty {
 
@@ -238,6 +240,13 @@ open class PredixBarChartView: BarChartView {
             let barCount = groupBarsChartData.dataSets.count
             let barSpace = 0.05
             let groupBarsStatingNumber = 0.0
+
+            /*
+             The equation to find the interval per "group" is:
+             (groupSpace * barSpace) * n + groupSpace = 1
+             Therefore by finding groupSpace we get:
+             groupSpace = 1 - numberOfBars * BarSpace / numberOfBars +1
+             */
             let groupSpace = (1.0 - Double(barCount) * barSpace) / (Double(barCount) + 1.0)
             let barWidth = groupSpace
 
@@ -252,6 +261,15 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
+    /// Call this function will add Bar Borders. Call it again will remove the Bar Border
+    internal func toggleValues() {
+        for set in data!.dataSets {
+            set.drawValuesEnabled = !set.drawValuesEnabled
+        }
+        setNeedsDisplay()
+    }
+
+    /// Call this function will add Bar Borders. Call it again will remove the Bar Border
     internal func toggleBarBorders() {
         for set in data!.dataSets {
             if let set = set as? BarChartDataSet {
@@ -261,11 +279,15 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    internal func toggleEnableLegend(_ enable: Bool) {
-        legend.enabled = enable
+    /// Enable and disable the Legends on the Chart
+    /// - parameter enable: `true` to enable, `false` to disable
+    internal func toggleLegend(_ toggle: Bool) {
+        legend.enabled = toggle
         setNeedsDisplay()
     }
 
+    /// Enable and disable the side labels
+    /// - parameter toggle: `true` to enable, `false` to disable
     internal func toggleSideLabels(_ toggle: Bool) {
         rightAxis.drawLabelsEnabled = toggle
         leftAxis.drawLabelsEnabled = toggle

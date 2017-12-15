@@ -25,7 +25,7 @@ class BarchartDemoViewController: UIViewController {
 
         let unitsSoldBar = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
         let unitsBoughtBar = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
-        barChartView.create(xAxisValues: months, bars: [unitsSoldBar, unitsBoughtBar], stackBars: true, showWithDefaultAnimation: false)
+        barChartView.create(xAxisValues: months, bars: [unitsSoldBar, unitsBoughtBar,unitsBoughtBar,unitsBoughtBar], stackBars: true, showWithDefaultAnimation: false)
     }
 
     @IBAction func optionButtonTapped(_: UIButton) {
