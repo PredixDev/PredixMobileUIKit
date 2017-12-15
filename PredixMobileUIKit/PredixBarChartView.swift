@@ -12,25 +12,25 @@ import PredixSDK
 
 /// List of options that can be use on the Bar Chart
 public enum Option {
-    // toggle on or off,  Bars value on the chart.
+    /// toggle on or off,  Bars value on the chart.
     case toggleValues
-    // toggle on or off, Bar borders on the chart.
+    /// toggle on or off, Bar borders on the chart.
     case toggleBarBorders
-    // enable the legend display on the chart.
+    /// enable the legend display on the chart.
     case enableLegend
-    // disable the legend display on the chart.
+    /// disable the legend display on the chart.
     case disableLegend
-    // disable side labels on the chart.
+    /// disable side labels on the chart.
     case disableSideLabels
-    // enable side labels on the chart.
+    /// enable side labels on the chart.
     case enableSideLabels
-    // remove Limit Line on the chart.
+    /// remove Limit Line on the chart.
     case removeLimitLine
-    // animate the x axis on the chart.
+    /// animate the x axis on the chart.
     case animateX
-    // animate the y axis on the chart.
+    /// animate the y axis on the chart.
     case animateY
-    // animate both the x and y axies on the chart.
+    /// animate both the x and y axies on the chart.
     case animateXY
 }
 
