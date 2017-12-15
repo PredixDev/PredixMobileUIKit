@@ -23,6 +23,8 @@ extension PredixBarChartView {
         create(xAxisValues: months, bars: [bar1, bar2])
     }
 
+    // MARK: - IBInspectable properties
+    /// the chart embedded label text
     @IBInspectable
     internal var labelText: String? {
         get {
@@ -30,6 +32,18 @@ extension PredixBarChartView {
         }
         set(newValue) {
             chartDescription?.text = newValue
+        }
+    }
+    
+
+    /// the chart message when there's not data
+     @IBInspectable
+    internal var noDataMessage: String?{
+        get{
+            return noDataText
+        }
+        set(newValue){
+            noDataText = newValue!
         }
     }
 
@@ -43,30 +57,37 @@ extension PredixBarChartView {
         }
     }
 
+    /// indicates whether the legend chart should be aligned on the left *default:* true
     @IBInspectable
-    internal var legendHorizontalAlignment: Int {
+    internal var legendAlignedLeft: Bool {
         get {
-            return legend.horizontalAlignment.rawValue
+            return legend.horizontalAlignment == .left
         }
-        set(newValue) {
-            if let alignment = Legend.HorizontalAlignment(rawValue: newValue) {
-                legend.horizontalAlignment = alignment
+        set(newValue){
+            if newValue{
+                legend.horizontalAlignment = .left
+            }else{
+                legend.horizontalAlignment = . right
             }
         }
     }
-
+    
+    /// indicates whether the legend chart should be aligned on the bottom *default:* true
     @IBInspectable
-    internal var legendVerticalAlignment: Int {
+    internal var legendAlignedOnBottom: Bool {
         get {
-            return legend.verticalAlignment.rawValue
+            return legend.verticalAlignment == .bottom
         }
-        set(newValue) {
-            if let alignment = Legend.VerticalAlignment(rawValue: newValue) {
-                legend.verticalAlignment = alignment
-            }
+        set(newValue){
+            if newValue{
+                legend.verticalAlignment = .bottom
+            }else {
+                legend.verticalAlignment = .top
         }
+     }
     }
-
+    
+    /// indicates whether the legend chart should be orientated vertically *default:* true
     @IBInspectable
     internal var legendVerticalOrientation: Bool {
         get {
@@ -80,16 +101,51 @@ extension PredixBarChartView {
             }
         }
     }
-
+    
+    /// the chart boarder color *default: * white
     @IBInspectable
-    internal var xAxisLabelPosition: Int {
+    open var chartBorderColor: UIColor {
         get {
-            return xAxis.labelPosition.rawValue
+            return borderColor
         }
-        set(newValue) {
-            if let labelPosition = XAxis.LabelPosition(rawValue: newValue) {
-                xAxis.labelPosition = labelPosition
-            }
+        set(newValue){
+            borderColor = newValue
         }
     }
+    
+    /// the chart x Axis text color *default:* black
+    @IBInspectable
+    open var xAxisTextColor: UIColor {
+        get {
+            return xAxis.labelTextColor
+        }
+        set(newValue){
+            xAxis.labelTextColor = newValue
+        }
+    }
+    
+    /// the legend chart x Axis text color *default:* black
+    @IBInspectable
+    open var legendTextColor: UIColor {
+        get{
+            return legend.textColor
+        }
+        set(newValue){
+            legend.textColor = newValue
+        }
+    }
+    
+    
+    /// text color to display when there is no chart data loaded *default:* black
+    @IBInspectable
+    open var noChartDataTextColor: UIColor {
+        set(newValue) {
+            self.noDataTextColor = newValue
+        } get {
+            return self.noDataTextColor
+        }
+    }
+    
+
+   
 }

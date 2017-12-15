@@ -75,31 +75,6 @@ var bars:[Bar] = []
         chartDescription?.enabled = false
     }
 
-    /// Set message if there's no data provided
-    public func setNoDataText(message: String) {
-        noDataText = message
-    }
-
-    
-    /// Add a limit line
-    /// - parameter limit: Double number of where the line should be drawn verticaly
-    /// - parameter label: String label of the line
-    public func addALimit(limit: Double, label: String) {
-        limitLine = ChartLimitLine(limit: limit, label: label)
-        rightAxis.addLimitLine(limitLine)
-    }
-
-    /// Remove the added limit on the chart
-    public func removeLimit() {
-        rightAxis.removeLimitLine(limitLine)
-    }
-
-    /// Set the x axis label text color
-    /// - parameter uiColor: provide a color base on the class UIColor
-    public func setXAxisLabelTextColor(uiColor: UIColor) {
-        xAxis.labelTextColor = uiColor
-    }
-
     func initLegend(){
         let legend = self.legend
         legend.enabled = true
@@ -132,6 +107,18 @@ var bars:[Bar] = []
         yRightAxis.drawGridLinesEnabled = false
     }
     
+    /// Add a limit line
+    /// - parameter limit: Double number of where the line should be drawn verticaly
+    /// - parameter label: String label of the line
+    public func addALimit(limit: Double, label: String) {
+        limitLine = ChartLimitLine(limit: limit, label: label)
+        rightAxis.addLimitLine(limitLine)
+    }
+    
+    /// Remove the added limit on the chart
+    public func removeLimit() {
+        rightAxis.removeLimitLine(limitLine)
+    }
     
     /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
     /// - parameter xAxisValues: String array of the x axis values.
@@ -176,7 +163,7 @@ var bars:[Bar] = []
         return dataSets
     }
     
-    func groupBarsOnChart(){
+    internal func groupBarsOnChart(){
         if(!bars.isEmpty){
             
             let groupCount = xAxisValues.count
@@ -187,25 +174,26 @@ var bars:[Bar] = []
             let groupBarsChartData = BarChartData(dataSets:dataSets)
             let barCount =  groupBarsChartData.dataSets.count
             let barSpace = 0.05
+            let groupBarsStatingNumber = 0.0
             let groupSpace = (1.0 - Double(barCount) * barSpace)/(Double(barCount)+1.0)
             let barWidth = groupSpace
             
             
             groupBarsChartData.barWidth = barWidth
             xaxis.centerAxisLabelsEnabled = true
-            let groupBarsStatingNumber = 0.0
+            
             xaxis.axisMinimum = groupBarsStatingNumber
             let individualGroupSpace = groupBarsChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
             xaxis.axisMaximum = groupBarsStatingNumber + individualGroupSpace * Double(groupCount)
             groupBarsChartData.groupBars(fromX: Double(groupBarsStatingNumber), groupSpace: groupSpace, barSpace: barSpace)
-            self.notifyDataSetChanged()
             self.data = groupBarsChartData
         }
 
     }
     
-    func stackBarsOnChart(){
+   internal func stackBarsOnChart(){
         if(!bars.isEmpty){
+        
         let groupCount = xAxisValues.count
         let xaxis = self.xAxis
         xaxis.valueFormatter = IndexAxisValueFormatter(values:xAxisValues)
@@ -217,7 +205,6 @@ var bars:[Bar] = []
         xaxis.centerAxisLabelsEnabled = false
         xaxis.axisMinimum = stackBarsStatingNumber
         xaxis.axisMaximum = stackBarsStatingNumber +  Double(groupCount)
-        self.notifyDataSetChanged()
         self.data = stackBarsCharData
             
         }

@@ -18,27 +18,19 @@ class BarchartDemoViewController: UIViewController {
     @IBOutlet weak var optionsButton: UIButton!
     @IBOutlet var barChartView: PredixBarChartView!
     
-    var unitsBoughtBar1:Bar!
-    var unitsSoldBar2:Bar!
-    var unitSavedBar3:Bar!
-    var months:[String]!
+  
 
     override func viewDidLoad() {
         title = "Unit Bought vs Units Sold"
-        months = ["Jan", "Feb", "Mar", "Apr", "May"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0]
-        let unitsBought = [10.0, 14.0, 20.0, 13.0, 2.0]
-        let unitSaved = [10.0, 14.0, 20.0, 13.0, 2.0]
+        let months = ["Jan", "Feb", "Mar", "Apr", "May"]
+        let unitsSold = [20.0, 4.0, 2.0, 5.0, 12.0]
+        let unitsBought = [10.0, 2.0, 6.0, 3.0, 5.0]
         
+        let  unitsSoldBar  = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
+        let unitsBoughtBar = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
+        barChartView.create(xAxisValues: months, bars:[unitsSoldBar,unitsBoughtBar], stackBars: true, showWithDefaultAnimation: false)
         
-        unitsBoughtBar1 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
-        unitsSoldBar2 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
-        unitSavedBar3 = Bar(unitSaved, label: "Units Saved")
-        barChartView.create(xAxisValues: months, bars: [unitsBoughtBar1, unitsSoldBar2,unitSavedBar3], stackBars: true, showWithDefaultAnimation: false)
-        
-        // By default the x axis label text color is black.
-        // Below is an example on how to set the x axis label text color
-        barChartView.setXAxisLabelTextColor(uiColor: NSUIColor.red)
+
     }
 
     @IBAction func optionButtonTapped(_ sender: UIButton) {
