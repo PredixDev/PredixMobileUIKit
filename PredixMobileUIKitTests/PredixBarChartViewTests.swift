@@ -18,6 +18,8 @@ class PredixBarChartViewTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
+    
+     // MARK: IBInspectables
 
     func testSetLabelText() {
         let barChart = PredixBarChartView()
@@ -39,58 +41,54 @@ class PredixBarChartViewTests: XCTestCase {
         barChart.chartDescription?.enabled = testValue
         XCTAssertEqual(testValue, barChart.labelEnabled, "labelEnabled did not match")
     }
-
-    func testSetLegendHorizontalAlignment() {
-        let barChart = PredixBarChartView()
-        let testValue = Legend.HorizontalAlignment.center
-        barChart.legendHorizontalAlignment = testValue.rawValue
-        XCTAssertEqual(testValue, barChart.legend.horizontalAlignment, "Legend horizontalAlignment did not match")
-    }
-
-    func testGetLegendHorizontalAlignment() {
-        let barChart = PredixBarChartView()
-        let testValue = Legend.HorizontalAlignment.center
-        barChart.legend.horizontalAlignment = testValue
-        XCTAssertEqual(testValue.rawValue, barChart.legendHorizontalAlignment, "legendHorizontalAlignment did not match")
-    }
-
-    func testSetLegendVerticalAlignment() {
-        let barChart = PredixBarChartView()
-        let testValue = Legend.VerticalAlignment.center
-        barChart.legendVerticalAlignment = testValue.rawValue
-        XCTAssertEqual(testValue, barChart.legend.verticalAlignment, "Legend VerticalAlignment did not match")
-    }
-
-    func testGetLegendVerticalAlignment() {
-        let barChart = PredixBarChartView()
-        let testValue = Legend.VerticalAlignment.center
-        barChart.legend.verticalAlignment = testValue
-        XCTAssertEqual(testValue.rawValue, barChart.legendVerticalAlignment, "legendVerticalAlignment did not match")
-    }
-
+    
     func testSetLegendVerticalOrientation() {
         let barChart = PredixBarChartView()
         barChart.legendVerticalOrientation = true
         XCTAssertEqual(Legend.Orientation.vertical, barChart.legend.orientation, "Legend Orientation did not match")
-
+        
         barChart.legendVerticalOrientation = false
         XCTAssertEqual(Legend.Orientation.horizontal, barChart.legend.orientation, "Legend Orientation did not match")
     }
 
-    func testSetXAxisLabelsPosition() {
+    func testSetLegendAlignedLeft() {
         let barChart = PredixBarChartView()
-        let testValue = XAxis.LabelPosition.bottom
-        barChart.xAxisLabelPosition = testValue.rawValue
-        XCTAssertEqual(testValue, barChart.xAxis.labelPosition, "X Axis label Position did not match")
+        barChart.legend.horizontalAlignment = .left
+        XCTAssertEqual(barChart.legend.horizontalAlignment,.left,"Legend should be aligned to left")
+        
+    }
+    
+    func testSetLegendAlignedLeftAssignedToRight(){
+        let barChart = PredixBarChartView()
+        barChart.legendAlignedLeft = false
+        XCTAssertEqual(barChart.legend.horizontalAlignment, .right, "Legend should be aligned to Right")
     }
 
-    func testGetXAXisLabelsPosition() {
+    
+    func testGetLegendAlignedLeft() {
         let barChart = PredixBarChartView()
-        let testValue = XAxis.LabelPosition.bothSided
-        barChart.xAxis.labelPosition = testValue
-        XCTAssertEqual(testValue.rawValue, barChart.xAxisLabelPosition, "x Axis label position had unexpected value")
+        barChart.legend.horizontalAlignment = .left
+        XCTAssertTrue(barChart.legendAlignedLeft, "Legend should be aligned to left")
     }
-
+    
+    func testSetLegendAlignedBottom() {
+        let barChart = PredixBarChartView()
+        barChart.legendAlignedOnBottom = true
+        XCTAssertEqual(barChart.legend.verticalAlignment, .bottom, "Legend should be aligned to top")
+    }
+    
+    func testSetLegendAlignedBottomAssignedAsTop() {
+        let barChart = PredixBarChartView()
+        barChart.legendAlignedOnBottom = false
+        XCTAssertEqual(barChart.legend.verticalAlignment, .top, "Legend should be aligned to bottom")
+    }
+    
+    func testGetLegendAlignedTop() {
+        let barChart = PredixTimeSeriesView()
+        barChart.legend.verticalAlignment = .top
+        XCTAssertTrue(barChart.legendAlignedTop, "Legend should be aligned to top")
+    }
+ 
     func testGetLegendVerticalOrientation() {
         let barChart = PredixBarChartView()
 
@@ -100,7 +98,32 @@ class PredixBarChartViewTests: XCTestCase {
         barChart.legend.orientation = .vertical
         XCTAssertTrue(barChart.legendVerticalOrientation, "legendVerticalOrientation had unexpected value")
     }
+    
+    
+    // MARK: Test PredixBarCharViewMethods
+    
+    func testInitWithCoder() {
+        let barChart = PredixBarChartView()
+        let data = NSMutableData()
+        let coder = NSKeyedArchiver(forWritingWith: data)
+        coder.encode(barChart)
+        coder.finishEncoding()
+        
+        let decoder = NSKeyedUnarchiver(forReadingWith: data as Data)
+        let newBarChart = PredixDonutView(coder: decoder)
+        XCTAssertNotNil(newBarChart)
+    }
 
+    
+    func testInitWithFrame() {
+        let rect = CGRect(x: 0.0, y: 0.0, width: 0.6, height: 0.4)
+        let barChart = PredixBarChartView(frame: rect)
+        XCTAssertEqual(0.0, barChart.frame.origin.x, accuracy: 0.01)
+        XCTAssertEqual(0.0, barChart.frame.origin.y, accuracy: 0.01)
+        XCTAssertEqual(0.6, barChart.frame.size.width, accuracy: 0.01)
+        XCTAssertEqual(0.4, barChart.frame.size.height, accuracy: 0.01)
+    }
+    
     func testLoadChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
@@ -121,7 +144,7 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
         waitForExpectations(timeout: 1, handler: nil)
     }
-
+    
     func testloadAndStackChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
