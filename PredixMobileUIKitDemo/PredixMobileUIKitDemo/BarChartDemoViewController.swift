@@ -34,7 +34,7 @@ class BarchartDemoViewController: UIViewController {
     }
 
     @IBAction func optionButtonTapped(_ sender: UIButton) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Bart Chart Options", message: "Choose an option", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Animate X", style: .default) { _ in
             self.barChartView.handleOption(.animateX)
         })
@@ -51,18 +51,10 @@ class BarchartDemoViewController: UIViewController {
             self.barChartView.handleOption(.toggleBarBorders)
         })
         
-        alert.addAction(UIAlertAction(title: "Toggle Values", style: .default) { _ in
-            self.barChartView.handleOption(.toggleValues)
+        alert.addAction(UIAlertAction(title: "Remove Limit Lines", style: .default) { _ in
+            self.barChartView.handleOption(.removeLimitLine)
         })
-        
-        alert.addAction(UIAlertAction(title: "Disable Side Labels ", style: .default) { _ in
-       self.barChartView.handleOption(.disableSideLabels)
-        })
-        
-        alert.addAction(UIAlertAction(title: "Enable Side Labels ", style: .default) { _ in
-            self.barChartView.handleOption(.enableSideLabels)
-        })
-        
+
         present(alert, animated: true)
     }
     
@@ -82,6 +74,18 @@ class BarchartDemoViewController: UIViewController {
         }
     }
 
+    @IBAction func sideLabelsChanged(_ sender: UISwitch) {
+        if sender.isOn == true {
+            barChartView.handleOption(.enableSideLabels)
+        }else{
+            barChartView.handleOption(.disableSideLabels)
+        }
+    }
+    
+    @IBAction func valuesChanged(_ sender: UISwitch) {
+        self.barChartView.handleOption(.toggleValues)
+    }
+    
     @IBAction func StakedChanged(_ sender: UISwitch) {
         barChartView.stack(sender.isOn)
     }

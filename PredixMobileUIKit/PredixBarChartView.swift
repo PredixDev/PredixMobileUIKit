@@ -17,6 +17,7 @@ public enum Option{
     case toggleDisableLegend
     case disableSideLabels
     case enableSideLabels
+    case removeLimitLine
     case animateX
     case animateY
     case animateXY
@@ -253,6 +254,8 @@ var bars:[Bar] = []
             self.rightAxis.drawLabelsEnabled = true
             self.leftAxis.drawLabelsEnabled = true
             self.setNeedsDisplay()
+        case .removeLimitLine:
+             self.removeLimit()
         }
     }
 }
