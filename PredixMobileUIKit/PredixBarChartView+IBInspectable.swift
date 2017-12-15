@@ -24,6 +24,7 @@ extension PredixBarChartView {
     }
 
     // MARK: - IBInspectable properties
+
     /// the chart embedded label text
     @IBInspectable
     internal var labelText: String? {
@@ -34,15 +35,14 @@ extension PredixBarChartView {
             chartDescription?.text = newValue
         }
     }
-    
 
     /// the chart message when there's not data
-     @IBInspectable
-    internal var noDataMessage: String?{
-        get{
+    @IBInspectable
+    internal var noDataMessage: String? {
+        get {
             return noDataText
         }
-        set(newValue){
+        set(newValue) {
             noDataText = newValue!
         }
     }
@@ -63,30 +63,30 @@ extension PredixBarChartView {
         get {
             return legend.horizontalAlignment == .left
         }
-        set(newValue){
-            if newValue{
+        set(newValue) {
+            if newValue {
                 legend.horizontalAlignment = .left
-            }else{
-                legend.horizontalAlignment = . right
+            } else {
+                legend.horizontalAlignment = .right
             }
         }
     }
-    
+
     /// indicates whether the legend chart should be aligned on the bottom *default:* true
     @IBInspectable
     internal var legendAlignedOnBottom: Bool {
         get {
             return legend.verticalAlignment == .bottom
         }
-        set(newValue){
-            if newValue{
+        set(newValue) {
+            if newValue {
                 legend.verticalAlignment = .bottom
-            }else {
+            } else {
                 legend.verticalAlignment = .top
+            }
         }
-     }
     }
-    
+
     /// indicates whether the legend chart should be orientated vertically *default:* true
     @IBInspectable
     internal var legendVerticalOrientation: Bool {
@@ -101,51 +101,47 @@ extension PredixBarChartView {
             }
         }
     }
-    
+
     /// the chart boarder color *default: * white
     @IBInspectable
     open var chartBorderColor: UIColor {
         get {
             return borderColor
         }
-        set(newValue){
+        set(newValue) {
             borderColor = newValue
         }
     }
-    
+
     /// the chart x Axis text color *default:* black
     @IBInspectable
     open var xAxisTextColor: UIColor {
         get {
             return xAxis.labelTextColor
         }
-        set(newValue){
+        set(newValue) {
             xAxis.labelTextColor = newValue
         }
     }
-    
+
     /// the legend chart x Axis text color *default:* black
     @IBInspectable
     open var legendTextColor: UIColor {
-        get{
+        get {
             return legend.textColor
         }
-        set(newValue){
+        set(newValue) {
             legend.textColor = newValue
         }
     }
-    
-    
+
     /// text color to display when there is no chart data loaded *default:* black
     @IBInspectable
     open var noChartDataTextColor: UIColor {
         set(newValue) {
-            self.noDataTextColor = newValue
+            noDataTextColor = newValue
         } get {
-            return self.noDataTextColor
+            return noDataTextColor
         }
     }
-    
-
-   
 }

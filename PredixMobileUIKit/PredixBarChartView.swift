@@ -78,7 +78,7 @@ open class PredixBarChartView: BarChartView {
         chartDescription?.enabled = false
     }
 
-    func initLegend() {
+    internal func initLegend() {
         let legend = self.legend
         legend.enabled = true
         legend.horizontalAlignment = .right
@@ -90,7 +90,7 @@ open class PredixBarChartView: BarChartView {
         legend.yEntrySpace = 0.0
     }
 
-    func initXaxis() {
+    internal func initXaxis() {
         let xaxis = xAxis
         xaxis.valueFormatter = IndexAxisValueFormatter()
         xaxis.drawGridLinesEnabled = true
@@ -98,7 +98,7 @@ open class PredixBarChartView: BarChartView {
         xaxis.granularity = 1
     }
 
-    func initYaxis() {
+    internal func initYaxis() {
         let yLeftAxis = leftAxis
         yLeftAxis.spaceTop = 0.35
         yLeftAxis.axisMinimum = 1
@@ -140,6 +140,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
+    /// Stack or group the Bars on the chart
     public func stack(_ stackBars: Bool) {
         if stackBars {
             stackBarsOnChart()
@@ -163,6 +164,66 @@ open class PredixBarChartView: BarChartView {
             dataSets.append(chartDataSet)
         }
         return dataSets
+    }
+
+    public func handleOption(_ option: Option) {
+        legend.enabled = true
+        setNeedsDisplay()
+        switch option {
+        case .toggleValues:
+            toggleValues()
+
+        case .toggleBarBorders:
+            toggleBarBorders()
+
+        case .animateX:
+            animate(xAxisDuration: 3, easingOption: .easeInBounce)
+
+        case .animateY:
+            animate(yAxisDuration: 3, easingOption: .easeInBounce)
+
+        case .animateXY:
+            animate(xAxisDuration: 3.0, yAxisDuration: 3.0, easingOption: .easeInBounce)
+
+        case .toggleEnableLegend:
+            toggleEnableLegend(true)
+
+        case .toggleDisableLegend:
+            toggleEnableLegend(false)
+
+        case .disableSideLabels:
+            toggleSideLabels(false)
+
+        case .enableSideLabels:
+            toggleSideLabels(true)
+        case .removeLimitLine:
+            removeLimit()
+        }
+    }
+
+    internal func stackBarsOnChart() {
+        if !bars.isEmpty {
+
+            let groupCount = xAxisValues.count
+            let xaxis = xAxis
+            xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
+
+            let stackBarsDataSets = createDataSets(bars: bars)
+            let stackBarsCharData = BarChartData(dataSets: stackBarsDataSets)
+
+            let stackBarsStatingNumber = -0.5
+            xaxis.centerAxisLabelsEnabled = false
+            xaxis.axisMinimum = stackBarsStatingNumber
+            xaxis.axisMaximum = stackBarsStatingNumber + Double(groupCount)
+            data = stackBarsCharData
+        }
+    }
+
+    internal func toggleValues() {
+        for set in data!.dataSets {
+            set.drawValuesEnabled = !set.drawValuesEnabled
+        }
+        setNeedsDisplay()
     }
 
     internal func groupBarsOnChart() {
@@ -191,69 +252,23 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    internal func stackBarsOnChart() {
-        if !bars.isEmpty {
-
-            let groupCount = xAxisValues.count
-            let xaxis = xAxis
-            xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-
-            let stackBarsDataSets = createDataSets(bars: bars)
-            let stackBarsCharData = BarChartData(dataSets: stackBarsDataSets)
-
-            let stackBarsStatingNumber = -0.5
-            xaxis.centerAxisLabelsEnabled = false
-            xaxis.axisMinimum = stackBarsStatingNumber
-            xaxis.axisMaximum = stackBarsStatingNumber + Double(groupCount)
-            data = stackBarsCharData
+    internal func toggleBarBorders() {
+        for set in data!.dataSets {
+            if let set = set as? BarChartDataSet {
+                set.barBorderWidth = set.barBorderWidth == 1.0 ? 0.0 : 1.0
+            }
         }
+        setNeedsDisplay()
     }
 
-    public func handleOption(_ option: Option) {
-        legend.enabled = true
+    internal func toggleEnableLegend(_ enable: Bool) {
+        legend.enabled = enable
         setNeedsDisplay()
-        switch option {
-        case .toggleValues:
-            for set in data!.dataSets {
-                set.drawValuesEnabled = !set.drawValuesEnabled
-            }
-            setNeedsDisplay()
+    }
 
-        case .toggleBarBorders:
-            for set in data!.dataSets {
-                if let set = set as? BarChartDataSet {
-                    set.barBorderWidth = set.barBorderWidth == 1.0 ? 0.0 : 1.0
-                }
-            }
-            setNeedsDisplay()
-        case .animateX:
-            animate(xAxisDuration: 3, easingOption: .easeInBounce)
-
-        case .animateY:
-            animate(yAxisDuration: 3, easingOption: .easeInBounce)
-
-        case .animateXY:
-            animate(xAxisDuration: 3.0, yAxisDuration: 3.0, easingOption: .easeInBounce)
-
-        case .toggleEnableLegend:
-            legend.enabled = true
-            setNeedsDisplay()
-
-        case .toggleDisableLegend:
-            legend.enabled = false
-            setNeedsDisplay()
-
-        case .disableSideLabels:
-            rightAxis.drawLabelsEnabled = false
-            leftAxis.drawLabelsEnabled = false
-            setNeedsDisplay()
-
-        case .enableSideLabels:
-            rightAxis.drawLabelsEnabled = true
-            leftAxis.drawLabelsEnabled = true
-            setNeedsDisplay()
-        case .removeLimitLine:
-            removeLimit()
-        }
+    internal func toggleSideLabels(_ toggle: Bool) {
+        rightAxis.drawLabelsEnabled = toggle
+        leftAxis.drawLabelsEnabled = toggle
+        setNeedsDisplay()
     }
 }

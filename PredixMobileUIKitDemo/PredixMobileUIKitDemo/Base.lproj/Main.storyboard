@@ -404,10 +404,10 @@
                                     <action selector="enableLegendChanged:" destination="u6h-nz-9DV" eventType="valueChanged" id="534-kd-aMw"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tn3-Tt-DkA">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tn3-Tt-DkA" userLabel="Stack Switch">
                                 <rect key="frame" x="312" y="544" width="51" height="31"/>
                                 <connections>
-                                    <action selector="StakedChanged:" destination="u6h-nz-9DV" eventType="valueChanged" id="F5x-4o-tSD"/>
+                                    <action selector="stakedChanged:" destination="u6h-nz-9DV" eventType="valueChanged" id="QBX-WH-06Q"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Side Labels:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlM-Ik-o4y" userLabel="Side Label">

@@ -80,7 +80,7 @@ class BarchartDemoViewController: UIViewController {
         barChartView.handleOption(.toggleValues)
     }
 
-    @IBAction func StakedChanged(_ sender: UISwitch) {
+    @IBAction func stakedChanged(_ sender: UISwitch) {
         barChartView.stack(sender.isOn)
     }
 }
