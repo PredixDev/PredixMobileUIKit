@@ -18,8 +18,8 @@ class PredixBarChartViewTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-    
-     // MARK: IBInspectables
+
+    // MARK: IBInspectables
 
     func testSetLabelText() {
         let barChart = PredixBarChartView()
@@ -41,12 +41,12 @@ class PredixBarChartViewTests: XCTestCase {
         barChart.chartDescription?.enabled = testValue
         XCTAssertEqual(testValue, barChart.labelEnabled, "labelEnabled did not match")
     }
-    
+
     func testSetLegendVerticalOrientation() {
         let barChart = PredixBarChartView()
         barChart.legendVerticalOrientation = true
         XCTAssertEqual(Legend.Orientation.vertical, barChart.legend.orientation, "Legend Orientation did not match")
-        
+
         barChart.legendVerticalOrientation = false
         XCTAssertEqual(Legend.Orientation.horizontal, barChart.legend.orientation, "Legend Orientation did not match")
     }
@@ -54,41 +54,39 @@ class PredixBarChartViewTests: XCTestCase {
     func testSetLegendAlignedLeft() {
         let barChart = PredixBarChartView()
         barChart.legend.horizontalAlignment = .left
-        XCTAssertEqual(barChart.legend.horizontalAlignment,.left,"Legend should be aligned to left")
-        
+        XCTAssertEqual(barChart.legend.horizontalAlignment, .left, "Legend should be aligned to left")
     }
-    
-    func testSetLegendAlignedLeftAssignedToRight(){
+
+    func testSetLegendAlignedLeftAssignedToRight() {
         let barChart = PredixBarChartView()
         barChart.legendAlignedLeft = false
         XCTAssertEqual(barChart.legend.horizontalAlignment, .right, "Legend should be aligned to Right")
     }
 
-    
     func testGetLegendAlignedLeft() {
         let barChart = PredixBarChartView()
         barChart.legend.horizontalAlignment = .left
         XCTAssertTrue(barChart.legendAlignedLeft, "Legend should be aligned to left")
     }
-    
+
     func testSetLegendAlignedBottom() {
         let barChart = PredixBarChartView()
         barChart.legendAlignedOnBottom = true
         XCTAssertEqual(barChart.legend.verticalAlignment, .bottom, "Legend should be aligned to top")
     }
-    
+
     func testSetLegendAlignedBottomAssignedAsTop() {
         let barChart = PredixBarChartView()
         barChart.legendAlignedOnBottom = false
         XCTAssertEqual(barChart.legend.verticalAlignment, .top, "Legend should be aligned to bottom")
     }
-    
+
     func testGetLegendAlignedTop() {
         let barChart = PredixTimeSeriesView()
         barChart.legend.verticalAlignment = .top
         XCTAssertTrue(barChart.legendAlignedTop, "Legend should be aligned to top")
     }
- 
+
     func testGetLegendVerticalOrientation() {
         let barChart = PredixBarChartView()
 
@@ -98,23 +96,21 @@ class PredixBarChartViewTests: XCTestCase {
         barChart.legend.orientation = .vertical
         XCTAssertTrue(barChart.legendVerticalOrientation, "legendVerticalOrientation had unexpected value")
     }
-    
-    
+
     // MARK: Test PredixBarCharViewMethods
-    
+
     func testInitWithCoder() {
         let barChart = PredixBarChartView()
         let data = NSMutableData()
         let coder = NSKeyedArchiver(forWritingWith: data)
         coder.encode(barChart)
         coder.finishEncoding()
-        
+
         let decoder = NSKeyedUnarchiver(forReadingWith: data as Data)
         let newBarChart = PredixDonutView(coder: decoder)
         XCTAssertNotNil(newBarChart)
     }
 
-    
     func testInitWithFrame() {
         let rect = CGRect(x: 0.0, y: 0.0, width: 0.6, height: 0.4)
         let barChart = PredixBarChartView(frame: rect)
@@ -123,7 +119,7 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(0.6, barChart.frame.size.width, accuracy: 0.01)
         XCTAssertEqual(0.4, barChart.frame.size.height, accuracy: 0.01)
     }
-    
+
     func testLoadChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
@@ -144,7 +140,7 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
         waitForExpectations(timeout: 1, handler: nil)
     }
-    
+
     func testloadAndStackChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
