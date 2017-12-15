@@ -10,16 +10,27 @@ import Charts
 import Foundation
 import PredixSDK
 
+/// List of options that can be use on the Bar Chart
 public enum Option {
+    // toggle on or off,  Bars value on the chart.
     case toggleValues
+    // toggle on or off, Bar borders on the chart.
     case toggleBarBorders
-    case toggleEnableLegend
-    case toggleDisableLegend
+    // enable the legend display on the chart.
+    case enableLegend
+    // disable the legend display on the chart.
+    case disableLegend
+    // disable side labels on the chart.
     case disableSideLabels
+    // enable side labels on the chart.
     case enableSideLabels
+    // remove Limit Line on the chart.
     case removeLimitLine
+    // animate the x axis on the chart.
     case animateX
+    // animate the y axis on the chart.
     case animateY
+    // animate both the x and y axies on the chart.
     case animateXY
 }
 
@@ -192,10 +203,10 @@ open class PredixBarChartView: BarChartView {
         case .animateXY:
             animate(xAxisDuration: 3.0, yAxisDuration: 3.0, easingOption: .easeInBounce)
 
-        case .toggleEnableLegend:
+        case .enableLegend:
             toggleLegend(true)
 
-        case .toggleDisableLegend:
+        case .disableLegend:
             toggleLegend(false)
 
         case .disableSideLabels:

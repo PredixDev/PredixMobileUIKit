@@ -25,7 +25,7 @@ class BarchartDemoViewController: UIViewController {
 
         let unitsSoldBar = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
         let unitsBoughtBar = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
-        barChartView.create(xAxisValues: months, bars: [unitsSoldBar, unitsBoughtBar,unitsBoughtBar,unitsBoughtBar], stackBars: true, showWithDefaultAnimation: false)
+        barChartView.create(xAxisValues: months, bars: [unitsSoldBar, unitsBoughtBar], stackBars: true, showWithDefaultAnimation: false)
     }
 
     @IBAction func optionButtonTapped(_: UIButton) {
@@ -62,9 +62,9 @@ class BarchartDemoViewController: UIViewController {
     // To enable or disable the legend
     @IBAction func enableLegendChanged(_ sender: UISwitch) {
         if sender.isOn == true {
-            barChartView.handleOption(.toggleEnableLegend)
+            barChartView.handleOption(.enableLegend)
         } else {
-            barChartView.handleOption(.toggleDisableLegend)
+            barChartView.handleOption(.disableLegend)
         }
     }
 
