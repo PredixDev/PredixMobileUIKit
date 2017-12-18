@@ -11,18 +11,6 @@ import Foundation
 
 extension PredixBarChartView {
 
-    /// :nodoc:
-    open override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
-        let bar1 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
-        let bar2 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
-        create(xAxisValues: months, bars: [bar1, bar2])
-    }
-
     // MARK: - IBInspectable properties
 
     /// the chart embedded label text

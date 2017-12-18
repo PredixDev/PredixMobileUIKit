@@ -30,6 +30,13 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(testString, barChart.chartDescription?.text, "chartDescription text did not match")
     }
 
+    func testGetLabelText() {
+        let barChart = PredixBarChartView()
+        let testString = "foo"
+        barChart.chartDescription?.text = testString
+        XCTAssertEqual(testString, barChart.labelText, "chartDescription text did not match")
+    }
+
     func testSetLabelEnabled() {
         let barChart = PredixBarChartView()
         let testValue = !(barChart.chartDescription?.enabled ?? false)
@@ -39,8 +46,7 @@ class PredixBarChartViewTests: XCTestCase {
 
     func testGetLabelEnabled() {
         let barChart = PredixBarChartView()
-        let testValue = !(barChart.labelEnabled)
-        barChart.chartDescription?.enabled = testValue
+        let testValue = false
         XCTAssertEqual(testValue, barChart.labelEnabled, "labelEnabled did not match")
     }
 
@@ -85,7 +91,7 @@ class PredixBarChartViewTests: XCTestCase {
 
     func testSetLegendAlignedLeft() {
         let barChart = PredixBarChartView()
-        barChart.legend.horizontalAlignment = .left
+        barChart.legendAlignedLeft = true
         XCTAssertEqual(barChart.legend.horizontalAlignment, .left, "Legend should be aligned to left")
     }
 
@@ -226,6 +232,47 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, true, "Left Axis drawLabelsEnabled should be true")
     }
 
+    func testHandleOptionToggValues() {
+        let barChart = PredixBarChartView()
+        var months: [String]!
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
+
+        let bar1 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.blue])
+        let bar2 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.red])
+
+        barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
+        XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
+
+        barChart.handleOption(.toggleValues)
+        XCTAssertEqual(barChart.data?._dataSets[0].drawValuesEnabled, false, "Value on a the first data set should be set to false")
+
+        barChart.handleOption(.toggleValues)
+        XCTAssertEqual(barChart.data?._dataSets[0].drawValuesEnabled, true, "Value on a the first data set should be set to true")
+    }
+
+    func testHandleOptionToggBarBorders() {
+        let barChart = PredixBarChartView()
+        var months: [String]!
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
+
+        let bar1 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.blue])
+        let bar2 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.red])
+
+        barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
+        XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
+
+        barChart.handleOption(.toggleBarBorders)
+
+        for set in barChart.data!.dataSets {
+            let george = set as? BarChartDataSet
+            XCTAssertEqual(george?.barBorderWidth, 1.0)
+        }
+    }
+
     func testLoadChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
@@ -262,7 +309,7 @@ class PredixBarChartViewTests: XCTestCase {
         let barChart1 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.blue])
         let barChart2 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.red])
 
-        barChart.create(xAxisValues: months, bars: [barChart1, barChart2], showWithDefaultAnimation: true)
+        barChart.create(xAxisValues: months, bars: [barChart1, barChart2], stackBars: false, showWithDefaultAnimation: true)
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
         waitForExpectations(timeout: 1, handler: nil)
     }
