@@ -56,7 +56,6 @@ class BarchartDemoViewController: UIViewController {
     @IBAction func verticalLineValueChanged(_: UISlider) {
         barChartView.removeLimit()
         barChartView.addALimit(limit: Double(verticalLineSlider.value), label: "Target")
-        barChartView.setNeedsDisplay()
     }
 
     // To enable or disable the legend

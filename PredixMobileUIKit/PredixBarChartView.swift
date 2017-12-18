@@ -9,6 +9,7 @@
 import Charts
 import Foundation
 import PredixSDK
+// MARK: - The Option Enum
 
 /// List of options that can be use on the Bar Chart
 public enum Option {
@@ -34,10 +35,13 @@ public enum Option {
     case animateXY
 }
 
+// MARK: - The Bar Class
+
 /// To create a Bar Chart from the PredixBarChartView class, the Bar class is used to populate each data Bar on the chart.
 public class Bar {
     var values: [Double]
     var label: String
+    /// If colors is not provided a default color is used
     var colors: [UIColor] = []
 
     /// Initialize the values, label and color of the bar.
@@ -59,15 +63,19 @@ public class Bar {
     }
 }
 
+// MARK: - The PredixBarChartView Class
+
 /// PredixBarChartView -- Bar Chart
 @IBDesignable
 open class PredixBarChartView: BarChartView {
 
-    // MARK: Internal variables
+    // MARK: PredixBarCharView Internal Variables
 
     internal var limitLine = ChartLimitLine()
     var xAxisValues: [String] = []
     var bars: [Bar] = []
+    
+    // MARK: PredixBarChartView Initial Values
 
     /// :nodoc:
     public override init(frame: CGRect) {
@@ -123,21 +131,26 @@ open class PredixBarChartView: BarChartView {
         yRightAxis.axisMinimum = 1
         yRightAxis.drawGridLinesEnabled = false
     }
-
-    /// Add a limit line
-    /// - parameter limit: Double number of where the line should be drawn verticaly
+    
+    // MARK: PredixBarChartView Adding or Removing a Limit Line
+    
+    /// Add a vertical limit line on the bar chart
+    /// - parameter limit: Double number of where the line should be drawn vertically
     /// - parameter label: String label of the line
     public func addALimit(limit: Double, label: String) {
         limitLine = ChartLimitLine(limit: limit, label: label)
         rightAxis.addLimitLine(limitLine)
+        setNeedsDisplay()
     }
 
-    /// Remove the added limit on the chart
+    /// Remove the added limit line on the chart
     public func removeLimit() {
         rightAxis.removeLimitLine(limitLine)
         setNeedsDisplay()
     }
 
+    // MARK: PredixBarChartView creating the Bar Chart Logic
+    
     /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
     /// - parameter xAxisValues: String array of the x axis values.
     /// - parameter bars: populate each data bars on the Bar Chart.
@@ -151,7 +164,7 @@ open class PredixBarChartView: BarChartView {
         stack(stackBars)
 
         if showWithDefaultAnimation {
-            animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
+            handleOption(.animateXY)
         }
     }
 
@@ -182,7 +195,62 @@ open class PredixBarChartView: BarChartView {
         }
         return dataSets
     }
+    
+    /// Stacks all Bar DataSets  in the Chart
+    internal func stackBarsOnChart() {
+        if !bars.isEmpty {
+            
+            let groupCount = xAxisValues.count
+            let xaxis = xAxis
+            xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
+            
+            let stackBarsDataSets = createDataSets(bars: bars)
+            let stackBarsCharData = BarChartData(dataSets: stackBarsDataSets)
+            
+            let stackBarsStatingNumber = -0.5
+            xaxis.centerAxisLabelsEnabled = false
+            xaxis.axisMinimum = stackBarsStatingNumber
+            xaxis.axisMaximum = stackBarsStatingNumber + Double(groupCount)
+            data = stackBarsCharData
+        }
+    }
+    
+    /// Groups all Bar DataSets in the Chart
+    internal func groupBarsOnChart() {
+        if !bars.isEmpty {
+            
+            let groupCount = xAxisValues.count
+            let xaxis = xAxis
+            xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
+            
+            let dataSets = createDataSets(bars: bars)
+            let groupBarsChartData = BarChartData(dataSets: dataSets)
+            let barCount = groupBarsChartData.dataSets.count
+            let barSpace = 0.05
+            let groupBarsStatingNumber = 0.0
+            
+            /*
+             The equation to find the interval per "group" is:
+             (groupSpace * barSpace) * n + groupSpace = 1
+             Therefore by finding groupSpace we get:
+             groupSpace = 1 - numberOfBars * BarSpace / numberOfBars +1
+             */
+            let groupSpace = (1.0 - Double(barCount) * barSpace) / (Double(barCount) + 1.0)
+            let barWidth = groupSpace
+            
+            groupBarsChartData.barWidth = barWidth
+            xaxis.centerAxisLabelsEnabled = true
+            
+            xaxis.axisMinimum = groupBarsStatingNumber
+            let individualGroupSpace = groupBarsChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+            xaxis.axisMaximum = groupBarsStatingNumber + individualGroupSpace * Double(groupCount)
+            groupBarsChartData.groupBars(fromX: Double(groupBarsStatingNumber), groupSpace: groupSpace, barSpace: barSpace)
+            data = groupBarsChartData
+        }
+    }
 
+    // MARK: PredixBarChartView  Handling Option Logic
+    
     /// Handle the options provided
     /// - parameter option: choose one of the option from the Option class.
     public func handleOption(_ option: Option) {
@@ -218,58 +286,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Stacks all Bar DataSets  in the Chart
-    internal func stackBarsOnChart() {
-        if !bars.isEmpty {
 
-            let groupCount = xAxisValues.count
-            let xaxis = xAxis
-            xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-
-            let stackBarsDataSets = createDataSets(bars: bars)
-            let stackBarsCharData = BarChartData(dataSets: stackBarsDataSets)
-
-            let stackBarsStatingNumber = -0.5
-            xaxis.centerAxisLabelsEnabled = false
-            xaxis.axisMinimum = stackBarsStatingNumber
-            xaxis.axisMaximum = stackBarsStatingNumber + Double(groupCount)
-            data = stackBarsCharData
-        }
-    }
-
-    /// Groups all Bar DataSets in the Chart
-    internal func groupBarsOnChart() {
-        if !bars.isEmpty {
-
-            let groupCount = xAxisValues.count
-            let xaxis = xAxis
-            xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-
-            let dataSets = createDataSets(bars: bars)
-            let groupBarsChartData = BarChartData(dataSets: dataSets)
-            let barCount = groupBarsChartData.dataSets.count
-            let barSpace = 0.05
-            let groupBarsStatingNumber = 0.0
-
-            /*
-             The equation to find the interval per "group" is:
-             (groupSpace * barSpace) * n + groupSpace = 1
-             Therefore by finding groupSpace we get:
-             groupSpace = 1 - numberOfBars * BarSpace / numberOfBars +1
-             */
-            let groupSpace = (1.0 - Double(barCount) * barSpace) / (Double(barCount) + 1.0)
-            let barWidth = groupSpace
-
-            groupBarsChartData.barWidth = barWidth
-            xaxis.centerAxisLabelsEnabled = true
-
-            xaxis.axisMinimum = groupBarsStatingNumber
-            let individualGroupSpace = groupBarsChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
-            xaxis.axisMaximum = groupBarsStatingNumber + individualGroupSpace * Double(groupCount)
-            groupBarsChartData.groupBars(fromX: Double(groupBarsStatingNumber), groupSpace: groupSpace, barSpace: barSpace)
-            data = groupBarsChartData
-        }
-    }
 
     /// Call this function will add Bar Borders. Call it again will remove the Bar Border
     internal func toggleValues() {
