@@ -209,7 +209,7 @@ class PredixBarChartViewTests: XCTestCase {
     func testHandleOptionDisableLegend() {
         let barChart = PredixBarChartView()
         barChart.handleOption(.disableLegend)
-        XCTAssertEqual(barChart.legend.enabled, true, "Option disableLegend should be true")
+        XCTAssertEqual(barChart.legend.enabled, false, "Option disableLegend should be false")
     }
 
     func testHandleOptionDisableSideLabels() {
@@ -221,7 +221,7 @@ class PredixBarChartViewTests: XCTestCase {
 
     func testHandleOptionEnableSideLabels() {
         let barChart = PredixBarChartView()
-        barChart.handleOption(.disableSideLabels)
+        barChart.handleOption(.enableSideLabels)
         XCTAssertEqual(barChart.rightAxis.drawLabelsEnabled, true, "Right Axis drawLabelsEnabled should be true")
         XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, true, "Left Axis drawLabelsEnabled should be true")
     }

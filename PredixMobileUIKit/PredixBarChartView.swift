@@ -135,6 +135,7 @@ open class PredixBarChartView: BarChartView {
     /// Remove the added limit on the chart
     public func removeLimit() {
         rightAxis.removeLimitLine(limitLine)
+        setNeedsDisplay()
     }
 
     /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
