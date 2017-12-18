@@ -185,8 +185,6 @@ open class PredixBarChartView: BarChartView {
     /// Handle the options provided
     /// - parameter option: choose one of the option from the Option class.
     public func handleOption(_ option: Option) {
-        legend.enabled = true
-        setNeedsDisplay()
         switch option {
         case .toggleValues:
             toggleValues()

@@ -36,18 +36,7 @@ extension PredixBarChartView {
         }
     }
 
-    /// the chart message when there's not data
-    @IBInspectable
-    internal var noDataMessage: String {
-        get {
-            return self.noDataText
-        }
-        set(newValue) {
-            self.noDataText = newValue
-        }
-    }
-
-
+    // enable or disable the chart message embedded label text
     @IBInspectable
     internal var labelEnabled: Bool {
         get {
@@ -55,6 +44,17 @@ extension PredixBarChartView {
         }
         set(newValue) {
             chartDescription?.enabled = newValue
+        }
+    }
+
+    /// the chart message when there's not data
+    @IBInspectable
+    internal var noDataMessage: String {
+        get {
+            return noDataText
+        }
+        set(newValue) {
+            noDataText = newValue
         }
     }
 

@@ -198,6 +198,34 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(0.4, barChart.frame.size.height, accuracy: 0.01)
     }
 
+    // MARK: Test PredixBarCharView HandleOptionMethods
+
+    func testHandleOptionEnableLegend() {
+        let barChart = PredixBarChartView()
+        barChart.handleOption(.enableLegend)
+        XCTAssertEqual(barChart.legend.enabled, true, "Option enableLegend should be true")
+    }
+
+    func testHandleOptionDisableLegend() {
+        let barChart = PredixBarChartView()
+        barChart.handleOption(.disableLegend)
+        XCTAssertEqual(barChart.legend.enabled, true, "Option disableLegend should be true")
+    }
+
+    func testHandleOptionDisableSideLabels() {
+        let barChart = PredixBarChartView()
+        barChart.handleOption(.disableSideLabels)
+        XCTAssertEqual(barChart.rightAxis.drawLabelsEnabled, false, "Right Axis drawLabelsEnabled should be false")
+        XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, false, "Left Axis drawLabelsEnabled should be false")
+    }
+
+    func testHandleOptionEnableSideLabels() {
+        let barChart = PredixBarChartView()
+        barChart.handleOption(.disableSideLabels)
+        XCTAssertEqual(barChart.rightAxis.drawLabelsEnabled, true, "Right Axis drawLabelsEnabled should be true")
+        XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, true, "Left Axis drawLabelsEnabled should be true")
+    }
+
     func testLoadChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
