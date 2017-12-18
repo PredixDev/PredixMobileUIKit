@@ -38,14 +38,15 @@ extension PredixBarChartView {
 
     /// the chart message when there's not data
     @IBInspectable
-    internal var noDataMessage: String? {
+    internal var noDataMessage: String {
         get {
-            return noDataText
+            return self.noDataText
         }
         set(newValue) {
-            noDataText = newValue!
+            self.noDataText = newValue
         }
     }
+
 
     @IBInspectable
     internal var labelEnabled: Bool {
@@ -89,7 +90,7 @@ extension PredixBarChartView {
 
     /// indicates whether the legend chart should be orientated vertically *default:* true
     @IBInspectable
-    internal var legendVerticalOrientation: Bool {
+    internal var legendOrientationVertical: Bool {
         get {
             return legend.orientation == .vertical
         }
@@ -113,7 +114,7 @@ extension PredixBarChartView {
         }
     }
 
-    /// the chart x Axis text color *default:* black
+    /// the chart x axis text color *default:* black
     @IBInspectable
     open var xAxisTextColor: UIColor {
         get {
@@ -124,7 +125,7 @@ extension PredixBarChartView {
         }
     }
 
-    /// the legend chart x Axis text color *default:* black
+    /// the legend chart x axis text color *default:* black
     @IBInspectable
     open var legendTextColor: UIColor {
         get {

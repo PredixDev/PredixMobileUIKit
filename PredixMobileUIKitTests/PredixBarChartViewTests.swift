@@ -21,6 +21,8 @@ class PredixBarChartViewTests: XCTestCase {
 
     // MARK: IBInspectables
 
+    // MARK: label text tests
+
     func testSetLabelText() {
         let barChart = PredixBarChartView()
         let testString = "foo"
@@ -42,25 +44,49 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(testValue, barChart.labelEnabled, "labelEnabled did not match")
     }
 
+    // MARK: No data message tests
+
+    func testSetNoDataMessage() {
+        let barChart = PredixBarChartView()
+        let testString = "bar"
+        barChart.noDataMessage = testString
+        XCTAssertEqual(testString, barChart.noDataText)
+    }
+
+    func testGetNoDataMessage() {
+        let barChart = PredixBarChartView()
+        let testString = "foo"
+        barChart.noDataText = testString
+        XCTAssertEqual(testString, barChart.noDataMessage)
+    }
+
+    // MARK: Legend orientation tests
+
     func testSetLegendVerticalOrientation() {
         let barChart = PredixBarChartView()
-        barChart.legendVerticalOrientation = true
+        barChart.legendOrientationVertical = true
         XCTAssertEqual(Legend.Orientation.vertical, barChart.legend.orientation, "Legend Orientation did not match")
 
-        barChart.legendVerticalOrientation = false
+        barChart.legendOrientationVertical = false
         XCTAssertEqual(Legend.Orientation.horizontal, barChart.legend.orientation, "Legend Orientation did not match")
     }
+
+    func testGetLegendVerticalOrientation() {
+        let barChart = PredixBarChartView()
+
+        barChart.legend.orientation = .horizontal
+        XCTAssertFalse(barChart.legendOrientationVertical, "legendVerticalOrientation had unexpected value")
+
+        barChart.legend.orientation = .vertical
+        XCTAssertTrue(barChart.legendOrientationVertical, "legendVerticalOrientation had unexpected value")
+    }
+
+    // MARK: Legend alignment
 
     func testSetLegendAlignedLeft() {
         let barChart = PredixBarChartView()
         barChart.legend.horizontalAlignment = .left
         XCTAssertEqual(barChart.legend.horizontalAlignment, .left, "Legend should be aligned to left")
-    }
-
-    func testSetLegendAlignedLeftAssignedToRight() {
-        let barChart = PredixBarChartView()
-        barChart.legendAlignedLeft = false
-        XCTAssertEqual(barChart.legend.horizontalAlignment, .right, "Legend should be aligned to Right")
     }
 
     func testGetLegendAlignedLeft() {
@@ -69,10 +95,22 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertTrue(barChart.legendAlignedLeft, "Legend should be aligned to left")
     }
 
+    func testSetLegendAlignedLeftAssignedToRight() {
+        let barChart = PredixBarChartView()
+        barChart.legendAlignedLeft = false
+        XCTAssertEqual(barChart.legend.horizontalAlignment, .right, "Legend should be aligned to right")
+    }
+
     func testSetLegendAlignedBottom() {
         let barChart = PredixBarChartView()
         barChart.legendAlignedOnBottom = true
         XCTAssertEqual(barChart.legend.verticalAlignment, .bottom, "Legend should be aligned to top")
+    }
+
+    func testGetLegendAlignedBottom() {
+        let barChart = PredixBarChartView()
+        barChart.legend.verticalAlignment = .bottom
+        XCTAssertTrue(barChart.legendAlignedOnBottom, "Legend should be aligned on the  bottom")
     }
 
     func testSetLegendAlignedBottomAssignedAsTop() {
@@ -81,20 +119,60 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(barChart.legend.verticalAlignment, .top, "Legend should be aligned to bottom")
     }
 
-    func testGetLegendAlignedTop() {
-        let barChart = PredixTimeSeriesView()
-        barChart.legend.verticalAlignment = .top
-        XCTAssertTrue(barChart.legendAlignedTop, "Legend should be aligned to top")
+    // MARK: Chart Border Color tests
+
+    func testSetCharBorderColor() {
+        let barChart = PredixBarChartView()
+        barChart.chartBorderColor = .red
+        XCTAssertEqual(UIColor.red, barChart.borderColor, "Chart Border Color should be red")
     }
 
-    func testGetLegendVerticalOrientation() {
+    func testGetChartBorderColor() {
         let barChart = PredixBarChartView()
+        barChart.borderColor = .red
+        XCTAssertEqual(UIColor.red, barChart.chartBorderColor, "Chart Border Color should be red")
+    }
 
-        barChart.legend.orientation = .horizontal
-        XCTAssertFalse(barChart.legendVerticalOrientation, "legendVerticalOrientation had unexpected value")
+    // MARK: Chart x axis text color test
 
-        barChart.legend.orientation = .vertical
-        XCTAssertTrue(barChart.legendVerticalOrientation, "legendVerticalOrientation had unexpected value")
+    func testSetxAxisTextColor() {
+        let barChart = PredixBarChartView()
+        barChart.xAxisTextColor = .red
+        XCTAssertEqual(UIColor.red, barChart.xAxis.labelTextColor, "Chart x axis should be red")
+    }
+
+    func testGetAxisTextColor() {
+        let barChart = PredixBarChartView()
+        barChart.xAxis.labelTextColor = .red
+        XCTAssertEqual(UIColor.red, barChart.xAxisTextColor, "Chart x axis should be red")
+    }
+
+    // MARK: legend text color tests
+
+    func testSetLegendTexColor() {
+        let barChart = PredixBarChartView()
+        barChart.legend.textColor = .red
+        XCTAssertEqual(UIColor.red, barChart.legendTextColor, "Legend text color should be red")
+    }
+
+    func testGetLegendTextColor() {
+        let barChart = PredixBarChartView()
+        barChart.legendTextColor = .red
+        XCTAssertEqual(UIColor.red, barChart.legend.textColor, "Legend text color should be red")
+    }
+
+    // MARK: No chart data text color tests
+
+    func testSetNoChartDataTextColor() {
+        let barChart = PredixBarChartView()
+        barChart.noDataTextColor = .red
+        XCTAssertEqual(UIColor.red, barChart.noChartDataTextColor, "No chart data text color red")
+    }
+
+    func testGetNoChartDataTextColor() {
+        let barChart = PredixBarChartView()
+        barChart.noChartDataTextColor = .red
+        XCTAssertEqual(UIColor.red, barChart.noDataTextColor, "No chart data text color red")
     }
 
     // MARK: Test PredixBarCharViewMethods
