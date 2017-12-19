@@ -9,11 +9,12 @@
 import Charts
 import Foundation
 import PredixSDK
+
 // MARK: - The Option Enum
 
-/// List of options that can be use on the Bar Chart
+/// List of options that can be used on the Bar Chart.
 public enum Option {
-    /// toggle on or off,  Bars value on the chart.
+    /// toggle on or off, Bars value on the chart.
     case toggleValues
     /// toggle on or off, Bar borders on the chart.
     case toggleBarBorders
@@ -41,13 +42,13 @@ public enum Option {
 public class Bar {
     var values: [Double]
     var label: String
-    /// If colors is not provided a default color is used
+    /// If colors is not provided the default color is used.
     var colors: [UIColor] = []
 
     /// Initialize the values, label and color of the bar.
-    /// - parameter yValues: the values the bar hold
-    /// - parameter label: the bar label
-    /// - parameter color: the bar color based on the class UIColor
+    /// - parameter values: the values the bar hold.
+    /// - parameter label: the bar label.
+    /// - parameter color: the bar color based on the class UIColor.
     public init(_ values: [Double], label: String, colors: [UIColor]) {
         self.values = values
         self.label = label
@@ -55,8 +56,8 @@ public class Bar {
     }
 
     /// Initialize the values and label of the bar.
-    /// - parameter yValues: the values the bar hold
-    /// - parameter label: the bar label
+    /// - parameter Values: the values the bar hold.
+    /// - parameter label: the bar label.
     public init(_ values: [Double], label: String) {
         self.values = values
         self.label = label
@@ -74,7 +75,7 @@ open class PredixBarChartView: BarChartView {
     internal var limitLine = ChartLimitLine()
     var xAxisValues: [String] = []
     var bars: [Bar] = []
-    
+
     // MARK: PredixBarChartView Initial Values
 
     /// :nodoc:
@@ -131,12 +132,12 @@ open class PredixBarChartView: BarChartView {
         yRightAxis.axisMinimum = 1
         yRightAxis.drawGridLinesEnabled = false
     }
-    
+
     // MARK: PredixBarChartView Adding or Removing a Limit Line
-    
-    /// Add a vertical limit line on the bar chart
-    /// - parameter limit: Double number of where the line should be drawn vertically
-    /// - parameter label: String label of the line
+
+    /// Add a horizontal limit line on the bar chart. The line in the chart marks a certain maximum or limit on the x axis).
+    /// - parameter limit: number of where the line should be drawn horizontally.
+    /// - parameter label: name of the label line.
     public func addALimit(limit: Double, label: String) {
         limitLine = ChartLimitLine(limit: limit, label: label)
         rightAxis.addLimitLine(limitLine)
@@ -150,11 +151,11 @@ open class PredixBarChartView: BarChartView {
     }
 
     // MARK: PredixBarChartView creating the Bar Chart Logic
-    
-    /// Helper function to populate the Bar Chart based on each Bar data entry from the Bar class.
+
+    ///  Populate the Bar Chart based on each Bar data entry from the Bar class.
     /// - parameter xAxisValues: String array of the x axis values.
     /// - parameter bars: populate each data bars on the Bar Chart.
-    /// - parameter stackBars: optional parameter to show the bar staked or unstaked. Defaults to `true`.
+    /// - parameter stackBars: optional parameter to show the bar staked or grouped. Defaults to `true`.
     /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
     public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
 
@@ -178,7 +179,7 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Create all the bar data sets from each Bar provided
-    /// - parameter bars: each data bars neend on the Chart.
+    /// - parameter bars: each data bars needed on the Chart.
     func createDataSets(bars: [Bar]) -> [BarChartDataSet] {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
@@ -195,18 +196,18 @@ open class PredixBarChartView: BarChartView {
         }
         return dataSets
     }
-    
+
     /// Stacks all Bar DataSets  in the Chart
     internal func stackBarsOnChart() {
         if !bars.isEmpty {
-            
+
             let groupCount = xAxisValues.count
             let xaxis = xAxis
             xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-            
+
             let stackBarsDataSets = createDataSets(bars: bars)
             let stackBarsCharData = BarChartData(dataSets: stackBarsDataSets)
-            
+
             let stackBarsStatingNumber = -0.5
             xaxis.centerAxisLabelsEnabled = false
             xaxis.axisMinimum = stackBarsStatingNumber
@@ -214,21 +215,21 @@ open class PredixBarChartView: BarChartView {
             data = stackBarsCharData
         }
     }
-    
+
     /// Groups all Bar DataSets in the Chart
     internal func groupBarsOnChart() {
         if !bars.isEmpty {
-            
+
             let groupCount = xAxisValues.count
             let xaxis = xAxis
             xaxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-            
+
             let dataSets = createDataSets(bars: bars)
             let groupBarsChartData = BarChartData(dataSets: dataSets)
             let barCount = groupBarsChartData.dataSets.count
             let barSpace = 0.05
             let groupBarsStatingNumber = 0.0
-            
+
             /*
              The equation to find the interval per "group" is:
              (groupSpace * barSpace) * n + groupSpace = 1
@@ -237,10 +238,10 @@ open class PredixBarChartView: BarChartView {
              */
             let groupSpace = (1.0 - Double(barCount) * barSpace) / (Double(barCount) + 1.0)
             let barWidth = groupSpace
-            
+
             groupBarsChartData.barWidth = barWidth
             xaxis.centerAxisLabelsEnabled = true
-            
+
             xaxis.axisMinimum = groupBarsStatingNumber
             let individualGroupSpace = groupBarsChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
             xaxis.axisMaximum = groupBarsStatingNumber + individualGroupSpace * Double(groupCount)
@@ -250,8 +251,8 @@ open class PredixBarChartView: BarChartView {
     }
 
     // MARK: PredixBarChartView  Handling Option Logic
-    
-    /// Handle the options provided
+
+    /// Handle the options provided.
     /// - parameter option: choose one of the option from the Option class.
     public func handleOption(_ option: Option) {
         switch option {
@@ -286,9 +287,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-
-
-    /// Call this function will add Bar Borders. Call it again will remove the Bar Border
+    /// Call this function will add bar borders. Call it again will remove the bar borders.
     internal func toggleValues() {
         for set in data!.dataSets {
             set.drawValuesEnabled = !set.drawValuesEnabled
@@ -296,7 +295,7 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    /// Call this function will add Bar Borders. Call it again will remove the Bar Border
+    /// Call this function will add bar borders. Call it again will remove the bar borders.
     internal func toggleBarBorders() {
         for set in data!.dataSets {
             if let set = set as? BarChartDataSet {
@@ -306,7 +305,7 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    /// Enable and disable the Legends on the Chart
+    /// Enable and disable the legends on the chart
     /// - parameter enable: `true` to enable, `false` to disable
     internal func toggleLegend(_ toggle: Bool) {
         legend.enabled = toggle

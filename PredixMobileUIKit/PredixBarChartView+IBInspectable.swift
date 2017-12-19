@@ -91,7 +91,7 @@ extension PredixBarChartView {
         }
     }
 
-    /// the chart boarder color *default: * white
+    /// the chart border color *default: * white
     @IBInspectable
     open var chartBorderColor: UIColor {
         get {
