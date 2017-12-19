@@ -144,7 +144,7 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    /// Remove the added limit line on the chart
+    /// Remove the added limit line on the chart.
     public func removeLimit() {
         rightAxis.removeLimitLine(limitLine)
         setNeedsDisplay()
@@ -169,7 +169,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Stack or group the Bars on the chart
+    /// Stack or group the Bars on the chart.
     public func stack(_ stackBars: Bool) {
         if stackBars {
             stackBarsOnChart()
@@ -178,7 +178,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Create all the bar data sets from each Bar provided
+    /// Create all the bar data sets from each Bar provided.
     /// - parameter bars: each data bars needed on the Chart.
     func createDataSets(bars: [Bar]) -> [BarChartDataSet] {
         var dataSets: [BarChartDataSet] = []
@@ -197,7 +197,7 @@ open class PredixBarChartView: BarChartView {
         return dataSets
     }
 
-    /// Stacks all Bar DataSets  in the Chart
+    /// Stacks all Bar DataSets in the Chart
     internal func stackBarsOnChart() {
         if !bars.isEmpty {
 

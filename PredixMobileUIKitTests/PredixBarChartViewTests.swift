@@ -55,15 +55,20 @@ class PredixBarChartViewTests: XCTestCase {
 
     func testSetLabelEnabled() {
         let barChart = PredixBarChartView()
-        let testValue = !(barChart.chartDescription?.enabled ?? false)
-        barChart.labelEnabled = testValue
-        XCTAssertEqual(testValue, barChart.chartDescription?.enabled, "chartDescription enabled did not match")
+        barChart.labelEnabled = true
+        XCTAssertTrue(barChart.chartDescription?.enabled ?? false, "Chart description should be enabled.")
     }
 
     func testGetLabelEnabled() {
         let barChart = PredixBarChartView()
-        let testValue = false
-        XCTAssertEqual(testValue, barChart.labelEnabled, "labelEnabled did not match")
+        barChart.chartDescription?.enabled = true
+        XCTAssertTrue(barChart.labelEnabled, "Chart description should be enabled now.")
+    }
+
+    func testLabelEnabledReturnsFalseWhenTheChartDescriptionIsNil() {
+        let barChart = PredixBarChartView(frame: CGRect())
+        barChart.chartDescription = nil
+        XCTAssertFalse(barChart.labelEnabled)
     }
 
     // MARK: No Data Message Test Cases
