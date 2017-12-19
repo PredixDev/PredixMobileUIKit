@@ -286,13 +286,46 @@ class PredixBarChartViewTests: XCTestCase {
         }
     }
 
+    func testHandleOptionAnimateXY() {
+        let barChart = PredixBarChartView()
+        let expectation = self.expectation(description: #function)
+        barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
+            expectation.fulfill()
+        })
+
+        barChart.handleOption(.animateXY)
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func testHandleOptionAnimateX() {
+        let barChart = PredixBarChartView()
+        let expectation = self.expectation(description: #function)
+        barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
+            expectation.fulfill()
+        })
+
+        barChart.handleOption(.animateX)
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func testHandleOptionAnimateY() {
+        let barChart = PredixBarChartView()
+        let expectation = self.expectation(description: #function)
+        barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
+            expectation.fulfill()
+        })
+
+        barChart.handleOption(.animateY)
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
     // MARK: PredixBarCharView Creation of the chart test cases
 
     func testCreateChartWithAnimation() {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
 
-        barChart._animator = TestAnimator(animateHandler: {
+        barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
             expectation.fulfill()
         })
 
@@ -305,12 +338,32 @@ class PredixBarChartViewTests: XCTestCase {
         let expectation = self.expectation(description: #function)
         let barChart = PredixBarChartView()
 
-        barChart._animator = TestAnimator(animateHandler: {
+        barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
             expectation.fulfill()
         })
 
         barChart.create(xAxisValues: months, bars: [bar1, bar2], stackBars: false, showWithDefaultAnimation: true)
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded")
         waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    class TestPredixBarChartViewAnimator: Animator {
+        let animateHandler: () -> Void
+        init(animateHandler: @escaping () -> Void) {
+            self.animateHandler = animateHandler
+            super.init()
+        }
+
+        open override func animate(xAxisDuration _: TimeInterval, yAxisDuration _: TimeInterval, easingX _: ChartEasingFunctionBlock?, easingY _: ChartEasingFunctionBlock?) {
+            animateHandler()
+        }
+
+        open override func animate(xAxisDuration _: TimeInterval, easing _: ChartEasingFunctionBlock?) {
+            animateHandler()
+        }
+
+        open override func animate(yAxisDuration _: TimeInterval, easing _: ChartEasingFunctionBlock?) {
+            animateHandler()
+        }
     }
 }
