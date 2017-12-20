@@ -89,7 +89,7 @@ class PredixAuthenticationViewTest: XCTestCase {
     func testTheSpinnerIsHiddenWhenAuthenticationCompletesWithAnError() {
         let authenticationView = PredixAuthenticationView()
         authenticationView.signIn(sender: self)
-        let error = NSError(domain: PredixMobileErrorDomain.authentication.description, code: 999, userInfo: [NSLocalizedDescriptionKey: "credentials were invalid"])
+        let error = NSError(domain: PredixSDKErrorDomain.authentication.description, code: 999, userInfo: [NSLocalizedDescriptionKey: "credentials were invalid"])
         authenticationView.authenticationHandler(UAARefreshAuthenticationHandler(), didFailWithError: error)
         
         XCTAssertFalse(authenticationView.activityIndicator.isAnimating)
