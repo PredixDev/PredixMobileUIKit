@@ -21,22 +21,35 @@ extension PredixTimeSeriesView {
     
     // MARK: - private functions
     private func initializeWithDummyData() {
-        var tags: [TimeSeriesTag] = []
+        var tags: [LineChartDataSet] = []
         let range = 8
         let upperRange = 2018
         let lowerRange = upperRange - range
+        var colorCounter: Int = 0
         for i in 1...3 {
-            var dataPoints: [TimeSeriesDataPoint] = []
+            var dataPoints: [ChartDataEntry] = []
             for j in 0...range {
                 let time = Double(lowerRange + j)
                 let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) )
-                let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure, quality: 3)
-                dataPoints.append(dataPoint)
+                dataPoints.append(ChartDataEntry(x: time, y: measure, data: NSNumber(value: 3)))
             }
-            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: [:])
-            tags.append(tag)
+            colorCounter += 1
+            
+            let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(i)")
+            dataSet.lineCapType = .round
+            dataSet.mode = .horizontalBezier
+            dataSet.lineWidth = 1.5
+            dataSet.circleRadius = 0.0
+            
+            let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
+            dataSet.setColor(color)
+            dataSet.setCircleColor(color)
+            dataSet.colors = [color]
+            dataSet.circleColors = [.red]
+            tags.append(dataSet)
         }
-        loadLabelsAndValues(timeSeriesTags: tags)
+
+        self.load(dataSets: tags)
     }
     
     // MARK: - IBInspectable properties

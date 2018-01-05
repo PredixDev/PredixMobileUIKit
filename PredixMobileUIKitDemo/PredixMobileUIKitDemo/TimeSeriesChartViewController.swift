@@ -21,8 +21,7 @@ class TimeSeriesChartViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tsChartView.delegate = self
-        self.tsChartView.loadLabelsAndValues(timeSeriesTags: self.generateDummyData(80, noOfDatasets: 2))
-        
+        self.tsChartView.load(dataSets: self.generateDummyData(80, noOfDatasets: 2))
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,27 +42,40 @@ class TimeSeriesChartViewController: UIViewController {
     @IBAction func sliderValueChanged(_ sender: Any) {
         let tempratureMax = Int(self.tempratureRangeSlider.value)
         let maxDatasets = Int(self.datasetsRangeSlider.value)
-        self.tsChartView.loadLabelsAndValues(timeSeriesTags: self.generateDummyData(tempratureMax, noOfDatasets: maxDatasets))
+        self.tsChartView.load(dataSets: self.generateDummyData(tempratureMax, noOfDatasets: maxDatasets))
     }
     
     // MARK: - private functions
-    private func generateDummyData(_ maxTemp: Int, noOfDatasets: Int) -> [TimeSeriesTag] {
+    private func generateDummyData(_ maxTemp: Int, noOfDatasets: Int) -> [LineChartDataSet] {
         print("generating dummy data maxTemp: \(maxTemp), no of datasets: \(noOfDatasets)")
-        var tags: [TimeSeriesTag] = []
+        var tags: [LineChartDataSet] = []
         let range = 8
         let upperRange = 2018
         let lowerRange = upperRange - range
+        var colorCounter: Int = 0
         for i in 1...noOfDatasets {
-            var dataPoints: [TimeSeriesDataPoint] = []
+            var dataPoints: [ChartDataEntry] = []
             for j in 0...range {
                 let time = Double(lowerRange + j)
-                let measure = Double(getRandom(50, ceiling: maxTemp))
-                let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure)
-                dataPoints.append(dataPoint)
+                let measure = Double(arc4random_uniform(UInt32(maxTemp)))
+                dataPoints.append(ChartDataEntry(x: time, y: measure, data: NSNumber(value: 3)))
             }
-            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints, attributes: [:])
-            tags.append(tag)
+            colorCounter += 1
+            
+            let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(i)")
+            dataSet.lineCapType = .round
+            dataSet.mode = .horizontalBezier
+            dataSet.lineWidth = 1.5
+            dataSet.circleRadius = 0.0
+            
+            let color: UIColor = UIColor.Predix.DataVisualizationSets.regular[colorCounter % UIColor.Predix.DataVisualizationSets.regular.count]
+            dataSet.setColor(color)
+            dataSet.setCircleColor(color)
+            dataSet.colors = [color]
+            dataSet.circleColors = [.red]
+            tags.append(dataSet)
         }
+        
         return tags
     }
     
