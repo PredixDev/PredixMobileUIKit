@@ -108,6 +108,7 @@ open class PredixTimeSeriesView: LineChartView {
         self.load(dataSets: dataSets)
     }
     
+    /// Loads Time Series data using a LineChartDataSet.  LineChartDataSet provides the ability to customize the line colors, types and styles beyond the defaults provided for a Time Series TagDataPoint or DataPointResponse
     open func load(dataSets: [LineChartDataSet]) {
         let data: LineChartData = LineChartData(dataSets: dataSets)
         data.setValueTextColor(NSUIColor.white)
