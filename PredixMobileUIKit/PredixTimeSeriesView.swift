@@ -98,7 +98,7 @@ open class PredixTimeSeriesView: LineChartView {
             dataSet.circleRadius = 0.0
             
             let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
-            dataSet.setColor(color)
+            dataSet.setColor(color)œ
             dataSet.setCircleColor(color)
             dataSet.colors = [color]
             dataSet.circleColors = [.red]
