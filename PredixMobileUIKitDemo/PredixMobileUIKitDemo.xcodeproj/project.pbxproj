@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D560B9D1FD5CD49000B4F68 /* BarChartDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560B9B1FD5CD49000B4F68 /* BarChartDemoViewController.swift */; };
-		2DC883652003F607001BB035 /* PredixSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC883642003F607001BB035 /* PredixSDK.framework */; };
-		2DC883672003F686001BB035 /* PredixSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC883642003F607001BB035 /* PredixSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2DCCE3632004217700FB959F /* PredixSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCCE3612004217700FB959F /* PredixSDK.framework */; };
 		3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */; };
 		4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */; };
 		4F503B281F6C58BC00B8EE10 /* DonutChartDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */; };
@@ -52,7 +51,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2DC883672003F686001BB035 /* PredixSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,7 +59,7 @@
 
 /* Begin PBXFileReference section */
 		2D560B9B1FD5CD49000B4F68 /* BarChartDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartDemoViewController.swift; sourceTree = "<group>"; };
-		2DC883642003F607001BB035 /* PredixSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PredixSDK.framework; sourceTree = "<group>"; };
+		2DCCE3612004217700FB959F /* PredixSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PredixSDK.framework; sourceTree = "<group>"; };
 		3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesChartViewController.swift; sourceTree = "<group>"; };
 		4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredixMobileUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DC883652003F607001BB035 /* PredixSDK.framework in Frameworks */,
+				2DCCE3632004217700FB959F /* PredixSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +124,7 @@
 		4F503B5F1F6C5A2300B8EE10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2DC883642003F607001BB035 /* PredixSDK.framework */,
+				2DCCE3612004217700FB959F /* PredixSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

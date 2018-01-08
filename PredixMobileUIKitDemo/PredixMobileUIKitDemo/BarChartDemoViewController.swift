@@ -29,7 +29,7 @@ class BarchartDemoViewController: UIViewController {
     }
 
     @IBAction func optionButtonTapped(_: UIButton) {
-        let alert = UIAlertController(title: "Bart Chart Options", message: "Choose an option", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Bart Chart Animations", message: "Choose an animation", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Animate X", style: .default) { _ in
             self.barChartView.handleOption(.animateX)
         })
@@ -41,15 +41,6 @@ class BarchartDemoViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Animte XY", style: .default) { _ in
             self.barChartView.handleOption(.animateXY)
         })
-
-        alert.addAction(UIAlertAction(title: "Add Bar Borders", style: .default) { _ in
-            self.barChartView.handleOption(.toggleBarBorders)
-        })
-
-        alert.addAction(UIAlertAction(title: "Remove Limit Lines", style: .default) { _ in
-            self.barChartView.handleOption(.removeLimitLine)
-        })
-
         present(alert, animated: true)
     }
 
@@ -60,7 +51,7 @@ class BarchartDemoViewController: UIViewController {
 
     // To enable or disable the legend
     @IBAction func enableLegendChanged(_ sender: UISwitch) {
-        if sender.isOn == true {
+        if sender.isOn  {
             barChartView.handleOption(.enableLegend)
         } else {
             barChartView.handleOption(.disableLegend)
@@ -68,7 +59,7 @@ class BarchartDemoViewController: UIViewController {
     }
 
     @IBAction func sideLabelsChanged(_ sender: UISwitch) {
-        if sender.isOn == true {
+        if sender.isOn {
             barChartView.handleOption(.enableSideLabels)
         } else {
             barChartView.handleOption(.disableSideLabels)
@@ -81,5 +72,16 @@ class BarchartDemoViewController: UIViewController {
 
     @IBAction func stakedChanged(_ sender: UISwitch) {
         barChartView.stack(sender.isOn)
+    }
+    
+    @IBAction func enableBarBordersChanged(_ sender: UISwitch) {
+        barChartView.handleOption(.toggleBarBorders)
+    }
+    @IBAction func enableLimitLineChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            barChartView.addALimit(limit: Double(verticalLineSlider.value), label: "Target")
+        }else{
+            barChartView.handleOption(.removeLimitLine)
+        }
     }
 }
