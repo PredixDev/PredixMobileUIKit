@@ -212,7 +212,7 @@ class PredixBarChartViewTests: XCTestCase {
         coder.finishEncoding()
 
         let decoder = NSKeyedUnarchiver(forReadingWith: data as Data)
-        let newBarChart = PredixDonutView(coder: decoder)
+        let newBarChart = PredixBarChartView(coder: decoder)
         XCTAssertNotNil(newBarChart)
     }
 

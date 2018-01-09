@@ -78,10 +78,6 @@ class BarchartDemoViewController: UIViewController {
         barChartView.handleOption(.toggleBarBorders)
     }
     @IBAction func enableLimitLineChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            barChartView.addALimit(limit: Double(verticalLineSlider.value), label: "Target")
-        }else{
-            barChartView.handleOption(.removeLimitLine)
-        }
+            barChartView.displayLimitLine(sender.isOn)
     }
 }

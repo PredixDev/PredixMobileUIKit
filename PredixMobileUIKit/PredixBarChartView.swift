@@ -26,8 +26,6 @@ public enum Option {
     case disableSideLabels
     /// enable side labels on the chart.
     case enableSideLabels
-    /// remove Limit Line on the chart.
-    case removeLimitLine
     /// animate the x axis on the chart.
     case animateX
     /// animate the y axis on the chart.
@@ -133,7 +131,7 @@ open class PredixBarChartView: BarChartView {
         yRightAxis.drawGridLinesEnabled = false
     }
 
-    // MARK: PredixBarChartView Adding or Removing a Limit Line
+    // MARK: PredixBarChartView Adding Displaying or Removing a Limit Line
 
     /// Add a horizontal limit line on the bar chart. The line in the chart marks a certain maximum or limit on the x axis).
     /// - parameter limit: number of where the line should be drawn horizontally.
@@ -142,6 +140,17 @@ open class PredixBarChartView: BarChartView {
         limitLine = ChartLimitLine(limit: limit, label: label)
         rightAxis.addLimitLine(limitLine)
         setNeedsDisplay()
+    }
+    
+    /// Display the limit line added in the chart.
+    /// - parameter display: 'true' to display and 'false' to remove the limit line added into the chart.
+    public func displayLimitLine(_ display: Bool){
+        if display{
+            rightAxis.addLimitLine(limitLine)
+            setNeedsDisplay()
+        }else{
+            removeLimit()
+        }
     }
     
     /// Remove the added limit line on the chart.
@@ -282,9 +291,6 @@ open class PredixBarChartView: BarChartView {
             
         case .enableSideLabels:
             toggleSideLabels(true)
-            
-        case .removeLimitLine:
-            removeLimit()
         }
     }
 
