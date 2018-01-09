@@ -287,6 +287,7 @@ class PredixBarChartViewTests: XCTestCase {
     }
 
     func testHandleOptionAnimateXY() {
+        let animateXY = "XY"
         let barChart = PredixBarChartView()
         let expectation = self.expectation(description: #function)
         barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
@@ -294,10 +295,12 @@ class PredixBarChartViewTests: XCTestCase {
         })
 
         barChart.handleOption(.animateXY)
+        XCTAssertEqual(barChart._animator.debugDescription, animateXY)
         waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testHandleOptionAnimateX() {
+        let animateX = "X"
         let barChart = PredixBarChartView()
         let expectation = self.expectation(description: #function)
         barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
@@ -305,17 +308,21 @@ class PredixBarChartViewTests: XCTestCase {
         })
 
         barChart.handleOption(.animateX)
+        XCTAssertEqual(barChart._animator.debugDescription, animateX)
         waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testHandleOptionAnimateY() {
+        let animateY = "Y"
         let barChart = PredixBarChartView()
         let expectation = self.expectation(description: #function)
         barChart._animator = TestPredixBarChartViewAnimator(animateHandler: {
             expectation.fulfill()
+
         })
 
         barChart.handleOption(.animateY)
+        XCTAssertEqual(barChart._animator.debugDescription, animateY)
         waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -410,6 +417,8 @@ class PredixBarChartViewTests: XCTestCase {
 
     class TestPredixBarChartViewAnimator: Animator {
         let animateHandler: () -> Void
+        var whatAnimateMI = "none"
+
         init(animateHandler: @escaping () -> Void) {
             self.animateHandler = animateHandler
             super.init()
@@ -417,14 +426,21 @@ class PredixBarChartViewTests: XCTestCase {
 
         open override func animate(xAxisDuration _: TimeInterval, yAxisDuration _: TimeInterval, easingX _: ChartEasingFunctionBlock?, easingY _: ChartEasingFunctionBlock?) {
             animateHandler()
+            whatAnimateMI = "XY"
         }
 
         open override func animate(xAxisDuration _: TimeInterval, easing _: ChartEasingFunctionBlock?) {
             animateHandler()
+            whatAnimateMI = "X"
         }
 
         open override func animate(yAxisDuration _: TimeInterval, easing _: ChartEasingFunctionBlock?) {
             animateHandler()
+            whatAnimateMI = "Y"
+        }
+
+        override var debugDescription: String {
+            return whatAnimateMI
         }
     }
 }
