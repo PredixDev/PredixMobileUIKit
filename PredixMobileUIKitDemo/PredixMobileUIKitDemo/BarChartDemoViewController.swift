@@ -51,7 +51,7 @@ class BarchartDemoViewController: UIViewController {
 
     // To enable or disable the legend
     @IBAction func enableLegendChanged(_ sender: UISwitch) {
-        if sender.isOn  {
+        if sender.isOn {
             barChartView.handleOption(.enableLegend)
         } else {
             barChartView.handleOption(.disableLegend)
@@ -73,11 +73,12 @@ class BarchartDemoViewController: UIViewController {
     @IBAction func stakedChanged(_ sender: UISwitch) {
         barChartView.stack(sender.isOn)
     }
-    
-    @IBAction func enableBarBordersChanged(_ sender: UISwitch) {
+
+    @IBAction func enableBarBordersChanged(_: UISwitch) {
         barChartView.handleOption(.toggleBarBorders)
     }
+
     @IBAction func enableLimitLineChanged(_ sender: UISwitch) {
-            barChartView.displayLimitLine(sender.isOn)
+        barChartView.displayLimitLine(sender.isOn)
     }
 }

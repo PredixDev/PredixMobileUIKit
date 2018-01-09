@@ -141,18 +141,18 @@ open class PredixBarChartView: BarChartView {
         rightAxis.addLimitLine(limitLine)
         setNeedsDisplay()
     }
-    
+
     /// Display the limit line added in the chart.
     /// - parameter display: 'true' to display and 'false' to remove the limit line added into the chart.
-    public func displayLimitLine(_ display: Bool){
-        if display{
+    public func displayLimitLine(_ display: Bool) {
+        if display {
             rightAxis.addLimitLine(limitLine)
             setNeedsDisplay()
-        }else{
+        } else {
             removeLimit()
         }
     }
-    
+
     /// Remove the added limit line on the chart.
     public func removeLimit() {
         rightAxis.removeLimitLine(limitLine)
@@ -288,7 +288,7 @@ open class PredixBarChartView: BarChartView {
 
         case .disableSideLabels:
             toggleSideLabels(false)
-            
+
         case .enableSideLabels:
             toggleSideLabels(true)
         }
