@@ -253,7 +253,7 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, true, "Left Axis drawLabelsEnabled should be true")
     }
 
-    func testHandleOptionToggValues() {
+    func testHandleOptionToggleValues() {
         let barChart = PredixBarChartView()
         var months: [String]!
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -319,6 +319,35 @@ class PredixBarChartViewTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
+    // MARK: PredixBarCharView Adding Displaying and Removing the Limit Line on the chart test cases
+
+    func testAddALimit() {
+        let barChart = PredixBarChartView()
+        barChart.addALimit(limit: 10.0, label: "LineLabel")
+        let limitLines = barChart.rightAxis.limitLines
+        XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
+    }
+
+    func testRemoveALimit() {
+        let barChart = PredixBarChartView()
+        barChart.addALimit(limit: 10.0, label: "LineLabel")
+        var limitLines = barChart.rightAxis.limitLines
+        XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
+        barChart.removeLimit()
+        limitLines = barChart.rightAxis.limitLines
+        XCTAssertEqual(limitLines.count, 0, "All Limit lines should be removed")
+    }
+
+    func testDisplayLimit() {
+        let barChart = PredixBarChartView()
+        barChart.displayLimitLine(true)
+        var limitLines = barChart.rightAxis.limitLines
+        XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
+        barChart.displayLimitLine(false)
+        limitLines = barChart.rightAxis.limitLines
+        XCTAssertEqual(limitLines.count, 0, "All Limit lines should be removed")
+    }
+
     // MARK: PredixBarCharView Creation of the chart test cases
 
     func testCreateChartWithAnimation() {
@@ -330,8 +359,40 @@ class PredixBarChartViewTests: XCTestCase {
         })
 
         barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
-        XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
+        XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded")
         waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func testCreateChartByProvidingBarColors() {
+
+        let barChart = PredixBarChartView()
+
+        var months: [String]!
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
+
+        let bar1 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.blue])
+        let bar2 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.red])
+        barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
+        let colors = barChart.barData?.getColors()
+        XCTAssertEqual([NSUIColor.blue, NSUIColor.red], colors!)
+    }
+
+    func testCreateChartByNotProvidingBarColors() {
+        let defautColor = NSUIColor.gray
+        let barChart = PredixBarChartView()
+
+        var months: [String]!
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+        let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
+
+        let bar1 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.blue])
+        let bar2 = Bar(unitsBought, label: "Units Bought")
+        barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
+        let colors = barChart.barData?.getColors()
+        XCTAssertEqual([NSUIColor.blue, defautColor], colors!)
     }
 
     func testloadAndStackChartWithAnimation() {

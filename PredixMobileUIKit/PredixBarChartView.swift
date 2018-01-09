@@ -40,7 +40,6 @@ public enum Option {
 public class Bar {
     var values: [Double]
     var label: String
-    /// If colors is not provided the default color is used.
     var colors: [UIColor] = []
 
     /// Initialize the values, label and color of the bar.
@@ -54,11 +53,13 @@ public class Bar {
     }
 
     /// Initialize the values and label of the bar.
+    /// A default color gray is used if color is not provided.
     /// - parameter Values: the values the bar hold.
     /// - parameter label: the bar label.
     public init(_ values: [Double], label: String) {
         self.values = values
         self.label = label
+        colors = [NSUIColor.gray]
     }
 }
 
@@ -142,7 +143,7 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    /// Display the limit line added in the chart.
+    /// Display the horizontal limit line added into the chart.
     /// - parameter display: 'true' to display and 'false' to remove the limit line added into the chart.
     public func displayLimitLine(_ display: Bool) {
         if display {
