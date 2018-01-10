@@ -417,7 +417,7 @@ class PredixBarChartViewTests: XCTestCase {
 
     class TestPredixBarChartViewAnimator: Animator {
         let animateHandler: () -> Void
-        var whatAnimateMI = "none"
+        var whatAnimationMI = "none"
 
         init(animateHandler: @escaping () -> Void) {
             self.animateHandler = animateHandler
@@ -426,21 +426,21 @@ class PredixBarChartViewTests: XCTestCase {
 
         open override func animate(xAxisDuration _: TimeInterval, yAxisDuration _: TimeInterval, easingX _: ChartEasingFunctionBlock?, easingY _: ChartEasingFunctionBlock?) {
             animateHandler()
-            whatAnimateMI = "XY"
+            whatAnimationMI = "XY"
         }
 
         open override func animate(xAxisDuration _: TimeInterval, easing _: ChartEasingFunctionBlock?) {
             animateHandler()
-            whatAnimateMI = "X"
+            whatAnimationMI = "X"
         }
 
         open override func animate(yAxisDuration _: TimeInterval, easing _: ChartEasingFunctionBlock?) {
             animateHandler()
-            whatAnimateMI = "Y"
+            whatAnimationMI = "Y"
         }
 
         override var debugDescription: String {
-            return whatAnimateMI
+            return whatAnimationMI
         }
     }
 }
