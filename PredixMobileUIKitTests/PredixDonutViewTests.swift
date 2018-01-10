@@ -192,26 +192,28 @@ class PredixDonutViewTests: XCTestCase {
         XCTAssertEqual(0.4, donut.frame.size.height, accuracy: 0.01)
     }
 
-//    func testloadLabelsAndValuesWithoutAnimation() {
-//        let donut = PredixDonutView()
-//        donut.renderer?.animator = TestAnimator(animateHandler: {
-//            XCTFail("Animation should not have been called")
-//        })
-//
-//        let exampleValues: [String: Double] = [
-//            "IPA": 15,
-//            "Stout": 12,
-//            "Porter": 9,
-//            "Lambic": 8,
-//            "Pale Ale": 7,
-//            "Hefeweizen": 4,
-//            "Pilsner": 1,
-//            "Lager": 1
-//        ]
-//        donut.loadLabelsAndValues(exampleValues, showWithDefaultAnimation: false)
-//        // just ensure we created some data
-//        XCTAssertTrue(donut.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
-//    }
+    func testloadLabelsAndValuesWithoutAnimation() {
+        let donut = PredixDonutView()
+        let animator = TestAnimator(animateHandler: {
+            XCTFail("Animation should not have been called")
+        })
+        animator.delegate = donut
+        donut.renderer = PieChartRenderer(chart: donut, animator: animator, viewPortHandler: donut.viewPortHandler)
+
+        let exampleValues: [String: Double] = [
+            "IPA": 15,
+            "Stout": 12,
+            "Porter": 9,
+            "Lambic": 8,
+            "Pale Ale": 7,
+            "Hefeweizen": 4,
+            "Pilsner": 1,
+            "Lager": 1
+        ]
+        donut.loadLabelsAndValues(exampleValues, showWithDefaultAnimation: false)
+        // just ensure we created some data
+        XCTAssertTrue(donut.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
+    }
 
     func testloadLabelsAndValuesWithAnimation() {
         let expectation = self.expectation(description: #function)
