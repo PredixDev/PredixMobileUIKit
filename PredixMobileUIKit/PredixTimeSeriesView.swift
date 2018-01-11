@@ -80,14 +80,9 @@ open class PredixTimeSeriesView: LineChartView {
             colorCounter += 1
             var dataEntries = [ChartDataEntry]()
             
-            //when the new version of the SDK is release we can flatten the model structure so we don't have to do an n^2 loop to load the values
-            if let dataPointResults = dataPoint.results {
-                for dataPointResult in dataPointResults {
-                    if let values = dataPointResult.values {
-                        for dataPointValue in values {
-                            dataEntries.append(ChartDataEntry(x: Double(dataPointValue.timestamp), y: dataPointValue.measure, data: NSNumber(value: dataPointValue.quality.rawValue)))
-                        }
-                    }
+            if let dataPointValues = dataPoint.dataPointValues {
+                for dataPointValue in dataPointValues {
+                    dataEntries.append(ChartDataEntry(x: Double(dataPointValue.timestamp), y: dataPointValue.measure, data: NSNumber(value: dataPointValue.quality.rawValue)))
                 }
             }
             
