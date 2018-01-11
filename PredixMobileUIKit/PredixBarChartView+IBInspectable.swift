@@ -104,17 +104,6 @@ extension PredixBarChartView {
         }
     }
 
-    /// the chart border color *default: * white
-    @IBInspectable
-    open var chartBorderColor: UIColor {
-        get {
-            return borderColor
-        }
-        set(newValue) {
-            borderColor = newValue
-        }
-    }
-
     /// the chart x axis text color *default:* black
     @IBInspectable
     open var xAxisTextColor: UIColor {

@@ -146,20 +146,6 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(barChart.legend.verticalAlignment, .top, "Legend should be aligned to bottom")
     }
 
-    // MARK: Chart Border Color test Cases
-
-    func testSetCharBorderColor() {
-        let barChart = PredixBarChartView()
-        barChart.chartBorderColor = .red
-        XCTAssertEqual(UIColor.red, barChart.borderColor, "Chart Border Color should be red")
-    }
-
-    func testGetChartBorderColor() {
-        let barChart = PredixBarChartView()
-        barChart.borderColor = .red
-        XCTAssertEqual(UIColor.red, barChart.chartBorderColor, "Chart Border Color should be red")
-    }
-
     // MARK: Chart X Axis Text Color Test Cases
 
     func testSetxAxisTextColor() {
