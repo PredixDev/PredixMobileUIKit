@@ -194,9 +194,11 @@ class PredixDonutViewTests: XCTestCase {
 
     func testloadLabelsAndValuesWithoutAnimation() {
         let donut = PredixDonutView()
-        donut.renderer?.animator = TestAnimator(animateHandler: {
+        let animator = TestAnimator(animateHandler: {
             XCTFail("Animation should not have been called")
         })
+        animator.delegate = donut
+        donut.renderer = PieChartRenderer(chart: donut, animator: animator, viewPortHandler: donut.viewPortHandler)
 
         let exampleValues: [String: Double] = [
             "IPA": 15,
