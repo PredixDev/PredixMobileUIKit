@@ -157,25 +157,6 @@ open class PredixTimeSeriesView: LineChartView {
         activityView.autoresizingMask = fullyScreenResizeMask
         addSubview(activityView)
     }
-    
-    // MARK: - private functions
-    
-    private func showSpinner() {
-        guard !subviews.contains(grayView) else {
-            return
-        }
-        
-        self.isUserInteractionEnabled = false
-        self.insertSubview(grayView, belowSubview: activityView)
-        self.activityView.startAnimating()
-    }
-    
-    private func hideSpinner() {
-        grayView.removeFromSuperview()
-        self.activityView.stopAnimating()
-        self.isUserInteractionEnabled = true
-    }
-    
 }						
 
 /// :nodoc:

@@ -30,18 +30,18 @@ extension PredixTimeSeriesView {
             var dataPoints: [ChartDataEntry] = []
             for j in 0...range {
                 let time = Double(lowerRange + j)
-                let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) )
+                let offset =  Double(50 + (i * 10))
+                let measure = Double(offset + ((j % 2 == 0) ? offset + 2 : offset - 2))
                 dataPoints.append(ChartDataEntry(x: time, y: measure, data: NSNumber(value: 3)))
             }
             colorCounter += 1
             
+            let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
             let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(i)")
             dataSet.lineCapType = .round
             dataSet.mode = .horizontalBezier
             dataSet.lineWidth = 1.5
             dataSet.circleRadius = 0.0
-            
-            let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
             dataSet.setColor(color)
             dataSet.setCircleColor(color)
             dataSet.colors = [color]
