@@ -10,7 +10,7 @@ import XCTest
 
 @testable import Charts
 @testable import PredixMobileUIKit
-import PredixSDK
+@testable import PredixSDK
 
 class PredixTimeSeriesViewTests: XCTestCase {
     
@@ -159,7 +159,7 @@ class PredixTimeSeriesViewTests: XCTestCase {
     
     func testloadLabelsAndValues() {
         let tsView = PredixTimeSeriesView()
-        tsView.loadLabelsAndValues(timeSeriesTags: generateDummyData())
+        tsView.load(dataSets: generateDummyData())
         XCTAssertTrue(tsView.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
     }
     
@@ -304,10 +304,11 @@ class PredixTimeSeriesViewTests: XCTestCase {
     }
     
     func testSettingThePredixTimeSeriesViewDelegateWithLoadTimeSeriesTagsDefinedLoadsDataIntoTheChart() {
-        let tagData = [TimeSeriesTag(name: "MyData", dataPoints: [TimeSeriesDataPoint(epochInMs: 1, measure: 2)])]
-        let delegate = RawDataTimeSeriesViewDelegate(data: tagData)
+        let delegate = RawDataTimeSeriesViewDelegate()
+        let dataSet = LineChartDataSet(values: [ChartDataEntry(x: 1, y: 2)], label: "MyData")
         
         let view = PredixTimeSeriesView(frame: CGRect())
+        view.load(dataSets: [dataSet])
         view.timeSeriesDataDelegate = delegate
         
         let chartData = view.data?.dataSets.first?.entryForIndex(0)
@@ -316,76 +317,88 @@ class PredixTimeSeriesViewTests: XCTestCase {
         XCTAssertEqual(2.0, chartData?.y)
     }
     
-//    func testSettingThePredixTimeSeriesViewDelegateWithLoadTimeSeriesDataDefinedLoadsDataIntoTheChart() {
-//        let values = [1.0, 2.0]
-//        let results = ["values": [values]]
-//        let jsonArray = ["results": [results]]
-//        let tagData: [Tag] = [Tag(json: jsonArray)!]
-//        let delegate = SDKTimeSeriesViewDelegate(data: tagData)
-//        
-//        let view = PredixTimeSeriesView(frame: CGRect())
-//        view.timeSeriesDataDelegate = delegate
-//        
-//        let chartData = view.data?.dataSets.first?.entryForIndex(0)
-//        
-//        XCTAssertEqual(1.0, chartData?.x)
-//        XCTAssertEqual(2.0, chartData?.y)
-//    }
-    
     func testTheSelectedGraphValueIsToldToTheDelegate() {
-        let tagData = [TimeSeriesTag(name: "MyData", dataPoints: [TimeSeriesDataPoint(epochInMs: 1, measure: 2)])]
-        let delegate = RawDataTimeSeriesViewDelegate(data: tagData)
+        let delegate = RawDataTimeSeriesViewDelegate()
+        let dataSet = LineChartDataSet(values: [ChartDataEntry(x: 1, y: 2)], label: "MyData")
         
         let view = PredixTimeSeriesView(frame: CGRect())
+        view.load(dataSets: [dataSet])
         view.timeSeriesDataDelegate = delegate
         view.highlightValue(x: 1, dataSetIndex: 0)
         
         XCTAssertEqual(1.0, delegate.selectedTimeScale)
     }
     
-    private func generateDummyData() -> [TimeSeriesTag] {
-        var tags: [TimeSeriesTag] = []
+    func testLoadingChartDataUsingTheSDKTagDataPointModel() {
+        let groups = [["name": "aName", "type": "aType", "value": 1]]
+        let values = [1, 2, 3]
+        let dataPoint = TagDataPoint(json: ["name": "MyTag", "results": [["groups": groups, "values": [values]]]])
+        
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.load(tagDataPoints: [dataPoint])
+        let dataSet = view.data?.dataSets.first
+        let chartData = dataSet?.entryForIndex(0)
+        
+        XCTAssertEqual("MyTag", dataSet?.label)
+        XCTAssertEqual(1, dataSet?.entryCount ?? 0)
+        XCTAssertEqual(1, chartData?.x)
+        XCTAssertEqual(2, chartData?.y)
+        XCTAssertEqual(3, chartData?.data as? Int ?? 0)
+    }
+    
+    func testLoadingChartDataUsingTheSDKDataPointResponseModel() {
+        let groups = [["name": "aName", "type": "aType", "value": 1]]
+        let values = [1, 2, 3]
+        let tags = [["name": "MyTag", "results": [["groups": groups, "values": [values]]]]]
+        let dataPointResponse = DataPointResponse(json: ["stats": ["rawCount": 1], "tags": tags] as [String: Any])
+        
+        let view = PredixTimeSeriesView(frame: CGRect())
+        view.load(dataPointResponse: dataPointResponse)
+        let dataSet = view.data?.dataSets.first
+        let chartData = dataSet?.entryForIndex(0)
+        
+        XCTAssertEqual("MyTag", dataSet?.label)
+        XCTAssertEqual(1, dataSet?.entryCount ?? 0)
+        XCTAssertEqual(1, chartData?.x)
+        XCTAssertEqual(2, chartData?.y)
+        XCTAssertEqual(3, chartData?.data as? Int ?? 0)
+    }
+    
+    private func generateDummyData() -> [LineChartDataSet] {
+        var tags: [LineChartDataSet] = []
         let range = 8
         let upperRange = 2018
         let lowerRange = upperRange - range
+        var colorCounter: Int = 0
         for i in 1...3 {
-            var dataPoints: [TimeSeriesDataPoint] = []
+            var dataPoints: [ChartDataEntry] = []
             for j in 0...range {
                 let time = Double(lowerRange + j)
                 let measure = Double((arc4random_uniform(UInt32(115)) + UInt32(50)) )
-                let dataPoint = TimeSeriesDataPoint(epochInMs: Double(time), measure: measure)
-                dataPoints.append(dataPoint)
+                dataPoints.append(ChartDataEntry(x: time, y: measure, data: NSNumber(value: 3)))
             }
-            let tag = TimeSeriesTag(name: "TAG_\(i)", dataPoints: dataPoints)
-            tags.append(tag)
+            colorCounter += 1
+            
+            let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(i)")
+            dataSet.lineCapType = .round
+            dataSet.mode = .horizontalBezier
+            dataSet.lineWidth = 1.5
+            dataSet.circleRadius = 0.0
+            
+            let color: UIColor = UIColor.Predix.DataVisualizationSets.regular[colorCounter % UIColor.Predix.DataVisualizationSets.regular.count]
+            dataSet.setColor(color)
+            dataSet.setCircleColor(color)
+            dataSet.colors = [color]
+            dataSet.circleColors = [.red]
+            tags.append(dataSet)
         }
+        
         return tags
     }
 }
 
-//private class SDKTimeSeriesViewDelegate: TimeSeriesViewDelegate {
-//    private let timeSeriesTagData: [Tag]?
-//
-//    init(data: [Tag]?) {
-//        self.timeSeriesTagData = data
-//    }
-//
-//    func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void) {
-//        completionHandler(timeSeriesTagData)
-//    }
-//}
-
 private class RawDataTimeSeriesViewDelegate: TimeSeriesViewDelegate {
-    private let timeSeriesTagData: [TimeSeriesTag]?
     var selectedTimeScale: Double?
-    
-    init(data: [TimeSeriesTag]?) {
-        self.timeSeriesTagData = data
-    }
-    
-    func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?) -> Void) {
-        completionHandler(timeSeriesTagData)
-    }
     
     func valueSelected(timeSeriesView: PredixTimeSeriesView, timeScale: Double) {
         self.selectedTimeScale = timeScale

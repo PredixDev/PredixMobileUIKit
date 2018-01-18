@@ -13,30 +13,9 @@ import PredixSDK
 /// PredixTimeSeriesView -- TimeSeries chart built with `LineChartView`.
 @IBDesignable
 open class PredixTimeSeriesView: LineChartView {
-    ///A delegate to allow a class to know when it's time to load data into the view
+    /// A delegate to allow a class to know when it's time to load data into the view
     @IBOutlet
-    open weak var timeSeriesDataDelegate: TimeSeriesViewDelegate? {
-        didSet {
-            
-            /*if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesData {
-                self.showSpinner()
-                dataFunction { (tags) in
-                    Utilities.runOnMainThread {
-                        self.loadLabelsAndValues(tags: tags ?? [])
-                        self.hideSpinner()
-                    }
-                }
-            } else*/ if let dataFunction = timeSeriesDataDelegate?.loadTimeSeriesTags { //<-- Will return once the Timeseries refactoring is complete
-                self.showSpinner()
-                dataFunction { (tags) in
-                    Utilities.runOnMainThread {
-                        self.loadLabelsAndValues(timeSeriesTags: tags ?? [])
-                        self.hideSpinner()
-                    }
-                }
-            }
-        }
-    }
+    open weak var timeSeriesDataDelegate: TimeSeriesViewDelegate?
     /// set the color scheme to dark *default:* false
     @IBInspectable
     open var darkTheme: Bool = false {
@@ -64,7 +43,7 @@ open class PredixTimeSeriesView: LineChartView {
     /// the data point font *default:* System font with system font size
     open var dataPointFont: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
     
-    ///Allows a developer to set some basic padding for the chart legend labels *Default 10.0*
+    /// Allows a developer to set some basic padding for the chart legend labels *Default 10.0*
     open var legendLabelPadding: CGFloat = 10.0
     
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
@@ -86,20 +65,28 @@ open class PredixTimeSeriesView: LineChartView {
     
     // MARK: - public functions
     
-    /// Helper function to populate the timeseries chart based on timeseries tags array.
-    /// - parameter tags: Array of `TimeSeriesTag`.
-    public func loadLabelsAndValues(timeSeriesTags: [TimeSeriesTag]) {
+    /// Loads Time Series data into the chart view using the data from a DataPointResponse obtained from the PredixSDK
+    open func load(dataPointResponse: DataPointResponse) {
+        if let dataPoints = dataPointResponse.dataPoints {
+            self.load(tagDataPoints: dataPoints)
+        }
+    }
+    
+    /// Loads Time Series data into the chart view using the data from an array of TagDataPoint obtained from the PredixSDK
+    open func load(tagDataPoints: [TagDataPoint]) {
         var dataSets: [LineChartDataSet] = []
         var colorCounter: Int = 0
-        for tag in timeSeriesTags {
-            var dataEntries: [ChartDataEntry] = []
-            for dataPoint in tag.dataPoints {
-                let dataEntry: ChartDataEntry = ChartDataEntry(x: dataPoint.epochInMs, y: dataPoint.measure) //quality can be shown as an image
-                dataEntries.append(dataEntry)
-            }
+        for dataPoint in tagDataPoints {
             colorCounter += 1
+            var dataEntries = [ChartDataEntry]()
             
-            let dataSet: LineChartDataSet = LineChartDataSet(values: dataEntries, label: tag.name)
+            if let dataPointValues = dataPoint.dataPointValues {
+                for dataPointValue in dataPointValues {
+                    dataEntries.append(ChartDataEntry(x: Double(dataPointValue.timestamp), y: dataPointValue.measure, data: NSNumber(value: dataPointValue.quality.rawValue)))
+                }
+            }
+            
+            let dataSet: LineChartDataSet = LineChartDataSet(values: dataEntries, label: dataPoint.tagName)
             dataSet.lineCapType = .round
             dataSet.mode = .horizontalBezier
             dataSet.lineWidth = 1.5
@@ -113,35 +100,19 @@ open class PredixTimeSeriesView: LineChartView {
             dataSets.append(dataSet)
         }
         
+        self.load(dataSets: dataSets)
+    }
+    
+    /// Loads Time Series data using a LineChartDataSet.  LineChartDataSet provides the ability to customize the line colors, types and styles beyond the defaults provided for a Time Series TagDataPoint or DataPointResponse
+    open func load(dataSets: [LineChartDataSet]) {
         let data: LineChartData = LineChartData(dataSets: dataSets)
         data.setValueTextColor(NSUIColor.white)
         data.setValueFont(dataPointFont)
         self.data = data
         self.notifyDataSetChanged()
         self.setNeedsLayout()
-        
     }
-    ///Loads data from a TimeseriesManager response
-//    public func loadLabelsAndValues(tags: [Tag]) { //<-- Will return once the Timeseries refactoring is complete
-//        var responseTags: [TimeSeriesTag] = []
-//        var dataPoints: [TimeSeriesDataPoint] = []
-//
-//        for currentTag in tags {
-//            for result in currentTag.results {
-//                for values in result.values {
-//                    if let dPoints = values as? [Double] {
-//                        let dataPoint = TimeSeriesDataPoint(epochInMs: dPoints[0], measure: dPoints[1])
-//                        dataPoints.append(dataPoint)
-//                    }
-//                }
-//
-//            }
-//            let tag = TimeSeriesTag(name: currentTag.name, dataPoints: dataPoints, attributes: [:])
-//            responseTags.append(tag)
-//        }
-//
-//        self.loadLabelsAndValues(timeSeriesTags: responseTags)
-//    }
+
     /// :nodoc:
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -186,37 +157,17 @@ open class PredixTimeSeriesView: LineChartView {
         activityView.autoresizingMask = fullyScreenResizeMask
         addSubview(activityView)
     }
-    
-    private func showSpinner() {
-        guard !subviews.contains(grayView) else {
-            return
-        }
-        
-        self.isUserInteractionEnabled = false
-        self.insertSubview(grayView, belowSubview: activityView)
-        self.activityView.startAnimating()
-    }
-    
-    private func hideSpinner() {
-        grayView.removeFromSuperview()
-        self.activityView.stopAnimating()
-        self.isUserInteractionEnabled = true
-    }
-    
-}
+}						
+
 /// :nodoc:
 extension PredixTimeSeriesView: ChartViewDelegate {
     /// :nodoc:
     public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        self.timeSeriesDataDelegate?.valueSelected?(timeSeriesView: self, timeScale: highlight.x)
+        self.timeSeriesDataDelegate?.valueSelected(timeSeriesView: self, timeScale: highlight.x)
     }
 }
 ///A delegate to allow a class to know when it's time to load data into the view
 @objc public protocol TimeSeriesViewDelegate {
-    ///Will be called to ask to load time series data based on the TimeSeriesTag object
-    @objc optional func loadTimeSeriesTags(completionHandler: @escaping ([TimeSeriesTag]?) -> Void)
-    ///Will be called to ask to load time series data based on the TimeSeriesManager Tag object
-//    @objc optional func loadTimeSeriesData(completionHandler: @escaping ([Tag]?) -> Void) //<-- Will return once the Timeseries refactoring is complete
     ///Notifies a delegate when an item on a chart is selected by the user
-    @objc optional func valueSelected(timeSeriesView: PredixTimeSeriesView, timeScale: Double)
+    func valueSelected(timeSeriesView: PredixTimeSeriesView, timeScale: Double)
 }
