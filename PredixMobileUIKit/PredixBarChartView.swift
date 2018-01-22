@@ -10,7 +10,7 @@ import Charts
 import Foundation
 import PredixSDK
 
-// MARK: - The Option Enum
+// MARK: - The Options Enum
 
 /// List of animation options that can be used on the Bar Chart
 public enum BarChartAnimationOption {
@@ -22,6 +22,7 @@ public enum BarChartAnimationOption {
     case animateXY
 }
 
+/// List of toggle options that can be used on the Bart Chart
 public enum BarChartToggleOption {
     /// toggle on or off, Bars value on the chart
     case toggleValues
@@ -266,7 +267,7 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Handle the options provided
-    /// - parameter option: choose one of the option from the BarChartOption enum
+    /// - parameter option: choose one of the option from the BarChartToggleOption enum
     public func changeToggleOption(_ barChartOption: BarChartToggleOption) {
         switch barChartOption {
         case .toggleValues:
