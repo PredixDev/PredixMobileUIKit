@@ -12,11 +12,13 @@ import UIKit
 
 class BarchartDemoViewController: UIViewController {
 
-    @IBOutlet var verticalLineSlider: UISlider!
+    @IBOutlet var horizontalSlider: UISlider!
     @IBOutlet var enabledLegendSwitch: UISwitch!
     @IBOutlet var optionsButton: UIButton!
     @IBOutlet var displayToggle: UISwitch!
     @IBOutlet var barChartView: PredixBarChartView!
+
+    let limitLinelabel = "Target"
 
     override func viewDidLoad() {
         title = "Unit Bought vs Units Sold"
@@ -32,44 +34,36 @@ class BarchartDemoViewController: UIViewController {
     @IBAction func optionButtonTapped(_: UIButton) {
         let alert = UIAlertController(title: "Bart Chart Animations", message: "Choose an animation", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Animate X", style: .default) { _ in
-            self.barChartView.handleOption(.animateX)
+            self.barChartView.changeAnimationOption(.animateX)
         })
 
         alert.addAction(UIAlertAction(title: "Animte Y", style: .default) { _ in
-            self.barChartView.handleOption(.animateY)
+            self.barChartView.changeAnimationOption(.animateY)
         })
 
         alert.addAction(UIAlertAction(title: "Animte XY", style: .default) { _ in
-            self.barChartView.handleOption(.animateXY)
+            self.barChartView.changeAnimationOption(.animateXY)
         })
         present(alert, animated: true)
     }
 
-    @IBAction func verticalLineValueChanged(_: UISlider) {
+    @IBAction func horizontalValueChanged(_: UISlider) {
         displayToggle.setOn(true, animated: false)
         barChartView.removeLimitLine()
-        barChartView.addLimitLine(limit: Double(verticalLineSlider.value), label: "Target")
+        barChartView.addLimitLine(limit: Double(horizontalSlider.value), label: limitLinelabel)
     }
 
     // To enable or disable the legend
-    @IBAction func enableLegendChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            barChartView.handleOption(.enableLegend)
-        } else {
-            barChartView.handleOption(.disableLegend)
-        }
+    @IBAction func enableLegendChanged(_: UISwitch) {
+        barChartView.changeToggleOption(.toggleLegend)
     }
 
-    @IBAction func sideLabelsChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            barChartView.handleOption(.enableSideLabels)
-        } else {
-            barChartView.handleOption(.disableSideLabels)
-        }
+    @IBAction func sideLabelsChanged(_: UISwitch) {
+        barChartView.changeToggleOption(.toggleSideLabels)
     }
 
     @IBAction func valuesChanged(_: UISwitch) {
-        barChartView.handleOption(.toggleValues)
+        barChartView.changeToggleOption(.toggleValues)
     }
 
     @IBAction func stakedChanged(_ sender: UISwitch) {
@@ -77,11 +71,15 @@ class BarchartDemoViewController: UIViewController {
     }
 
     @IBAction func enableBarBordersChanged(_: UISwitch) {
-        barChartView.handleOption(.toggleBarBorders)
+        barChartView.changeToggleOption(.toggleBarBorders)
     }
 
     @IBAction func enableLimitLineChanged(_ sender: UISwitch) {
         print(sender.isOn)
-        barChartView.displayLimitLine(sender.isOn)
+        if sender.isOn {
+            barChartView.addLimitLine(limit: Double(horizontalSlider.value), label: limitLinelabel)
+        } else {
+            barChartView.removeLimitLine()
+        }
     }
 }

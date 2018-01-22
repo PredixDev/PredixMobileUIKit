@@ -12,26 +12,25 @@ import PredixSDK
 
 // MARK: - The Option Enum
 
-/// List of options that can be used on the Bar Chart
-public enum Option {
-    /// toggle on or off, Bars value on the chart
-    case toggleValues
-    /// toggle on or off, Bar borders on the chart
-    case toggleBarBorders
-    /// enable the legend display on the chart
-    case enableLegend
-    /// disable the legend display on the chart
-    case disableLegend
-    /// disable side labels on the chart
-    case disableSideLabels
-    /// enable side labels on the chart
-    case enableSideLabels
+/// List of animation options that can be used on the Bar Chart
+public enum BarChartAnimationOption {
     /// animate the x axis on the chart
     case animateX
     /// animate the y axis on the chart
     case animateY
     /// animate both the x and y axies on the chart
     case animateXY
+}
+
+public enum BarChartToggleOption {
+    /// toggle on or off, Bars value on the chart
+    case toggleValues
+    /// toggle on or off, Bar borders on the chart
+    case toggleBarBorders
+    /// toggle on or off, the legend display on the chart
+    case toggleLegend
+    /// toggle on or off, side labels on the chart
+    case toggleSideLabels
 }
 
 // MARK: - The Bar Class
@@ -143,17 +142,6 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    /// Display the horizontal limit line added into the chart.
-    /// - parameter display: 'true' to display and 'false' to remove the limit line added into the chart.
-    public func displayLimitLine(_ display: Bool) {
-        if display {
-            rightAxis.addLimitLine(limitLine)
-            setNeedsDisplay()
-        } else {
-            removeLimitLine()
-        }
-    }
-
     /// Remove the added limit line on the chart.
     public func removeLimitLine() {
         rightAxis.removeLimitLine(limitLine)
@@ -175,7 +163,7 @@ open class PredixBarChartView: BarChartView {
         stack(stackBars)
 
         if showWithDefaultAnimation {
-            handleOption(.animateXY)
+            changeAnimationOption(.animateXY)
         }
     }
 
@@ -263,15 +251,9 @@ open class PredixBarChartView: BarChartView {
     // MARK: PredixBarChartView  Handling Option Logic
 
     /// Handle the options provided
-    /// - parameter option: choose one of the option from the Option enum
-    public func handleOption(_ option: Option) {
-        switch option {
-        case .toggleValues:
-            toggleValues()
-
-        case .toggleBarBorders:
-            toggleBarBorders()
-
+    /// - parameter option: choose one of the option from the AnimationOption enum
+    public func changeAnimationOption(_ animationOption: BarChartAnimationOption) {
+        switch animationOption {
         case .animateX:
             animate(xAxisDuration: 3, easingOption: .easeInBounce)
 
@@ -280,18 +262,24 @@ open class PredixBarChartView: BarChartView {
 
         case .animateXY:
             animate(xAxisDuration: 3.0, yAxisDuration: 3.0, easingOption: .easeInBounce)
+        }
+    }
 
-        case .enableLegend:
-            toggleLegend(true)
+    /// Handle the options provided
+    /// - parameter option: choose one of the option from the BarChartOption enum
+    public func changeToggleOption(_ barChartOption: BarChartToggleOption) {
+        switch barChartOption {
+        case .toggleValues:
+            toggleValues()
 
-        case .disableLegend:
-            toggleLegend(false)
+        case .toggleBarBorders:
+            toggleBarBorders()
 
-        case .disableSideLabels:
-            toggleSideLabels(false)
+        case .toggleLegend:
+            toggleLegend()
 
-        case .enableSideLabels:
-            toggleSideLabels(true)
+        case .toggleSideLabels:
+            toggleSideLabels()
         }
     }
 
@@ -315,16 +303,25 @@ open class PredixBarChartView: BarChartView {
 
     /// Enable and disable the legends on the chart
     /// - parameter enable: `true` to enable, `false` to disable
-    internal func toggleLegend(_ toggle: Bool) {
-        legend.enabled = toggle
+    internal func toggleLegend() {
+        if legend.isEnabled {
+            legend.enabled = false
+        } else {
+            legend.enabled = true
+        }
         setNeedsDisplay()
     }
 
     /// Enable and disable the side labels
     /// - parameter toggle: `true` to enable, `false` to disable
-    internal func toggleSideLabels(_ toggle: Bool) {
-        rightAxis.drawLabelsEnabled = toggle
-        leftAxis.drawLabelsEnabled = toggle
+    internal func toggleSideLabels() {
+        if rightAxis.isDrawLabelsEnabled && leftAxis.isDrawLabelsEnabled {
+            rightAxis.drawLabelsEnabled = false
+            leftAxis.drawLabelsEnabled = false
+        } else {
+            rightAxis.drawLabelsEnabled = true
+            leftAxis.drawLabelsEnabled = true
+        }
         setNeedsDisplay()
     }
 }

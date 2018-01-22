@@ -211,35 +211,34 @@ class PredixBarChartViewTests: XCTestCase {
         XCTAssertEqual(0.4, barChart.frame.size.height, accuracy: 0.01)
     }
 
-    // MARK: PredixBarCharView HandleOptionMethods
+    // MARK: PredixBarCharView ChangeToggleOption test cases
 
-    func testHandleOptionEnableLegend() {
+    func testChangeToggleOptionOfTheBarChartLegend() {
         let barChart = PredixBarChartView()
-        barChart.handleOption(.enableLegend)
-        XCTAssertEqual(barChart.legend.enabled, true, "Option enableLegend should be true")
+        barChart.legend.enabled = false
+
+        XCTAssertEqual(barChart.legend.enabled, false, "Legend should be set to false")
+        barChart.changeToggleOption(.toggleLegend)
+        XCTAssertEqual(barChart.legend.enabled, true, "Legend has been toggle, therefore the legend should be set to true")
+        barChart.changeToggleOption(.toggleLegend)
+        XCTAssertEqual(barChart.legend.enabled, false, "Legend has been toggle again, therefore the legend should be set to false ")
     }
 
-    func testHandleOptionDisableLegend() {
+    func testChangeToggleOptionOfSideLabels() {
         let barChart = PredixBarChartView()
-        barChart.handleOption(.disableLegend)
-        XCTAssertEqual(barChart.legend.enabled, false, "Option disableLegend should be false")
+        barChart.rightAxis.drawLabelsEnabled = false
+        barChart.leftAxis.drawLabelsEnabled = false
+
+        barChart.changeToggleOption(.toggleSideLabels)
+        XCTAssertEqual(barChart.rightAxis.drawLabelsEnabled, true, "Side labels has been toggle, therefore the right axis drawLabelsEnabled should be true")
+        XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, true, "Side labels has been toggle, therefore the left axis drawLabelsEnabled should be true")
+
+        barChart.changeToggleOption(.toggleSideLabels)
+        XCTAssertEqual(barChart.rightAxis.drawLabelsEnabled, false, "Side labels has been toggle, therefore the right axis drawLabelsEnabled should be true")
+        XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, false, "Side labels has been toggle, therefore the left axis drawLabelsEnabled should be true")
     }
 
-    func testHandleOptionDisableSideLabels() {
-        let barChart = PredixBarChartView()
-        barChart.handleOption(.disableSideLabels)
-        XCTAssertEqual(barChart.rightAxis.drawLabelsEnabled, false, "Right Axis drawLabelsEnabled should be false")
-        XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, false, "Left Axis drawLabelsEnabled should be false")
-    }
-
-    func testHandleOptionEnableSideLabels() {
-        let barChart = PredixBarChartView()
-        barChart.handleOption(.enableSideLabels)
-        XCTAssertEqual(barChart.rightAxis.drawLabelsEnabled, true, "Right Axis drawLabelsEnabled should be true")
-        XCTAssertEqual(barChart.leftAxis.drawLabelsEnabled, true, "Left Axis drawLabelsEnabled should be true")
-    }
-
-    func testHandleOptionToggleValues() {
+    func testChangeOptionToggleValues() {
         let barChart = PredixBarChartView()
         var months: [String]!
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -252,19 +251,19 @@ class PredixBarChartViewTests: XCTestCase {
         barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfaceBuilder")
 
-        barChart.handleOption(.toggleValues)
+        barChart.changeToggleOption(.toggleValues)
         XCTAssertEqual(barChart.data?._dataSets[0].drawValuesEnabled, false, "Value on a the first data set should be set to false")
 
-        barChart.handleOption(.toggleValues)
+        barChart.changeToggleOption(.toggleValues)
         XCTAssertEqual(barChart.data?._dataSets[0].drawValuesEnabled, true, "Value on a the first data set should be set to true")
     }
 
-    func testHandleOptionToggleBarBorders() {
+    func testChangeOptionToggleBarBorders() {
         let barChart = PredixBarChartView()
         barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
         XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded")
 
-        barChart.handleOption(.toggleBarBorders)
+        barChart.changeToggleOption(.toggleBarBorders)
 
         for set in barChart.data!.dataSets {
             let get = set as? BarChartDataSet
@@ -272,7 +271,7 @@ class PredixBarChartViewTests: XCTestCase {
         }
     }
 
-    func testHandleOptionAnimateXY() {
+    func testChangeOptionAnimateXY() {
         let animateXY = "XY"
         let barChart = PredixBarChartView()
         let expectation = self.expectation(description: #function)
@@ -280,12 +279,12 @@ class PredixBarChartViewTests: XCTestCase {
             expectation.fulfill()
         })
 
-        barChart.handleOption(.animateXY)
+        barChart.changeAnimationOption(.animateXY)
         XCTAssertEqual(barChart._animator.debugDescription, animateXY)
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-    func testHandleOptionAnimateX() {
+    func testChangeOptionAnimateX() {
         let animateX = "X"
         let barChart = PredixBarChartView()
         let expectation = self.expectation(description: #function)
@@ -293,12 +292,12 @@ class PredixBarChartViewTests: XCTestCase {
             expectation.fulfill()
         })
 
-        barChart.handleOption(.animateX)
+        barChart.changeAnimationOption(.animateX)
         XCTAssertEqual(barChart._animator.debugDescription, animateX)
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-    func testHandleOptionAnimateY() {
+    func testChangeOptionAnimateY() {
         let animateY = "Y"
         let barChart = PredixBarChartView()
         let expectation = self.expectation(description: #function)
@@ -307,7 +306,7 @@ class PredixBarChartViewTests: XCTestCase {
 
         })
 
-        barChart.handleOption(.animateY)
+        barChart.changeAnimationOption(.animateY)
         XCTAssertEqual(barChart._animator.debugDescription, animateY)
         waitForExpectations(timeout: 1, handler: nil)
     }
@@ -327,16 +326,6 @@ class PredixBarChartViewTests: XCTestCase {
         var limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
         barChart.removeLimitLine()
-        limitLines = barChart.rightAxis.limitLines
-        XCTAssertEqual(limitLines.count, 0, "All Limit lines should be removed")
-    }
-
-    func testDisplayLimit() {
-        let barChart = PredixBarChartView()
-        barChart.displayLimitLine(true)
-        var limitLines = barChart.rightAxis.limitLines
-        XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
-        barChart.displayLimitLine(false)
         limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 0, "All Limit lines should be removed")
     }
@@ -365,15 +354,15 @@ class PredixBarChartViewTests: XCTestCase {
         let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
         let unitsBought = [10.0, 2.0, 20.0, 4.0, 5, 8.0, 9.0, 15.0, 1.0, 3.0, 10.0, 18.0]
 
-        let bar1 = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.blue])
-        let bar2 = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.red])
+        let bar1 = Bar(unitsSold, label: "Units Sold", colors: [UIColor.blue])
+        let bar2 = Bar(unitsBought, label: "Units Bought", colors: [UIColor.red])
         barChart.create(xAxisValues: months, bars: [bar1, bar2], showWithDefaultAnimation: true)
         let colors = barChart.barData?.getColors()
-        XCTAssertEqual([NSUIColor.blue, NSUIColor.red], colors!)
+        XCTAssertEqual([UIColor.blue, UIColor.red], colors!)
     }
 
     func testCreateChartByNotProvidingBarColors() {
-        let defautColor = NSUIColor.gray
+        let defautColor = UIColor.gray
         let barChart = PredixBarChartView()
 
         var months: [String]!
