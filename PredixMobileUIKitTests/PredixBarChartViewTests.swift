@@ -316,17 +316,17 @@ class PredixBarChartViewTests: XCTestCase {
 
     func testAddALimit() {
         let barChart = PredixBarChartView()
-        barChart.addALimit(limit: 10.0, label: "LineLabel")
+        barChart.addLimitLine(limit: 10.0, label: "LineLabel")
         let limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
     }
 
     func testRemoveALimit() {
         let barChart = PredixBarChartView()
-        barChart.addALimit(limit: 10.0, label: "LineLabel")
+        barChart.addLimitLine(limit: 10.0, label: "LineLabel")
         var limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
-        barChart.removeLimit()
+        barChart.removeLimitLine()
         limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 0, "All Limit lines should be removed")
     }

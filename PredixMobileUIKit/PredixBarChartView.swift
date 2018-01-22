@@ -12,25 +12,25 @@ import PredixSDK
 
 // MARK: - The Option Enum
 
-/// List of options that can be used on the Bar Chart.
+/// List of options that can be used on the Bar Chart
 public enum Option {
-    /// toggle on or off, Bars value on the chart.
+    /// toggle on or off, Bars value on the chart
     case toggleValues
-    /// toggle on or off, Bar borders on the chart.
+    /// toggle on or off, Bar borders on the chart
     case toggleBarBorders
-    /// enable the legend display on the chart.
+    /// enable the legend display on the chart
     case enableLegend
-    /// disable the legend display on the chart.
+    /// disable the legend display on the chart
     case disableLegend
-    /// disable side labels on the chart.
+    /// disable side labels on the chart
     case disableSideLabels
-    /// enable side labels on the chart.
+    /// enable side labels on the chart
     case enableSideLabels
-    /// animate the x axis on the chart.
+    /// animate the x axis on the chart
     case animateX
-    /// animate the y axis on the chart.
+    /// animate the y axis on the chart
     case animateY
-    /// animate both the x and y axies on the chart.
+    /// animate both the x and y axies on the chart
     case animateXY
 }
 
@@ -42,9 +42,9 @@ public class Bar {
     var label: String
     var colors: [UIColor] = []
 
-    /// Initialize the values, label and color of the bar.
-    /// - parameter values: the values the bar hold.
-    /// - parameter label: the bar label.
+    /// Initialize the values, label and color of the bar
+    /// - parameter values: the values the bar hold
+    /// - parameter label: the bar label
     /// - parameter color: the bar color based on the class UIColor.
     public init(_ values: [Double], label: String, colors: [UIColor]) {
         self.values = values
@@ -53,13 +53,13 @@ public class Bar {
     }
 
     /// Initialize the values and label of the bar.
-    /// A default color gray is used if color is not provided.
-    /// - parameter Values: the values the bar hold.
+    /// A *default* color gray is used if color is not provided.
+    /// - parameter values: the values the bar hold.
     /// - parameter label: the bar label.
     public init(_ values: [Double], label: String) {
         self.values = values
         self.label = label
-        colors = [NSUIColor.gray]
+        colors = [UIColor.gray]
     }
 }
 
@@ -134,10 +134,10 @@ open class PredixBarChartView: BarChartView {
 
     // MARK: PredixBarChartView Adding Displaying or Removing a Limit Line
 
-    /// Add a horizontal limit line on the bar chart. The line in the chart marks a certain maximum or limit on the x axis).
-    /// - parameter limit: number of where the line should be drawn horizontally.
-    /// - parameter label: name of the label line.
-    public func addALimit(limit: Double, label: String) {
+    /// Add a horizontal limit line on the bar chart. The line in the chart marks a certain maximum or limit on the x axis)
+    /// - parameter limit: limit value
+    /// - parameter label: name of the label line
+    public func addLimitLine(limit: Double, label: String) {
         limitLine = ChartLimitLine(limit: limit, label: label)
         rightAxis.addLimitLine(limitLine)
         setNeedsDisplay()
@@ -150,12 +150,12 @@ open class PredixBarChartView: BarChartView {
             rightAxis.addLimitLine(limitLine)
             setNeedsDisplay()
         } else {
-            removeLimit()
+            removeLimitLine()
         }
     }
 
     /// Remove the added limit line on the chart.
-    public func removeLimit() {
+    public func removeLimitLine() {
         rightAxis.removeLimitLine(limitLine)
         setNeedsDisplay()
     }
@@ -179,7 +179,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Stack or group the Bars on the chart.
+    /// Stack or group the Bars on the chart
     public func stack(_ stackBars: Bool) {
         if stackBars {
             stackBarsOnChart()
@@ -188,8 +188,8 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Create all the bar data sets from each Bar provided.
-    /// - parameter bars: each data bars needed on the Chart.
+    /// Create all the bar data sets from each Bar provided
+    /// - parameter bars: each data bars needed on the Chart
     func createDataSets(bars: [Bar]) -> [BarChartDataSet] {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
@@ -262,8 +262,8 @@ open class PredixBarChartView: BarChartView {
 
     // MARK: PredixBarChartView  Handling Option Logic
 
-    /// Handle the options provided.
-    /// - parameter option: choose one of the option from the Option class.
+    /// Handle the options provided
+    /// - parameter option: choose one of the option from the Option enum
     public func handleOption(_ option: Option) {
         switch option {
         case .toggleValues:

@@ -15,6 +15,7 @@ class BarchartDemoViewController: UIViewController {
     @IBOutlet var verticalLineSlider: UISlider!
     @IBOutlet var enabledLegendSwitch: UISwitch!
     @IBOutlet var optionsButton: UIButton!
+    @IBOutlet var displayToggle: UISwitch!
     @IBOutlet var barChartView: PredixBarChartView!
 
     override func viewDidLoad() {
@@ -23,8 +24,8 @@ class BarchartDemoViewController: UIViewController {
         let unitsSold = [20.0, 4.0, 2.0, 5.0, 12.0]
         let unitsBought = [10.0, 2.0, 6.0, 3.0, 5.0]
 
-        let unitsSoldBar = Bar(unitsSold, label: "Units Sold", colors: [NSUIColor.gray])
-        let unitsBoughtBar = Bar(unitsBought, label: "Units Bought", colors: [NSUIColor.orange])
+        let unitsSoldBar = Bar(unitsSold, label: "Units Sold", colors: [UIColor.gray])
+        let unitsBoughtBar = Bar(unitsBought, label: "Units Bought", colors: [UIColor.orange])
         barChartView.create(xAxisValues: months, bars: [unitsSoldBar, unitsBoughtBar], stackBars: true, showWithDefaultAnimation: false)
     }
 
@@ -45,8 +46,9 @@ class BarchartDemoViewController: UIViewController {
     }
 
     @IBAction func verticalLineValueChanged(_: UISlider) {
-        barChartView.removeLimit()
-        barChartView.addALimit(limit: Double(verticalLineSlider.value), label: "Target")
+        displayToggle.setOn(true, animated: false)
+        barChartView.removeLimitLine()
+        barChartView.addLimitLine(limit: Double(verticalLineSlider.value), label: "Target")
     }
 
     // To enable or disable the legend
@@ -79,6 +81,7 @@ class BarchartDemoViewController: UIViewController {
     }
 
     @IBAction func enableLimitLineChanged(_ sender: UISwitch) {
+        print(sender.isOn)
         barChartView.displayLimitLine(sender.isOn)
     }
 }

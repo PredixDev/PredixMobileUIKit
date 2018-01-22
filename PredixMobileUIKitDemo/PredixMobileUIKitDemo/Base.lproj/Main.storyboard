@@ -499,6 +499,7 @@
                     </view>
                     <connections>
                         <outlet property="barChartView" destination="3zb-Um-PmQ" id="4Ek-Lz-QfR"/>
+                        <outlet property="displayToggle" destination="pjB-y1-YAL" id="fF8-TK-Vg3"/>
                         <outlet property="enabledLegendSwitch" destination="YVa-2k-OPP" id="PbO-oI-pd3"/>
                         <outlet property="optionsButton" destination="Oy1-N7-zFc" id="so3-9f-kFd"/>
                         <outlet property="verticalLineSlider" destination="3DW-Px-R9K" id="Yuh-f4-RRK"/>
