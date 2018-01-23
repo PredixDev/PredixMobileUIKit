@@ -316,33 +316,32 @@ class PredixBarChartViewTests: XCTestCase {
     func testAddALimitLine() {
         let barChart = PredixBarChartView()
         let lineName = "Line"
-        barChart.addLimitLine(limitLineName:lineName, limit: 10.0, label: "LineLabel")
+        barChart.addLimitLine(limitLineName: lineName, limit: 10.0, label: "LineLabel")
         let limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 1, "One Limit line should be created")
     }
-    
 
     func testRemoveALimit() {
         let barChart = PredixBarChartView()
         let lineName = "Line"
-        barChart.addLimitLine(limitLineName:lineName,limit: 10.0, label: "LineLabel")
+        barChart.addLimitLine(limitLineName: lineName, limit: 10.0, label: "LineLabel")
         var limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 1, "One Limit lines should be created")
-        barChart.removeLimitLine(limitLineName:lineName)
+        barChart.removeLimitLine(limitLineName: lineName)
         limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 0, "All Limit lines should be removed")
     }
-    
-    func testAddAndRemoveMorethanOneLimitLine(){
+
+    func testAddAndRemoveMorethanOneLimitLine() {
         let barChart = PredixBarChartView()
-        
+
         let firstLineName = "Line1"
         let firstLabelName = "Label1"
-        
+
         let secondLineName = "Line2"
         let secondLabelName = "Label2"
-        
-        barChart.addLimitLine(limitLineName: firstLineName, limit: 1.0, label:firstLabelName)
+
+        barChart.addLimitLine(limitLineName: firstLineName, limit: 1.0, label: firstLabelName)
         barChart.addLimitLine(limitLineName: secondLineName, limit: 2.0, label: secondLabelName)
         var limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 2, "Two Limit lines should be created")
@@ -350,8 +349,6 @@ class PredixBarChartViewTests: XCTestCase {
         limitLines = barChart.rightAxis.limitLines
         XCTAssertEqual(limitLines.count, 1, "One Limit lines should be removed")
     }
-    
-    
 
     // MARK: PredixBarCharView Creation of the chart test cases
 
