@@ -21,6 +21,7 @@ class BarchartDemoViewController: UIViewController {
     @IBOutlet var barChartView: PredixBarChartView!
 
     let limitLinelabel = "Target"
+    let limitLineName = "TheLine"
 
     override func viewDidLoad() {
         title = "Unit Bought vs Units Sold"
@@ -53,8 +54,8 @@ class BarchartDemoViewController: UIViewController {
 
     @IBAction func horizontalValueChanged(_: UISlider) {
         displayToggle.setOn(true, animated: false)
-        barChartView.removeLimitLine(lineName: "George")
-        barChartView.addLimitLine(lineName: "George", limit: Double(horizontalSlider.value), label: limitLinelabel)
+        barChartView.removeLimitLine(limitLineName: limitLineName)
+        barChartView.addLimitLine(limitLineName: limitLineName, limit: Double(horizontalSlider.value), label: limitLinelabel)
     }
 
     // To enable or disable the legend
@@ -81,9 +82,9 @@ class BarchartDemoViewController: UIViewController {
     @IBAction func enableLimitLineChanged(_ sender: UISwitch) {
         print(sender.isOn)
         if sender.isOn {
-            barChartView.addLimitLine(lineName: "George", limit: Double(horizontalSlider.value), label: limitLinelabel)
+            barChartView.addLimitLine(limitLineName: limitLineName, limit: Double(horizontalSlider.value), label: limitLinelabel)
         } else {
-            barChartView.removeLimitLine(lineName: "George")
+            barChartView.removeLimitLine(limitLineName: limitLineName)
         }
     }
 }

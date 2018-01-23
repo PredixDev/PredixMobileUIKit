@@ -60,7 +60,7 @@ extension PredixBarChartView {
     }
 
     /// Indicates whether the legend chart should be aligned on the left.
-    //
+    ///
     /// The *default* value is true.
     @IBInspectable
     internal var legendAlignedLeft: Bool {
@@ -77,7 +77,7 @@ extension PredixBarChartView {
     }
 
     /// Indicates whether the legend chart should be aligned on the bottom.
-    //
+    ///
     /// The *default* value is true.
     @IBInspectable
     internal var legendAlignedOnBottom: Bool {
@@ -94,7 +94,7 @@ extension PredixBarChartView {
     }
 
     /// Indicates whether the legend chart should be orientated vertically.
-    //
+    ///
     /// The *default* value is true.
     @IBInspectable
     internal var legendOrientationVertical: Bool {
@@ -111,7 +111,7 @@ extension PredixBarChartView {
     }
 
     /// The chart x axis text color.
-    //
+    ///
     /// The *default* value is black.
     @IBInspectable
     open var xAxisTextColor: UIColor {
@@ -124,7 +124,7 @@ extension PredixBarChartView {
     }
 
     /// The legend chart x axis text color.
-    //
+    ///
     /// The *default* value is black.
     @IBInspectable
     open var legendTextColor: UIColor {
@@ -137,7 +137,7 @@ extension PredixBarChartView {
     }
 
     /// The text color to display when there is no chart data loaded.
-    //
+    ///
     /// The *default* value is black.
     @IBInspectable
     open var noChartDataTextColor: UIColor {

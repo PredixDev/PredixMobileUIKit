@@ -10,25 +10,27 @@ import Charts
 import Foundation
 import PredixSDK
 
-// MARK: - The Options Enum
+// MARK: - The Option Enums
 
-/// List of animation options that can be used on the Bar Chart
+/// List of animation options that can be used on the Bar Chart.
+/// Animation can be displayed on the x- or y-axis or both at the same time.
 public enum BarChartAnimationOption {
-    /// Animate the x axis on the chart
+    /// Animate the x-axis on the chart
     case animateX
-    /// Animate the y axis on the chart
+    /// Animate the y-axis on the chart
     case animateY
-    /// Animate both the x and y axies on the chart
+    /// Animate both the x- and y-axis on the chart
     case animateXY
 }
 
-/// List of toggle options that can be used on the Bart Chart
+/// List of toggle options that can be used on the Bar Chart.
+/// The Bar Chart legend/s, side labels, Bar values or Bar borders, can be toggled on or off.
 public enum BarChartToggleOption {
-    /// Toggle on or off, Bars value on the chart
+    /// Toggle on or off, Bar values on the chart
     case toggleValues
     /// Toggle on or off, Bar borders on the chart
     case toggleBarBorders
-    /// Toggle on or off, the legend display on the chart
+    /// Toggle on or off, legend/s display on the chart
     case toggleLegend
     /// Toggle on or off, side labels on the chart
     case toggleSideLabels
@@ -36,28 +38,32 @@ public enum BarChartToggleOption {
 
 // MARK: - The Bar Class
 
-/// To create a Bar Chart from the PredixBarChartView class, the Bar class is used to populate each data Bar on the chart.
+/// To create a Bar Chart from the `PredixBarChartView` class, the `Bar` class is used to populate each Bar data set.
 public class Bar {
-    public var values: [Double]
+    /// The data the Bar hold
+    public var data: [Double]
+    /// The Bar label
     public var label: String
+    /// The Bar colors bases on the class `UIColor`
     public var colors: [UIColor] = []
 
-    /// Initialize the values, label and color of the bar
-    /// - parameter values: the values the bar hold
-    /// - parameter label: the bar label
-    /// - parameter colors: the bar colors based on the class UIColor.
-    public init(_ values: [Double], label: String, colors: [UIColor]) {
-        self.values = values
+    /// Initialize the data, label and colors of the Bar
+    /// - parameter data: the data the bar hold
+    /// - parameter label: the Bar label name
+    /// - parameter colors: the Bar colors based on the class UIColor
+    public init(_ data: [Double], label: String, colors: [UIColor]) {
+        self.data = data
         self.label = label
         self.colors = colors
     }
 
-    /// Initialize the values and label of the bar.
+    /// Initialize the data and label of the Bar.
+    ///
     /// A *default* color gray is used if color is not provided.
-    /// - parameter values: the values the bar hold.
-    /// - parameter label: the bar label.
-    public init(_ values: [Double], label: String) {
-        self.values = values
+    /// - parameter data: the data the bar hold
+    /// - parameter label: the Bar label name
+    public init(_ data: [Double], label: String) {
+        self.data = data
         self.label = label
         colors = [UIColor.gray]
     }
@@ -75,7 +81,7 @@ open class PredixBarChartView: BarChartView {
     var xAxisValues: [String] = []
     var bars: [Bar] = []
 
-    // MARK: PredixBarChartView Initial Values
+    // MARK: PredixBarChartView Initial Data
 
     /// :nodoc:
     public override init(frame: CGRect) {
@@ -89,7 +95,7 @@ open class PredixBarChartView: BarChartView {
         initialize()
     }
 
-    /// Predix Mobile Bar chart initial values
+    /// Predix Mobile Bar chart initial data
     fileprivate func initialize() {
         initLegend()
         initXaxis()
@@ -110,7 +116,7 @@ open class PredixBarChartView: BarChartView {
         legend.yEntrySpace = 0.0
     }
 
-    /// Initial x axis
+    /// Initial x-axis
     internal func initXaxis() {
         let xaxis = xAxis
         xaxis.valueFormatter = IndexAxisValueFormatter()
@@ -119,7 +125,7 @@ open class PredixBarChartView: BarChartView {
         xaxis.granularity = 1
     }
 
-    /// Initial y axis
+    /// Initial y-axis
     internal func initYaxis() {
         let yLeftAxis = leftAxis
         yLeftAxis.spaceTop = 0.35
@@ -134,10 +140,13 @@ open class PredixBarChartView: BarChartView {
 
     // MARK: PredixBarChartView Adding or Removing a Limit Line
 
-    /// Add a horizontal limit line on the bar chart. The line in the chart marks a certain maximum or limit on the x axis)
-    /// - parameter limitLineName:
-    /// - parameter limit: limit value
-    /// - parameter label: the label name of the limit line
+    /// Add a horizontal limit line on the Bar Chart.
+    /// The line in the chart marks a certain maximum or limit on the x-axis.
+    /// - parameter limitLineName: The name of the limit line. Each limit line created on the Chart needs a name so it can be removed if needed from the `removeLimitLine()`.
+    /// The same name is needed to remove the limit line from the char
+    /// - parameter limit: The limit value. The value can be any decimal number. it marks a certain maximum or limit on the specified x-axis.
+    /// - parameter label: The label name of the limit line.
+    /// When the limit line is drawn on the Bar Chart, the label is display on top of the line.
     public func addLimitLine(limitLineName: String, limit: Double, label: String) {
         let limitLine = ChartLimitLine(limit: limit, label: label)
         limitLineDict[limitLineName] = limitLine
@@ -146,6 +155,8 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Remove the added limit line on the chart.
+    /// - parameter limitLineName: The name of the limit line.
+    /// Each limit lines can be removed by providing the limit line name.
     public func removeLimitLine(limitLineName: String) {
 
         let limitLine = limitLineDict[limitLineName]
@@ -157,13 +168,13 @@ open class PredixBarChartView: BarChartView {
 
     // MARK: PredixBarChartView creating the Bar Chart Logic
 
-    ///  Populate the Bar Chart based on each Bar data entry from the Bar class.
-    /// - parameter xAxisValues: String array of the x axis values.
-    /// - parameter bars: populate each data bars on the Bar Chart.
-    /// - parameter stackBars: optional parameter to show the bar staked or grouped. Defaults to `true`.
-    /// - parameter showWithDefaultAnimation: optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
+    ///  Populate the Bar Chart based on each Bar data entry from the `Bar` class
+    /// - parameter xAxisValues: String array of the x-axis values
+    /// - parameter bars: Populate each data bars on the Bar Chart
+    /// - parameter stackBars: Optional parameter to stack or group the bars. Defaults to `true`.
+    /// - parameter showWithDefaultAnimation: Optional parameter to show the chart with the default animation.Defaults to to `true`.
+    /// Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
     public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
-
         self.xAxisValues = xAxisValues
         self.bars = bars
 
@@ -175,6 +186,7 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Stack or group the Bars on the chart
+    /// - parameter stackBars: `true` to stack and ` false' to group the bars display on the chart.
     public func stack(_ stackBars: Bool) {
         if stackBars {
             stackBarsOnChart()
@@ -183,14 +195,14 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Create all the bar data sets from each Bar provided
-    /// - parameter bars: each data bars needed on the Chart
+    /// Create all the bar data sets from each `Bar` provided
+    /// - parameter bars: Each data bars needed to be display on the chart
     func createDataSets(bars: [Bar]) -> [BarChartDataSet] {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
             var dataEntries: [BarChartDataEntry] = []
-            for i in 0 ..< bar.values.count {
-                let dataEntry = BarChartDataEntry(x: Double(i), y: bar.values[i])
+            for i in 0 ..< bar.data.count {
+                let dataEntry = BarChartDataEntry(x: Double(i), y: bar.data[i])
                 dataEntries.append(dataEntry)
             }
             let chartDataSet = BarChartDataSet(values: dataEntries, label: bar.label)
@@ -202,7 +214,7 @@ open class PredixBarChartView: BarChartView {
         return dataSets
     }
 
-    /// Stacks all Bar DataSets in the Chart
+    /// Stacks all Bar data sets display on the chart
     internal func stackBarsOnChart() {
         if !bars.isEmpty {
 
@@ -221,7 +233,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Groups all Bar DataSets in the Chart
+    /// Groups all Bar data sets display on the Chart
     internal func groupBarsOnChart() {
         if !bars.isEmpty {
 
@@ -257,8 +269,8 @@ open class PredixBarChartView: BarChartView {
 
     // MARK: PredixBarChartView  Handling Option Logic
 
-    /// Handle the options provided
-    /// - parameter option: choose one of the option from the AnimationOption enum
+    /// Change the Bar Chart animation provided from the `BarChartAnimationOption` enum
+    /// - parameter animationOption: Choose one of the animation option from the `AnimationOption` enum
     public func changeAnimationOption(_ animationOption: BarChartAnimationOption) {
         switch animationOption {
         case .animateX:
@@ -272,10 +284,10 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Handle the options provided
-    /// - parameter option: choose one of the option from the BarChartToggleOption enum
-    public func changeToggleOption(_ barChartOption: BarChartToggleOption) {
-        switch barChartOption {
+    /// Toggle on and off, different options provided from the `BarChartToggleOption` enum
+    /// - parameter toggleOption: Choose one of the option from the BarChartToggleOption enum
+    public func changeToggleOption(_ toggleOption: BarChartToggleOption) {
+        switch toggleOption {
         case .toggleValues:
             toggleValues()
 
@@ -290,7 +302,8 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Call this function will add bar borders. Call it again will remove the bar borders.
+    /// Call this function will add bar borders.
+    /// Call it again will remove the bar borders.
     internal func toggleValues() {
         for set in data!.dataSets {
             set.drawValuesEnabled = !set.drawValuesEnabled
@@ -298,7 +311,8 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    /// Call this function will add bar borders. Call it again will remove the bar borders.
+    /// Call this function will add bar borders.
+    /// Call it again will remove the bar borders.
     internal func toggleBarBorders() {
         for set in data!.dataSets {
             if let set = set as? BarChartDataSet {
@@ -309,7 +323,6 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Enable and disable the legends on the chart
-    /// - parameter enable: `true` to enable, `false` to disable
     internal func toggleLegend() {
         if legend.isEnabled {
             legend.enabled = false
@@ -320,7 +333,6 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Enable and disable the side labels
-    /// - parameter toggle: `true` to enable, `false` to disable
     internal func toggleSideLabels() {
         if rightAxis.isDrawLabelsEnabled && leftAxis.isDrawLabelsEnabled {
             rightAxis.drawLabelsEnabled = false
