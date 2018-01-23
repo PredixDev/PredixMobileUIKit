@@ -14,23 +14,23 @@ import PredixSDK
 
 /// List of animation options that can be used on the Bar Chart
 public enum BarChartAnimationOption {
-    /// animate the x axis on the chart
+    /// Animate the x axis on the chart
     case animateX
-    /// animate the y axis on the chart
+    /// Animate the y axis on the chart
     case animateY
-    /// animate both the x and y axies on the chart
+    /// Animate both the x and y axies on the chart
     case animateXY
 }
 
 /// List of toggle options that can be used on the Bart Chart
 public enum BarChartToggleOption {
-    /// toggle on or off, Bars value on the chart
+    /// Toggle on or off, Bars value on the chart
     case toggleValues
-    /// toggle on or off, Bar borders on the chart
+    /// Toggle on or off, Bar borders on the chart
     case toggleBarBorders
-    /// toggle on or off, the legend display on the chart
+    /// Toggle on or off, the legend display on the chart
     case toggleLegend
-    /// toggle on or off, side labels on the chart
+    /// Toggle on or off, side labels on the chart
     case toggleSideLabels
 }
 
@@ -38,14 +38,14 @@ public enum BarChartToggleOption {
 
 /// To create a Bar Chart from the PredixBarChartView class, the Bar class is used to populate each data Bar on the chart.
 public class Bar {
-    var values: [Double]
-    var label: String
-    var colors: [UIColor] = []
+    public var values: [Double]
+    public var label: String
+    public var colors: [UIColor] = []
 
     /// Initialize the values, label and color of the bar
     /// - parameter values: the values the bar hold
     /// - parameter label: the bar label
-    /// - parameter color: the bar color based on the class UIColor.
+    /// - parameter colors: the bar colors based on the class UIColor.
     public init(_ values: [Double], label: String, colors: [UIColor]) {
         self.values = values
         self.label = label
@@ -71,7 +71,7 @@ open class PredixBarChartView: BarChartView {
 
     // MARK: PredixBarCharView Internal Variables
 
-    internal var limitLine = ChartLimitLine()
+    var limitLineDict = [String: ChartLimitLine]()
     var xAxisValues: [String] = []
     var bars: [Bar] = []
 
@@ -132,20 +132,26 @@ open class PredixBarChartView: BarChartView {
         yRightAxis.drawGridLinesEnabled = false
     }
 
-    // MARK: PredixBarChartView Adding Displaying or Removing a Limit Line
+    // MARK: PredixBarChartView Adding or Removing a Limit Line
 
     /// Add a horizontal limit line on the bar chart. The line in the chart marks a certain maximum or limit on the x axis)
+    /// - parameter limitLineName:
     /// - parameter limit: limit value
-    /// - parameter label: name of the label line
-    public func addLimitLine(limit: Double, label: String) {
-        limitLine = ChartLimitLine(limit: limit, label: label)
+    /// - parameter label: the label name of the limit line
+    public func addLimitLine(limitLineName: String, limit: Double, label: String) {
+        let limitLine = ChartLimitLine(limit: limit, label: label)
+        limitLineDict[limitLineName] = limitLine
         rightAxis.addLimitLine(limitLine)
         setNeedsDisplay()
     }
 
     /// Remove the added limit line on the chart.
-    public func removeLimitLine() {
-        rightAxis.removeLimitLine(limitLine)
+    public func removeLimitLine(limitLineName: String) {
+
+        let limitLine = limitLineDict[limitLineName]
+        if limitLine != nil {
+            rightAxis.removeLimitLine(limitLine!)
+        }
         setNeedsDisplay()
     }
 
