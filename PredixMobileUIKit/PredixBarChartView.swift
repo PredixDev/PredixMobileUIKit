@@ -13,7 +13,7 @@ import PredixSDK
 // MARK: - The Option Enums
 
 /// List of animation options that can be used on the Bar Chart.
-/// Animation can be displayed on the x- or y-axis or both at the same time.
+/// Animation can be displayed on the x- or y-axis or both.
 public enum BarChartAnimationOption {
     /// Animate the x-axis on the chart
     case animateX
@@ -40,11 +40,11 @@ public enum BarChartToggleOption {
 
 /// To create a Bar Chart from the `PredixBarChartView` class, the `Bar` class is used to populate each Bar data set.
 public class Bar {
-    /// The data the Bar hold
+    /// The data the Bar holds
     public var data: [Double]
     /// The Bar label
     public var label: String
-    /// The Bar colors bases on the class `UIColor`
+    /// The Bar colors based on the class `UIColor`
     public var colors: [UIColor] = []
 
     /// Initialize the data, label and colors of the Bar
@@ -59,7 +59,7 @@ public class Bar {
 
     /// Initialize the data and label of the Bar.
     ///
-    /// A *default* color gray is used if color is not provided.
+    /// If a color is not provided a *default* color of gray is used.
     /// - parameter data: the data the bar hold
     /// - parameter label: the Bar label name
     public init(_ data: [Double], label: String) {
@@ -141,12 +141,13 @@ open class PredixBarChartView: BarChartView {
     // MARK: PredixBarChartView Adding or Removing a Limit Line
 
     /// Add a horizontal limit line on the Bar Chart.
-    /// The line in the chart marks a certain maximum or limit on the x-axis.
-    /// - parameter limitLineName: The name of the limit line. Each limit line created on the Chart needs a name so it can be removed if needed from the `removeLimitLine()`.
-    /// The same name is needed to remove the limit line from the char
-    /// - parameter limit: The limit value. The value can be any decimal number. it marks a certain maximum or limit on the specified x-axis.
+    /// The line in the chart marks a certain limit on the x-axis.
+    /// - parameter limitLineName: The name of the limit line.
+    /// Each limit line created on the chart needs a name so it can be removed using `removeLimitLine()`.
+    /// The same name is needed to remove the limit line from the chart.
+    /// - parameter limit: The limit value. The value can be any decimal number. It marks a certain limit on the x-axis.
     /// - parameter label: The label name of the limit line.
-    /// When the limit line is drawn on the Bar Chart, the label is display on top of the line.
+    /// When the limit line is drawn on the Bar Chart, the label is displayed on top of the line.
     public func addLimitLine(limitLineName: String, limit: Double, label: String) {
         let limitLine = ChartLimitLine(limit: limit, label: label)
         limitLineDict[limitLineName] = limitLine
@@ -170,10 +171,9 @@ open class PredixBarChartView: BarChartView {
 
     ///  Populate the Bar Chart based on each Bar data entry from the `Bar` class
     /// - parameter xAxisValues: String array of the x-axis values
-    /// - parameter bars: Populate each data bars on the Bar Chart
+    /// - parameter bars: List of Bars. Populate the Bar Chart with bar data
     /// - parameter stackBars: Optional parameter to stack or group the bars. Defaults to `true`.
-    /// - parameter showWithDefaultAnimation: Optional parameter to show the chart with the default animation.Defaults to to `true`.
-    /// Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` methods to provide custom display animation.
+    /// - parameter showWithDefaultAnimation: Optional parameter to show the chart with the default animation. Defaults to `true`. If `false` the caller is responsible for calling one of the `animate` animation options from `changeAnimationOption()`.
     public func create(xAxisValues: [String], bars: [Bar], stackBars: Bool = true, showWithDefaultAnimation: Bool = true) {
         self.xAxisValues = xAxisValues
         self.bars = bars
@@ -186,7 +186,7 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Stack or group the Bars on the chart
-    /// - parameter stackBars: `true` to stack and ` false' to group the bars display on the chart.
+    /// - parameter stackBars: `true` to stack and `false` to group the bars display on the chart
     public func stack(_ stackBars: Bool) {
         if stackBars {
             stackBarsOnChart()
@@ -196,7 +196,7 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Create all the bar data sets from each `Bar` provided
-    /// - parameter bars: Each data bars needed to be display on the chart
+    /// - parameter bars: List of bars that need to be displayed on the chart
     func createDataSets(bars: [Bar]) -> [BarChartDataSet] {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
@@ -214,7 +214,7 @@ open class PredixBarChartView: BarChartView {
         return dataSets
     }
 
-    /// Stacks all Bar data sets display on the chart
+    /// Stacks all of the Bar data sets displayed on the chart
     internal func stackBarsOnChart() {
         if !bars.isEmpty {
 
@@ -233,7 +233,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Groups all Bar data sets display on the Chart
+    /// Groups all of the Bar data sets displayed on the chart
     internal func groupBarsOnChart() {
         if !bars.isEmpty {
 
@@ -251,7 +251,7 @@ open class PredixBarChartView: BarChartView {
              The equation to find the interval per "group" is:
              (groupSpace * barSpace) * n + groupSpace = 1
              Therefore by finding groupSpace we get:
-             groupSpace = 1 - numberOfBars * BarSpace / numberOfBars +1
+             groupSpace = (1 - numberOfBars * BarSpace) / (numberOfBars + 1)
              */
             let groupSpace = (1.0 - Double(barCount) * barSpace) / (Double(barCount) + 1.0)
             let barWidth = groupSpace
@@ -270,7 +270,7 @@ open class PredixBarChartView: BarChartView {
     // MARK: PredixBarChartView  Handling Option Logic
 
     /// Change the Bar Chart animation provided from the `BarChartAnimationOption` enum
-    /// - parameter animationOption: Choose one of the animation option from the `AnimationOption` enum
+    /// - parameter animationOption: Choose one of the animation options from the `AnimationOption` enum
     public func changeAnimationOption(_ animationOption: BarChartAnimationOption) {
         switch animationOption {
         case .animateX:
@@ -285,7 +285,7 @@ open class PredixBarChartView: BarChartView {
     }
 
     /// Toggle on and off, different options provided from the `BarChartToggleOption` enum
-    /// - parameter toggleOption: Choose one of the option from the BarChartToggleOption enum
+    /// - parameter toggleOption: Choose one of the options from the BarChartToggleOption enum
     public func changeToggleOption(_ toggleOption: BarChartToggleOption) {
         switch toggleOption {
         case .toggleValues:
@@ -302,8 +302,7 @@ open class PredixBarChartView: BarChartView {
         }
     }
 
-    /// Call this function will add bar borders.
-    /// Call it again will remove the bar borders.
+    /// Hide and show the Bar data values
     internal func toggleValues() {
         for set in data!.dataSets {
             set.drawValuesEnabled = !set.drawValuesEnabled
@@ -311,8 +310,7 @@ open class PredixBarChartView: BarChartView {
         setNeedsDisplay()
     }
 
-    /// Call this function will add bar borders.
-    /// Call it again will remove the bar borders.
+    /// Hide and show the Bar borders
     internal func toggleBarBorders() {
         for set in data!.dataSets {
             if let set = set as? BarChartDataSet {
