@@ -35,7 +35,13 @@ class PredixBarChartViewTests: XCTestCase {
         unitsBought.removeAll()
     }
 
-    // MARK: IBInspectables
+    // MARK: Prepare For Interface Builder Test case
+
+    func testPrepareForInterfaceBuilder() {
+        let barChart = PredixBarChartView()
+        barChart.prepareForInterfaceBuilder()
+        XCTAssertTrue(barChart.data?.dataSetCount ?? 0 > 0, "No datasets were loaded in prepareForInterfceBuilder")
+    }
 
     // MARK: Label Text Test Cases
 
@@ -311,7 +317,7 @@ class PredixBarChartViewTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-    // MARK: PredixBarCharView Adding Displaying and Removing the Limit Line on the chart test cases
+    // MARK: PredixBarCharView Adding and Removing the Limit Line on the chart test cases
 
     func testAddALimitLine() {
         let barChart = PredixBarChartView()
