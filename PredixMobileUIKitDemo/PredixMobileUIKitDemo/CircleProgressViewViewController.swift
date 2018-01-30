@@ -1,7 +1,6 @@
 //
 //  ProgressCircleDemoViewController.swift
 //  PredixMobileUIKitDemo
-//
 //  Created by Johns, Andy (GE Corporate) on 10/6/17.
 //  Copyright © 2017 GE. All rights reserved.
 //

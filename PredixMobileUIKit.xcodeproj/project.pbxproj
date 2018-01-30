@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D560BA11FD5CD59000B4F68 /* PredixBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */; };
+		2D560BA31FD5DDD5000B4F68 /* PredixBarChartViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */; };
+		2D67D3941FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */; };
 		3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */; };
 		374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */; };
 		374DC80B1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */; };
@@ -87,6 +90,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixBarChartView.swift; sourceTree = "<group>"; };
+		2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixBarChartViewTests.swift; sourceTree = "<group>"; };
+		2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PredixBarChartView+IBInspectable.swift"; sourceTree = "<group>"; };
 		3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesViewTests.swift; sourceTree = "<group>"; };
 		374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesView.swift; sourceTree = "<group>"; };
 		374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PredixTimeSeriesView+IBInspectable.swift"; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 			children = (
 				E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */,
 				E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */,
+				2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */,
+				2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */,
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
 				4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */,
 				4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */,
@@ -199,6 +207,7 @@
 				4F2F2E941F91532000BDAFEF /* UtilitiesTests.swift */,
 				E8D7E4AA1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift */,
 				E8871A561FA9484F0075ECD4 /* UtilitiesTest.swift */,
+				2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */,
 			);
 			path = PredixMobileUIKitTests;
 			sourceTree = "<group>";
@@ -379,6 +388,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D560BA11FD5CD59000B4F68 /* PredixBarChartView.swift in Sources */,
+				2D67D3941FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift in Sources */,
+				374DC8071F7DA5150091C5C5 /* TimeSeriesDataPoint.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,
@@ -387,6 +399,7 @@
 				374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */,
 				4F627A371F8ECAFB00CB4AEE /* CircleProgressLayer.swift in Sources */,
 				4F627A351F8E7E4400CB4AEE /* Utilities.swift in Sources */,
+				374DC8051F7DA4950091C5C5 /* TimeSeriesTag.swift in Sources */,
 				4F3C198B1F75B3F3008FB013 /* PredixDonutView+IBInspectable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F627A3B1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift in Sources */,
+				2D560BA31FD5DDD5000B4F68 /* PredixBarChartViewTests.swift in Sources */,
 				4F627A391F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift in Sources */,
 				4F627A3D1F8FC98900CB4AEE /* RandomExtensions.swift in Sources */,
 				4F2F2E951F91532000BDAFEF /* UtilitiesTests.swift in Sources */,

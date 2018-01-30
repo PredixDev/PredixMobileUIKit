@@ -26,10 +26,11 @@ class LaunchDemoViewController: UITableViewController {
         // Until we have more integration with PredixMobileSDK, this just ensures the frameworks are linked properly
         let predixSDKVersionInfo = PredixSDK.Utilities.versionInfo
         print("PredixSDK Version Info: \(predixSDKVersionInfo)")
-        
+
         self.demos = [DemoData(title: "Donut Chart", description: "Simple demonstration of a donut chart, can also be a pie chart.", storyboardId: "DonutChartDemo"),
                       DemoData(title: "TimeSeries Chart", description: "An example showcasing TimeSeries chart view usage.", storyboardId: "TimeSeriesChart"),
                       DemoData(title: "Progress Circle", description: "Demonstration of a progress circle", storyboardId: "CircleProgressDemo"),
+                      DemoData(title: "Bar Chart", description: "Demonstration of a Chart Bar", storyboardId: "BarChartDemo"),
                       DemoData(title: "Authentication View", description: "Demonstration use of the Authenitcation View", storyboardId: "AuthenticationViewDemo")]
 
     }
