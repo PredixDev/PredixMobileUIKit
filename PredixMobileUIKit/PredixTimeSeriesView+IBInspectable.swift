@@ -26,18 +26,18 @@ extension PredixTimeSeriesView {
         let upperRange = 2018
         let lowerRange = upperRange - range
         var colorCounter: Int = 0
-        for i in 1...3 {
+        for count in 1...3 {
             var dataPoints: [ChartDataEntry] = []
-            for j in 0...range {
-                let time = Double(lowerRange + j)
-                let offset =  Double(50 + (i * 10))
-                let measure = Double(offset + ((j % 2 == 0) ? offset + 2 : offset - 2))
+            for index in 0...range {
+                let time = Double(lowerRange + index)
+                let offset =  Double(50 + (count * 10))
+                let measure = Double(offset + ((index % 2 == 0) ? offset + 2 : offset - 2))
                 dataPoints.append(ChartDataEntry(x: time, y: measure, data: NSNumber(value: 3)))
             }
             colorCounter += 1
             
             let color: UIColor = self.dataVisualizationColors[colorCounter % dataVisualizationColors.count]
-            let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(i)")
+            let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(count)")
             dataSet.lineCapType = .round
             dataSet.mode = .horizontalBezier
             dataSet.lineWidth = 1.5

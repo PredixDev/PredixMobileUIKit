@@ -138,15 +138,15 @@ open class PredixTimeSeriesView: LineChartView {
         
         self.clipValuesToContentEnabled = true
         
-        let l: Legend = self.legend
-        l.horizontalAlignment = .left
-        l.verticalAlignment = .bottom
-        l.orientation = .horizontal
-        l.drawInside = false
-        l.form = .line
-        l.font = UIFont.systemFont(ofSize: 16)
-        l.formSize = 16
-        l.formLineWidth = 5
+        let legend: Legend = self.legend
+        legend.horizontalAlignment = .left
+        legend.verticalAlignment = .bottom
+        legend.orientation = .horizontal
+        legend.drawInside = false
+        legend.form = .line
+        legend.font = UIFont.systemFont(ofSize: 16)
+        legend.formSize = 16
+        legend.formLineWidth = 5
         
         delegate = self
         
