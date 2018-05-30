@@ -201,8 +201,8 @@ open class PredixBarChartView: BarChartView {
         var dataSets: [BarChartDataSet] = []
         for bar in bars {
             var dataEntries: [BarChartDataEntry] = []
-            for i in 0 ..< bar.data.count {
-                let dataEntry = BarChartDataEntry(x: Double(i), y: bar.data[i])
+            for index in 0 ..< bar.data.count {
+                let dataEntry = BarChartDataEntry(x: Double(index), y: bar.data[index])
                 dataEntries.append(dataEntry)
             }
             let chartDataSet = BarChartDataSet(values: dataEntries, label: bar.label)

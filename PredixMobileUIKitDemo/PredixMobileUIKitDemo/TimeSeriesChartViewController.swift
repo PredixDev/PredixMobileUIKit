@@ -53,16 +53,16 @@ class TimeSeriesChartViewController: UIViewController {
         let upperRange = 2018
         let lowerRange = upperRange - range
         var colorCounter: Int = 0
-        for i in 1...noOfDatasets {
+        for setNdx in 1...noOfDatasets {
             var dataPoints: [ChartDataEntry] = []
-            for j in 0...range {
-                let time = Double(lowerRange + j)
+            for index in 0...range {
+                let time = Double(lowerRange + index)
                 let measure = Double(arc4random_uniform(UInt32(maxTemp)))
                 dataPoints.append(ChartDataEntry(x: time, y: measure, data: NSNumber(value: 3)))
             }
             colorCounter += 1
             
-            let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(i)")
+            let dataSet = LineChartDataSet(values: dataPoints, label: "TAG_\(setNdx)")
             dataSet.lineCapType = .round
             dataSet.mode = .horizontalBezier
             dataSet.lineWidth = 1.5

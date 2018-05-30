@@ -221,9 +221,9 @@ internal class CircleProgressLayer: CALayer {
     
     private func pointOnCircle(angle: CGFloat, radius: CGFloat, center: CGPoint) -> CGPoint {
         
-        let x = center.x + radius * cos(angle)
-        let y = center.y + radius * sin(angle)
-        return CGPoint(x: x, y: y)
+        let xAxis = center.x + radius * cos(angle)
+        let yAxis = center.y + radius * sin(angle)
+        return CGPoint(x: xAxis, y: yAxis)
     }
     
 }

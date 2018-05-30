@@ -77,8 +77,8 @@ extension LaunchDemoViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let demoInfo = demos[indexPath.row]
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: demoInfo.storyboardId) {
-            self.navigationController?.pushViewController(vc, animated: true)
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: demoInfo.storyboardId) {
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
 
     }
