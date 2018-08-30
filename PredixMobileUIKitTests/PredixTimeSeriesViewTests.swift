@@ -174,7 +174,7 @@ class PredixTimeSeriesViewTests: XCTestCase {
     
     func testTheGrayViewAndActivityViewHaveTheCorrectAutoResizeMask() {
         let view = PredixTimeSeriesView(frame: CGRect())
-        let expectedMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        let expectedMask: UIView.AutoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
         
         XCTAssertEqual(expectedMask, view.grayView.autoresizingMask)
         XCTAssertEqual(expectedMask, view.activityView.autoresizingMask)

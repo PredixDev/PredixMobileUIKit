@@ -286,7 +286,8 @@ class PredixBarChartViewTests: XCTestCase {
         })
 
         barChart.changeAnimationOption(.animateXY)
-        XCTAssertEqual(barChart._animator.debugDescription, animateXY)
+        let animator: Animator = barChart._animator
+        XCTAssertEqual(animator.debugDescription, animateXY)
         waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -299,7 +300,8 @@ class PredixBarChartViewTests: XCTestCase {
         })
 
         barChart.changeAnimationOption(.animateX)
-        XCTAssertEqual(barChart._animator.debugDescription, animateX)
+        let animator: Animator = barChart._animator
+        XCTAssertEqual(animator.debugDescription, animateX)
         waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -313,7 +315,8 @@ class PredixBarChartViewTests: XCTestCase {
         })
 
         barChart.changeAnimationOption(.animateY)
-        XCTAssertEqual(barChart._animator.debugDescription, animateY)
+        let animator: Animator = barChart._animator
+        XCTAssertEqual(animator.debugDescription, animateY)
         waitForExpectations(timeout: 1, handler: nil)
     }
 

@@ -48,7 +48,7 @@ open class PredixAuthenticationView: UIView {
     
     internal private(set) var scrollView: UIScrollView = UIScrollView()
     internal private(set) var activeTextField: UITextField?
-    internal private(set) var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    internal private(set) var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
     
     ///Indicates if authentication is in progress
     open private(set) var authenticationInProgress = false
@@ -107,7 +107,7 @@ open class PredixAuthenticationView: UIView {
         let width = baseRect.size.width - floor(baseInsetX * 2)
         let fieldHeight: CGFloat = 44.0
         let fieldSpacing: CGFloat = 70.0
-        let fieldResizeMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        let fieldResizeMask: UIView.AutoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
         
         setupScrollView(with: baseRect)
         setupTitleImage(with: CGRect(x: baseInsetX, y: top, width: width, height: 56), autoresizingMask: fieldResizeMask)
@@ -140,8 +140,8 @@ open class PredixAuthenticationView: UIView {
         scrollView.frame = rect
         scrollView.autoresizingMask = [.flexibleBottomMargin, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth, .flexibleHeight]
         
-        NotificationCenter.default.addObserver(self, selector: #selector(PredixAuthenticationView.keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(PredixAuthenticationView.keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PredixAuthenticationView.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PredixAuthenticationView.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PredixAuthenticationView.hideKeyboard))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
@@ -154,14 +154,14 @@ open class PredixAuthenticationView: UIView {
         scrollView.addSubview(footerLabel)
     }
     
-    private func setupTitleImage(with rect: CGRect, autoresizingMask: UIViewAutoresizing) {
+    private func setupTitleImage(with rect: CGRect, autoresizingMask: UIView.AutoresizingMask) {
         titleImageView.image = titleImage
         titleImageView.frame = rect
         titleImageView.autoresizingMask = autoresizingMask
         titleImageView.contentMode = .scaleAspectFit
     }
     
-    private func setupEmailTextField(with rect: CGRect, autoresizingMask: UIViewAutoresizing) {
+    private func setupEmailTextField(with rect: CGRect, autoresizingMask: UIView.AutoresizingMask) {
         emailTextField.frame = rect
         emailTextField.autoresizingMask = autoresizingMask
         emailTextField.borderStyle = .bezel
@@ -176,7 +176,7 @@ open class PredixAuthenticationView: UIView {
         emailTextField.clearButtonMode = .whileEditing
     }
     
-    private func setupPasswordTextField(with rect: CGRect, autoresizingMask: UIViewAutoresizing) {
+    private func setupPasswordTextField(with rect: CGRect, autoresizingMask: UIView.AutoresizingMask) {
         passwordTextField.frame = rect
         passwordTextField.autoresizingMask = autoresizingMask
         passwordTextField.isSecureTextEntry = true
@@ -189,7 +189,7 @@ open class PredixAuthenticationView: UIView {
         passwordTextField.enablesReturnKeyAutomatically = true
     }
     
-    private func setupSignInButton(with rect: CGRect, autoresizingMask: UIViewAutoresizing) {
+    private func setupSignInButton(with rect: CGRect, autoresizingMask: UIView.AutoresizingMask) {
         signInButton.frame = rect
         signInButton.setTitle("Sign In", for: .normal)
         signInButton.setTitleColor(.white, for: .normal)
@@ -373,7 +373,7 @@ extension PredixAuthenticationView: UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        self.keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        self.keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         if let keyboardRect = self.keyboardRect {
             self.keyboardRect = self.scrollView.convert(keyboardRect, from: nil)
         }

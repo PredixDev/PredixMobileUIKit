@@ -48,7 +48,7 @@ open class PredixTimeSeriesView: LineChartView {
     
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
-    internal let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    internal let activityView = UIActivityIndicatorView(style: .whiteLarge)
     internal let grayView = UIView()
     
     /// :nodoc:
@@ -152,7 +152,7 @@ open class PredixTimeSeriesView: LineChartView {
         
         grayView.backgroundColor = .black
         grayView.alpha = 0.5
-        let fullyScreenResizeMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        let fullyScreenResizeMask: UIView.AutoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
         grayView.autoresizingMask = fullyScreenResizeMask
         activityView.autoresizingMask = fullyScreenResizeMask
         addSubview(activityView)
