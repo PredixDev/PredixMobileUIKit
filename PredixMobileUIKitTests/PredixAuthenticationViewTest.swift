@@ -30,7 +30,8 @@ class PredixAuthenticationViewTest: XCTestCase {
     func testSettingTheDelegateShouldSetAuthenticationInProgressFalse() {
         let authenticationView = PredixAuthenticationView()
         authenticationView.beginAuthentication()
-        authenticationView.delegate = MockDelegate()
+        let mock = MockDelegate()
+        authenticationView.delegate = mock
         XCTAssertFalse(authenticationView.authenticationInProgress)
     }
     

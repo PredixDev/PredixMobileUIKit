@@ -53,13 +53,13 @@ open class PredixAuthenticationView: UIView {
     ///Indicates if authentication is in progress
     open private(set) var authenticationInProgress = false
     ///The title image that will be displayed above the email filed
-    open let titleImageView: UIImageView = UIImageView()
+    public let titleImageView: UIImageView = UIImageView()
     ///The email text filed used by the authentication view
-    open let emailTextField: UITextField = UITextField()
+    public let emailTextField: UITextField = UITextField()
     ///The password text filed used by the authentication view
-    open let passwordTextField: UITextField = UITextField()
+    public let passwordTextField: UITextField = UITextField()
     ///The sign-in button used by the authentication view
-    open let signInButton: UIButton = UIButton(type: .system)
+    public let signInButton: UIButton = UIButton(type: .system)
     ///An authentication configuration to be used with the underlying authentication manager
     open var configuration: AuthenticationManagerConfiguration = AuthenticationManagerConfiguration()
     ///A ServiceBasedAuthenticationHandler to use with the authentication manager *defaults to UAAServiceAuthenticationHandler*
