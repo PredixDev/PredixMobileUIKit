@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D560B9D1FD5CD49000B4F68 /* BarChartDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560B9B1FD5CD49000B4F68 /* BarChartDemoViewController.swift */; };
 		3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */; };
 		4F1A53771F85A1E800DCB0CF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131481F7B19F2004861A7 /* Charts.framework */; };
 		4F1A53781F85A1E800DCB0CF /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF131481F7B19F2004861A7 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D560B9B1FD5CD49000B4F68 /* BarChartDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartDemoViewController.swift; sourceTree = "<group>"; };
 		3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesChartViewController.swift; sourceTree = "<group>"; };
 		4F3FF9051FBB5D3E003CFE09 /* PredixSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PredixSDK.framework; path = ../Carthage/Build/iOS/PredixSDK.framework; sourceTree = "<group>"; };
 		4F503B221F6C58BC00B8EE10 /* PredixMobileUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredixMobileUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				4FB5C43C1F7DA6C400824A9D /* Supporting Files */,
 				4F503B251F6C58BC00B8EE10 /* AppDelegate.swift */,
 				E898ABF51FA91B98001A0165 /* AuthenticationViewController.swift */,
+				2D560B9B1FD5CD49000B4F68 /* BarChartDemoViewController.swift */,
 				4FE22EAD1F8801F300F9C300 /* CircleProgressViewViewController.swift */,
 				4F503B271F6C58BC00B8EE10 /* DonutChartDemoViewController.swift */,
 				3737A2A61F83FF3500DC7180 /* TimeSeriesChartViewController.swift */,
@@ -187,7 +190,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = GE;
 				TargetAttributes = {
 					4F503B211F6C58BC00B8EE10 = {
@@ -259,6 +262,7 @@
 				4FE22EAE1F8801F300F9C300 /* CircleProgressViewViewController.swift in Sources */,
 				3737A2A71F83FF3500DC7180 /* TimeSeriesChartViewController.swift in Sources */,
 				4FF1315F1F7B201F004861A7 /* LaunchDemoViewController.swift in Sources */,
+				2D560B9D1FD5CD49000B4F68 /* BarChartDemoViewController.swift in Sources */,
 				E898ABF61FA91B98001A0165 /* AuthenticationViewController.swift in Sources */,
 				4F503B261F6C58BC00B8EE10 /* AppDelegate.swift in Sources */,
 			);
@@ -308,6 +312,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -315,6 +320,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -365,6 +371,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -372,6 +379,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -411,6 +419,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = PredixMobileUIKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -431,6 +440,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = PredixMobileUIKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

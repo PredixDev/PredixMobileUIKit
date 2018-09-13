@@ -30,7 +30,8 @@ class PredixAuthenticationViewTest: XCTestCase {
     func testSettingTheDelegateShouldSetAuthenticationInProgressFalse() {
         let authenticationView = PredixAuthenticationView()
         authenticationView.beginAuthentication()
-        authenticationView.delegate = MockDelegate()
+        let mock = MockDelegate()
+        authenticationView.delegate = mock
         XCTAssertFalse(authenticationView.authenticationInProgress)
     }
     
@@ -186,7 +187,7 @@ class PredixAuthenticationViewTest: XCTestCase {
         let authenticationView = PredixAuthenticationView()
         authenticationView.scrollView.contentSize = CGSize(width: 100, height: 200)
         authenticationView.emailTextField.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIKeyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
+        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIResponder.keyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
         
         _ = authenticationView.textFieldShouldBeginEditing(authenticationView.emailTextField)
         authenticationView.keyboardWillShow(notification: kbNotification)
@@ -198,7 +199,7 @@ class PredixAuthenticationViewTest: XCTestCase {
         let authenticationView = PredixAuthenticationView()
         authenticationView.scrollView.contentSize = CGSize(width: 100, height: 200)
         authenticationView.emailTextField.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIKeyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
+        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIResponder.keyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
         
         _ = authenticationView.textFieldShouldBeginEditing(authenticationView.emailTextField)
         authenticationView.keyboardWillShow(notification: kbNotification)
@@ -212,7 +213,7 @@ class PredixAuthenticationViewTest: XCTestCase {
         let authenticationView = PredixAuthenticationView()
         authenticationView.scrollView.contentSize = CGSize(width: 100, height: 200)
         authenticationView.emailTextField.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIKeyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
+        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIResponder.keyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
         
         _ = authenticationView.textFieldShouldBeginEditing(authenticationView.emailTextField)
         authenticationView.keyboardWillShow(notification: kbNotification)
@@ -226,7 +227,7 @@ class PredixAuthenticationViewTest: XCTestCase {
         let authenticationView = PredixAuthenticationView()
         authenticationView.scrollView.contentSize = CGSize(width: 100, height: 200)
         authenticationView.emailTextField.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIKeyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
+        let kbNotification = NSNotification(name: NSNotification.Name(rawValue: ""), object: nil, userInfo: [UIResponder.keyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 100, height: 100) as NSValue])
         
         _ = authenticationView.textFieldShouldBeginEditing(authenticationView.emailTextField)
         authenticationView.keyboardWillShow(notification: kbNotification)

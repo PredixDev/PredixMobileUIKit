@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D560BA11FD5CD59000B4F68 /* PredixBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */; };
+		2D560BA31FD5DDD5000B4F68 /* PredixBarChartViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */; };
+		2D67D3941FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */; };
 		3728CE7E1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */; };
 		374DC8031F7D77240091C5C5 /* PredixTimeSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */; };
 		374DC80B1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */; };
@@ -87,6 +90,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredixBarChartView.swift; sourceTree = "<group>"; };
+		2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixBarChartViewTests.swift; sourceTree = "<group>"; };
+		2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PredixBarChartView+IBInspectable.swift"; sourceTree = "<group>"; };
 		3728CE7D1F82B3D300C8B245 /* PredixTimeSeriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesViewTests.swift; sourceTree = "<group>"; };
 		374DC8021F7D77240091C5C5 /* PredixTimeSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredixTimeSeriesView.swift; sourceTree = "<group>"; };
 		374DC80A1F7DAB420091C5C5 /* PredixTimeSeriesView+IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PredixTimeSeriesView+IBInspectable.swift"; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 			children = (
 				E8D7E4A31F9ABEE8002EF8AA /* Framework.classdescriptions.plist */,
 				E8D7E49F1F9ABEDF002EF8AA /* PredixAuthenticationView.swift */,
+				2D560B9E1FD5CD59000B4F68 /* PredixBarChartView.swift */,
+				2D67D3931FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift */,
 				4F503AF61F6C560900B8EE10 /* PredixMobileUIKit.h */,
 				4FE22EA71F87FDE900F9C300 /* PredixCircleProgressView.swift */,
 				4F627A361F8ECAFB00CB4AEE /* CircleProgressLayer.swift */,
@@ -199,6 +207,7 @@
 				4F2F2E941F91532000BDAFEF /* UtilitiesTests.swift */,
 				E8D7E4AA1F9ACD3D002EF8AA /* PredixAuthenticationViewTest.swift */,
 				E8871A561FA9484F0075ECD4 /* UtilitiesTest.swift */,
+				2D560BA21FD5DDD5000B4F68 /* PredixBarChartViewTests.swift */,
 			);
 			path = PredixMobileUIKitTests;
 			sourceTree = "<group>";
@@ -298,16 +307,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = GE;
 				TargetAttributes = {
 					4F503AF21F6C560900B8EE10 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					4F503AFB1F6C560900B8EE10 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -379,6 +389,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D560BA11FD5CD59000B4F68 /* PredixBarChartView.swift in Sources */,
+				2D67D3941FDE31BE00FB2FF0 /* PredixBarChartView+IBInspectable.swift in Sources */,
 				4F503B631F6C5A5600B8EE10 /* PredixDonutView.swift in Sources */,
 				4FE22EA81F87FDE900F9C300 /* PredixCircleProgressView.swift in Sources */,
 				4F503B681F6C73DB00B8EE10 /* UIColor+Predix.swift in Sources */,
@@ -396,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F627A3B1F8EE0E300CB4AEE /* PredixCircleProgressViewTests.swift in Sources */,
+				2D560BA31FD5DDD5000B4F68 /* PredixBarChartViewTests.swift in Sources */,
 				4F627A391F8EE0CC00CB4AEE /* CircleProgressLayerTests.swift in Sources */,
 				4F627A3D1F8FC98900CB4AEE /* RandomExtensions.swift in Sources */,
 				4F2F2E951F91532000BDAFEF /* UtilitiesTests.swift in Sources */,
@@ -432,6 +445,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -439,6 +453,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -492,6 +507,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -499,6 +515,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -538,6 +555,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 46CF5WSV9A;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -555,7 +573,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -567,6 +585,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 46CF5WSV9A;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -583,7 +602,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -601,7 +620,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -619,7 +638,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ge.PredixMobileUIKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

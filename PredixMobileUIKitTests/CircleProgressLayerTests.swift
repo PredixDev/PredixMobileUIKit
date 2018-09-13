@@ -81,7 +81,8 @@ class CircleProgressLayerTests: XCTestCase {
     func testInitWithLayer() {
         let expectedLayer = CircleProgressLayer()
         
-        expectedLayer.progressAnimationDelegate = TestAnimationDelegate()
+        let animationDelegate = TestAnimationDelegate()
+        expectedLayer.progressAnimationDelegate = animationDelegate
         expectedLayer.thresholdLineLength = CGFloat.random
         expectedLayer.thresholdLineWidth = CGFloat.random
         expectedLayer.circleColor = UIColor.random
@@ -94,7 +95,9 @@ class CircleProgressLayerTests: XCTestCase {
         expectedLayer.progressLineWidth = CGFloat.random
         expectedLayer.circleLineWidth = CGFloat.random
         expectedLayer.counterClockwise = Bool.random
-        expectedLayer.progress = CGFloat.random
+        let progress = CGFloat.random
+        animationDelegate.expectedProgressValue = progress
+        expectedLayer.progress = progress
         expectedLayer.colorCorrection = UIColor.random.cgColor
         
         let layer = CircleProgressLayer(layer: expectedLayer)
@@ -120,7 +123,8 @@ class CircleProgressLayerTests: XCTestCase {
         
         let expectedLayer = CircleProgressLayer()
         
-        expectedLayer.progressAnimationDelegate = TestAnimationDelegate()
+        let animationDelegate = TestAnimationDelegate()
+        expectedLayer.progressAnimationDelegate = animationDelegate
         expectedLayer.thresholdLineLength = CGFloat.random
         expectedLayer.thresholdLineWidth = CGFloat.random
         expectedLayer.circleColor = UIColor.random
@@ -133,14 +137,15 @@ class CircleProgressLayerTests: XCTestCase {
         expectedLayer.progressLineWidth = CGFloat.random
         expectedLayer.circleLineWidth = CGFloat.random
         expectedLayer.counterClockwise = Bool.random
-        expectedLayer.progress = CGFloat.random
+        let progress = CGFloat.random
+        animationDelegate.expectedProgressValue = progress
+        expectedLayer.progress = progress
         expectedLayer.colorCorrection = UIColor.random.cgColor
         
         let data = NSKeyedArchiver.archivedData(withRootObject: expectedLayer)
         
         if let layer = NSKeyedUnarchiver.unarchiveObject(with: data) as? CircleProgressLayer {
             
-            XCTAssertEqual(expectedLayer.progressAnimationDelegate as? TestAnimationDelegate, layer.progressAnimationDelegate as? TestAnimationDelegate, "Values did not match: progressAnimationDelegate")
             XCTAssertEqual(expectedLayer.thresholdLineLength, layer.thresholdLineLength, "Values did not match: thresholdLineLength")
             XCTAssertEqual(expectedLayer.thresholdLineWidth, layer.thresholdLineWidth, "Values did not match: thresholdLineWidth")
             XCTAssertEqual(expectedLayer.circleColor, layer.circleColor, "Values did not match: circleColor")

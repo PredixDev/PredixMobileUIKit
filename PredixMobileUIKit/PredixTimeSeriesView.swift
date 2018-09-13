@@ -48,7 +48,7 @@ open class PredixTimeSeriesView: LineChartView {
     
     /// Array of colors to use. Defaults to UIColor.Predix.DataVisualizationSets.regular
     open var dataVisualizationColors: [UIColor] = UIColor.Predix.DataVisualizationSets.regular
-    internal let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    internal let activityView = UIActivityIndicatorView(style: .whiteLarge)
     internal let grayView = UIView()
     
     /// :nodoc:
@@ -138,21 +138,21 @@ open class PredixTimeSeriesView: LineChartView {
         
         self.clipValuesToContentEnabled = true
         
-        let l: Legend = self.legend
-        l.horizontalAlignment = .left
-        l.verticalAlignment = .bottom
-        l.orientation = .horizontal
-        l.drawInside = false
-        l.form = .line
-        l.font = UIFont.systemFont(ofSize: 16)
-        l.formSize = 16
-        l.formLineWidth = 5
+        let legend: Legend = self.legend
+        legend.horizontalAlignment = .left
+        legend.verticalAlignment = .bottom
+        legend.orientation = .horizontal
+        legend.drawInside = false
+        legend.form = .line
+        legend.font = UIFont.systemFont(ofSize: 16)
+        legend.formSize = 16
+        legend.formLineWidth = 5
         
         delegate = self
         
         grayView.backgroundColor = .black
         grayView.alpha = 0.5
-        let fullyScreenResizeMask: UIViewAutoresizing = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        let fullyScreenResizeMask: UIView.AutoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
         grayView.autoresizingMask = fullyScreenResizeMask
         activityView.autoresizingMask = fullyScreenResizeMask
         addSubview(activityView)
